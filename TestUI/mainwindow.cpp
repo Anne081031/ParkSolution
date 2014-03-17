@@ -1,0 +1,161 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <QDebug>
+#include <QMenu>
+
+// QAction / User Interface Command
+// http://qt-project.org/doc/qt-5/layout.html GridLayout
+
+void MainWindow::HandleActivated( QSystemTrayIcon::ActivationReason reason )
+{
+
+}
+
+void MainWindow::HandleMessageClicked( )
+{
+
+}
+
+void MainWindow::ClickMenuItem( )
+{
+    pSysTrayIcon->showMessage( "Hi", "Hello", QSystemTrayIcon::Critical );
+}
+
+void MainWindow::SystemTrayIcon( )
+{
+    if ( NULL == pSysTrayIcon ) {
+        QIcon icon( "D:\\ParkSolution\\Document\\addin.ico" );
+        pSysTrayIcon = new QSystemTrayIcon( icon, this );
+    }
+
+    bool bRet = pSysTrayIcon->isSystemTrayAvailable( );
+    bRet = pSysTrayIcon->supportsMessages( );
+
+    connect( pSysTrayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
+             this, SLOT(HandleActivated(QSystemTrayIcon::ActivationReason)) );
+    connect( pSysTrayIcon, SIGNAL(messageClicked()),
+             this, SLOT(HandleMessageClicked()) );
+
+    pSysTrayIcon->setToolTip( "Test" );
+
+    QMenu* pMenu = new QMenu( );
+    QAction* pAct = pMenu->addAction( "Test" );
+    connect( pAct, SIGNAL(triggered()),
+             this, SLOT(ClickMenuItem()) );
+    pSysTrayIcon->setContextMenu( pMenu );
+    pSysTrayIcon->show( );
+}
+
+void MainWindow::closeEvent(QCloseEvent *e)
+{
+    pHoverFrame->close( );
+    delete pHoverFrame;
+}
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+    ui(new Ui::MainWindow)
+{
+    //return;
+    ui->setupUi(this);
+    pSysTrayIcon = NULL;
+    SystemTrayIcon( );
+    pHoverFrame = new QHoverFrame( NULL );
+    pHoverFrame->show();
+    //setWindowFlags( Qt::Tool );
+    LayoutUI( );
+#if false
+    Qt::WindowStates eWinStates = windowState( );
+    //Qt::FramelessWindowHint
+    setWindowState( eWinStates | Qt::WindowFullScreen );
+    QLayout* pLayout = ui->centralWidget->layout( );
+    ui->centralWidget->setLayout( ui->mainLayout );
+
+    ui->gridLayout->setColumnMinimumWidth( 0, 200 );
+    ui->gridLayout->setColumnMinimumWidth( 1, 200 );
+    ui->gridLayout->setRowMinimumHeight( 2, 200 );
+    ui->gridLayout->addWidget( ui->pushButton, 0, 0, 1, 4 );
+    ui->gridLayout->addWidget( ui->pushButton_2, 0, 5, 3, 2 );
+    ui->gridLayout->addWidget( ui->tabWidget, 3, 0, 1, 6 );
+    //setLayout( ui->mainLayout );
+
+    // Nest Splitter
+    // QSplitter : QFrame : QWidget : QObject
+    // QSplitterHandle : QWidget / May customize  改变尺寸的那个控件
+    rightSplitter = new QSplitter(Qt::Vertical);
+    rightSplitter->addWidget(messagesTreeWidget);
+    rightSplitter->addWidget(textEdit);
+    rightSplitter->setStretchFactor(1, 1);
+    mainSplitter = new QSplitter(Qt::Horizontal);
+    mainSplitter->addWidget(foldersTreeWidget);
+    mainSplitter->addWidget(rightSplitter);
+    mainSplitter->setStretchFactor(1, 1);
+    setCentralWidget(mainSplitter);
+    setWindowTitle(tr("Mail Client"));
+
+
+    //ui->mainToolBar->addAction( ui->actionOpen );
+
+    //pSplitter = new QSplitter( ui->centralWidget  );
+    //setCentralWidget( pSplitter ); // Must
+    //addDockWidget();
+    //pSplitter->addWidget( ui->tableView );
+    //pSplitter->addWidget( ui->calendarWidget );
+    //pSplitter->addWidget( ui->toolBox );
+#endif
+
+}
+
+void MainWindow::LayoutUI( )
+{
+    Qt::WindowStates winStates =  windowState( );
+    winStates |= Qt::WindowMaximized;
+    setWindowState( winStates );
+    ui->centralWidget->setLayout( ui->mainGridLayout );
+
+    int nMainColMiniSize[ ] = { 400, 200 };
+    int nColCount = sizeof ( nMainColMiniSize ) / sizeof ( int );
+    for ( int nIndex = 0; nIndex < nColCount; nIndex++ ) {
+        ;//ui->mainGridLayout->setColumnMinimumWidth( nIndex, nMainColMiniSize[ nIndex ] );
+    }
+
+    ui->mainGridLayout->addWidget( ui->wgtLeftPanel, 0, 0 );
+    ui->mainGridLayout->addWidget( ui->wgtRightPanel, 0, 1 );
+    ui->wgtLeftPanel->setLayout( ui->gridLayoutLeftPanel );
+
+    int nLeftColMiniSize[ ] = { 100, 100, 100, 100 };
+    nColCount = sizeof ( nLeftColMiniSize ) / sizeof ( int );
+    ui->gridLayoutLeftPanel->setSpacing( 0 );
+    for ( int nIndex = 0; nIndex < nColCount; nIndex++ ) {
+        ;//ui->gridLayoutLeftPanel->setColumnMinimumWidth( nIndex, nLeftColMiniSize[ nIndex ] );
+    }
+
+    ui->gridLayoutLeftPanel->setSpacing( 5 );
+    ui->gridLayoutLeftPanel->setRowMinimumHeight( 0, 400 );
+    ui->gridLayoutLeftPanel->addWidget( ui->frmBigPicture, 0, 0, 1, 4 );
+
+    ui->gridLayoutLeftPanel->addWidget( ui->frmSmallPicture0, 1, 0 );
+    ui->gridLayoutLeftPanel->addWidget( ui->frmSmallPicture1, 1, 1 );
+    ui->gridLayoutLeftPanel->addWidget( ui->frmSmallPicture2, 1, 2 );
+    ui->gridLayoutLeftPanel->addWidget( ui->frmSmallPicture3, 1, 3 );
+
+    ui->gridLayoutLeftPanel->addWidget( ui->widget0, 2, 0 );
+    ui->gridLayoutLeftPanel->addWidget( ui->widget1, 2, 1 );
+    ui->gridLayoutLeftPanel->addWidget( ui->widget2, 2, 2 );
+    ui->gridLayoutLeftPanel->addWidget( ui->widget3, 2, 3 );
+
+    ui->widget0->setLayout( ui->formLayout0 );
+    ui->widget1->setLayout( ui->formLayout1 );
+    ui->widget2->setLayout( ui->formLayout2 );
+    ui->widget3->setLayout( ui->formLayout3 );
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::on_lineEdit_returnPressed()
+{
+
+}

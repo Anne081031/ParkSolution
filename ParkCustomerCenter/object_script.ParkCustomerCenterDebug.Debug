@@ -1,0 +1,16 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\qbasezmqthread.o
+./debug\qthreadevent.o
+./debug\qdbzmqthread.o
+./debug\qlprzmqthread.o
+./debug\qimagelabel.o
+./debug\qplatethread.o
+./debug\moc_mainwindow.o
+./debug\moc_qbasezmqthread.o
+./debug\moc_qdbzmqthread.o
+./debug\moc_qlprzmqthread.o
+./debug\moc_qimagelabel.o
+./debug\moc_qplatethread.o
+);

@@ -1,0 +1,54 @@
+QML Qt Markup Language 或 Qt Meta Language 或 Qt Modeling Language 用于设计UI(主要是移动应用)
+QML is a user interface specification and programming language. 
+The Qt QML module provides a framework for developing applications and libraries with the QML language. 
+Qt Quick is the standard library of types and functionality for QML.
+
+语法 类似JSON
+
+Qt Excel
+void TestReadExcel::readExcel()
+{
+  QAxObject *excel = NULL;
+     QAxObject *workbooks = NULL;
+     QAxObject *workbook = NULL;
+
+    excel = new QAxObject("Excel.Application");
+     if (!excel)
+     {
+         QMessageBox::critical(this, "错误信息", "EXCEL对象丢失");
+         return;
+     }
+     excel->dynamicCall("SetVisible(bool)", false);
+     workbooks = excel->querySubObject("WorkBooks");
+     workbook = workbooks->querySubObject("Open(QString, QVariant)", QString(tr("d:\\test.xls")));
+     QAxObject * worksheet = workbook->querySubObject("WorkSheets(int)", 1);//打开第一个sheet
+
+//QAxObject * worksheet = workbook->querySubObject("WorkSheets");//获取sheets的集合指针
+  //int intCount = worksheet->property("Count").toInt();//获取sheets的数量
+
+
+    QAxObject * usedrange = worksheet->querySubObject("UsedRange");//获取该sheet的使用范围对象
+     QAxObject * rows = usedrange->querySubObject("Rows");
+     QAxObject * columns = usedrange->querySubObject("Columns");
+     /*获取行数和列数*/
+     int intRowStart = usedrange->property("Row").toInt();
+     int intColStart = usedrange->property("Column").toInt();
+     int intCols = columns->property("Count").toInt();
+     int intRows = rows->property("Count").toInt();
+     /*获取excel内容*/
+     for (int i = intRowStart; i < intRowStart + intRows; i++)  //行
+     {
+         for (int j = intColStart; j < intColStart + intCols; j++)  //列
+         {
+             QAxObject * cell = worksheet->querySubObject("Cells(int,int)", i, j );  //获取单元格
+            // qDebug() << i << j << cell->property("Value");         //*****************************出问题!!!!!!
+    qDebug() << i << j <<cell->dynamicCall("Value2()").toString(); //正确
+         }
+     }
+  workbook->dynamicCall("Close (Boolean)", false);
+
+//同样，设置值，也用dynamimcCall("SetValue(const QVariant&)", QVariant(QString("Help!")))这样才成功的。。
+
+//excel->dynamicCall("Quit (void)");
+  delete excel;//一定要记得删除，要不线程中会一直打开excel.exe
+}

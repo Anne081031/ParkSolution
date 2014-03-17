@@ -1,0 +1,16 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\qbasezmqthread.o
+./release\qthreadevent.o
+./release\qdbzmqthread.o
+./release\qlprzmqthread.o
+./release\qimagelabel.o
+./release\qplatethread.o
+./release\moc_mainwindow.o
+./release\moc_qbasezmqthread.o
+./release\moc_qdbzmqthread.o
+./release\moc_qlprzmqthread.o
+./release\moc_qimagelabel.o
+./release\moc_qplatethread.o
+);

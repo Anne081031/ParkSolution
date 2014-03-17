@@ -1,0 +1,17 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\qdlgqueryinfo.o
+./debug\qdlgeditnewinfo.o
+./debug\qdlgcommondata.o
+./debug\qdlgsvceditnewinfo.o
+./debug\qdlgsvcqueryinfo.o
+./debug\qlocalserverthread.o
+./debug\moc_mainwindow.o
+./debug\moc_qdlgqueryinfo.o
+./debug\moc_qdlgeditnewinfo.o
+./debug\moc_qdlgcommondata.o
+./debug\moc_qdlgsvceditnewinfo.o
+./debug\moc_qdlgsvcqueryinfo.o
+./debug\moc_qlocalserverthread.o
+);

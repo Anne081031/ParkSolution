@@ -1,0 +1,956 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QDlgEditNewInfo</class>
+ <widget class="QDialog" name="QDlgEditNewInfo">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>880</width>
+    <height>618</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>880</width>
+    <height>618</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>880</width>
+    <height>618</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="whatsThis">
+   <string>客户</string>
+  </property>
+  <widget class="QWidget" name="widget1" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>90</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_6">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>206</y>
+     <width>861</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout2">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lblVehicleBasic">
+      <property name="text">
+       <string>车辆基本信息</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="Line" name="lineVehicle">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_7">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>380</y>
+     <width>861</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout3">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lblServiceRecord">
+      <property name="text">
+       <string>服务记录</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="Line" name="lineService">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>0</y>
+     <width>16</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="mainGridLayout"/>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_11">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>224</y>
+     <width>261</width>
+     <height>152</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout7">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string>车牌号</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="edtPlateID">
+      <property name="maxLength">
+       <number>8</number>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>发动机号</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="edtMotorID">
+      <property name="maxLength">
+       <number>45</number>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_21">
+      <property name="text">
+       <string>品牌</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_22">
+      <property name="text">
+       <string>车系</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_23">
+      <property name="text">
+       <string>购车日</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_24">
+      <property name="text">
+       <string>行驶公里数</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="edtOdometer">
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>10</number>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QComboBox" name="cbxBrand"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="cbxSeries"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="QDateEdit" name="dtBuyDate">
+      <property name="displayFormat">
+       <string>yyyy-MM-dd</string>
+      </property>
+      <property name="calendarPopup">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="lblSpace">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>470</y>
+     <width>600</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_9">
+   <property name="geometry">
+    <rect>
+     <x>286</x>
+     <y>50</y>
+     <width>261</width>
+     <height>152</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout5">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string>手机号码</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="edtMobilePhone">
+      <property name="inputMethodHints">
+       <set>Qt::ImhDigitsOnly</set>
+      </property>
+      <property name="inputMask">
+       <string>99999999999</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>11</number>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_10">
+      <property name="text">
+       <string>固定号码</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="edtLandline">
+      <property name="inputMethodHints">
+       <set>Qt::ImhDigitsOnly</set>
+      </property>
+      <property name="inputMask">
+       <string>99999999999</string>
+      </property>
+      <property name="maxLength">
+       <number>11</number>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_11">
+      <property name="text">
+       <string>邮箱地址</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_12">
+      <property name="text">
+       <string>客户地址</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_13">
+      <property name="text">
+       <string>所属区域</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_14">
+      <property name="text">
+       <string>证件号码</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="edtAddress">
+      <property name="maxLength">
+       <number>22</number>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="edtCredentialsID">
+      <property name="maxLength">
+       <number>45</number>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QComboBox" name="cbxDistrict"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="edtEMail">
+      <property name="maxLength">
+       <number>22</number>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_12">
+   <property name="geometry">
+    <rect>
+     <x>287</x>
+     <y>224</y>
+     <width>261</width>
+     <height>152</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout8">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_25">
+      <property name="text">
+       <string>车辆颜色</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_26">
+      <property name="text">
+       <string>年检日期</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_27">
+      <property name="text">
+       <string>商业险到期日</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_28">
+      <property name="text">
+       <string>交强险到期日</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_29">
+      <property name="text">
+       <string>历史来店次数</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="edtVistCount">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(192, 192, 192);</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>10</number>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_30">
+      <property name="text">
+       <string>保险公司</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QComboBox" name="cbxInsurer"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QDateEdit" name="dtCommercialInsuranceExpiration">
+      <property name="displayFormat">
+       <string>yyyy-MM-dd</string>
+      </property>
+      <property name="calendarPopup">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QDateEdit" name="dtMandatoryInsuranceExpiration">
+      <property name="displayFormat">
+       <string>yyyy-MM-dd</string>
+      </property>
+      <property name="calendarPopup">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDateEdit" name="dtAannualSurveyDate">
+      <property name="displayFormat">
+       <string>yyyy-MM-dd</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="cbxColor"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="widget4" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>180</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_5">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>861</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout1">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lblCustomerBasic">
+      <property name="text">
+       <string>客户基本信息</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="Line" name="lineCustomer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="widget2" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>120</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget8" native="true">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>130</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_10">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>50</y>
+     <width>310</width>
+     <height>152</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout6">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_15">
+      <property name="text">
+       <string>初次来访日</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_16">
+      <property name="text">
+       <string>建档日期</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_17">
+      <property name="text">
+       <string>最近一次到店时间</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_18">
+      <property name="text">
+       <string>会员卡类别</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_19">
+      <property name="text">
+       <string>会员卡余额</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_20">
+      <property name="text">
+       <string>历史消费金额</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QDateTimeEdit" name="dtVistFirstTime">
+      <property name="displayFormat">
+       <string>yyyy-MM-dd HH:mm:ss</string>
+      </property>
+      <property name="calendarPopup">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDateTimeEdit" name="dtEntryTime">
+      <property name="displayFormat">
+       <string>yyyy-MM-dd HH:mm:ss</string>
+      </property>
+      <property name="calendarPopup">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QDateTimeEdit" name="dtVistNewlyTime">
+      <property name="displayFormat">
+       <string>yyyy-MM-dd HH:mm:ss</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="cbxMembershipClass"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="edtMembershipCardSurplus">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="maxLength">
+       <number>10</number>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="edtConsumptionAmount">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(192, 192, 192);</string>
+      </property>
+      <property name="maxLength">
+       <number>10</number>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="widget3" native="true">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>150</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget9" native="true">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>130</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget6" native="true">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>130</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="lblDetail">
+   <property name="geometry">
+    <rect>
+     <x>413</x>
+     <y>10</y>
+     <width>54</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>详细信息</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget5" native="true">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>130</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_13">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>225</y>
+     <width>311</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout9">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label_31">
+      <property name="text">
+       <string>车辆类型</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_32">
+      <property name="text">
+       <string>首保日期</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_33">
+      <property name="text">
+       <string>下次保养日期</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_34">
+      <property name="text">
+       <string>车辆总体状况</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QDateEdit" name="dtMaintenanceNextDate">
+      <property name="displayFormat">
+       <string>yyyy-MM-dd</string>
+      </property>
+      <property name="calendarPopup">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDateEdit" name="dtMaintenanceFirstDate">
+      <property name="displayFormat">
+       <string>yyyy-MM-dd</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="cbxFeature"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="cbxState"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="edtVehicleID">
+      <property name="maxLength">
+       <number>8</number>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="widget10" native="true">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>590</y>
+     <width>841</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <widget class="QPushButton" name="btnOK">
+    <property name="geometry">
+     <rect>
+      <x>675</x>
+      <y>0</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>保存</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnCancel">
+    <property name="geometry">
+     <rect>
+      <x>765</x>
+      <y>0</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>关闭</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="gridLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>10</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout"/>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="widget7" native="true">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>130</y>
+     <width>41</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tabServiceRecord">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>400</y>
+     <width>861</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::CustomContextMenu</enum>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SingleSelection</enum>
+   </property>
+   <property name="selectionBehavior">
+    <enum>QAbstractItemView::SelectRows</enum>
+   </property>
+  </widget>
+  <widget class="QWidget" name="formLayoutWidget_8">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>50</y>
+     <width>261</width>
+     <height>152</height>
+    </rect>
+   </property>
+   <layout class="QFormLayout" name="formLayout4">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>客户编号</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="edtCustomerID">
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(192, 192, 192);</string>
+      </property>
+      <property name="inputMask">
+       <string/>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="text">
+       <string>客户名称</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="edtName">
+      <property name="maxLength">
+       <number>22</number>
+      </property>
+      <property name="readOnly">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>客户类别</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="text">
+       <string>隶属部门</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>客户专员</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>客户来源</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QComboBox" name="cbxCustomerCategory"/>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="cbxDepartment"/>
+    </item>
+    <item row="4" column="1">
+     <widget class="QComboBox" name="cbxAccountExecutive"/>
+    </item>
+    <item row="5" column="1">
+     <widget class="QComboBox" name="cbxCustomerSource"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>edtCustomerID</tabstop>
+  <tabstop>edtName</tabstop>
+  <tabstop>cbxCustomerCategory</tabstop>
+  <tabstop>cbxDepartment</tabstop>
+  <tabstop>cbxAccountExecutive</tabstop>
+  <tabstop>cbxCustomerSource</tabstop>
+  <tabstop>edtMobilePhone</tabstop>
+  <tabstop>edtLandline</tabstop>
+  <tabstop>edtAddress</tabstop>
+  <tabstop>cbxDistrict</tabstop>
+  <tabstop>edtCredentialsID</tabstop>
+  <tabstop>dtVistFirstTime</tabstop>
+  <tabstop>dtEntryTime</tabstop>
+  <tabstop>dtVistNewlyTime</tabstop>
+  <tabstop>cbxMembershipClass</tabstop>
+  <tabstop>edtMembershipCardSurplus</tabstop>
+  <tabstop>edtConsumptionAmount</tabstop>
+  <tabstop>edtPlateID</tabstop>
+  <tabstop>edtMotorID</tabstop>
+  <tabstop>cbxBrand</tabstop>
+  <tabstop>cbxSeries</tabstop>
+  <tabstop>dtBuyDate</tabstop>
+  <tabstop>edtOdometer</tabstop>
+  <tabstop>cbxColor</tabstop>
+  <tabstop>dtAannualSurveyDate</tabstop>
+  <tabstop>dtCommercialInsuranceExpiration</tabstop>
+  <tabstop>dtMandatoryInsuranceExpiration</tabstop>
+  <tabstop>edtVistCount</tabstop>
+  <tabstop>cbxInsurer</tabstop>
+  <tabstop>cbxFeature</tabstop>
+  <tabstop>tabServiceRecord</tabstop>
+  <tabstop>dtMaintenanceFirstDate</tabstop>
+  <tabstop>dtMaintenanceNextDate</tabstop>
+  <tabstop>cbxState</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

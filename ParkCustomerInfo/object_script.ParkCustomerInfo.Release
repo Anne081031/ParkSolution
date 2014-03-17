@@ -1,0 +1,17 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\qdlgqueryinfo.o
+./release\qdlgeditnewinfo.o
+./release\qdlgcommondata.o
+./release\qdlgsvceditnewinfo.o
+./release\qdlgsvcqueryinfo.o
+./release\qlocalserverthread.o
+./release\moc_mainwindow.o
+./release\moc_qdlgqueryinfo.o
+./release\moc_qdlgeditnewinfo.o
+./release\moc_qdlgcommondata.o
+./release\moc_qdlgsvceditnewinfo.o
+./release\moc_qdlgsvcqueryinfo.o
+./release\moc_qlocalserverthread.o
+);
