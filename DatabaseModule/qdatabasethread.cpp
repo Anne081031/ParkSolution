@@ -104,6 +104,18 @@ void QDatabaseThread::customEvent( QEvent *pEvent )
     case QDatabaseEvent::QueryUserInfo :
         ProcessQueryUserInfoEvent( pDbEvent );
         break;
+
+    case QDatabaseEvent::QueryInOutImage :
+        ProcessQueryInOutImageEvent( pDbEvent );
+        break;
+
+    case QDatabaseEvent::QueryCommonDataByType :
+        ProcessQueryCommonDataByTypeEvent( pDbEvent );
+        break;
+
+    case QDatabaseEvent::ChangeCommonData :
+        ProcessChangeCommonDataEvent( pDbEvent );
+        break;
     }
 }
 
@@ -135,6 +147,20 @@ void QDatabaseThread::PostImportCustomerEvent( QStringList &lstParams )
 void QDatabaseThread::PostQueryUserInfoEvent( QStringList &lstParams )
 {
     QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::QueryUserInfo );
+    pEvent->SetParamList( lstParams );
+    PostEvent( pEvent );
+}
+
+void QDatabaseThread::PostQueryInOutImageEvent( QStringList &lstParams )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::QueryInOutImage );
+    pEvent->SetParamList( lstParams );
+    PostEvent( pEvent );
+}
+
+void QDatabaseThread::PostChangeCommonDataEvent( QStringList &lstParams )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::ChangeCommonData );
     pEvent->SetParamList( lstParams );
     PostEvent( pEvent );
 }
@@ -200,6 +226,14 @@ void QDatabaseThread::PostQueryServiceDataEvent( QStringList& lstParams, QSqlQue
 void QDatabaseThread::PostQueryCustomerDataEvent( QStringList& lstParams, QSqlQueryModel* pModel )
 {
     QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::QueryCustomerData );
+    pEvent->SetParamList( lstParams );
+    pEvent->SetQueryModel( pModel );
+    PostEvent( pEvent );
+}
+
+void QDatabaseThread::PostQueryCommonDataByTypeEvent( QStringList& lstParams, QSqlQueryModel* pModel )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::QueryCommonDataByType );
     pEvent->SetParamList( lstParams );
     pEvent->SetQueryModel( pModel );
     PostEvent( pEvent );
@@ -281,6 +315,44 @@ void QDatabaseThread::ProcessQueryUserInfoEvent( QDatabaseEvent* pEvent )
 
     pMySQLDatabase->CallSP( strConnectName,
                 ParkSolution::SpQueryUserInfo, lstParams );
+}
+
+void QDatabaseThread::ProcessQueryInOutImageEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    if ( 3 > lstParams.count( ) ) {
+        return;
+    }
+
+    pMySQLDatabase->CallSP( strConnectName,
+                ParkSolution::SpQueryInOutImage, lstParams );
+}
+
+void QDatabaseThread::ProcessQueryCommonDataByTypeEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    if ( 1 > lstParams.count( ) ) {
+        return;
+    }
+
+    QSqlQueryModel* pModel = pEvent->GetQueryModel( );
+    pMySQLDatabase->CallSP( strConnectName,
+                ParkSolution::SpQueryCommonDataByType, lstParams, pModel );
+}
+
+void QDatabaseThread::ProcessChangeCommonDataEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    if ( 4 > lstParams.count( ) ) {
+        return;
+    }
+
+    int nFlag = lstParams.at( 0 ).toInt( ); // 0 Update 1 Insert 2 Delete
+
+    pMySQLDatabase->CallSP( strConnectName,
+                            2 != nFlag ?
+                ParkSolution::SpChangeCommonDataUI :
+                ParkSolution::SpChangeCommonDataDelete, lstParams );
 }
 
 void QDatabaseThread::ProcessChangeServiceRecordEvent( QDatabaseEvent* pEvent )

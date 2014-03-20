@@ -2,27 +2,29 @@
 #include "shapedclock.h"
 
 ShapedClock::ShapedClock(QWidget *parent)
-    : QWidget(parent, Qt::FramelessWindowHint | Qt::Tool )
+    : QWidget(parent, Qt::FramelessWindowHint |
+              //Qt::WindowStaysOnTopHint |
+              Qt::Tool )
 {
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-    timer->start(1000);
+    //QAction *quitAction = new QAction(tr("E&xit"), this);
+    //quitAction->setShortcut(tr("Ctrl+Q"));
+    //connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+    //addAction(quitAction);
 
-    QAction *quitAction = new QAction(tr("E&xit"), this);
-    quitAction->setShortcut(tr("Ctrl+Q"));
-    connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
-    addAction(quitAction);
+    //setContextMenuPolicy(Qt::ActionsContextMenu);
+    setToolTip( "双击显示或隐藏最近未查看客户悬浮窗口。" );
+    setWindowTitle( "" );
 
-    setContextMenuPolicy(Qt::ActionsContextMenu);
-    setToolTip(tr("Drag the clock with the left mouse button.\n"
-                  "Use the right mouse button to open a context menu."));
-    setWindowTitle(tr("Shaped Analog Clock"));
-
+    setStyleSheet( "background-color: rgb(255, 0, 0);" );
     bVisible = false;
+
+    nCaptionButtonWidth = GetSystemMetrics( SM_CXSIZE );
+    nCaptionButtonHeight = GetSystemMetrics( SM_CYSIZE );
 }
 
 void ShapedClock::mousePressEvent(QMouseEvent *event)
 {
+    return;
     if (event->button() == Qt::LeftButton) {
         dragPosition = event->globalPos() - frameGeometry().topLeft();
         event->accept();
@@ -31,20 +33,26 @@ void ShapedClock::mousePressEvent(QMouseEvent *event)
 
 void ShapedClock::mouseMoveEvent(QMouseEvent *event)
 {
+    return;
     if (event->buttons() & Qt::LeftButton) {
         move(event->globalPos() - dragPosition);
         event->accept();
     }
 }
 
-void ShapedClock::mouseDoubleClickEvent(QMouseEvent *event)
+void ShapedClock::mouseDoubleClickEvent(QMouseEvent *)
 {
     bVisible = !bVisible;
     emit ShowHoverWindow( bVisible );
 }
 
-void ShapedClock::paintEvent(QPaintEvent *)
+void ShapedClock::paintEvent(QPaintEvent *event)
 {
+    //int nSide = qMin(width(), height());
+    //QPainter painter1(this);
+    //QPixmap pixmap( "D:\\ParkSolution\\Document\\Info.PNG" );
+    //painter1.drawPixmap( width() / 2 - nSide / 2, height() / 2 - nSide / 2, 33, 33, pixmap );
+    return;
     static const QPoint hourHand[3] = {
         QPoint(7, 8),
         QPoint(-7, 8),
@@ -104,15 +112,26 @@ void ShapedClock::resizeEvent(QResizeEvent * /* event */)
     int side = qMin(width(), height());
     QRegion maskedRegion(width() / 2 - side / 2, height() / 2 - side / 2, side,
                          side, QRegion::Ellipse);
+    //QPixmap pixmap( "D:\\ParkSolution\\Document\\Info.bmp" );
+    //QBitmap bitmap( pixmap );
     setMask(maskedRegion);
+}
+
+void ShapedClock::MoveSelf(QRect frameRect, QRect geometryRect)
+{
+
+   int nX = geometryRect.x( ) + geometryRect.width( ) - nCaptionButtonWidth * 3 + 5;
+   int nY = frameRect.y( ) + 5;
+
+   qDebug( ) << "fx:" << frameRect.x( ) << " fy:" << frameRect.y( )
+                << " fw:" << frameRect.width( ) << " fh:" << frameRect.height( );
+   qDebug( ) << "x:" << geometryRect.x( ) << " y:" << geometryRect.y( )
+                << " w:" << geometryRect.width( ) << " h:" << geometryRect.height( );
+
+   move( nX, nY );
 }
 
 QSize ShapedClock::sizeHint() const
 {
-    return QSize(100, 100);
-}
-
-void ShapedClock::mouseDoubleClickEvent(QMouseEvent *event)
-{
-
+    return QSize(22, 22);
 }

@@ -20,7 +20,11 @@ namespace ParkSolution {
         SpChangeServiceRecordDelete,
         SpImportCustomer,
         SpExportCustomer,
-        SpQueryUserInfo
+        SpQueryUserInfo,
+        SpQueryInOutImage,
+        SpQueryCommonDataByType,
+        SpChangeCommonDataUI,
+        SpChangeCommonDataDelete
     } SpType;
 
     typedef union __SelectResult {

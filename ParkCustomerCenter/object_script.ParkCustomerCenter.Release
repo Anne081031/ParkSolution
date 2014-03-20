@@ -7,10 +7,13 @@ INPUT(
 ./release\qlprzmqthread.o
 ./release\qimagelabel.o
 ./release\qplatethread.o
+./release\qplateparserthread.o
+./release\qplateevent.o
 ./release\moc_mainwindow.o
 ./release\moc_qbasezmqthread.o
 ./release\moc_qdbzmqthread.o
 ./release\moc_qlprzmqthread.o
 ./release\moc_qimagelabel.o
 ./release\moc_qplatethread.o
+./release\moc_qplateparserthread.o
 );

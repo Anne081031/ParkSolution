@@ -4,6 +4,8 @@
 #include <QThread>
 #include "zmq.h"
 #include "zmq_utils.h"
+#include "../ConfigModule/qconfigurator.h"
+#include "qplateparserthread.h"
 
 class QPlateThread : public QThread
 {
@@ -22,10 +24,15 @@ private:
     void* pZMQContext;
     void* pZMQSocket;
     static QPlateThread* pThreadInstance;
+    QConfigurator* pConfigurator;
+    QString strPlateHost;
+    quint16 nPlatePort;
+    QPlateParserThread* pParserThread;
 
 signals:
     void PlateData( QByteArray byData );
     void Log( QString strMsg );
+
 public slots:
 
 };

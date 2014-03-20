@@ -159,12 +159,14 @@ Makefile: ConfigModule.pro F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/mkspecs/win32-g++/q
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/mkspecs/features/resources.prf \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/mkspecs/features/moc.prf \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/mkspecs/features/win32/opengl.prf \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/mkspecs/features/uic.prf \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/mkspecs/features/win32/windows.prf \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/mkspecs/features/testcase_targets.prf \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/mkspecs/features/exceptions.prf \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/mkspecs/features/yacc.prf \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/mkspecs/features/lex.prf \
 		ConfigModule.pro \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Widgets.prl \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Gui.prl \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Core.prl
 	$(QMAKE) -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ConfigModule.pro
@@ -268,12 +270,14 @@ F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qt.prf:
 F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\resources.prf:
 F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\moc.prf:
 F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\opengl.prf:
+F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\uic.prf:
 F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\windows.prf:
 F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\testcase_targets.prf:
 F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\exceptions.prf:
 F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\yacc.prf:
 F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\lex.prf:
 ConfigModule.pro:
+F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Widgets.prl:
 F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Gui.prl:
 F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Core.prl:
 qmake: FORCE

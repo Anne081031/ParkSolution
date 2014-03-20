@@ -1,3 +1,20 @@
+GB2312 < GBK < GB18030
+UCS( Universal Multi-octet Coded Character Set) UCS-2 UCS-4
+UTF-8 (8-bit Unicode Transformation Format) UTF-7 不考虑大小头
+UTF-16 UTF-32 要考虑大小头 传输格式
+
+UTF是UNICODE的实现方式
+文件、内存 存储的是字符编码值，再根据编码值去字库中查找字符，再显示字符到界面
+//////////////////////////////////
+Unicode和UTF-8之间的转换关系表
+UCS-4编码	UTF-8字节流
+U+00000000 – U+0000007F	0xxxxxxx
+U+00000080 – U+000007FF	110xxxxx 10xxxxxx
+U+00000800 – U+0000FFFF	1110xxxx 10xxxxxx 10xxxxxx
+U+00010000 – U+001FFFFF	11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+U+00200000 – U+03FFFFFF	111110xx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
+U+04000000 – U+7FFFFFFF	1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
+/////////////////////////////////////////////////
 QML Qt Markup Language 或 Qt Meta Language 或 Qt Modeling Language 用于设计UI(主要是移动应用)
 QML is a user interface specification and programming language. 
 The Qt QML module provides a framework for developing applications and libraries with the QML language. 

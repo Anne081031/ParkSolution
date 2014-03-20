@@ -28,6 +28,7 @@ SUBTARGETS    =  \
 		sub-DatabaseModule \
 		sub-ConfigModule \
 		sub-DataParse \
+		sub-NetworkModule \
 		sub-ParkCustomerCenter \
 		sub-TestUI \
 		sub-ParkCustomerInfo
@@ -133,6 +134,31 @@ sub-DataParse-install_subtargets: FORCE
 sub-DataParse-uninstall_subtargets: FORCE
 	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
 	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
+sub-NetworkModule-qmake_all:  FORCE
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
+	cd NetworkModule\ && $(MAKE) -f Makefile qmake_all
+sub-NetworkModule: FORCE
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
+sub-NetworkModule-make_first: FORCE
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
+sub-NetworkModule-all: FORCE
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
+sub-NetworkModule-clean: FORCE
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
+sub-NetworkModule-distclean: FORCE
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
+sub-NetworkModule-install_subtargets: FORCE
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
+sub-NetworkModule-uninstall_subtargets: FORCE
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-ParkCustomerCenter-qmake_all:  FORCE
 	@if not exist ParkCustomerCenter\ mkdir ParkCustomerCenter\ & if not exist ParkCustomerCenter\ exit 1
 	cd ParkCustomerCenter\ && $(QMAKE) D:\ParkSolution\ParkCustomerCenter\ParkCustomerCenter.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
@@ -417,15 +443,15 @@ ParkSolution.pro:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ParkSolution.pro
 
-qmake_all: sub-CommonModule-qmake_all sub-DatabaseModule-qmake_all sub-ConfigModule-qmake_all sub-DataParse-qmake_all sub-ParkCustomerCenter-qmake_all sub-TestUI-qmake_all sub-ParkCustomerInfo-qmake_all FORCE
+qmake_all: sub-CommonModule-qmake_all sub-DatabaseModule-qmake_all sub-ConfigModule-qmake_all sub-DataParse-qmake_all sub-NetworkModule-qmake_all sub-ParkCustomerCenter-qmake_all sub-TestUI-qmake_all sub-ParkCustomerInfo-qmake_all FORCE
 
-make_first: sub-CommonModule-make_first sub-DatabaseModule-make_first sub-ConfigModule-make_first sub-DataParse-make_first sub-ParkCustomerCenter-make_first sub-TestUI-make_first sub-ParkCustomerInfo-make_first FORCE
-all: sub-CommonModule-all sub-DatabaseModule-all sub-ConfigModule-all sub-DataParse-all sub-ParkCustomerCenter-all sub-TestUI-all sub-ParkCustomerInfo-all FORCE
-clean: sub-CommonModule-clean sub-DatabaseModule-clean sub-ConfigModule-clean sub-DataParse-clean sub-ParkCustomerCenter-clean sub-TestUI-clean sub-ParkCustomerInfo-clean FORCE
-distclean: sub-CommonModule-distclean sub-DatabaseModule-distclean sub-ConfigModule-distclean sub-DataParse-distclean sub-ParkCustomerCenter-distclean sub-TestUI-distclean sub-ParkCustomerInfo-distclean FORCE
+make_first: sub-CommonModule-make_first sub-DatabaseModule-make_first sub-ConfigModule-make_first sub-DataParse-make_first sub-NetworkModule-make_first sub-ParkCustomerCenter-make_first sub-TestUI-make_first sub-ParkCustomerInfo-make_first FORCE
+all: sub-CommonModule-all sub-DatabaseModule-all sub-ConfigModule-all sub-DataParse-all sub-NetworkModule-all sub-ParkCustomerCenter-all sub-TestUI-all sub-ParkCustomerInfo-all FORCE
+clean: sub-CommonModule-clean sub-DatabaseModule-clean sub-ConfigModule-clean sub-DataParse-clean sub-NetworkModule-clean sub-ParkCustomerCenter-clean sub-TestUI-clean sub-ParkCustomerInfo-clean FORCE
+distclean: sub-CommonModule-distclean sub-DatabaseModule-distclean sub-ConfigModule-distclean sub-DataParse-distclean sub-NetworkModule-distclean sub-ParkCustomerCenter-distclean sub-TestUI-distclean sub-ParkCustomerInfo-distclean FORCE
 	-$(DEL_FILE) Makefile
-install_subtargets: sub-CommonModule-install_subtargets sub-DatabaseModule-install_subtargets sub-ConfigModule-install_subtargets sub-DataParse-install_subtargets sub-ParkCustomerCenter-install_subtargets sub-TestUI-install_subtargets sub-ParkCustomerInfo-install_subtargets FORCE
-uninstall_subtargets: sub-CommonModule-uninstall_subtargets sub-DatabaseModule-uninstall_subtargets sub-ConfigModule-uninstall_subtargets sub-DataParse-uninstall_subtargets sub-ParkCustomerCenter-uninstall_subtargets sub-TestUI-uninstall_subtargets sub-ParkCustomerInfo-uninstall_subtargets FORCE
+install_subtargets: sub-CommonModule-install_subtargets sub-DatabaseModule-install_subtargets sub-ConfigModule-install_subtargets sub-DataParse-install_subtargets sub-NetworkModule-install_subtargets sub-ParkCustomerCenter-install_subtargets sub-TestUI-install_subtargets sub-ParkCustomerInfo-install_subtargets FORCE
+uninstall_subtargets: sub-CommonModule-uninstall_subtargets sub-DatabaseModule-uninstall_subtargets sub-ConfigModule-uninstall_subtargets sub-DataParse-uninstall_subtargets sub-NetworkModule-uninstall_subtargets sub-ParkCustomerCenter-uninstall_subtargets sub-TestUI-uninstall_subtargets sub-ParkCustomerInfo-uninstall_subtargets FORCE
 
 sub-CommonModule-debug:
 	@if not exist CommonModule\ mkdir CommonModule\ & if not exist CommonModule\ exit 1
@@ -439,6 +465,9 @@ sub-ConfigModule-debug:
 sub-DataParse-debug:
 	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
 	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
+sub-NetworkModule-debug:
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
 sub-ParkCustomerCenter-debug:
 	@if not exist ParkCustomerCenter\ mkdir ParkCustomerCenter\ & if not exist ParkCustomerCenter\ exit 1
 	cd ParkCustomerCenter\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkCustomerCenter\ParkCustomerCenter.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
@@ -448,7 +477,7 @@ sub-TestUI-debug:
 sub-ParkCustomerInfo-debug:
 	@if not exist ParkCustomerInfo\ mkdir ParkCustomerInfo\ & if not exist ParkCustomerInfo\ exit 1
 	cd ParkCustomerInfo\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkCustomerInfo\ParkCustomerInfo.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
-debug: sub-CommonModule-debug sub-DatabaseModule-debug sub-ConfigModule-debug sub-DataParse-debug sub-ParkCustomerCenter-debug sub-TestUI-debug sub-ParkCustomerInfo-debug
+debug: sub-CommonModule-debug sub-DatabaseModule-debug sub-ConfigModule-debug sub-DataParse-debug sub-NetworkModule-debug sub-ParkCustomerCenter-debug sub-TestUI-debug sub-ParkCustomerInfo-debug
 
 sub-CommonModule-release:
 	@if not exist CommonModule\ mkdir CommonModule\ & if not exist CommonModule\ exit 1
@@ -462,6 +491,9 @@ sub-ConfigModule-release:
 sub-DataParse-release:
 	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
 	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
+sub-NetworkModule-release:
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
 sub-ParkCustomerCenter-release:
 	@if not exist ParkCustomerCenter\ mkdir ParkCustomerCenter\ & if not exist ParkCustomerCenter\ exit 1
 	cd ParkCustomerCenter\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkCustomerCenter\ParkCustomerCenter.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
@@ -471,7 +503,7 @@ sub-TestUI-release:
 sub-ParkCustomerInfo-release:
 	@if not exist ParkCustomerInfo\ mkdir ParkCustomerInfo\ & if not exist ParkCustomerInfo\ exit 1
 	cd ParkCustomerInfo\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkCustomerInfo\ParkCustomerInfo.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
-release: sub-CommonModule-release sub-DatabaseModule-release sub-ConfigModule-release sub-DataParse-release sub-ParkCustomerCenter-release sub-TestUI-release sub-ParkCustomerInfo-release
+release: sub-CommonModule-release sub-DatabaseModule-release sub-ConfigModule-release sub-DataParse-release sub-NetworkModule-release sub-ParkCustomerCenter-release sub-TestUI-release sub-ParkCustomerInfo-release
 
 sub-CommonModule-check:
 	@if not exist CommonModule\ mkdir CommonModule\ & if not exist CommonModule\ exit 1
@@ -485,6 +517,9 @@ sub-ConfigModule-check:
 sub-DataParse-check:
 	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
 	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
+sub-NetworkModule-check:
+	@if not exist NetworkModule\ mkdir NetworkModule\ & if not exist NetworkModule\ exit 1
+	cd NetworkModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\NetworkModule\NetworkModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
 sub-ParkCustomerCenter-check:
 	@if not exist ParkCustomerCenter\ mkdir ParkCustomerCenter\ & if not exist ParkCustomerCenter\ exit 1
 	cd ParkCustomerCenter\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkCustomerCenter\ParkCustomerCenter.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
@@ -494,7 +529,7 @@ sub-TestUI-check:
 sub-ParkCustomerInfo-check:
 	@if not exist ParkCustomerInfo\ mkdir ParkCustomerInfo\ & if not exist ParkCustomerInfo\ exit 1
 	cd ParkCustomerInfo\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkCustomerInfo\ParkCustomerInfo.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
-check: sub-CommonModule-check sub-DatabaseModule-check sub-ConfigModule-check sub-DataParse-check sub-ParkCustomerCenter-check sub-TestUI-check sub-ParkCustomerInfo-check
+check: sub-CommonModule-check sub-DatabaseModule-check sub-ConfigModule-check sub-DataParse-check sub-NetworkModule-check sub-ParkCustomerCenter-check sub-TestUI-check sub-ParkCustomerInfo-check
 install: install_subtargets  FORCE
 
 uninstall:  uninstall_subtargets FORCE

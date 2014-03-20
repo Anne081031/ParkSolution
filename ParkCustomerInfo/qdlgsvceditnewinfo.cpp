@@ -1,6 +1,5 @@
 #include "qdlgsvceditnewinfo.h"
 #include "ui_qdlgsvceditnewinfo.h"
-#include "../CommonModule/CommonHeader.h"
 #include <QSqlField>
 
 QDlgSvcEditNewInfo::QDlgSvcEditNewInfo(QWidget *parent) :

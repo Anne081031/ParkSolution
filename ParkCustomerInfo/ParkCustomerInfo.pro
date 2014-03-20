@@ -64,7 +64,8 @@ SOURCES += main.cpp\
     qdlgcommondata.cpp \
     qdlgsvceditnewinfo.cpp \
     qdlgsvcqueryinfo.cpp \
-    qlocalserverthread.cpp
+    qlocalserverthread.cpp \
+    qdlgeditnewcommondata.cpp
 
 HEADERS  += mainwindow.h \
     qdlgqueryinfo.h \
@@ -72,11 +73,13 @@ HEADERS  += mainwindow.h \
     qdlgcommondata.h \
     qdlgsvceditnewinfo.h \
     qdlgsvcqueryinfo.h \
-    qlocalserverthread.h
+    qlocalserverthread.h \
+    qdlgeditnewcommondata.h
 
 FORMS    += mainwindow.ui \
     qdlgqueryinfo.ui \
     qdlgeditnewinfo.ui \
     qdlgcommondata.ui \
     qdlgsvceditnewinfo.ui \
-    qdlgsvcqueryinfo.ui
+    qdlgsvcqueryinfo.ui \
+    qdlgeditnewcommondata.ui

@@ -57,6 +57,12 @@ private:
                            QString& strXmlPattern,
                            QStringList& lstParams );
 
+    void CallChangeCommonData( QString& strConnectName,
+                                   ParkSolution::SpType eSpType,
+                                   QString& strSpName,
+                                   QString& strXmlPattern,
+                                   QStringList& lstParams );
+
     void CallImportCustomer( QString& strConnectName,
                            ParkSolution::SpType eSpType,
                            QString& strSpName,
@@ -64,6 +70,12 @@ private:
                            QStringList& lstParams );
 
     void CallQueryUserInfo( QString& strConnectName,
+                           ParkSolution::SpType eSpType,
+                           QString& strSpName,
+                           QString& strXmlPattern,
+                           QStringList& lstParams );
+
+    void CallQueryInOutImage( QString& strConnectName,
                            ParkSolution::SpType eSpType,
                            QString& strSpName,
                            QString& strXmlPattern,
@@ -89,6 +101,13 @@ private:
                                QString& strXmlPattern,
                                QStringList& lstParams,
                                QSqlQueryModel* pQueryModel );
+
+    void CallQueryCommonDataByType( QString &strConnectName,
+                                       ParkSolution::SpType eSpType,
+                                       QString &strSpName,
+                                       QString &strXmlPattern,
+                                       QStringList &lstParams,
+                                       QSqlQueryModel* pQueryModel );
 
     void ExecuteSP( QString& strConnectName,
                     ParkSolution::SpType eSpType,

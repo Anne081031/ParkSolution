@@ -6,6 +6,9 @@ QPlateThread* QPlateThread::pThreadInstance = NULL;
 QPlateThread::QPlateThread(QObject *parent) :
     QThread(parent)
 {
+    pConfigurator = QConfigurator::CreateConfigurator( );
+    pConfigurator->GetPlateHost( strPlateHost );
+    pConfigurator->GetPlateHostPort( nPlatePort );
 }
 
 QPlateThread* QPlateThread::CreateInstance( )
@@ -30,6 +33,8 @@ void QPlateThread::DebugMsg( const char *pMsg, int nRet )
 
 void QPlateThread::run( )
 {
+    pParserThread = QPlateParserThread::CreateInstance( );
+
     QString strLog;
     pZMQContext = zmq_ctx_new( );
     if ( NULL == pZMQContext ) {
@@ -45,16 +50,16 @@ void QPlateThread::run( )
         return;
     }
 
-    QString strHost = "127.0.0.1";
-    quint16 nPort = 60000;
-    QString strAddress = QString( "tcp://%1:%2" ).arg( strHost, QString::number( nPort ) );
+    //QString strHost = "127.0.0.1";
+    //quint16 nPort = 60000;
+    QString strAddress = QString( "tcp://%1:%2" ).arg( strPlateHost, QString::number( nPlatePort ) );
     QByteArray byAddress = strAddress.toUtf8( );
     const char* pAddress = byAddress.data( );
 
     int nRet = zmq_connect( pZMQSocket, pAddress );
     if ( 0 != nRet ) {
         strLog = QString( "连接ZMQ车牌识别服务器【%1:%2】失败。\n%3" ).arg(
-                    strHost, QString::number( nPort ),
+                    strPlateHost, QString::number( nPlatePort ),
                     zmq_strerror( zmq_errno( ) ) );
         emit Log( strLog );
     }
@@ -69,6 +74,7 @@ void QPlateThread::run( )
     size_t nMoreDataSzie = sizeof ( nMoreData );
     QByteArray byData;
     void* pData = NULL;
+    int nMsgLen = 0;
 
     while ( true ) {
         byData.clear( );
@@ -81,6 +87,7 @@ void QPlateThread::run( )
             DebugMsg( "zmq_msg_init( ) 失败", nRet );
 
             nRet = zmq_recvmsg ( pZMQSocket, &msgPart, 0 );
+            nMsgLen = nRet;
             DebugMsg( "zmq_recvmsg( ) 失败", -1 == nRet ? nRet : 0 );
 
             nRet = zmq_getsockopt( pZMQSocket, ZMQ_RCVMORE, &nMoreData, &nMoreDataSzie);
@@ -88,13 +95,15 @@ void QPlateThread::run( )
 
             if ( -1 != nRet ) {
                 pData = zmq_msg_data( &msgPart );
-                byData.append( ( const char* ) pData, nRet );
+                const char* pPartMsg = ( const char* ) pData; 
+                byData.append( pPartMsg, nMsgLen );
             }
 
             nRet = zmq_msg_close( &msgPart );
             DebugMsg( "zmq_msg_close( ) 失败", nRet );
         } while( 0 != nMoreData );
 
-        emit PlateData( byData );
+        //emit PlateData( byData );
+        pParserThread->PostPlateResultData( byData );
     }
 }

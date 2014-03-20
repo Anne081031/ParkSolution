@@ -1,0 +1,52 @@
+Get ErrorCode SQLSTATE Message
+
+
+DROP TABLE IF EXISTS t1;
+CREATE TABLE t1 (c1 TEXT NOT NULL);
+DROP PROCEDURE IF EXISTS p;
+delimiter //
+END//
+CREATE PROCEDURE p ()
+BEGIN
+  DECLARE EXIT HANDLER FOR SQLEXCEPTION
+  BEGIN
+    DECLARE num INT;
+    DECLARE errno INT;
+    DECLARE msg TEXT;
+
+    -- Here the current DA is nonempty because the handler was invoked
+    GET CURRENT DIAGNOSTICS CONDITION 1
+      errno = MYSQL_ERRNO, msg = MESSAGE_TEXT;
+    SELECT 'current DA before mapped insert' AS op, errno, msg;
+    GET STACKED DIAGNOSTICS CONDITION 1
+      errno = MYSQL_ERRNO, msg = MESSAGE_TEXT;
+    SELECT 'stacked DA before mapped insert' AS op, errno, msg;
+
+    -- Map attempted NULL insert to empty string insert
+    INSERT INTO t1 (c1) VALUES('');
+
+    -- Here the current DA should be empty (if the INSERT succeeded),
+    -- so check whether there are conditions before attempting to
+    -- obtain condition information
+    GET CURRENT DIAGNOSTICS num = NUMBER;
+    IF num = 0
+    THEN
+      SELECT 'INSERT succeeded, current DA is empty' AS op;
+    ELSE
+      GET CURRENT DIAGNOSTICS CONDITION 1
+        errno = MYSQL_ERRNO, msg = MESSAGE_TEXT;
+      SELECT 'current DA after mapped insert' AS op, errno, msg;
+    END IF ;
+    GET STACKED DIAGNOSTICS CONDITION 1
+      errno = MYSQL_ERRNO, msg = MESSAGE_TEXT;
+    SELECT 'stacked DA after mapped insert' AS op, errno, msg;
+  END;
+  INSERT INTO t1 (c1) VALUES('string 1');
+  INSERT INTO t1 (c1) VALUES(NULL);
+END;
+//
+delimiter ;
+CALL p();
+SELECT * FROM t1;
+
+SIGNAL RESIGNAL / throw rethrow exception

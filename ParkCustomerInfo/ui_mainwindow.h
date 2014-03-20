@@ -23,6 +23,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
@@ -37,6 +38,8 @@ QT_BEGIN_NAMESPACE
 class Ui_MainWindow
 {
 public:
+    QAction *actCommonData;
+    QAction *actExit;
     QWidget *centralWidget;
     QWidget *horizontalLayoutWidget;
     QHBoxLayout *horizontalLayout;
@@ -128,6 +131,7 @@ public:
     QLabel *lblSeperator1;
     QLabel *lblStatusSum;
     QMenuBar *menuBar;
+    QMenu *menu;
     QStatusBar *statusBar;
     QDockWidget *dockWidget;
     QWidget *dockWidgetContents;
@@ -154,6 +158,10 @@ public:
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(829, 475);
         MainWindow->setContextMenuPolicy(Qt::NoContextMenu);
+        actCommonData = new QAction(MainWindow);
+        actCommonData->setObjectName(QStringLiteral("actCommonData"));
+        actExit = new QAction(MainWindow);
+        actExit->setObjectName(QStringLiteral("actExit"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setContextMenuPolicy(Qt::NoContextMenu);
@@ -553,6 +561,8 @@ public:
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 829, 19));
+        menu = new QMenu(menuBar);
+        menu->setObjectName(QStringLiteral("menu"));
         MainWindow->setMenuBar(menuBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -640,6 +650,11 @@ public:
         dockWidget->setWidget(dockWidgetContents);
         MainWindow->addDockWidget(static_cast<Qt::DockWidgetArea>(2), dockWidget);
 
+        menuBar->addAction(menu->menuAction());
+        menu->addAction(actCommonData);
+        menu->addSeparator();
+        menu->addAction(actExit);
+
         retranslateUi(MainWindow);
 
         tabWidget->setCurrentIndex(0);
@@ -654,6 +669,8 @@ public:
 #ifndef QT_NO_WHATSTHIS
         MainWindow->setWhatsThis(QApplication::translate("MainWindow", "\345\256\242\346\210\267\350\265\204\346\226\231\347\256\241\347\220\206", 0));
 #endif // QT_NO_WHATSTHIS
+        actCommonData->setText(QApplication::translate("MainWindow", "\351\200\232\347\224\250\346\225\260\346\215\256", 0));
+        actExit->setText(QApplication::translate("MainWindow", "\351\200\200\345\207\272\347\263\273\347\273\237", 0));
         tabWidget->setTabText(tabWidget->indexOf(tabNewCustomer), QApplication::translate("MainWindow", "\345\276\205\345\275\225\345\205\245\346\226\260\345\256\242\346\210\267", 0));
         tabWidget->setTabText(tabWidget->indexOf(tabUpdatingCustomer), QApplication::translate("MainWindow", "\345\276\205\346\233\264\346\226\260\350\200\201\345\256\242\346\210\267", 0));
         tabWidget->setTabText(tabWidget->indexOf(tabAllCustomers), QApplication::translate("MainWindow", "\345\205\250\351\203\250\345\256\242\346\210\267", 0));
@@ -693,6 +710,7 @@ public:
         lblSeperator0->setText(QString());
         lblSeperator1->setText(QString());
         lblStatusSum->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        menu->setTitle(QApplication::translate("MainWindow", "\347\263\273\347\273\237\347\256\241\347\220\206", 0));
 #ifndef QT_NO_STATUSTIP
         statusBar->setStatusTip(QString());
 #endif // QT_NO_STATUSTIP

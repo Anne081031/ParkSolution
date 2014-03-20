@@ -3,6 +3,45 @@
 
 #include <QtCore>
 namespace ParkSolution {
+    typedef struct __PlateResult {
+        QString strAlgorithmType;
+        QString strUserID;
+        QString strResult;
+        QString strLicense;
+        QString strColor;
+        QString strConfidence;
+        QString strPlateType;
+        QString strLeft;
+        QString strTop;
+        QString strRight;
+        QString strBottom;
+        QString strTimeStamp;
+        QString strHeight;
+        QString strWidth;
+        QString strPitch;
+        QString strImageData;
+
+        __PlateResult( )
+        {
+            strAlgorithmType = "eType";
+            strUserID = "nUserID";
+            strResult = "pResult";
+            strLicense = "license";
+            strColor = "nColor";
+            strConfidence = "nConfidence";
+            strPlateType = "nType";
+            strLeft = "left";
+            strTop = "top";
+            strRight = "right";
+            strBottom = "bottom";
+            strTimeStamp = "uTimeStamp";
+            strHeight = "uHeight";
+            strWidth = "uWidth";
+            strPitch = "uPitch";
+            strImageData = "pData";
+        }
+    } PlateResult;
+
     typedef struct __LoginUserInfo {
         QString strUserID;
         QString strUser;
@@ -281,6 +320,9 @@ namespace ParkSolution {
         QString strSpImportCustomer;
         QString strSpExportCustomer;
         QString strSpQueryUserInfo;
+        QString strSpQueryInOutImage;
+        QString strSpChangeCommonData;
+        QString strSpQueryCommonDataByType;
 
         __SpName( )
         {
@@ -295,6 +337,9 @@ namespace ParkSolution {
             strSpImportCustomer = "ImportCustomer";
             strSpExportCustomer = "ExportCustomer";
             strSpQueryUserInfo = "QueryUserInfo";
+            strSpQueryInOutImage = "SpQueryInOutImage";
+            strSpChangeCommonData = "ChangeCommonData";
+            strSpQueryCommonDataByType = "QueryCommonDataByType";
         }
     } SpName;
 
@@ -311,6 +356,10 @@ namespace ParkSolution {
         QString strXmlImportCustomer;
         QString strXmlExportCustomer;
         QString strXmlQueryUserInfo;
+        QString strXmlQueryInOutImage;
+        QString strXmlChangeCommonDataUI;
+        QString strXmlChangeCommonDataDelete;
+        QString strXmlQueryCommonDataByType;
 
         __SpXmlPattern( )
         {
@@ -363,6 +412,10 @@ namespace ParkSolution {
             strXmlImportCustomer = "<Data><Flag>%1</Flag>%2</Data>";
             strXmlExportCustomer = "<Data><Where>%1</Where></Data>";
             strXmlQueryUserInfo = "<Data><UserType>%1</UserType></Data>";
+            strXmlQueryInOutImage = "<Data><Flag>%1</Flag><Plate>%2</Plate><VistNewlyTime>%3</VistNewlyTime></Data>";
+            strXmlChangeCommonDataUI = "<Data><Flag>%1</Flag><DataType>%2</DataType><ValueID>%3</ValueID><Value>%4</Value></Data>";
+            strXmlChangeCommonDataDelete = "<Data><Flag>%1</Flag><DataType>%2</DataType><ValueID>%3</ValueID><Value>%4</Value></Data>";
+            strXmlQueryCommonDataByType = "<Data><DataType>%1</DataType></Data>";
         }
     } SpXmlPattern;
 }

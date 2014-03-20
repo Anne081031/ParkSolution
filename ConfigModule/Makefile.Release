@@ -11,13 +11,13 @@ MAKEFILE      = Makefile.Release
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DUNICODE -DCONFIGMODULE_LIBRARY -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DUNICODE -DCONFIGMODULE_LIBRARY -DQT_QML_DEBUG -DQT_DECLARATIVE_DEBUG -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -fno-keep-inline-dllexport -O2 -Wall -Wextra $(DEFINES)
 CXXFLAGS      = -pipe -fno-keep-inline-dllexport -O2 -frtti -Wall -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I. -I"F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\include" -I"F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\include\QtGui" -I"F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\include\QtCore" -I"release" -I"F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\win32-g++"
+INCPATH       = -I. -I"F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\include" -I"F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\include\QtWidgets" -I"F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\include\QtGui" -I"F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\include\QtCore" -I"release" -I"F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\win32-g++"
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -shared -mthreads -Wl,--out-implib,..\LibExeFiles\Release\libConfigModule.a
-LIBS        =        -lglu32 -lopengl32 -lgdi32 -luser32 -LF:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\lib -lQt5Gui -lQt5Core 
+LIBS        =        -lglu32 -lopengl32 -lgdi32 -luser32 ../LibExeFiles/Release/libCommonModule.a -LF:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\lib -lQt5Widgets -lQt5Gui -lQt5Core 
 QMAKE         = F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -83,7 +83,7 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) ConfigModule.zip $(SOURCES) $(DIST) ..\ParkSolution.pro F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\spec_pre.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\qdevice.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\device_config.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\common\shell-win32.conf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\qconfig.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axbase.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axbase_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axcontainer.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axcontainer_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axserver.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axserver_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_bluetooth.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_bluetooth_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_bootstrap_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_clucene_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_concurrent.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_concurrent_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_core.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_core_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_declarative.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_declarative_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_designer.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_designer_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_designercomponents_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_gui.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_gui_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_help.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_help_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimedia.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimedia_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimediawidgets.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_network.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_network_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_nfc.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_nfc_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_opengl.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_opengl_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_openglextensions.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_openglextensions_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_platformsupport_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_positioning.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_positioning_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_printsupport.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_printsupport_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qml.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qml_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qmldevtools_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qmltest.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qmltest_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_quick.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_quick_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_quickparticles_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_script.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_script_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_scripttools.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_scripttools_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sensors.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sensors_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_serialport.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_serialport_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sql.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sql_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_svg.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_svg_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_testlib.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_testlib_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_uitools.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_uitools_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkit.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkit_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkitwidgets.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkitwidgets_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_widgets.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_widgets_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_winextras.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_winextras_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xml.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xml_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xmlpatterns.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qt_functions.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qt_config.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\win32-g++\qmake.conf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\spec_post.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\exclusive_builds.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\default_pre.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\default_pre.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\resolve_config.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\exclusive_builds_post.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\default_post.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\build_pass.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qml_debug.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\declarative_debug.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\rtti.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\warn_on.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qt.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\resources.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\moc.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\opengl.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\windows.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\testcase_targets.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\exceptions.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\yacc.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\lex.prf ConfigModule.pro F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Gui.prl F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Core.prl  RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES YACCSOURCES YACCSOURCES LEXSOURCES 
+	$(ZIP) ConfigModule.zip $(SOURCES) $(DIST) ..\ParkSolution.pro F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\spec_pre.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\qdevice.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\device_config.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\common\shell-win32.conf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\qconfig.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axbase.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axbase_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axcontainer.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axcontainer_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axserver.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_axserver_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_bluetooth.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_bluetooth_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_bootstrap_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_clucene_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_concurrent.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_concurrent_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_core.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_core_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_declarative.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_declarative_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_designer.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_designer_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_designercomponents_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_gui.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_gui_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_help.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_help_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimedia.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimedia_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimediawidgets.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_network.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_network_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_nfc.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_nfc_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_opengl.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_opengl_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_openglextensions.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_openglextensions_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_platformsupport_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_positioning.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_positioning_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_printsupport.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_printsupport_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qml.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qml_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qmldevtools_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qmltest.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qmltest_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_quick.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_quick_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_quickparticles_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_script.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_script_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_scripttools.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_scripttools_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sensors.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sensors_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_serialport.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_serialport_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sql.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_sql_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_svg.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_svg_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_testlib.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_testlib_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_uitools.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_uitools_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkit.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkit_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkitwidgets.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_webkitwidgets_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_widgets.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_widgets_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_winextras.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_winextras_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xml.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xml_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xmlpatterns.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qt_functions.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qt_config.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\win32-g++\qmake.conf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\spec_post.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\exclusive_builds.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\default_pre.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\default_pre.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\resolve_config.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\exclusive_builds_post.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\default_post.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\build_pass.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qml_debug.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\declarative_debug.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\rtti.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\warn_on.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\qt.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\resources.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\moc.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\opengl.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\uic.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\win32\windows.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\testcase_targets.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\exceptions.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\yacc.prf F:\QtSDK\Qt5.2.1\5.2.1\mingw48_32\mkspecs\features\lex.prf ConfigModule.pro F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Widgets.prl F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Gui.prl F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Core.prl  RESOURCES HEADERS SOURCES OBJECTIVE_SOURCES FORMS YACCSOURCES YACCSOURCES LEXSOURCES 
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\qconfigurator.o release\moc_qconfigurator.o
@@ -188,6 +188,8 @@ release/moc_qconfigurator.cpp: F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
+compiler_uic_make_all:
+compiler_uic_clean:
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
 compiler_yacc_impl_make_all:
@@ -280,7 +282,155 @@ release/qconfigurator.o: qconfigurator.cpp qconfigurator.h \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QTextCodec \
 		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qtextcodec.h \
 		ConfigModule_global.h \
-		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QDebug
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QDebug \
+		../CommonModule/QCommonFunction.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/QCloseEvent \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qevent.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qwindowdefs.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qwindowdefs_win.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qregion.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qrect.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsize.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qkeysequence.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qurl.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qurlquery.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfile.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfiledevice.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qvector2d.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qtouchdevice.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/QMessageBox \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/qmessagebox.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/qdialog.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/qwidget.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qmargins.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qpaintdevice.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qpalette.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qcolor.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qrgb.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qbrush.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qmatrix.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qpolygon.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qline.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qtransform.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qpainterpath.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qimage.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qpixmap.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsharedpointer.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsharedpointer_impl.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qfont.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qfontmetrics.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qfontinfo.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/qsizepolicy.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtGui/qcursor.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QtCore \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QtCoreDepends \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qabstractanimation.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qanimationgroup.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qparallelanimationgroup.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qpauseanimation.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qpropertyanimation.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qvariantanimation.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qeasingcurve.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsequentialanimationgroup.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qendian.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qlibraryinfo.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qdatetime.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qnumeric.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qbuffer.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qdir.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfileinfo.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qdiriterator.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfileselector.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QStringList \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfilesystemwatcher.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qlockfile.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qloggingcategory.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qprocess.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qresource.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsavefile.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qstandardpaths.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qtemporarydir.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QScopedPointer \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qtemporaryfile.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qabstractitemmodel.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qabstractproxymodel.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qidentityproxymodel.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qitemselectionmodel.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsortfilterproxymodel.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qstringlistmodel.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qjsonarray.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qjsonvalue.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qjsondocument.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qjsonobject.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qabstracteventdispatcher.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qeventloop.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qabstractnativeeventfilter.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qbasictimer.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qcoreapplication.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qmath.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qmetaobject.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qmimedata.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qobjectcleanuphandler.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qpointer.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsharedmemory.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsignalmapper.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsocketnotifier.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsystemsemaphore.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qtimer.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qtranslator.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qwineventnotifier.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qmimedatabase.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qmimetype.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfactoryinterface.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qlibrary.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qplugin.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qpluginloader.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/quuid.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qabstractstate.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qabstracttransition.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qeventtransition.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfinalstate.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qhistorystate.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsignaltransition.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qstate.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qstatemachine.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qexception.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfuture.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfutureinterface.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qrunnable.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qresultstore.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfuturesynchronizer.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qfuturewatcher.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qreadwritelock.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qsemaphore.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qthread.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qthreadpool.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qthreadstorage.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qwaitcondition.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qarraydataops.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qarraydatapointer.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qbitarray.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qbytearraymatcher.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qcache.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qcollator.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qcommandlineoption.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qcommandlineparser.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qcryptographichash.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qelapsedtimer.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qlinkedlist.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qmessageauthenticationcode.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qqueue.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qregularexpression.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qscopedvaluerollback.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qstack.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qtextboundaryfinder.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qtimeline.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qtimezone.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qxmlstream.h \
+		F:/QtSDK/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/qtcoreversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qconfigurator.o qconfigurator.cpp
 
 release/moc_qconfigurator.o: release/moc_qconfigurator.cpp 

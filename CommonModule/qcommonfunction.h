@@ -23,6 +23,7 @@ public:
     static void SetWindowIcon( QWidget *pWidget );
     static void DisableHelpButton( QWidget *pWidget );
     static void SingleApplication( const char* pGUID );
+    static QTextCodec* GetTextCodec( );
 
 private:
     explicit QCommonFunction(QObject *parent = 0);

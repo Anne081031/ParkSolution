@@ -63,7 +63,9 @@ SOURCES += main.cpp\
     qdbzmqthread.cpp \
     qlprzmqthread.cpp \
     qimagelabel.cpp \
-    qplatethread.cpp
+    qplatethread.cpp \
+    qplateparserthread.cpp \
+    qplateevent.cpp
 
 HEADERS  += mainwindow.h \
     qthreadevent.h \
@@ -71,6 +73,8 @@ HEADERS  += mainwindow.h \
     qdbzmqthread.h \
     qlprzmqthread.h \
     qimagelabel.h \
-    qplatethread.h
+    qplatethread.h \
+    qplateparserthread.h \
+    qplateevent.h
 
 FORMS    += mainwindow.ui

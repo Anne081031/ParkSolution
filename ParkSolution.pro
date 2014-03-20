@@ -11,7 +11,7 @@ SUBDIRS += \
     #FeeRateModule \
     #LEDModule \
     #LPRModule \
-    #NetworkModule \
+    NetworkModule \
     #VideoModule \
     #LogModule \
     #BusinessModule \

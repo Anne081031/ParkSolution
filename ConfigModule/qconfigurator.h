@@ -11,8 +11,19 @@ class CONFIGMODULESHARED_EXPORT QConfigurator : public QObject
     Q_OBJECT
 public:
     static QConfigurator* CreateConfigurator( );
-    QTextCodec* GetTextCodec( );
     ~QConfigurator( );
+
+    void SetHttpHost( QString& strHost );
+    void GetHttpHost( QString& strHost );
+
+    void SetHttpHostPort( quint16 nPort );
+    void GetHttpHostPort( quint16& nPort );
+
+    void SetPlateHost( QString& strHost );
+    void GetPlateHost( QString& strHost );
+
+    void SetPlateHostPort( quint16 nPort );
+    void GetPlateHostPort( quint16& nPort );
 
     // Database connection parameter
     void SetDbHost( QString& strHost );

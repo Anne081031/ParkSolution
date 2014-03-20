@@ -223,6 +223,22 @@ void QMySQL::CallExportCustomerData( QString &strConnectName,
     ExecuteSP( strConnectName, eSpType, strSQL, pQueryModel);
 }
 
+void QMySQL::CallQueryCommonDataByType( QString &strConnectName,
+                                   ParkSolution::SpType eSpType,
+                                   QString &strSpName,
+                                   QString &strXmlPattern,
+                                   QStringList &lstParams,
+                                   QSqlQueryModel* pQueryModel )
+{
+    if ( 1 > lstParams.count( ) ) {
+        return;
+    }
+
+    strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ) );
+    QString strSQL = QString( "Call %1( '%2' )" ).arg( strSpName, strXmlPattern );
+    ExecuteSP( strConnectName, eSpType, strSQL, pQueryModel);
+}
+
 void QMySQL::CallVehicleEnter( QString& strConnectName,
                                ParkSolution::SpType eSpType,
                                QString& strSpName,
@@ -319,6 +335,23 @@ void QMySQL::CallChangeCustomerVehicleData( QString& strConnectName,
     ExecuteSP( strConnectName, eSpType, strSQL );
 }
 
+void QMySQL::CallChangeCommonData( QString& strConnectName,
+                               ParkSolution::SpType eSpType,
+                               QString& strSpName,
+                               QString& strXmlPattern,
+                               QStringList& lstParams )
+{
+    if ( 4 > lstParams.count( ) ) {
+        return;
+    }
+
+    strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ), lstParams.at( 1 ),
+                                    lstParams.at( 2 ), lstParams.at( 3 ) );
+
+    QString strSQL = QString( "Call %1( '%2', @txtValue )" ).arg( strSpName, strXmlPattern );
+    ExecuteSP( strConnectName, eSpType, strSQL );
+}
+
 void QMySQL::CallChangeServiceRecord( QString& strConnectName,
                                ParkSolution::SpType eSpType,
                                QString& strSpName,
@@ -382,6 +415,23 @@ void QMySQL::CallQueryUserInfo( QString& strConnectName,
     ExecuteSP( strConnectName, eSpType, strSQL );
 }
 
+void QMySQL::CallQueryInOutImage( QString& strConnectName,
+                               ParkSolution::SpType eSpType,
+                               QString& strSpName,
+                               QString& strXmlPattern,
+                               QStringList& lstParams )
+{
+    if ( 3 > lstParams.count( ) ) {
+        return;
+    }
+
+    strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ),
+                                       lstParams.at( 1 ),
+                                       lstParams.at( 2 ) );
+    QString strSQL = QString( "Call %1( '%2', @txtValue )" ).arg( strSpName, strXmlPattern );
+    ExecuteSP( strConnectName, eSpType, strSQL );
+}
+
 void QMySQL::CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStringList& lstParams )
 {
     QString strSpName;
@@ -407,6 +457,12 @@ void QMySQL::CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStr
         CallImportCustomer( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
     } else if ( ParkSolution::SpQueryUserInfo == eSpType ) {
         CallQueryUserInfo( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
+    } else if ( ParkSolution::SpQueryInOutImage == eSpType ) {
+        CallQueryUserInfo( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
+    }else if ( ParkSolution::SpChangeCommonDataUI == eSpType ) {
+        CallChangeCommonData( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
+    } else if ( ParkSolution::SpChangeCommonDataDelete == eSpType ) {
+        CallChangeCommonData( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
     }
 }
 
@@ -423,6 +479,8 @@ void QMySQL::CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStr
         CallQueryCustomerData( strConnectName, eSpType, strSpName, strXmlPattern, lstParams, pQueryModel );
     } else if ( ParkSolution::SpExportCustomer == eSpType ) {
         CallExportCustomerData( strConnectName, eSpType, strSpName, strXmlPattern, lstParams, pQueryModel );
+    } else if ( ParkSolution::SpQueryCommonDataByType == eSpType ) {
+        CallQueryCommonDataByType( strConnectName, eSpType, strSpName, strXmlPattern, lstParams, pQueryModel );
     }
 }
 

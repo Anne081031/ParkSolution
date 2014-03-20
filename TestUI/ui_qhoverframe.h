@@ -27,6 +27,7 @@ public:
         if (QHoverFrame->objectName().isEmpty())
             QHoverFrame->setObjectName(QStringLiteral("QHoverFrame"));
         QHoverFrame->resize(400, 131);
+        QHoverFrame->setMinimumSize(QSize(400, 131));
         QHoverFrame->setMaximumSize(QSize(400, 131));
         QHoverFrame->setStyleSheet(QStringLiteral("background-color: rgb(85, 170, 127);"));
         QHoverFrame->setFrameShape(QFrame::StyledPanel);

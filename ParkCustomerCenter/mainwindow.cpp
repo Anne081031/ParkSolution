@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
     FillHash( );
     FillInfoEditsArray( );
     StartDatabaseThread( );
-    //StartPlateThread( );
+    StartPlateThread( );
     ConnectDatabase( );
 }
 
@@ -95,11 +95,14 @@ void MainWindow::SetServiceViewColumnName( QSqlQueryModel* pModel )
 
 void MainWindow::StartPlateThread( )
 {
+    pPlateParserThread = QPlateParserThread::CreateInstance( );
     pPlateThread = QPlateThread::CreateInstance( );
     connect( pPlateThread, SIGNAL( Log( QString ) ),
              this, SLOT( HandleLog( QString ) ) );
-    connect( pPlateThread, SIGNAL( PlateData( QByteArray ) ),
-             this, SLOT( HandlePlateData( QByteArray ) ) );
+
+
+    connect( pPlateParserThread, SIGNAL( PlateData( QString, QString, QByteArray ) ),
+             this, SLOT( HandlePlateData( QString, QString, QByteArray ) ) );
 }
 
 void MainWindow::StartDatabaseThread( )
@@ -186,24 +189,25 @@ void MainWindow::SetSmallPictureCustomerInfo(int nIndex, QString& strPlate, QStr
     pInfoEdits[ nIndex ][ 3 ]->setText( strEnterTime );
 }
 
-void MainWindow::HandlePlateData( QByteArray byData )
+
+
+void MainWindow::HandlePlateData( QString strPlate, QString strDateTime, QByteArray byImage )
 {
-    qDebug( ) << "收到车牌识别数据 解析数据获取车牌相关的数据" << endl;
+    //qDebug( ) << "收到车牌识别数据 解析数据获取车牌相关的数据" << endl;
 
     static int nImageIndex = 0;
 
     SetBigPictureIndex( nImageIndex );
     ClearEditText( );
     ClearTableView( );
-    QString strPlate = "渝F12345";
-    QString strEnterTime = QDateTime::currentDateTime( ).toString( "yyyy-MM-dd HH:mm:ss" );
-    QueryCustomerAllInfo( 0, strPlate, strEnterTime );
+    //QString strPlate = "渝F12345";
+    //QString strEnterTime = QDateTime::currentDateTime( ).toString( "yyyy-MM-dd HH:mm:ss" );
+    QueryCustomerAllInfo( 0, strPlate, strDateTime );
 
-    QString strImageData;
-    SetSmallPicture( nImageIndex, strImageData );
+    SetSmallPicture( nImageIndex, byImage );
     SetBigPicture( nImageIndex );
 
-    SetSmallPictureCustomerInfo( nImageIndex, strPlate, strEnterTime );
+    SetSmallPictureCustomerInfo( nImageIndex, strPlate, strDateTime );
     /////////////////
     nImageIndex++;
     if ( 4 <= nImageIndex ) {
@@ -261,14 +265,19 @@ void MainWindow::FillInfoEditsArray( )
     pInfoEdits[ 3 ][ 3 ] = ui->edtEnterTime3;
 }
 
-void MainWindow::SetSmallPicture(int nIndex, QString &strImageData)
+void MainWindow::SetSmallPicture(int nIndex, QByteArray& byImage )
 {
     if ( 0 > nIndex || IMAGE_LABEL_COUNT - 1 <= nIndex ) {
         return;
     }
 
     QPixmap pixmap;
-    //pixmap.loadFromData( , "JPG" );
+    //QFile file( "D:/ParkSolution/Document/Test.jpg" );
+    //bool bRet = file.open( QIODevice::ReadWrite );
+    //file.write( byImage );
+    //file.flush( );
+    //file.close( );
+    pixmap.loadFromData( byImage, "JPG" );
     QImageLabel* pLbl = pImageLabels[ nIndex ];
     pLbl->setPixmap( pixmap );
 }

@@ -13,20 +13,54 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QFormLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QTableView>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_QDlgCommonData
 {
 public:
+    QWidget *formLayoutWidget;
+    QFormLayout *formLayout;
+    QLabel *label;
+    QComboBox *cbxDataType;
+    QTableView *tabCommonData;
 
     void setupUi(QDialog *QDlgCommonData)
     {
         if (QDlgCommonData->objectName().isEmpty())
             QDlgCommonData->setObjectName(QStringLiteral("QDlgCommonData"));
-        QDlgCommonData->resize(400, 300);
+        QDlgCommonData->resize(342, 295);
+        QDlgCommonData->setMinimumSize(QSize(342, 295));
+        QDlgCommonData->setMaximumSize(QSize(342, 295));
+        formLayoutWidget = new QWidget(QDlgCommonData);
+        formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
+        formLayoutWidget->setGeometry(QRect(10, 10, 201, 22));
+        formLayout = new QFormLayout(formLayoutWidget);
+        formLayout->setObjectName(QStringLiteral("formLayout"));
+        formLayout->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(formLayoutWidget);
+        label->setObjectName(QStringLiteral("label"));
+
+        formLayout->setWidget(0, QFormLayout::LabelRole, label);
+
+        cbxDataType = new QComboBox(formLayoutWidget);
+        cbxDataType->setObjectName(QStringLiteral("cbxDataType"));
+
+        formLayout->setWidget(0, QFormLayout::FieldRole, cbxDataType);
+
+        tabCommonData = new QTableView(QDlgCommonData);
+        tabCommonData->setObjectName(QStringLiteral("tabCommonData"));
+        tabCommonData->setGeometry(QRect(10, 40, 321, 241));
+        tabCommonData->setContextMenuPolicy(Qt::CustomContextMenu);
+        tabCommonData->setSelectionMode(QAbstractItemView::SingleSelection);
+        tabCommonData->setSelectionBehavior(QAbstractItemView::SelectRows);
 
         retranslateUi(QDlgCommonData);
 
@@ -35,7 +69,8 @@ public:
 
     void retranslateUi(QDialog *QDlgCommonData)
     {
-        QDlgCommonData->setWindowTitle(QApplication::translate("QDlgCommonData", "Dialog", 0));
+        QDlgCommonData->setWindowTitle(QApplication::translate("QDlgCommonData", "\351\200\232\347\224\250\346\225\260\346\215\256", 0));
+        label->setText(QApplication::translate("QDlgCommonData", "\346\225\260\346\215\256\347\261\273\345\210\253", 0));
     } // retranslateUi
 
 };

@@ -46,10 +46,47 @@ void MainWindow::SystemTrayIcon( )
     pSysTrayIcon->show( );
 }
 
+void MainWindow::moveEvent(QMoveEvent *)
+{
+    QRect rec = geometry( );
+   QRect recFrame = frameGeometry( );
+   int nX = rec.x( ) + rec.width( ) - 95;
+   int nY = recFrame.y( ) + 5;
+
+   qDebug( ) << "fx:" << recFrame.x( ) << " fy:" << recFrame.y( )
+                << " fw:" << recFrame.width( ) << " fh:" << recFrame.height( );
+   qDebug( ) << "x:" << rec.x( ) << " y:" << rec.y( )
+                << " w:" << rec.width( ) << " h:" << rec.height( );
+   pShapedClock->move( nX, nY );
+}
+
+void MainWindow::resizeEvent(QResizeEvent *e)
+{
+    //ui->toolButton->move( frameGeometry().width( ) - 100, y( ) + 2 );
+    QRect rec = geometry( );
+   QRect recFrame = frameGeometry( );
+   int nX = rec.x( ) + rec.width( ) - 95;
+   int nY = recFrame.y( ) + 5;
+
+   qDebug( ) << "fx:" << recFrame.x( ) << " fy:" << recFrame.y( )
+                << " fw:" << recFrame.width( ) << " fh:" << recFrame.height( );
+   qDebug( ) << "x:" << rec.x( ) << " y:" << rec.y( )
+                << " w:" << rec.width( ) << " h:" << rec.height( );
+   pShapedClock->move( nX, nY );
+}
+
 void MainWindow::closeEvent(QCloseEvent *e)
 {
+    pShapedClock->close( );
+    delete pShapedClock;
+
     pHoverFrame->close( );
     delete pHoverFrame;
+}
+
+void MainWindow::HandleShowHoverWindow(bool bVisible)
+{
+    pHoverFrame->setVisible( bVisible );
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -61,7 +98,11 @@ MainWindow::MainWindow(QWidget *parent) :
     pSysTrayIcon = NULL;
     SystemTrayIcon( );
     pHoverFrame = new QHoverFrame( NULL );
-    pHoverFrame->show();
+    pShapedClock = new ShapedClock( this );
+    ui->toolButton->setParent( this );
+    connect( pShapedClock, SIGNAL(ShowHoverWindow(bool)),
+             this, SLOT(HandleShowHoverWindow(bool)) );
+    pShapedClock->show();
     //setWindowFlags( Qt::Tool );
     LayoutUI( );
 #if false

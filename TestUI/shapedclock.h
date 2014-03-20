@@ -50,6 +50,7 @@ class ShapedClock : public QWidget
 public:
     ShapedClock(QWidget *parent = 0);
     QSize sizeHint() const;
+    void MoveSelf( QRect frameRect, QRect geometryRect );
 
 protected:
     void mouseMoveEvent(QMouseEvent *event);
@@ -61,6 +62,8 @@ protected:
 private:
     QPoint dragPosition;
     bool bVisible;
+    int nCaptionButtonWidth;
+    int nCaptionButtonHeight;
 
 signals:
     void ShowHoverWindow( bool bVisible );

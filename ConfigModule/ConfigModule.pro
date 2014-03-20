@@ -1,3 +1,4 @@
+QT       += core gui
 
 MYTARGET = $$quote( ConfigModule%1 )
 MYDESTDIR = $$quote( ../LibExeFiles/%1 )
@@ -10,15 +11,17 @@ Debug {
     TARGET = $$sprintf( $$MYTARGET, "Debug" )
     DESTDIR = $$sprintf( $$MYDESTDIR, "Debug" )
 
-    #LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "NetworkLibrary", "Debug" )
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "Debug" )
 }
 
 Release {
     TARGET = $$sprintf( $$MYTARGET, "" )
     DESTDIR = $$sprintf( $$MYDESTDIR, "Release" )
 
-    #LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "NetworkLibrary", "" )
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "" )
 }
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TEMPLATE = lib
 

@@ -22,13 +22,13 @@ MainWindow::MainWindow(QWidget *parent) :
     StartDatabaseThread( );
     InitializeTabWidget( );
     HideButton( false );
-    ControlDialog( );
     ConnectDatabase( );
     ControlStatusBar( );
     EnableIncomingDateCtrl( false );
     EnableUpdatingDateCtrl( false );
     EnableAllDateCtrl( false );
     InitialzieDateCtrl( );
+    ControlDialog( );
 
     QueryCustomerData( 2 );
     QueryCustomerData( 1 );
@@ -208,6 +208,10 @@ void MainWindow::HandleSpResult( int nSpType, QByteArray byData )
          }
     } else if ( ParkSolution::SpQueryUserInfo == nSpType ) {
         dlgLogin.FillUser( byData );
+    } else if ( ParkSolution::SpChangeCommonDataUI == nSpType ) {
+        pDlgCommonData->ProcessSpResult( eSpType, byData );
+    } else if ( ParkSolution::SpChangeCommonDataDelete == nSpType ) {
+
     }
 }
 
@@ -379,6 +383,8 @@ void MainWindow::HandleSpResultset( int nSpType, QObject* pQSqlQueryModel )
 
         QString strText = bRet ? "导出数据成功。" : "导出数据失败\n请检查Excel程序是否正确安装。";
         QCommonFunction::InformationBox( this, strText );
+    } else if ( ParkSolution::SpQueryCommonDataByType == nSpType ) {
+        pDlgCommonData->HideColumn( );
     }
 
     qDebug( ) << pModel->lastError( ).text( ) << endl;
@@ -430,7 +436,7 @@ void MainWindow::LayoutUI( )
     //setWindowState( winStates );
     showMaximized( );
 
-    ui->menuBar->setVisible( false );
+    //ui->menuBar->setVisible( false );
 
     ui->centralWidget->setLayout( ui->horizontalLayout );
     ui->horizontalLayout->addWidget( ui->tabWidget );
@@ -991,6 +997,20 @@ void MainWindow::ShowInfoDlg( QPushButton* pClickedButton )
     }
 }
 
+void MainWindow::HandleQueryCommonDataRecord( QStringList& lstParams )
+{
+    pDatabaseThread->PostQueryCommonDataByTypeEvent( lstParams, pDlgCommonData->GetModel( ) );
+}
+
+void MainWindow::HandleChangeCommonDataRecord( QString strDataType, QStringList& lstParams )
+{
+    pDatabaseThread->PostChangeCommonDataEvent( lstParams );
+
+    QStringList lstQueryType;
+    lstQueryType << strDataType;
+    HandleQueryCommonDataRecord( lstQueryType );
+}
+
 void MainWindow::ControlDialog( )
 {
     pDlgQueryInfo = new QDlgQueryInfo( this );
@@ -999,11 +1019,21 @@ void MainWindow::ControlDialog( )
     pDlgEditNewInfo = new QDlgEditNewInfo( this );
     QCommonFunction::DisableHelpButton( pDlgEditNewInfo );
 
+    pDlgCommonData = new QDlgCommonData( this );
+
     connect( pDlgEditNewInfo, SIGNAL( ChangeCustomerVehicleData( QStringList& ) ),
              this, SLOT( HandleChangeCustomerVehicleData( QStringList& ) ) );
 
     connect( pDlgEditNewInfo, SIGNAL( ChangeServiceRecord( QStringList& ) ),
              this, SLOT( HandleChangeServiceRecord( QStringList& ) ) );
+
+    connect( pDlgCommonData, SIGNAL( ChangeCommonDataRecord( QString, QStringList& ) ),
+             this, SLOT( HandleChangeCommonDataRecord( QString, QStringList& ) ) );
+
+    connect( pDlgCommonData, SIGNAL( QueryCommonDataRecord( QStringList& ) ),
+             this, SLOT( HandleQueryCommonDataRecord( QStringList& ) ) );
+
+    pDlgCommonData->FillComboBox( );
 }
 
 void MainWindow::ClearCustomerData( )
@@ -1081,4 +1111,14 @@ void MainWindow::on_cbxUpdating_currentIndexChanged(int index)
 void MainWindow::on_cbxAll_currentIndexChanged(int index)
 {
     EnableAllDateCtrl( 0 != index );
+}
+
+void MainWindow::on_actCommonData_triggered()
+{
+    pDlgCommonData->exec( );
+}
+
+void MainWindow::on_actExit_triggered()
+{
+    close( );
 }

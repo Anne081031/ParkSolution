@@ -21,7 +21,10 @@ public:
         ChangeServiceRecord,
         ImportCustomer,
         ExportCustomer,
-        QueryUserInfo
+        QueryUserInfo,
+        QueryInOutImage,
+        QueryCommonDataByType,
+        ChangeCommonData
     } DatabaseEvent;
 
     static QDatabaseEvent* CreateDatabaseEvent( DatabaseEvent eDbEvent );

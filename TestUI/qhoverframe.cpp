@@ -10,7 +10,7 @@ QHoverFrame::QHoverFrame(QWidget *parent) :
     winFlags &= ( ~Qt::WindowCloseButtonHint );
     winFlags |= Qt::Tool;
     winFlags |= Qt::WindowStaysOnTopHint;
-    //winFlags |= Qt::FramelessWindowHint;
+    winFlags |= Qt::FramelessWindowHint;
 
     setWindowFlags( winFlags );
 }
@@ -22,12 +22,27 @@ QHoverFrame::~QHoverFrame()
 
 void QHoverFrame::mouseDoubleClickEvent(QMouseEvent *event)
 {
-    close( );
-    show( );
+}
+
+void QHoverFrame::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton) {
+        dragPosition = event->globalPos() - frameGeometry().topLeft();
+        event->accept();
+    }
+}
+
+void QHoverFrame::mouseMoveEvent(QMouseEvent *event)
+{
+    if (event->buttons() & Qt::LeftButton) {
+        move(event->globalPos() - dragPosition);
+        event->accept();
+    }
 }
 
 void QHoverFrame::resizeEvent( QResizeEvent* )
 {
+    return;
     int nWidth = width( );
     int nHeight = height( );
     int nSide = qMin( nWidth, nHeight );

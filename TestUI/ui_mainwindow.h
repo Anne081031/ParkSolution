@@ -25,6 +25,7 @@
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QToolButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -99,6 +100,7 @@ public:
     QLabel *label_18;
     QFrame *line;
     QTableView *tabServiceRecord;
+    QToolButton *toolButton;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QToolBar *mainToolBar;
@@ -420,6 +422,11 @@ public:
         tabServiceRecord = new QTableView(centralWidget);
         tabServiceRecord->setObjectName(QStringLiteral("tabServiceRecord"));
         tabServiceRecord->setGeometry(QRect(870, 320, 256, 192));
+        toolButton = new QToolButton(centralWidget);
+        toolButton->setObjectName(QStringLiteral("toolButton"));
+        toolButton->setGeometry(QRect(370, 40, 20, 20));
+        toolButton->setMinimumSize(QSize(20, 20));
+        toolButton->setMaximumSize(QSize(20, 20));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -467,6 +474,7 @@ public:
         label_19->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         label_20->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         label_18->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        toolButton->setText(QApplication::translate("MainWindow", "...", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
 #ifndef QT_NO_STATUSTIP
         statusBar->setStatusTip(QApplication::translate("MainWindow", "Test", 0));

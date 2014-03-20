@@ -46,7 +46,7 @@ private:
     inline void ClearTableView( );
     void FillInfoEditsArray( );
     void SetBigPicture( int nIndex );
-    void SetSmallPicture( int nIndex, QString& strImageData );
+    void SetSmallPicture( int nIndex, QByteArray& byImage );
     void QueryCustomerAllInfo( int nDoubleClick, QString& strPlate, QString& strEnterTime );
     void SetSmallPictureCustomerInfo( int nIndex, QString& strPlate, QString& strEnterTime );
     void SetBigPictureIndex( int nIndex );
@@ -62,6 +62,7 @@ private:
     QLineEdit* pInfoEdits[ 4 ][ 4 ];
     ParkSolution::QStringWidgetHash hashWidget;
     QPlateThread* pPlateThread;
+    QPlateParserThread* pPlateParserThread;
     QDatabaseThread* pDatabaseThread;
     QSqlQueryModel modelService;
     QDataParser dataParser;
@@ -74,7 +75,7 @@ private:
 private slots:
     void HandleActivated( QSystemTrayIcon::ActivationReason reason );
     void OnImageLabelDoubleClick( QMouseEvent*, int nImageIndex );
-    void HandlePlateData( QByteArray byData );
+    void HandlePlateData( QString strPlate, QString strDateTime, QByteArray byImage );
     void HandleLog( QString strMsg );
     void HandleSpResult( int nSpType, QByteArray byData ); // JSON
     void HandleSpResultset( int nSpType, QObject* pQSqlQueryModel );

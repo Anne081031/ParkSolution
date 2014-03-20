@@ -6,6 +6,39 @@ QCommonFunction::QCommonFunction(QObject *parent) :
 {
 }
 
+QTextCodec* QCommonFunction::GetTextCodec( )
+{
+    static QTextCodec* pCodec = NULL;
+
+    if ( NULL != pCodec ) {
+        return pCodec;
+    }
+
+    QList<QByteArray> lstCodec = pCodec->availableCodecs( );
+    QString strText;
+    bool bFound = false;
+
+    for ( int nIndex = 0; nIndex < lstCodec.count( ); nIndex++ ) {
+        QByteArray byData = lstCodec[ nIndex ];
+        strText = QString( byData );
+        qDebug( ) << strText << endl;
+
+        if ( 0 == strText.toUpper().compare( "GB18030" ) ||
+             0 == strText.toUpper().compare( "GBK" ) ||
+             0 == strText.toUpper().compare( "GB2312" ) ) {
+            bFound = true;
+            break;
+        }
+    }
+
+    if ( !bFound ) {
+        strText = QString( "System" );
+    }
+
+    pCodec = QTextCodec::codecForName( strText.toLatin1( ) );
+    return pCodec;
+}
+
 void QCommonFunction::SingleApplication( const char* pGUID )
 {
     if ( NULL == pGUID ) {
@@ -215,6 +248,22 @@ void QCommonFunction::GetSpName( ParkSolution::SpType eSpType, QString& strSpNam
     case ParkSolution::SpQueryUserInfo :
         strSpName = spName.strSpQueryUserInfo;
         break;
+
+    case ParkSolution::SpQueryInOutImage :
+        strSpName = spName.strSpQueryInOutImage;
+        break;
+
+    case ParkSolution::SpQueryCommonDataByType :
+        strSpName = spName.strSpQueryCommonDataByType;
+        break;
+
+    case ParkSolution::SpChangeCommonDataUI :
+        strSpName = spName.strSpChangeCommonData;
+        break;
+
+    case ParkSolution::SpChangeCommonDataDelete :
+        strSpName = spName.strSpChangeCommonData;
+        break;
     }
 }
 
@@ -269,6 +318,22 @@ void QCommonFunction::GetSpXmlPattern( ParkSolution::SpType eSpType, QString& st
 
     case ParkSolution::SpQueryUserInfo :
         strXmlPattern = xmlPattern.strXmlQueryUserInfo;
+        break;
+
+    case ParkSolution::SpQueryInOutImage :
+        strXmlPattern = xmlPattern.strXmlQueryInOutImage;
+        break;
+
+    case ParkSolution::SpQueryCommonDataByType :
+        strXmlPattern = xmlPattern.strXmlQueryCommonDataByType;
+        break;
+
+    case ParkSolution::SpChangeCommonDataUI :
+        strXmlPattern = xmlPattern.strXmlChangeCommonDataUI;
+        break;
+
+    case ParkSolution::SpChangeCommonDataDelete :
+        strXmlPattern = xmlPattern.strXmlChangeCommonDataDelete;
         break;
     }
 }

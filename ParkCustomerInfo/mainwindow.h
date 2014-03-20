@@ -11,6 +11,7 @@
 #include "qlocalserverthread.h"
 #include <QDateEdit>
 #include "../CommonModule/qdlglogin.h"
+#include "qdlgcommondata.h"
 
 namespace Ui {
 class MainWindow;
@@ -86,6 +87,8 @@ private:
                                const char* pLogic );
 
 private slots:
+    void HandleQueryCommonDataRecord( QStringList& lstParams );
+    void HandleChangeCommonDataRecord( QString strDataType, QStringList& lstParams );
     void HandleChangeCustomerVehicleData( QStringList& lstParams );
     void HandleChangeServiceRecord( QStringList &lstParams );
     void HandleLog( QString strMsg );
@@ -115,10 +118,15 @@ private slots:
 
     void on_cbxAll_currentIndexChanged(int index);
 
+    void on_actCommonData_triggered();
+
+    void on_actExit_triggered();
+
 private:
     Ui::MainWindow *ui;
     QDlgQueryInfo* pDlgQueryInfo;
     QDlgEditNewInfo* pDlgEditNewInfo;
+    QDlgCommonData* pDlgCommonData;
     QDatabaseThread* pDatabaseThread;
     QDataParser dataParser;
     QSqlQueryModel modelCustomer[ 3 ];

@@ -20,9 +20,12 @@ public:
     void PostChangeServiceRecordEvent( QStringList& lstParams );
     void PostImportCustomerEvent( QStringList& lstParams );
     void PostQueryUserInfoEvent( QStringList& lstParams );
+    void PostQueryInOutImageEvent( QStringList& lstParams );
+    void PostChangeCommonDataEvent( QStringList& lstParams );
     void PostExportCustomerEvent( QStringList& lstParams, QSqlQueryModel* pModel );
     void PostQueryServiceDataEvent( QStringList& lstParams, QSqlQueryModel* pModel );
     void PostQueryCustomerDataEvent( QStringList& lstParams, QSqlQueryModel* pModel );
+    void PostQueryCommonDataByTypeEvent( QStringList& lstParams, QSqlQueryModel* pModel );
 protected:
     void run( );
     void customEvent( QEvent* pEvent );
@@ -41,6 +44,9 @@ private:
     void ProcessImportCustomerEvent( QDatabaseEvent* pEvent );
     void ProcessExportCustomerEvent( QDatabaseEvent* pEvent );
     void ProcessQueryUserInfoEvent( QDatabaseEvent* pEvent );
+    void ProcessQueryInOutImageEvent( QDatabaseEvent* pEvent );
+    void ProcessQueryCommonDataByTypeEvent( QDatabaseEvent* pEvent );
+    void ProcessChangeCommonDataEvent( QDatabaseEvent* pEvent );
     void ProcessIgnoreOrDeleteCustomerEvent( QDatabaseEvent* pEvent );
     void ProcessChangeServiceRecordEvent( QDatabaseEvent* pEvent );
 

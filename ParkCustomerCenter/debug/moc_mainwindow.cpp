@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[18];
-    char stringdata[269];
+    QByteArrayData data[21];
+    char stringdata[298];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,22 +38,26 @@ QT_MOC_LITERAL(5, 69, 23),
 QT_MOC_LITERAL(6, 93, 12),
 QT_MOC_LITERAL(7, 106, 11),
 QT_MOC_LITERAL(8, 118, 15),
-QT_MOC_LITERAL(9, 134, 6),
-QT_MOC_LITERAL(10, 141, 9),
-QT_MOC_LITERAL(11, 151, 6),
-QT_MOC_LITERAL(12, 158, 14),
-QT_MOC_LITERAL(13, 173, 7),
-QT_MOC_LITERAL(14, 181, 17),
-QT_MOC_LITERAL(15, 199, 15),
-QT_MOC_LITERAL(16, 215, 28),
-QT_MOC_LITERAL(17, 244, 23)
+QT_MOC_LITERAL(9, 134, 8),
+QT_MOC_LITERAL(10, 143, 11),
+QT_MOC_LITERAL(11, 155, 7),
+QT_MOC_LITERAL(12, 163, 9),
+QT_MOC_LITERAL(13, 173, 6),
+QT_MOC_LITERAL(14, 180, 14),
+QT_MOC_LITERAL(15, 195, 7),
+QT_MOC_LITERAL(16, 203, 6),
+QT_MOC_LITERAL(17, 210, 17),
+QT_MOC_LITERAL(18, 228, 15),
+QT_MOC_LITERAL(19, 244, 28),
+QT_MOC_LITERAL(20, 273, 23)
     },
     "MainWindow\0HandleActivated\0\0"
     "QSystemTrayIcon::ActivationReason\0"
     "reason\0OnImageLabelDoubleClick\0"
     "QMouseEvent*\0nImageIndex\0HandlePlateData\0"
-    "byData\0HandleLog\0strMsg\0HandleSpResult\0"
-    "nSpType\0HandleSpResultset\0pQSqlQueryModel\0"
+    "strPlate\0strDateTime\0byImage\0HandleLog\0"
+    "strMsg\0HandleSpResult\0nSpType\0byData\0"
+    "HandleSpResultset\0pQSqlQueryModel\0"
     "on_actCustomerInfo_triggered\0"
     "on_actionExit_triggered\0"
 };
@@ -75,20 +79,20 @@ static const uint qt_meta_data_MainWindow[] = {
  // slots: name, argc, parameters, tag, flags
        1,    1,   54,    2, 0x08,
        5,    2,   57,    2, 0x08,
-       8,    1,   62,    2, 0x08,
-      10,    1,   65,    2, 0x08,
-      12,    2,   68,    2, 0x08,
-      14,    2,   73,    2, 0x08,
-      16,    0,   78,    2, 0x08,
-      17,    0,   79,    2, 0x08,
+       8,    3,   62,    2, 0x08,
+      12,    1,   69,    2, 0x08,
+      14,    2,   72,    2, 0x08,
+      17,    2,   77,    2, 0x08,
+      19,    0,   82,    2, 0x08,
+      20,    0,   83,    2, 0x08,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,
     QMetaType::Void, 0x80000000 | 6, QMetaType::Int,    2,    7,
-    QMetaType::Void, QMetaType::QByteArray,    9,
-    QMetaType::Void, QMetaType::QString,   11,
-    QMetaType::Void, QMetaType::Int, QMetaType::QByteArray,   13,    9,
-    QMetaType::Void, QMetaType::Int, QMetaType::QObjectStar,   13,   15,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString, QMetaType::QByteArray,    9,   10,   11,
+    QMetaType::Void, QMetaType::QString,   13,
+    QMetaType::Void, QMetaType::Int, QMetaType::QByteArray,   15,   16,
+    QMetaType::Void, QMetaType::Int, QMetaType::QObjectStar,   15,   18,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -102,7 +106,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->HandleActivated((*reinterpret_cast< QSystemTrayIcon::ActivationReason(*)>(_a[1]))); break;
         case 1: _t->OnImageLabelDoubleClick((*reinterpret_cast< QMouseEvent*(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 2: _t->HandlePlateData((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
+        case 2: _t->HandlePlateData((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2])),(*reinterpret_cast< QByteArray(*)>(_a[3]))); break;
         case 3: _t->HandleLog((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 4: _t->HandleSpResult((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QByteArray(*)>(_a[2]))); break;
         case 5: _t->HandleSpResultset((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QObject*(*)>(_a[2]))); break;

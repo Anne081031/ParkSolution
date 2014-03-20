@@ -851,6 +851,15 @@
      <height>19</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>系统管理</string>
+    </property>
+    <addaction name="actCommonData"/>
+    <addaction name="separator"/>
+    <addaction name="actExit"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="statusTip">
@@ -1031,6 +1040,16 @@
     </widget>
    </widget>
   </widget>
+  <action name="actCommonData">
+   <property name="text">
+    <string>通用数据</string>
+   </property>
+  </action>
+  <action name="actExit">
+   <property name="text">
+    <string>退出系统</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
