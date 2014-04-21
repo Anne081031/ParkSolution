@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\qhoverframe.o
+./release\shapedclock.o
+./release\qdlglogin.o
+./release\qrc_UIRes.o
+./release\moc_mainwindow.o
+./release\moc_qhoverframe.o
+./release\moc_shapedclock.o
+./release\moc_qdlglogin.o
+);

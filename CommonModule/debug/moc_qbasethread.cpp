@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_QBaseThread_t {
-    QByteArrayData data[7];
-    char stringdata[69];
+    QByteArrayData data[6];
+    char stringdata[54];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,15 +30,14 @@ struct qt_meta_stringdata_QBaseThread_t {
 static const qt_meta_stringdata_QBaseThread_t qt_meta_stringdata_QBaseThread = {
     {
 QT_MOC_LITERAL(0, 0, 11),
-QT_MOC_LITERAL(1, 12, 9),
-QT_MOC_LITERAL(2, 22, 0),
-QT_MOC_LITERAL(3, 23, 8),
-QT_MOC_LITERAL(4, 32, 6),
-QT_MOC_LITERAL(5, 39, 13),
-QT_MOC_LITERAL(6, 53, 14)
+QT_MOC_LITERAL(1, 12, 3),
+QT_MOC_LITERAL(2, 16, 0),
+QT_MOC_LITERAL(3, 17, 6),
+QT_MOC_LITERAL(4, 24, 13),
+QT_MOC_LITERAL(5, 38, 14)
     },
-    "QBaseThread\0ThreadLog\0\0QString&\0strLog\0"
-    "ThreadStarted\0ThreadFinished\0"
+    "QBaseThread\0Log\0\0strLog\0ThreadStarted\0"
+    "ThreadFinished\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -59,11 +58,11 @@ static const uint qt_meta_data_QBaseThread[] = {
        1,    1,   29,    2, 0x06,
 
  // slots: name, argc, parameters, tag, flags
-       5,    0,   32,    2, 0x08,
-       6,    0,   33,    2, 0x08,
+       4,    0,   32,    2, 0x08,
+       5,    0,   33,    2, 0x08,
 
  // signals: parameters
-    QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void, QMetaType::QString,    3,
 
  // slots: parameters
     QMetaType::Void,
@@ -77,7 +76,7 @@ void QBaseThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     if (_c == QMetaObject::InvokeMetaMethod) {
         QBaseThread *_t = static_cast<QBaseThread *>(_o);
         switch (_id) {
-        case 0: _t->ThreadLog((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 0: _t->Log((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->ThreadStarted(); break;
         case 2: _t->ThreadFinished(); break;
         default: ;
@@ -86,8 +85,8 @@ void QBaseThread::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         int *result = reinterpret_cast<int *>(_a[0]);
         void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (QBaseThread::*_t)(QString & );
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&QBaseThread::ThreadLog)) {
+            typedef void (QBaseThread::*_t)(QString );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&QBaseThread::Log)) {
                 *result = 0;
             }
         }
@@ -131,7 +130,7 @@ int QBaseThread::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void QBaseThread::ThreadLog(QString & _t1)
+void QBaseThread::Log(QString _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

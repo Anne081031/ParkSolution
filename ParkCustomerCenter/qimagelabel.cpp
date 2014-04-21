@@ -1,5 +1,6 @@
 #include "qimagelabel.h"
 #include <QFile>
+#include <QDebug>
 
 QImageLabel::QImageLabel(int nIndex, QWidget *parent) :
     QLabel(parent)
@@ -11,9 +12,34 @@ QImageLabel::QImageLabel(int nIndex, QWidget *parent) :
     setAlignment( Qt::AlignHCenter | Qt::AlignVCenter );
 }
 
+void QImageLabel::resizeEvent( QResizeEvent *pEvent )
+{
+    return;
+    const QSize& oldSize = pEvent->oldSize( );
+    const QSize& size = pEvent->size( );
+    setMaximumSize( size );
+
+    qDebug( ) << oldSize.width( ) << " " << oldSize.height( ) << endl;
+    qDebug( ) << size.width( ) << " " << size.height( ) << endl;
+}
+
+QSize QImageLabel::sizeHint( )const
+{
+    return QSize( 150, 150 );
+}
+
+void QImageLabel::mousePressEvent(QMouseEvent *pEvent)
+{
+    if ( Qt::LeftButton != pEvent->button( ) ) {
+        return;
+    }
+
+    emit DoubleCickEvent( pEvent, nImageIndex );
+}
+
 void QImageLabel::mouseDoubleClickEvent(QMouseEvent* pEvent )
 {
-    emit DoubleCickEvent( pEvent, nImageIndex );
+    //emit DoubleCickEvent( pEvent, nImageIndex );
 }
 
 void QImageLabel::LoadPixmap(QString &strFile)

@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
-#include <QtWidgets/QDockWidget>
 #include <QtWidgets/QFormLayout>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -26,7 +25,6 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableView>
@@ -130,33 +128,35 @@ public:
     QLabel *lblSeperator0;
     QLabel *lblSeperator1;
     QLabel *lblStatusSum;
+    QLabel *lblLeft;
+    QWidget *widget;
+    QWidget *verticalLayoutWidget_2;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *lblTop;
+    QWidget *widget_2;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout;
+    QWidget *widget_3;
+    QPushButton *btnQuery;
+    QWidget *widget_5;
+    QWidget *widget_4;
+    QWidget *verticalLayoutWidget_3;
+    QVBoxLayout *verticalLayout_3;
+    QPushButton *btnEdit;
+    QPushButton *btnIgnore;
+    QPushButton *btnDelete;
+    QPushButton *btnNew;
+    QPushButton *btnExport;
+    QPushButton *btnImport;
     QMenuBar *menuBar;
     QMenu *menu;
     QStatusBar *statusBar;
-    QDockWidget *dockWidget;
-    QWidget *dockWidgetContents;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QSpacerItem *horizontalSpacer;
-    QSpacerItem *horizontalSpacer_4;
-    QSpacerItem *horizontalSpacer_5;
-    QSpacerItem *horizontalSpacer_7;
-    QSpacerItem *horizontalSpacer_6;
-    QSpacerItem *horizontalSpacer_2;
-    QSpacerItem *horizontalSpacer_3;
-    QPushButton *btnQuery;
-    QPushButton *btnEdit;
-    QPushButton *btnDelete;
-    QPushButton *btnIgnore;
-    QPushButton *btnNew;
-    QPushButton *btnImport;
-    QPushButton *btnExport;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(829, 475);
+        MainWindow->resize(860, 475);
         MainWindow->setContextMenuPolicy(Qt::NoContextMenu);
         actCommonData = new QAction(MainWindow);
         actCommonData->setObjectName(QStringLiteral("actCommonData"));
@@ -204,9 +204,11 @@ public:
         tableView1 = new QTableView(tabNewCustomer);
         tableView1->setObjectName(QStringLiteral("tableView1"));
         tableView1->setGeometry(QRect(20, 40, 111, 61));
+        tableView1->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         tableView1->setSelectionMode(QAbstractItemView::SingleSelection);
         tableView1->setSelectionBehavior(QAbstractItemView::SelectRows);
         tableView1->setSortingEnabled(false);
+        tableView1->verticalHeader()->setVisible(false);
         tabWidget->addTab(tabNewCustomer, QString());
         tabUpdatingCustomer = new QWidget();
         tabUpdatingCustomer->setObjectName(QStringLiteral("tabUpdatingCustomer"));
@@ -224,9 +226,11 @@ public:
         tableView2 = new QTableView(tabUpdatingCustomer);
         tableView2->setObjectName(QStringLiteral("tableView2"));
         tableView2->setGeometry(QRect(210, 70, 111, 61));
+        tableView2->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         tableView2->setSelectionMode(QAbstractItemView::SingleSelection);
         tableView2->setSelectionBehavior(QAbstractItemView::SelectRows);
         tableView2->setSortingEnabled(false);
+        tableView2->verticalHeader()->setVisible(false);
         tabWidget->addTab(tabUpdatingCustomer, QString());
         tabAllCustomers = new QWidget();
         tabAllCustomers->setObjectName(QStringLiteral("tabAllCustomers"));
@@ -244,9 +248,11 @@ public:
         tableView3 = new QTableView(tabAllCustomers);
         tableView3->setObjectName(QStringLiteral("tableView3"));
         tableView3->setGeometry(QRect(190, 20, 111, 61));
+        tableView3->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         tableView3->setSelectionMode(QAbstractItemView::SingleSelection);
         tableView3->setSelectionBehavior(QAbstractItemView::SelectRows);
         tableView3->setSortingEnabled(false);
+        tableView3->verticalHeader()->setVisible(false);
         tabWidget->addTab(tabAllCustomers, QString());
 
         horizontalLayout->addWidget(tabWidget);
@@ -557,10 +563,104 @@ public:
         lblStatusSum->setFrameShape(QFrame::NoFrame);
         lblStatusSum->setFrameShadow(QFrame::Plain);
         lblStatusSum->setAlignment(Qt::AlignCenter);
+        lblLeft = new QLabel(centralWidget);
+        lblLeft->setObjectName(QStringLiteral("lblLeft"));
+        lblLeft->setGeometry(QRect(520, 190, 3, 0));
+        lblLeft->setMinimumSize(QSize(3, 0));
+        lblLeft->setMaximumSize(QSize(3, 0));
+        widget = new QWidget(centralWidget);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(370, 400, 120, 21));
+        verticalLayoutWidget_2 = new QWidget(centralWidget);
+        verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
+        verticalLayoutWidget_2->setGeometry(QRect(520, 420, 31, 21));
+        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        lblTop = new QLabel(centralWidget);
+        lblTop->setObjectName(QStringLiteral("lblTop"));
+        lblTop->setGeometry(QRect(240, 420, 54, 3));
+        lblTop->setMinimumSize(QSize(0, 3));
+        lblTop->setMaximumSize(QSize(16777215, 3));
+        widget_2 = new QWidget(centralWidget);
+        widget_2->setObjectName(QStringLiteral("widget_2"));
+        widget_2->setGeometry(QRect(770, 0, 80, 431));
+        widget_2->setMinimumSize(QSize(80, 0));
+        widget_2->setMaximumSize(QSize(80, 16777215));
+        layoutWidget = new QWidget(widget_2);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(3, 10, 91, 411));
+        verticalLayout = new QVBoxLayout(layoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        widget_3 = new QWidget(layoutWidget);
+        widget_3->setObjectName(QStringLiteral("widget_3"));
+        widget_3->setMinimumSize(QSize(0, 0));
+        widget_3->setMaximumSize(QSize(16777215, 200));
+        btnQuery = new QPushButton(widget_3);
+        btnQuery->setObjectName(QStringLiteral("btnQuery"));
+        btnQuery->setGeometry(QRect(0, 42, 75, 20));
+
+        verticalLayout->addWidget(widget_3);
+
+        widget_5 = new QWidget(layoutWidget);
+        widget_5->setObjectName(QStringLiteral("widget_5"));
+
+        verticalLayout->addWidget(widget_5);
+
+        widget_4 = new QWidget(layoutWidget);
+        widget_4->setObjectName(QStringLiteral("widget_4"));
+        widget_4->setMinimumSize(QSize(0, 0));
+        widget_4->setMaximumSize(QSize(16777215, 230));
+        verticalLayoutWidget_3 = new QWidget(widget_4);
+        verticalLayoutWidget_3->setObjectName(QStringLiteral("verticalLayoutWidget_3"));
+        verticalLayoutWidget_3->setGeometry(QRect(0, 30, 81, 191));
+        verticalLayout_3 = new QVBoxLayout(verticalLayoutWidget_3);
+        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        btnEdit = new QPushButton(verticalLayoutWidget_3);
+        btnEdit->setObjectName(QStringLiteral("btnEdit"));
+
+        verticalLayout_3->addWidget(btnEdit);
+
+        btnIgnore = new QPushButton(verticalLayoutWidget_3);
+        btnIgnore->setObjectName(QStringLiteral("btnIgnore"));
+
+        verticalLayout_3->addWidget(btnIgnore);
+
+        btnDelete = new QPushButton(verticalLayoutWidget_3);
+        btnDelete->setObjectName(QStringLiteral("btnDelete"));
+
+        verticalLayout_3->addWidget(btnDelete);
+
+        btnNew = new QPushButton(verticalLayoutWidget_3);
+        btnNew->setObjectName(QStringLiteral("btnNew"));
+
+        verticalLayout_3->addWidget(btnNew);
+
+        btnExport = new QPushButton(verticalLayoutWidget_3);
+        btnExport->setObjectName(QStringLiteral("btnExport"));
+
+        verticalLayout_3->addWidget(btnExport);
+
+        btnImport = new QPushButton(verticalLayoutWidget_3);
+        btnImport->setObjectName(QStringLiteral("btnImport"));
+
+        verticalLayout_3->addWidget(btnImport);
+
+
+        verticalLayout->addWidget(widget_4);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 829, 19));
+        menuBar->setGeometry(QRect(0, 0, 860, 19));
         menu = new QMenu(menuBar);
         menu->setObjectName(QStringLiteral("menu"));
         MainWindow->setMenuBar(menuBar);
@@ -568,87 +668,6 @@ public:
         statusBar->setObjectName(QStringLiteral("statusBar"));
         statusBar->setStyleSheet(QStringLiteral(""));
         MainWindow->setStatusBar(statusBar);
-        dockWidget = new QDockWidget(MainWindow);
-        dockWidget->setObjectName(QStringLiteral("dockWidget"));
-        dockWidget->setContextMenuPolicy(Qt::NoContextMenu);
-        dockWidget->setFeatures(QDockWidget::NoDockWidgetFeatures);
-        dockWidget->setAllowedAreas(Qt::RightDockWidgetArea);
-        dockWidgetContents = new QWidget();
-        dockWidgetContents->setObjectName(QStringLiteral("dockWidgetContents"));
-        dockWidgetContents->setContextMenuPolicy(Qt::NoContextMenu);
-        verticalLayoutWidget = new QWidget(dockWidgetContents);
-        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 10, 81, 409));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout->addItem(horizontalSpacer);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout->addItem(horizontalSpacer_4);
-
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout->addItem(horizontalSpacer_5);
-
-        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout->addItem(horizontalSpacer_7);
-
-        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout->addItem(horizontalSpacer_6);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout->addItem(horizontalSpacer_2);
-
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout->addItem(horizontalSpacer_3);
-
-        btnQuery = new QPushButton(verticalLayoutWidget);
-        btnQuery->setObjectName(QStringLiteral("btnQuery"));
-
-        verticalLayout->addWidget(btnQuery);
-
-        btnEdit = new QPushButton(verticalLayoutWidget);
-        btnEdit->setObjectName(QStringLiteral("btnEdit"));
-
-        verticalLayout->addWidget(btnEdit);
-
-        btnDelete = new QPushButton(verticalLayoutWidget);
-        btnDelete->setObjectName(QStringLiteral("btnDelete"));
-
-        verticalLayout->addWidget(btnDelete);
-
-        btnIgnore = new QPushButton(verticalLayoutWidget);
-        btnIgnore->setObjectName(QStringLiteral("btnIgnore"));
-
-        verticalLayout->addWidget(btnIgnore);
-
-        btnNew = new QPushButton(verticalLayoutWidget);
-        btnNew->setObjectName(QStringLiteral("btnNew"));
-
-        verticalLayout->addWidget(btnNew);
-
-        btnImport = new QPushButton(verticalLayoutWidget);
-        btnImport->setObjectName(QStringLiteral("btnImport"));
-
-        verticalLayout->addWidget(btnImport);
-
-        btnExport = new QPushButton(verticalLayoutWidget);
-        btnExport->setObjectName(QStringLiteral("btnExport"));
-
-        verticalLayout->addWidget(btnExport);
-
-        dockWidget->setWidget(dockWidgetContents);
-        MainWindow->addDockWidget(static_cast<Qt::DockWidgetArea>(2), dockWidget);
 
         menuBar->addAction(menu->menuAction());
         menu->addAction(actCommonData);
@@ -683,6 +702,9 @@ public:
         label_2->setText(QApplication::translate("MainWindow", "\345\274\200\345\247\213\346\227\266\351\227\264", 0));
         label_3->setText(QApplication::translate("MainWindow", "\347\273\223\346\235\237\346\227\266\351\227\264", 0));
         label_4->setText(QApplication::translate("MainWindow", "\345\205\266\345\256\203", 0));
+#ifndef QT_NO_TOOLTIP
+        edtIncomingOther->setToolTip(QApplication::translate("MainWindow", "\345\217\257\344\273\245\350\276\223\345\205\245\345\256\242\346\210\267\345\220\215\346\210\226\350\200\205\350\275\246\347\211\214\345\217\267\343\200\202", 0));
+#endif // QT_NO_TOOLTIP
         label_5->setText(QApplication::translate("MainWindow", "\345\274\200\345\247\213\346\227\266\351\227\264", 0));
         label_6->setText(QApplication::translate("MainWindow", "\346\227\245\346\234\237\347\261\273\345\210\253", 0));
         cbxUpdating->clear();
@@ -693,6 +715,9 @@ public:
          << QApplication::translate("MainWindow", "\346\234\200\350\277\221\344\270\200\346\254\241\345\210\260\345\272\227\346\227\266\351\227\264", 0)
         );
         label_7->setText(QApplication::translate("MainWindow", "\345\205\266\345\256\203", 0));
+#ifndef QT_NO_TOOLTIP
+        edtUpdatingOther->setToolTip(QApplication::translate("MainWindow", "\345\217\257\344\273\245\350\276\223\345\205\245\345\256\242\346\210\267\345\220\215\346\210\226\350\200\205\350\275\246\347\211\214\345\217\267\343\200\202", 0));
+#endif // QT_NO_TOOLTIP
         label_8->setText(QApplication::translate("MainWindow", "\347\273\223\346\235\237\346\227\266\351\227\264", 0));
         label_11->setText(QApplication::translate("MainWindow", "\346\227\245\346\234\237\347\261\273\345\210\253", 0));
         cbxAll->clear();
@@ -703,6 +728,9 @@ public:
          << QApplication::translate("MainWindow", "\346\234\200\350\277\221\344\270\200\346\254\241\345\210\260\345\272\227\346\227\266\351\227\264", 0)
         );
         label_12->setText(QApplication::translate("MainWindow", "\345\205\266\345\256\203", 0));
+#ifndef QT_NO_TOOLTIP
+        edtAllOther->setToolTip(QApplication::translate("MainWindow", "\345\217\257\344\273\245\350\276\223\345\205\245\345\256\242\346\210\267\345\220\215\346\210\226\350\200\205\350\275\246\347\211\214\345\217\267\343\200\202", 0));
+#endif // QT_NO_TOOLTIP
         label_13->setText(QApplication::translate("MainWindow", "\345\274\200\345\247\213\346\227\266\351\227\264", 0));
         label_14->setText(QApplication::translate("MainWindow", "\347\273\223\346\235\237\346\227\266\351\227\264", 0));
         lblStatusTip->setText(QApplication::translate("MainWindow", "TextLabel", 0));
@@ -710,17 +738,19 @@ public:
         lblSeperator0->setText(QString());
         lblSeperator1->setText(QString());
         lblStatusSum->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        lblLeft->setText(QString());
+        lblTop->setText(QString());
+        btnQuery->setText(QApplication::translate("MainWindow", "\346\237\245\350\257\242", 0));
+        btnEdit->setText(QApplication::translate("MainWindow", "\347\274\226\350\276\221", 0));
+        btnIgnore->setText(QApplication::translate("MainWindow", "\345\277\275\347\225\245", 0));
+        btnDelete->setText(QApplication::translate("MainWindow", "\345\210\240\351\231\244", 0));
+        btnNew->setText(QApplication::translate("MainWindow", "\346\226\260\345\242\236", 0));
+        btnExport->setText(QApplication::translate("MainWindow", "\345\257\274\345\207\272", 0));
+        btnImport->setText(QApplication::translate("MainWindow", "\345\257\274\345\205\245", 0));
         menu->setTitle(QApplication::translate("MainWindow", "\347\263\273\347\273\237\347\256\241\347\220\206", 0));
 #ifndef QT_NO_STATUSTIP
         statusBar->setStatusTip(QString());
 #endif // QT_NO_STATUSTIP
-        btnQuery->setText(QApplication::translate("MainWindow", "\346\237\245\350\257\242", 0));
-        btnEdit->setText(QApplication::translate("MainWindow", "\347\274\226\350\276\221", 0));
-        btnDelete->setText(QApplication::translate("MainWindow", "\345\210\240\351\231\244", 0));
-        btnIgnore->setText(QApplication::translate("MainWindow", "\345\277\275\347\225\245", 0));
-        btnNew->setText(QApplication::translate("MainWindow", "\346\226\260\345\242\236", 0));
-        btnImport->setText(QApplication::translate("MainWindow", "\345\257\274\345\205\245", 0));
-        btnExport->setText(QApplication::translate("MainWindow", "\345\257\274\345\207\272", 0));
     } // retranslateUi
 
 };

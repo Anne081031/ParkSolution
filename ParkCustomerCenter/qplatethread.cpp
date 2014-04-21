@@ -36,6 +36,7 @@ void QPlateThread::run( )
     pParserThread = QPlateParserThread::CreateInstance( );
 
     QString strLog;
+
     pZMQContext = zmq_ctx_new( );
     if ( NULL == pZMQContext ) {
         strLog = "创建ZMQ Context失败。";

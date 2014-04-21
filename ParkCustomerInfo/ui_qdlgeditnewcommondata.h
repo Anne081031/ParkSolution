@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFormLayout>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -27,17 +26,15 @@ QT_BEGIN_NAMESPACE
 class Ui_QDlgEditNewCommonData
 {
 public:
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *btnNext;
-    QPushButton *btnOK;
-    QPushButton *btnCancel;
     QWidget *formLayoutWidget;
     QFormLayout *formLayout;
     QLabel *label;
     QLabel *label_2;
     QLineEdit *edtValueID;
     QLineEdit *edtValue;
+    QPushButton *btnCancel;
+    QPushButton *btnNext;
+    QPushButton *btnOK;
 
     void setupUi(QDialog *QDlgEditNewCommonData)
     {
@@ -46,27 +43,6 @@ public:
         QDlgEditNewCommonData->resize(261, 117);
         QDlgEditNewCommonData->setMinimumSize(QSize(261, 117));
         QDlgEditNewCommonData->setMaximumSize(QSize(261, 117));
-        layoutWidget = new QWidget(QDlgEditNewCommonData);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(10, 80, 239, 25));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        btnNext = new QPushButton(layoutWidget);
-        btnNext->setObjectName(QStringLiteral("btnNext"));
-
-        horizontalLayout->addWidget(btnNext);
-
-        btnOK = new QPushButton(layoutWidget);
-        btnOK->setObjectName(QStringLiteral("btnOK"));
-
-        horizontalLayout->addWidget(btnOK);
-
-        btnCancel = new QPushButton(layoutWidget);
-        btnCancel->setObjectName(QStringLiteral("btnCancel"));
-
-        horizontalLayout->addWidget(btnCancel);
-
         formLayoutWidget = new QWidget(QDlgEditNewCommonData);
         formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
         formLayoutWidget->setGeometry(QRect(10, 10, 241, 51));
@@ -85,7 +61,7 @@ public:
 
         edtValueID = new QLineEdit(formLayoutWidget);
         edtValueID->setObjectName(QStringLiteral("edtValueID"));
-        edtValueID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtValueID->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtValueID->setReadOnly(true);
 
         formLayout->setWidget(0, QFormLayout::FieldRole, edtValueID);
@@ -95,6 +71,15 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, edtValue);
 
+        btnCancel = new QPushButton(QDlgEditNewCommonData);
+        btnCancel->setObjectName(QStringLiteral("btnCancel"));
+        btnCancel->setGeometry(QRect(173, 81, 75, 23));
+        btnNext = new QPushButton(QDlgEditNewCommonData);
+        btnNext->setObjectName(QStringLiteral("btnNext"));
+        btnNext->setGeometry(QRect(11, 81, 75, 23));
+        btnOK = new QPushButton(QDlgEditNewCommonData);
+        btnOK->setObjectName(QStringLiteral("btnOK"));
+        btnOK->setGeometry(QRect(92, 81, 75, 23));
 
         retranslateUi(QDlgEditNewCommonData);
 
@@ -107,11 +92,11 @@ public:
 #ifndef QT_NO_WHATSTHIS
         QDlgEditNewCommonData->setWhatsThis(QApplication::translate("QDlgEditNewCommonData", "\351\200\232\347\224\250\346\225\260\346\215\256", 0));
 #endif // QT_NO_WHATSTHIS
-        btnNext->setText(QApplication::translate("QDlgEditNewCommonData", "\344\270\213\344\270\200\346\235\241", 0));
-        btnOK->setText(QApplication::translate("QDlgEditNewCommonData", "\344\277\235\345\255\230", 0));
-        btnCancel->setText(QApplication::translate("QDlgEditNewCommonData", "\345\205\263\351\227\255", 0));
         label->setText(QApplication::translate("QDlgEditNewCommonData", "\346\225\260\346\215\256\351\241\271ID", 0));
         label_2->setText(QApplication::translate("QDlgEditNewCommonData", "\346\225\260\346\215\256\351\241\271\345\200\274", 0));
+        btnCancel->setText(QApplication::translate("QDlgEditNewCommonData", "\345\205\263\351\227\255", 0));
+        btnNext->setText(QApplication::translate("QDlgEditNewCommonData", "\344\270\213\344\270\200\346\235\241", 0));
+        btnOK->setText(QApplication::translate("QDlgEditNewCommonData", "\344\277\235\345\255\230", 0));
     } // retranslateUi
 
 };

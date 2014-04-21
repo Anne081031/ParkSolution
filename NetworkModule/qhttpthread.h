@@ -4,8 +4,11 @@
 #include "NetworkModule_global.h"
 #include <QThread>
 #include "qhttpevent.h"
+#include "../ConfigModule/qconfigurator.h"
+#include "../CommonModule/qcommonfunction.h"
+#include "../CommonModule/qbasethread.h"
 
-class NETWORKMODULESHARED_EXPORT QHttpThread : public QThread
+class NETWORKMODULESHARED_EXPORT QHttpThread : public QBaseThread
 {
     Q_OBJECT
 public:
@@ -19,14 +22,21 @@ protected:
 
 private:
     explicit QHttpThread(QObject *parent = 0);
-    inline void PostEvent( QHttpEvent* pEvent );
+    bool ThreadInitialize( );
+    void ThreadUninitialize( );
 
     void ProcessGetInOutImageEvent( QHttpEvent* pEvent );
 
 private:
     static QHttpThread* pThreadInstance;
+    QNetworkAccessManager* pNetworkAccessManager;
+    QString strHttpHost;
+    quint16 nHttpHostPort;
+    QConfigurator* pConfigurator;
+
 
 signals:
+    void VehicleInOutImage( QByteArray& byInImage, QByteArray& byOutImage );
 
 public slots:
 

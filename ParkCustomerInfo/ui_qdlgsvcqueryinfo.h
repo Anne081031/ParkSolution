@@ -100,35 +100,35 @@ public:
 
         edtServiceID = new QLineEdit(formLayoutWidget);
         edtServiceID->setObjectName(QStringLiteral("edtServiceID"));
-        edtServiceID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtServiceID->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtServiceID->setReadOnly(true);
 
         formLayout1->setWidget(0, QFormLayout::FieldRole, edtServiceID);
 
         edtPlateID = new QLineEdit(formLayoutWidget);
         edtPlateID->setObjectName(QStringLiteral("edtPlateID"));
-        edtPlateID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtPlateID->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtPlateID->setReadOnly(true);
 
         formLayout1->setWidget(1, QFormLayout::FieldRole, edtPlateID);
 
         edtInsuranceAmount = new QLineEdit(formLayoutWidget);
         edtInsuranceAmount->setObjectName(QStringLiteral("edtInsuranceAmount"));
-        edtInsuranceAmount->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtInsuranceAmount->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtInsuranceAmount->setReadOnly(true);
 
         formLayout1->setWidget(4, QFormLayout::FieldRole, edtInsuranceAmount);
 
         edtCategory = new QLineEdit(formLayoutWidget);
         edtCategory->setObjectName(QStringLiteral("edtCategory"));
-        edtCategory->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCategory->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCategory->setReadOnly(true);
 
         formLayout1->setWidget(2, QFormLayout::FieldRole, edtCategory);
 
         edtSubCategory = new QLineEdit(formLayoutWidget);
         edtSubCategory->setObjectName(QStringLiteral("edtSubCategory"));
-        edtSubCategory->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtSubCategory->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtSubCategory->setReadOnly(true);
 
         formLayout1->setWidget(3, QFormLayout::FieldRole, edtSubCategory);
@@ -156,21 +156,21 @@ public:
 
         edtServiceConsumptionAmount = new QLineEdit(formLayoutWidget_3);
         edtServiceConsumptionAmount->setObjectName(QStringLiteral("edtServiceConsumptionAmount"));
-        edtServiceConsumptionAmount->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtServiceConsumptionAmount->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtServiceConsumptionAmount->setReadOnly(true);
 
         formLayout3->setWidget(2, QFormLayout::FieldRole, edtServiceConsumptionAmount);
 
         edtServiceDepartment = new QLineEdit(formLayoutWidget_3);
         edtServiceDepartment->setObjectName(QStringLiteral("edtServiceDepartment"));
-        edtServiceDepartment->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtServiceDepartment->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtServiceDepartment->setReadOnly(true);
 
         formLayout3->setWidget(0, QFormLayout::FieldRole, edtServiceDepartment);
 
         edtMaintanceman = new QLineEdit(formLayoutWidget_3);
         edtMaintanceman->setObjectName(QStringLiteral("edtMaintanceman"));
-        edtMaintanceman->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMaintanceman->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtMaintanceman->setReadOnly(true);
 
         formLayout3->setWidget(1, QFormLayout::FieldRole, edtMaintanceman);
@@ -189,7 +189,7 @@ public:
 
         edtClaimAmount = new QLineEdit(formLayoutWidget_2);
         edtClaimAmount->setObjectName(QStringLiteral("edtClaimAmount"));
-        edtClaimAmount->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtClaimAmount->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtClaimAmount->setReadOnly(true);
 
         formLayout2->setWidget(0, QFormLayout::FieldRole, edtClaimAmount);
@@ -216,28 +216,28 @@ public:
 
         edtSettlementStyle = new QLineEdit(formLayoutWidget_2);
         edtSettlementStyle->setObjectName(QStringLiteral("edtSettlementStyle"));
-        edtSettlementStyle->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtSettlementStyle->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtSettlementStyle->setReadOnly(true);
 
         formLayout2->setWidget(1, QFormLayout::FieldRole, edtSettlementStyle);
 
         edtMaintanceStartTime = new QLineEdit(formLayoutWidget_2);
         edtMaintanceStartTime->setObjectName(QStringLiteral("edtMaintanceStartTime"));
-        edtMaintanceStartTime->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMaintanceStartTime->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtMaintanceStartTime->setReadOnly(true);
 
         formLayout2->setWidget(2, QFormLayout::FieldRole, edtMaintanceStartTime);
 
         edtMaintanceEndTime = new QLineEdit(formLayoutWidget_2);
         edtMaintanceEndTime->setObjectName(QStringLiteral("edtMaintanceEndTime"));
-        edtMaintanceEndTime->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMaintanceEndTime->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtMaintanceEndTime->setReadOnly(true);
 
         formLayout2->setWidget(3, QFormLayout::FieldRole, edtMaintanceEndTime);
 
         edtPickupTime = new QLineEdit(formLayoutWidget_2);
         edtPickupTime->setObjectName(QStringLiteral("edtPickupTime"));
-        edtPickupTime->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtPickupTime->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtPickupTime->setReadOnly(true);
 
         formLayout2->setWidget(4, QFormLayout::FieldRole, edtPickupTime);

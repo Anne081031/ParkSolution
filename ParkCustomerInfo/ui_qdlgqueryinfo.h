@@ -149,13 +149,13 @@ public:
         QDlgQueryInfo->setMaximumSize(QSize(880, 618));
         gridLayoutWidget = new QWidget(QDlgQueryInfo);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(20, 20, 51, 41));
+        gridLayoutWidget->setGeometry(QRect(60, 0, 21, 21));
         mainGridLayout = new QGridLayout(gridLayoutWidget);
         mainGridLayout->setObjectName(QStringLiteral("mainGridLayout"));
         mainGridLayout->setContentsMargins(0, 0, 0, 0);
         formLayoutWidget_11 = new QWidget(QDlgQueryInfo);
         formLayoutWidget_11->setObjectName(QStringLiteral("formLayoutWidget_11"));
-        formLayoutWidget_11->setGeometry(QRect(350, 270, 160, 161));
+        formLayoutWidget_11->setGeometry(QRect(10, 240, 261, 161));
         formLayout7 = new QFormLayout(formLayoutWidget_11);
         formLayout7->setObjectName(QStringLiteral("formLayout7"));
         formLayout7->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
@@ -167,7 +167,7 @@ public:
 
         edtPlateID = new QLineEdit(formLayoutWidget_11);
         edtPlateID->setObjectName(QStringLiteral("edtPlateID"));
-        edtPlateID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtPlateID->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtPlateID->setReadOnly(true);
 
         formLayout7->setWidget(0, QFormLayout::FieldRole, edtPlateID);
@@ -179,7 +179,7 @@ public:
 
         edtMotorID = new QLineEdit(formLayoutWidget_11);
         edtMotorID->setObjectName(QStringLiteral("edtMotorID"));
-        edtMotorID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMotorID->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtMotorID->setReadOnly(true);
 
         formLayout7->setWidget(1, QFormLayout::FieldRole, edtMotorID);
@@ -191,7 +191,7 @@ public:
 
         edtBrand = new QLineEdit(formLayoutWidget_11);
         edtBrand->setObjectName(QStringLiteral("edtBrand"));
-        edtBrand->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtBrand->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtBrand->setReadOnly(true);
 
         formLayout7->setWidget(2, QFormLayout::FieldRole, edtBrand);
@@ -203,7 +203,7 @@ public:
 
         edtSeries = new QLineEdit(formLayoutWidget_11);
         edtSeries->setObjectName(QStringLiteral("edtSeries"));
-        edtSeries->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtSeries->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtSeries->setReadOnly(true);
 
         formLayout7->setWidget(3, QFormLayout::FieldRole, edtSeries);
@@ -215,7 +215,7 @@ public:
 
         edtBuyDate = new QLineEdit(formLayoutWidget_11);
         edtBuyDate->setObjectName(QStringLiteral("edtBuyDate"));
-        edtBuyDate->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtBuyDate->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtBuyDate->setReadOnly(true);
 
         formLayout7->setWidget(4, QFormLayout::FieldRole, edtBuyDate);
@@ -227,14 +227,14 @@ public:
 
         edtOdometer = new QLineEdit(formLayoutWidget_11);
         edtOdometer->setObjectName(QStringLiteral("edtOdometer"));
-        edtOdometer->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtOdometer->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtOdometer->setReadOnly(true);
 
         formLayout7->setWidget(5, QFormLayout::FieldRole, edtOdometer);
 
         formLayoutWidget_9 = new QWidget(QDlgQueryInfo);
         formLayoutWidget_9->setObjectName(QStringLiteral("formLayoutWidget_9"));
-        formLayoutWidget_9->setGeometry(QRect(520, 90, 160, 161));
+        formLayoutWidget_9->setGeometry(QRect(286, 50, 261, 161));
         formLayout5 = new QFormLayout(formLayoutWidget_9);
         formLayout5->setObjectName(QStringLiteral("formLayout5"));
         formLayout5->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
@@ -246,7 +246,7 @@ public:
 
         edtMobilePhone = new QLineEdit(formLayoutWidget_9);
         edtMobilePhone->setObjectName(QStringLiteral("edtMobilePhone"));
-        edtMobilePhone->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMobilePhone->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtMobilePhone->setReadOnly(true);
 
         formLayout5->setWidget(0, QFormLayout::FieldRole, edtMobilePhone);
@@ -258,7 +258,7 @@ public:
 
         edtLandline = new QLineEdit(formLayoutWidget_9);
         edtLandline->setObjectName(QStringLiteral("edtLandline"));
-        edtLandline->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtLandline->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtLandline->setReadOnly(true);
 
         formLayout5->setWidget(1, QFormLayout::FieldRole, edtLandline);
@@ -270,7 +270,7 @@ public:
 
         edtEMail = new QLineEdit(formLayoutWidget_9);
         edtEMail->setObjectName(QStringLiteral("edtEMail"));
-        edtEMail->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtEMail->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtEMail->setReadOnly(true);
 
         formLayout5->setWidget(2, QFormLayout::FieldRole, edtEMail);
@@ -282,7 +282,7 @@ public:
 
         edtAddress = new QLineEdit(formLayoutWidget_9);
         edtAddress->setObjectName(QStringLiteral("edtAddress"));
-        edtAddress->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtAddress->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtAddress->setReadOnly(true);
 
         formLayout5->setWidget(3, QFormLayout::FieldRole, edtAddress);
@@ -294,7 +294,7 @@ public:
 
         edtDistrict = new QLineEdit(formLayoutWidget_9);
         edtDistrict->setObjectName(QStringLiteral("edtDistrict"));
-        edtDistrict->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtDistrict->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtDistrict->setReadOnly(true);
 
         formLayout5->setWidget(4, QFormLayout::FieldRole, edtDistrict);
@@ -306,14 +306,14 @@ public:
 
         edtCredentialsID = new QLineEdit(formLayoutWidget_9);
         edtCredentialsID->setObjectName(QStringLiteral("edtCredentialsID"));
-        edtCredentialsID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCredentialsID->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCredentialsID->setReadOnly(true);
 
         formLayout5->setWidget(5, QFormLayout::FieldRole, edtCredentialsID);
 
         formLayoutWidget_12 = new QWidget(QDlgQueryInfo);
         formLayoutWidget_12->setObjectName(QStringLiteral("formLayoutWidget_12"));
-        formLayoutWidget_12->setGeometry(QRect(520, 270, 160, 161));
+        formLayoutWidget_12->setGeometry(QRect(285, 240, 261, 161));
         formLayout8 = new QFormLayout(formLayoutWidget_12);
         formLayout8->setObjectName(QStringLiteral("formLayout8"));
         formLayout8->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
@@ -325,7 +325,7 @@ public:
 
         edtColor = new QLineEdit(formLayoutWidget_12);
         edtColor->setObjectName(QStringLiteral("edtColor"));
-        edtColor->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtColor->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtColor->setReadOnly(true);
 
         formLayout8->setWidget(0, QFormLayout::FieldRole, edtColor);
@@ -337,7 +337,7 @@ public:
 
         edtAannualSurveyDate = new QLineEdit(formLayoutWidget_12);
         edtAannualSurveyDate->setObjectName(QStringLiteral("edtAannualSurveyDate"));
-        edtAannualSurveyDate->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtAannualSurveyDate->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtAannualSurveyDate->setReadOnly(true);
 
         formLayout8->setWidget(1, QFormLayout::FieldRole, edtAannualSurveyDate);
@@ -349,7 +349,7 @@ public:
 
         edtCommercialInsuranceExpiration = new QLineEdit(formLayoutWidget_12);
         edtCommercialInsuranceExpiration->setObjectName(QStringLiteral("edtCommercialInsuranceExpiration"));
-        edtCommercialInsuranceExpiration->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCommercialInsuranceExpiration->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCommercialInsuranceExpiration->setReadOnly(true);
 
         formLayout8->setWidget(2, QFormLayout::FieldRole, edtCommercialInsuranceExpiration);
@@ -361,7 +361,7 @@ public:
 
         edtMandatoryInsuranceExpiration = new QLineEdit(formLayoutWidget_12);
         edtMandatoryInsuranceExpiration->setObjectName(QStringLiteral("edtMandatoryInsuranceExpiration"));
-        edtMandatoryInsuranceExpiration->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMandatoryInsuranceExpiration->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtMandatoryInsuranceExpiration->setReadOnly(true);
 
         formLayout8->setWidget(3, QFormLayout::FieldRole, edtMandatoryInsuranceExpiration);
@@ -373,7 +373,7 @@ public:
 
         edtVistCount = new QLineEdit(formLayoutWidget_12);
         edtVistCount->setObjectName(QStringLiteral("edtVistCount"));
-        edtVistCount->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtVistCount->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtVistCount->setReadOnly(true);
 
         formLayout8->setWidget(4, QFormLayout::FieldRole, edtVistCount);
@@ -385,14 +385,14 @@ public:
 
         edtInsurer = new QLineEdit(formLayoutWidget_12);
         edtInsurer->setObjectName(QStringLiteral("edtInsurer"));
-        edtInsurer->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtInsurer->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtInsurer->setReadOnly(true);
 
         formLayout8->setWidget(5, QFormLayout::FieldRole, edtInsurer);
 
         formLayoutWidget_8 = new QWidget(QDlgQueryInfo);
         formLayoutWidget_8->setObjectName(QStringLiteral("formLayoutWidget_8"));
-        formLayoutWidget_8->setGeometry(QRect(350, 90, 160, 161));
+        formLayoutWidget_8->setGeometry(QRect(10, 50, 261, 161));
         formLayout4 = new QFormLayout(formLayoutWidget_8);
         formLayout4->setObjectName(QStringLiteral("formLayout4"));
         formLayout4->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
@@ -404,7 +404,7 @@ public:
 
         edtCustomerID = new QLineEdit(formLayoutWidget_8);
         edtCustomerID->setObjectName(QStringLiteral("edtCustomerID"));
-        edtCustomerID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCustomerID->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCustomerID->setReadOnly(true);
 
         formLayout4->setWidget(0, QFormLayout::FieldRole, edtCustomerID);
@@ -416,7 +416,7 @@ public:
 
         edtName = new QLineEdit(formLayoutWidget_8);
         edtName->setObjectName(QStringLiteral("edtName"));
-        edtName->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtName->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtName->setReadOnly(true);
 
         formLayout4->setWidget(1, QFormLayout::FieldRole, edtName);
@@ -428,7 +428,7 @@ public:
 
         edtCustomerCategory = new QLineEdit(formLayoutWidget_8);
         edtCustomerCategory->setObjectName(QStringLiteral("edtCustomerCategory"));
-        edtCustomerCategory->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCustomerCategory->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCustomerCategory->setReadOnly(true);
 
         formLayout4->setWidget(2, QFormLayout::FieldRole, edtCustomerCategory);
@@ -440,7 +440,7 @@ public:
 
         edtDepartment = new QLineEdit(formLayoutWidget_8);
         edtDepartment->setObjectName(QStringLiteral("edtDepartment"));
-        edtDepartment->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtDepartment->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtDepartment->setReadOnly(true);
 
         formLayout4->setWidget(3, QFormLayout::FieldRole, edtDepartment);
@@ -452,7 +452,7 @@ public:
 
         edtAccountExecutive = new QLineEdit(formLayoutWidget_8);
         edtAccountExecutive->setObjectName(QStringLiteral("edtAccountExecutive"));
-        edtAccountExecutive->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtAccountExecutive->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtAccountExecutive->setReadOnly(true);
 
         formLayout4->setWidget(4, QFormLayout::FieldRole, edtAccountExecutive);
@@ -464,14 +464,14 @@ public:
 
         edtCustomerSource = new QLineEdit(formLayoutWidget_8);
         edtCustomerSource->setObjectName(QStringLiteral("edtCustomerSource"));
-        edtCustomerSource->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCustomerSource->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCustomerSource->setReadOnly(true);
 
         formLayout4->setWidget(5, QFormLayout::FieldRole, edtCustomerSource);
 
         formLayoutWidget_10 = new QWidget(QDlgQueryInfo);
         formLayoutWidget_10->setObjectName(QStringLiteral("formLayoutWidget_10"));
-        formLayoutWidget_10->setGeometry(QRect(690, 90, 160, 161));
+        formLayoutWidget_10->setGeometry(QRect(560, 50, 310, 161));
         formLayout6 = new QFormLayout(formLayoutWidget_10);
         formLayout6->setObjectName(QStringLiteral("formLayout6"));
         formLayout6->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
@@ -483,7 +483,7 @@ public:
 
         edtVistFirstTime = new QLineEdit(formLayoutWidget_10);
         edtVistFirstTime->setObjectName(QStringLiteral("edtVistFirstTime"));
-        edtVistFirstTime->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtVistFirstTime->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtVistFirstTime->setReadOnly(true);
 
         formLayout6->setWidget(0, QFormLayout::FieldRole, edtVistFirstTime);
@@ -495,7 +495,7 @@ public:
 
         edtEntryTime = new QLineEdit(formLayoutWidget_10);
         edtEntryTime->setObjectName(QStringLiteral("edtEntryTime"));
-        edtEntryTime->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtEntryTime->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtEntryTime->setReadOnly(true);
 
         formLayout6->setWidget(1, QFormLayout::FieldRole, edtEntryTime);
@@ -507,7 +507,7 @@ public:
 
         edtVistNewlyTime = new QLineEdit(formLayoutWidget_10);
         edtVistNewlyTime->setObjectName(QStringLiteral("edtVistNewlyTime"));
-        edtVistNewlyTime->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtVistNewlyTime->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtVistNewlyTime->setReadOnly(true);
 
         formLayout6->setWidget(2, QFormLayout::FieldRole, edtVistNewlyTime);
@@ -519,7 +519,7 @@ public:
 
         edtMembershipClass = new QLineEdit(formLayoutWidget_10);
         edtMembershipClass->setObjectName(QStringLiteral("edtMembershipClass"));
-        edtMembershipClass->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMembershipClass->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtMembershipClass->setReadOnly(true);
 
         formLayout6->setWidget(3, QFormLayout::FieldRole, edtMembershipClass);
@@ -531,7 +531,7 @@ public:
 
         edtMembershipCardSurplus = new QLineEdit(formLayoutWidget_10);
         edtMembershipCardSurplus->setObjectName(QStringLiteral("edtMembershipCardSurplus"));
-        edtMembershipCardSurplus->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMembershipCardSurplus->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtMembershipCardSurplus->setReadOnly(true);
 
         formLayout6->setWidget(4, QFormLayout::FieldRole, edtMembershipCardSurplus);
@@ -543,14 +543,14 @@ public:
 
         edtConsumptionAmount = new QLineEdit(formLayoutWidget_10);
         edtConsumptionAmount->setObjectName(QStringLiteral("edtConsumptionAmount"));
-        edtConsumptionAmount->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtConsumptionAmount->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtConsumptionAmount->setReadOnly(true);
 
         formLayout6->setWidget(5, QFormLayout::FieldRole, edtConsumptionAmount);
 
         formLayoutWidget_13 = new QWidget(QDlgQueryInfo);
         formLayoutWidget_13->setObjectName(QStringLiteral("formLayoutWidget_13"));
-        formLayoutWidget_13->setGeometry(QRect(690, 270, 160, 161));
+        formLayoutWidget_13->setGeometry(QRect(560, 240, 310, 161));
         formLayout9 = new QFormLayout(formLayoutWidget_13);
         formLayout9->setObjectName(QStringLiteral("formLayout9"));
         formLayout9->setFieldGrowthPolicy(QFormLayout::AllNonFixedFieldsGrow);
@@ -562,7 +562,7 @@ public:
 
         edtFeature = new QLineEdit(formLayoutWidget_13);
         edtFeature->setObjectName(QStringLiteral("edtFeature"));
-        edtFeature->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtFeature->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtFeature->setReadOnly(true);
 
         formLayout9->setWidget(0, QFormLayout::FieldRole, edtFeature);
@@ -574,7 +574,7 @@ public:
 
         edtMaintenanceFirstDate = new QLineEdit(formLayoutWidget_13);
         edtMaintenanceFirstDate->setObjectName(QStringLiteral("edtMaintenanceFirstDate"));
-        edtMaintenanceFirstDate->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMaintenanceFirstDate->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtMaintenanceFirstDate->setReadOnly(true);
 
         formLayout9->setWidget(1, QFormLayout::FieldRole, edtMaintenanceFirstDate);
@@ -586,7 +586,7 @@ public:
 
         edtMaintenanceNextDate = new QLineEdit(formLayoutWidget_13);
         edtMaintenanceNextDate->setObjectName(QStringLiteral("edtMaintenanceNextDate"));
-        edtMaintenanceNextDate->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMaintenanceNextDate->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtMaintenanceNextDate->setReadOnly(true);
 
         formLayout9->setWidget(2, QFormLayout::FieldRole, edtMaintenanceNextDate);
@@ -598,14 +598,14 @@ public:
 
         edtState = new QLineEdit(formLayoutWidget_13);
         edtState->setObjectName(QStringLiteral("edtState"));
-        edtState->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtState->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtState->setReadOnly(true);
 
         formLayout9->setWidget(3, QFormLayout::FieldRole, edtState);
 
         formLayoutWidget_6 = new QWidget(QDlgQueryInfo);
         formLayoutWidget_6->setObjectName(QStringLiteral("formLayoutWidget_6"));
-        formLayoutWidget_6->setGeometry(QRect(140, 70, 160, 21));
+        formLayoutWidget_6->setGeometry(QRect(10, 220, 860, 16));
         formLayout2 = new QFormLayout(formLayoutWidget_6);
         formLayout2->setObjectName(QStringLiteral("formLayout2"));
         formLayout2->setContentsMargins(0, 0, 0, 0);
@@ -623,7 +623,7 @@ public:
 
         formLayoutWidget_7 = new QWidget(QDlgQueryInfo);
         formLayoutWidget_7->setObjectName(QStringLiteral("formLayoutWidget_7"));
-        formLayoutWidget_7->setGeometry(QRect(140, 100, 160, 21));
+        formLayoutWidget_7->setGeometry(QRect(10, 410, 860, 16));
         formLayout3 = new QFormLayout(formLayoutWidget_7);
         formLayout3->setObjectName(QStringLiteral("formLayout3"));
         formLayout3->setContentsMargins(0, 0, 0, 0);
@@ -641,7 +641,7 @@ public:
 
         formLayoutWidget_5 = new QWidget(QDlgQueryInfo);
         formLayoutWidget_5->setObjectName(QStringLiteral("formLayoutWidget_5"));
-        formLayoutWidget_5->setGeometry(QRect(140, 40, 160, 21));
+        formLayoutWidget_5->setGeometry(QRect(10, 30, 861, 16));
         formLayout1 = new QFormLayout(formLayoutWidget_5);
         formLayout1->setObjectName(QStringLiteral("formLayout1"));
         formLayout1->setContentsMargins(0, 0, 0, 0);
@@ -686,7 +686,7 @@ public:
         widget9->setGeometry(QRect(230, 130, 41, 21));
         lblDetail = new QLabel(QDlgQueryInfo);
         lblDetail->setObjectName(QStringLiteral("lblDetail"));
-        lblDetail->setGeometry(QRect(330, 20, 54, 12));
+        lblDetail->setGeometry(QRect(413, 10, 54, 12));
         lblDetail->setAlignment(Qt::AlignCenter);
         widget10 = new QWidget(QDlgQueryInfo);
         widget10->setObjectName(QStringLiteral("widget10"));
@@ -696,7 +696,7 @@ public:
         pushButton->setGeometry(QRect(51, 40, 75, 23));
         gridLayoutWidget_2 = new QWidget(QDlgQueryInfo);
         gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(50, 550, 160, 31));
+        gridLayoutWidget_2->setGeometry(QRect(50, 550, 21, 16));
         gridLayout = new QGridLayout(gridLayoutWidget_2);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(0, 0, 0, 0);
@@ -705,11 +705,12 @@ public:
         lblSpace->setGeometry(QRect(100, 470, 600, 12));
         tabServiceRecord = new QTableView(QDlgQueryInfo);
         tabServiceRecord->setObjectName(QStringLiteral("tabServiceRecord"));
-        tabServiceRecord->setGeometry(QRect(60, 260, 256, 192));
+        tabServiceRecord->setGeometry(QRect(10, 430, 860, 180));
         tabServiceRecord->setSelectionMode(QAbstractItemView::SingleSelection);
         tabServiceRecord->setSelectionBehavior(QAbstractItemView::SelectRows);
         tabServiceRecord->setGridStyle(Qt::SolidLine);
         tabServiceRecord->setSortingEnabled(false);
+        tabServiceRecord->verticalHeader()->setVisible(false);
         QWidget::setTabOrder(edtCustomerID, edtName);
         QWidget::setTabOrder(edtName, edtCustomerCategory);
         QWidget::setTabOrder(edtCustomerCategory, edtDepartment);

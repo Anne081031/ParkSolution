@@ -109,12 +109,12 @@ void ShapedClock::paintEvent(QPaintEvent *event)
 
 void ShapedClock::resizeEvent(QResizeEvent * /* event */)
 {
-    int side = qMin(width(), height());
-    QRegion maskedRegion(width() / 2 - side / 2, height() / 2 - side / 2, side,
+    int side = qMin( width( ), height( ) );
+    QRegion maskedRegion( width( ) / 2 - side / 2, height( ) / 2 - side / 2, side,
                          side, QRegion::Ellipse);
     //QPixmap pixmap( "D:\\ParkSolution\\Document\\Info.bmp" );
     //QBitmap bitmap( pixmap );
-    setMask(maskedRegion);
+    setMask( maskedRegion );
 }
 
 void ShapedClock::MoveSelf(QRect frameRect, QRect geometryRect)
@@ -122,16 +122,16 @@ void ShapedClock::MoveSelf(QRect frameRect, QRect geometryRect)
 
    int nX = geometryRect.x( ) + geometryRect.width( ) - nCaptionButtonWidth * 3 + 5;
    int nY = frameRect.y( ) + 5;
-
+/*
    qDebug( ) << "fx:" << frameRect.x( ) << " fy:" << frameRect.y( )
                 << " fw:" << frameRect.width( ) << " fh:" << frameRect.height( );
    qDebug( ) << "x:" << geometryRect.x( ) << " y:" << geometryRect.y( )
                 << " w:" << geometryRect.width( ) << " h:" << geometryRect.height( );
-
+*/
    move( nX, nY );
 }
 
-QSize ShapedClock::sizeHint() const
+QSize ShapedClock::sizeHint( ) const
 {
-    return QSize(22, 22);
+    return QSize( 22, 22 );
 }

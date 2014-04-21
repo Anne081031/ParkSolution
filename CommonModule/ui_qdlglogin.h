@@ -34,7 +34,7 @@ public:
     QLabel *label_2;
     QComboBox *cbxUser;
     QLineEdit *edtPwd;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *btnOK;
     QPushButton *btnCancel;
@@ -45,6 +45,8 @@ public:
             QDlgLogin->setObjectName(QStringLiteral("QDlgLogin"));
         QDlgLogin->resize(281, 153);
         QDlgLogin->setMaximumSize(QSize(281, 153));
+        QDlgLogin->setAutoFillBackground(false);
+        QDlgLogin->setStyleSheet(QStringLiteral(""));
         QDlgLogin->setSizeGripEnabled(false);
         formLayoutWidget = new QWidget(QDlgLogin);
         formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
@@ -72,19 +74,22 @@ public:
 
         formLayout->setWidget(1, QFormLayout::FieldRole, edtPwd);
 
-        widget = new QWidget(QDlgLogin);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(60, 100, 158, 25));
-        horizontalLayout = new QHBoxLayout(widget);
+        layoutWidget = new QWidget(QDlgLogin);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(60, 100, 158, 25));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        btnOK = new QPushButton(widget);
+        btnOK = new QPushButton(layoutWidget);
         btnOK->setObjectName(QStringLiteral("btnOK"));
+        btnOK->setMinimumSize(QSize(75, 23));
+        btnOK->setStyleSheet(QStringLiteral(""));
 
         horizontalLayout->addWidget(btnOK);
 
-        btnCancel = new QPushButton(widget);
+        btnCancel = new QPushButton(layoutWidget);
         btnCancel->setObjectName(QStringLiteral("btnCancel"));
+        btnCancel->setMinimumSize(QSize(75, 23));
 
         horizontalLayout->addWidget(btnCancel);
 

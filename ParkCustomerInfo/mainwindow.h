@@ -30,6 +30,8 @@ protected:
     void closeEvent(QCloseEvent *event);
 
 private:
+    void ComInitliaze( );
+    void ControlDockWidget( );
     void HideButton( bool bShow );
     void LayoutUI( );
     void SetTitle( int nIndex );
@@ -81,10 +83,11 @@ private:
                               QDateEdit* pDateEditStart,
                               QDateEdit* pDateEditEnd,
                               QString& strFieldName );
-    inline void GetOtherWhere( QString& strOhterWhere,
+    inline void GetOtherWhere( QString& strOtherWhere,
                                QLineEdit* pEdit,
                                QString& strFieldName,
                                const char* pLogic );
+    void SetButtonMiniSize( );
 
 private slots:
     void HandleQueryCommonDataRecord( QStringList& lstParams );

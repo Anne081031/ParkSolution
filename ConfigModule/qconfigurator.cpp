@@ -13,9 +13,279 @@ QConfigurator::QConfigurator(QObject *parent) :
     // Key=Value 值内不能都逗号
 }
 
+void QConfigurator::SetZmpClientHost( QString& strHost )
+{
+    pSettings->setValue( "ZmqClient/ZmqServer", strHost );
+}
+
+void QConfigurator::GetZmqClientHost( QString& strHost )
+{
+    strHost = pSettings->value( "ZmqClient/ZmqServer", "127.0.0.1" ).toString( );
+}
+
+void QConfigurator::SetZmqClientHostPort( quint16 nPort )
+{
+    pSettings->setValue( "ZmqClient/ZmqServerPort", nPort );
+}
+
+void QConfigurator::GetZmqClientHostPort( quint16& nPort )
+{
+    nPort = pSettings->value( "ZmqClient/ZmqServerPort", 60000 ).toUInt( );
+}
+
+void QConfigurator::SetZmqServerListenPort( quint16 nPort )
+{
+    pSettings->setValue( "ZmqServer/ZmqListenPort", nPort );
+}
+
+void QConfigurator::GetZmqServerListenPort( quint16& nPort )
+{
+    nPort = pSettings->value( "ZmqServer/ZmqListenPort", 60000 ).toUInt( );
+}
+
+void QConfigurator::SetDisplaySerializeLog( bool bDisplay )
+{
+    pSettings->setValue( "Miscellaneous/DisplaySerializeLog", bDisplay );
+}
+
+void QConfigurator::GetDisplaySerializeLog( bool& bDisplay )
+{
+    bDisplay = pSettings->value( "Miscellaneous/DisplaySerializeLog", true ).toBool( );
+}
+
+void QConfigurator::SetDisplayPlateLog( bool bDisplay )
+{
+    pSettings->setValue( "Miscellaneous/DisplayPlateLog", bDisplay );
+}
+
+void QConfigurator::GetDisplayPlateLog( bool& bDisplay )
+{
+    bDisplay = pSettings->value( "Miscellaneous/DisplayPlateLog", true ).toBool( );
+}
+
+void QConfigurator::SetDisplayDbLog( bool bDisplay )
+{
+    pSettings->setValue( "Miscellaneous/DisplayDbLog", bDisplay );
+}
+
+void QConfigurator::GetDisplayDbLog( bool& bDisplay )
+{
+    bDisplay = pSettings->value( "Miscellaneous/DisplayDbLog", true ).toBool( );
+}
+
+void QConfigurator::SetDisplayFtpLog( bool bDisplay )
+{
+    pSettings->setValue( "Miscellaneous/DisplayFtpLog", bDisplay );
+}
+
+void QConfigurator::GetDisplayFtpLog( bool& bDisplay )
+{
+    bDisplay = pSettings->value( "Miscellaneous/DisplayFtpLog", true ).toBool( );
+}
+
+void QConfigurator::SetDeleteImageFile( bool bDetele )
+{
+   pSettings->setValue( "Miscellaneous/DeleteImageFile", bDetele );
+}
+
+void QConfigurator::GetDeleteImageFile( bool& bDetele )
+{
+    bDetele = pSettings->value( "Miscellaneous/DeleteImageFile", true ).toBool( );
+}
+
 QConfigurator::~QConfigurator( )
 {
     delete pSettings;
+}
+
+void QConfigurator::SetIPCInA( QString& strIP )
+{
+    pSettings->setValue( "DigitalVideo/IPCInA", strIP );
+}
+
+void QConfigurator::GetIPCInA( QString& strIP )
+{
+    strIP = pSettings->value( "DigitalVideo/IPCInA", "127.0.0.1" ).toString( );
+}
+
+void QConfigurator::SetIPCInB( QString& strIP )
+{
+    pSettings->setValue( "DigitalVideo/IPCInB", strIP );
+}
+
+void QConfigurator::GetIPCInB( QString& strIP )
+{
+    strIP = pSettings->value( "DigitalVideo/IPCInB", "127.0.0.1" ).toString( );
+}
+
+void QConfigurator::SetIPCOutA( QString& strIP )
+{
+    pSettings->setValue( "DigitalVideo/IPCOutA", strIP );
+}
+
+void QConfigurator::GetIPCOutA( QString& strIP )
+{
+    strIP = pSettings->value( "DigitalVideo/IPCOutA", "127.0.0.1" ).toString( );
+}
+
+void QConfigurator::SetIPCOutB( QString& strIP )
+{
+    pSettings->setValue( "DigitalVideo/IPCOutB", strIP );
+}
+
+void QConfigurator::GetIPCOutB( QString& strIP )
+{
+    strIP = pSettings->value( "DigitalVideo/IPCOutB", "127.0.0.1" ).toString( );
+}
+
+void QConfigurator::SetVideoType( bool bIPC )
+{
+   pSettings->setValue( "Video/IPC", bIPC );
+}
+
+void QConfigurator::GetVideoType( bool& bIPC )
+{
+    bIPC = pSettings->value( "Video/IPC", true ).toBool( );
+}
+
+void QConfigurator::SetVideoWay( int nWay )
+{
+    pSettings->setValue( "Video/Way", nWay );
+}
+
+void QConfigurator::GetVideoWay( int& nWay )
+{
+    nWay = pSettings->value( "Video/Way", true ).toInt( );
+}
+
+void QConfigurator::SetCaptureCard( QString& strCardType )
+{
+    pSettings->setValue( "AnalogVideo/CaptureCard", strCardType );
+}
+
+void QConfigurator::GetCaptureCard( QString& strCardType )
+{
+    strCardType = pSettings->value( "AnalogVideo/CaptureCard", "HK" ).toString( );
+}
+
+void QConfigurator::SetIPCamera( QString& strIPCType )
+{
+    pSettings->setValue( "DigitalVideo/IPCamera", strIPCType );
+}
+
+void QConfigurator::GetIPCamera( QString& strIPCType )
+{
+    strIPCType = pSettings->value( "DigitalVideo/IPCamera", "HK" ).toString( );
+}
+
+void QConfigurator::SetIPCMainStream( bool bMainStream )
+{
+    pSettings->setValue( "DigitalVideo/MainStream", bMainStream );
+}
+
+void QConfigurator::GetIPCMainStream( bool& bMainStream )
+{
+    bMainStream = pSettings->value( "DigitalVideo/MainStream", false ).toBool( );
+}
+
+void QConfigurator::SetDongleOneWay( bool bOneWay )
+{
+    pSettings->setValue( "LPR/DongleOneWay", bOneWay );
+}
+
+void QConfigurator::GetDongleOneWay( bool& bOneWay )
+{
+    bOneWay = pSettings->value( "LPR/DongleOneWay", true ).toBool( );
+}
+
+void QConfigurator::SetPlateVideo( bool bVideo )
+{
+    pSettings->setValue( "LPR/PlateVideo", bVideo );
+}
+
+void QConfigurator::GetPlateVideo( bool& bVideo )
+{
+    bVideo = pSettings->value( "LPR/PlateVideo", true ).toBool( );
+}
+
+void QConfigurator::SetPlateProvider( QString& strProvider )
+{
+    pSettings->setValue( "LPR/PlateProvider", strProvider );
+}
+
+void QConfigurator::GetPlateProvider( QString& strProvider )
+{
+    strProvider = pSettings->value( "LPR/PlateProvider", "VZ" ).toString( );
+}
+
+void QConfigurator::SetPlateMultiThread( bool bMultiThread )
+{
+    pSettings->setValue( "LPR/PlateMultihread", bMultiThread );
+}
+
+void QConfigurator::GetPlateMultiThread( bool& bMultiThread )
+{
+    bMultiThread = pSettings->value( "LPR/PlateMultihread", false ).toBool( );
+}
+
+void QConfigurator::SetPlateWay( int nWay )
+{
+    pSettings->setValue( "LPR/PlateWay", nWay );
+}
+
+void QConfigurator::GetPlateWay( int& nWay )
+{
+    nWay = pSettings->value( "LPR/PlateWay", 1 ).toInt( );
+}
+
+void QConfigurator::SetFtpHost( QString& strHost )
+{
+    pSettings->setValue( "FtpServer/Host", strHost );
+}
+
+void QConfigurator::GetFtpHost( QString& strHost )
+{
+    strHost = pSettings->value( "FtpServer/Host", "127.0.0.1" ).toString( );
+}
+
+void QConfigurator::SetFtpHostPort( quint16 nPort )
+{
+    pSettings->setValue( "FtpServer/Port", nPort );
+}
+
+void QConfigurator::GetFtpHostPort( quint16& nPort )
+{
+    nPort = pSettings->value( "FtpServer/Port", 21 ).toUInt( );
+}
+
+void QConfigurator::SetFtpUser( QString& strUser )
+{
+    pSettings->setValue( "FtpServer/User", strUser );
+}
+
+void QConfigurator::GetFtpUser( QString& strUser )
+{
+    strUser = pSettings->value( "FtpServer/User", "Ftp" ).toString( );
+}
+
+void QConfigurator::SetFtpPwd( QString& strPwd )
+{
+    pSettings->setValue( "FtpServer/Pwd", strPwd );
+}
+
+void QConfigurator::GetFtpPwd( QString& strPwd )
+{
+    strPwd = pSettings->value( "FtpServer/Pwd", "Ftp" ).toString( );
+}
+
+void QConfigurator::SetFtpBasePath( QString& strBasePath )
+{
+    pSettings->setValue( "FtpServer/BasePath", strBasePath );
+}
+
+void QConfigurator::GetFtpBasePath( QString& strBasePath )
+{
+    strBasePath = pSettings->value( "FtpServer/BasePath", "/" ).toString( );
 }
 
 void QConfigurator::SetHttpHost( QString& strHost )
@@ -40,7 +310,7 @@ void QConfigurator::GetHttpHostPort( quint16& nPort )
 
 void QConfigurator::SetPlateHost( QString& strHost )
 {
-    pSettings->setValue( "HttpServer/Host", strHost );
+    pSettings->setValue( "PlateServer/Host", strHost );
 }
 
 void QConfigurator::GetPlateHost( QString& strHost )

@@ -364,6 +364,9 @@ bool QDlgEditNewInfo::DecideInputValue( )
     if ( ui->edtName->text( ).isEmpty( ) ) {
         bRet = false;
         strText = "请输入客户名。";
+    } else if ( ui->edtPlateID->text( ).isEmpty( ) ) {
+        bRet = false;
+        strText = "请输入车牌号码。";
     }
 
     if ( ui->edtMembershipCardSurplus->text( ).isEmpty( ) ) {

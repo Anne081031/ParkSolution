@@ -1,0 +1,14 @@
+INPUT(
+./debug\qhttpthread.o
+./debug\qhttpevent.o
+./debug\qftpevent.o
+./debug\qftpthread.o
+./debug\qzmqserverthread.o
+./debug\qzmqclientthread.o
+./debug\qzmqserverevent.o
+./debug\qzmqclientevent.o
+./debug\moc_qhttpthread.o
+./debug\moc_qftpthread.o
+./debug\moc_qzmqserverthread.o
+./debug\moc_qzmqclientthread.o
+);

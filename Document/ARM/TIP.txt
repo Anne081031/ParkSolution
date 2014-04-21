@@ -1,0 +1,14 @@
+ARM
+Cortext-A -R -M
+ARM7 9 11
+SC
+
+KEIL Hardware development
+uVision IDE
+c51 c251 c166
+
+TI
+OMAP OMAP-DM
+ARM-based
+
+DM ¥Ô∑“∆Ê∂‡√ΩÃÂ

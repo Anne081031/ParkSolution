@@ -57,7 +57,7 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void paintEvent(QPaintEvent *event);
     void resizeEvent(QResizeEvent *event);
-    void mouseDoubleClickEvent(QMouseEvent* event);
+    void mouseDoubleClickEvent(QMouseEvent* );
 
 private:
     QPoint dragPosition;

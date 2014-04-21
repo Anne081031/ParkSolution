@@ -76,7 +76,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="edtServiceID">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -86,7 +86,7 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="edtPlateID">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -235,38 +235,44 @@
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QPushButton" name="btnOK">
    <property name="geometry">
     <rect>
-     <x>454</x>
-     <y>156</y>
-     <width>239</width>
-     <height>25</height>
+     <x>536</x>
+     <y>157</y>
+     <width>75</width>
+     <height>23</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QPushButton" name="btnNext">
-      <property name="text">
-       <string>下一条</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnOK">
-      <property name="text">
-       <string>保存</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="btnCancel">
-      <property name="text">
-       <string>关闭</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <property name="text">
+    <string>保存</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnCancel">
+   <property name="geometry">
+    <rect>
+     <x>617</x>
+     <y>157</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>关闭</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnNext">
+   <property name="geometry">
+    <rect>
+     <x>455</x>
+     <y>157</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>下一条</string>
+   </property>
   </widget>
  </widget>
  <resources/>

@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql webkitwidgets
 
 MYTARGET = $$quote( CommonModule%1 )
 MYDESTDIR = $$quote( ../LibExeFiles/%1 )
@@ -35,12 +35,22 @@ HEADERS += \
     CommonTypedef.h \
     CommonHeader.h \
     qcommonfunction.h \
-    qdlglogin.h
+    qdlglogin.h \
+    qshapedform.h \
+    qhoverframe.h \
+    qserializeevent.h \
+    qserializethread.h
 
 SOURCES += \
     qbasethread.cpp \
     qcommonfunction.cpp \
-    qdlglogin.cpp
+    qdlglogin.cpp \
+    qshapedform.cpp \
+    qhoverframe.cpp \
+    qserializeevent.cpp \
+    qserializethread.cpp
 
 FORMS += \
-    qdlglogin.ui
+    qdlglogin.ui \
+    qshapedform.ui \
+    qhoverframe.ui

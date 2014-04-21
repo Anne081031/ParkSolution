@@ -65,7 +65,10 @@ SOURCES += main.cpp\
     qimagelabel.cpp \
     qplatethread.cpp \
     qplateparserthread.cpp \
-    qplateevent.cpp
+    qplateevent.cpp \
+    qimagebkform.cpp \
+    qspeechthread.cpp \
+    qspeechevent.cpp
 
 HEADERS  += mainwindow.h \
     qthreadevent.h \
@@ -75,6 +78,12 @@ HEADERS  += mainwindow.h \
     qimagelabel.h \
     qplatethread.h \
     qplateparserthread.h \
-    qplateevent.h
+    qplateevent.h \
+    qimagebkform.h \
+    qspeechthread.h \
+    qspeechevent.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    qimagebkform.ui
+
+RESOURCES +=

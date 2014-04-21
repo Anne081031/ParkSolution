@@ -11,6 +11,8 @@ QDlgLogin::QDlgLogin(QWidget *parent) :
 {
     ui->setupUi(this);
     ControlDialog( );
+
+    setObjectName( "DlgLogin" );
 }
 
 QDlgLogin::~QDlgLogin()

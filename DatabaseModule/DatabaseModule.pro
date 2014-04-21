@@ -6,8 +6,8 @@ MYDESTLIB = $$quote( %1/lib%2%3.a )
 
 #unix:LIBS += -lpq
 #win32:LIBS += libpqdll.lib
-#INCLUDEPATH += ./Mysql/include
-#LIBS += ./Mysql/lib/liblibmysql.a
+INCLUDEPATH += ../Mysql/include
+LIBS += ../Mysql/liblibmysql.a
 
 Debug {
     TARGET = $$sprintf( $$MYTARGET, "Debug" )

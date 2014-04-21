@@ -8,7 +8,7 @@ QDlgQueryInfo::QDlgQueryInfo(QWidget *parent) :
     ui(new Ui::QDlgQueryInfo)
 {
     ui->setupUi(this);
-    LayoutUI( );
+    //LayoutUI( );
     FillHash( );
 
     ui->tabServiceRecord->setModel( &modelService );

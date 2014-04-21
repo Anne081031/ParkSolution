@@ -1,9 +1,14 @@
 #include "qdatabasethread.h"
+#include <stddef.h>
+#if (defined(_WIN32) || defined(_WIN64)) && !defined(__WIN__)
+#include <winsock.h>
+#endif
+#include "mysql.h"
 
 QDatabaseThread* QDatabaseThread::pThreadInstance = NULL;
 
 QDatabaseThread::QDatabaseThread(QObject *parent) :
-    QThread(parent)
+    QBaseThread( "QDatabaseThread", parent)
 {
 }
 
@@ -18,8 +23,15 @@ QDatabaseThread* QDatabaseThread::CreateInstance( )
     return pThreadInstance;
 }
 
-void QDatabaseThread::run( )
+void QDatabaseThread::ThreadUninitialize( )
 {
+
+}
+
+bool QDatabaseThread::ThreadInitialize( )
+{
+    bool bRet = QBaseThread::ThreadInitialize( );
+
     strConnectName = "CustomerCenterInfo";
     pMySQLDatabase = QDatabaseFactory::CreateDatabaseObj( ParkSolution::MySQL );
     connect( pMySQLDatabase, SIGNAL( Log( QString ) ),
@@ -29,12 +41,18 @@ void QDatabaseThread::run( )
     connect( pMySQLDatabase, SIGNAL( SpResultset( int, QObject* ) ),
              this, SLOT( HandleSpResultset( int, QObject* ) ) );
 
+    return bRet;
+}
+
+void QDatabaseThread::run( )
+{
+    ThreadInitialize( );
     exec( );
 }
 
 void QDatabaseThread::HandleLog( QString strLog )
 {
-    emit Log( strLog );
+    EmitLog( strLog );
 }
 
 void QDatabaseThread::HandleSpResult( int nSpType, QByteArray byData )
@@ -45,6 +63,39 @@ void QDatabaseThread::HandleSpResult( int nSpType, QByteArray byData )
 void QDatabaseThread::HandleSpResultset( int nSpType, QObject *pQueryModel )
 {
     emit SpResultset( nSpType, pQueryModel );
+}
+
+bool QDatabaseThread::DatabasePing( )
+{
+    bool bSuccess = false;
+    QSqlDatabase db = QSqlDatabase::database( strConnectName, true );
+    QString strLog = db.lastError( ).text( );
+
+    if ( !db.isOpen( ) ) {
+        EmitLog( strLog );
+        return bSuccess;
+    }
+
+    //bSuccess = ( QSqlError::NoError == db.exec( "select concat( now( ) )" ).lastError( ).type( ) );
+
+    //return bSuccess;
+
+    QSqlDriver* pDriver = db.driver( );
+    QVariant var = pDriver->handle( );
+
+    if ( 0 == qstrcmp( var.typeName( ), "MYSQL*" ) ) {
+         MYSQL *handle = *static_cast< MYSQL** >( var.data( ) );
+
+         if ( NULL != handle ) {
+             bSuccess = ( 0 == mysql_ping( handle ) );
+         }
+    }
+
+    if ( !bSuccess ) {
+        EmitLog( strLog );
+    }
+
+    return bSuccess;
 }
 
 void QDatabaseThread::customEvent( QEvent *pEvent )
@@ -116,12 +167,11 @@ void QDatabaseThread::customEvent( QEvent *pEvent )
     case QDatabaseEvent::ChangeCommonData :
         ProcessChangeCommonDataEvent( pDbEvent );
         break;
-    }
-}
 
-void QDatabaseThread::PostEvent(QDatabaseEvent *pEvent)
-{
-    qApp->postEvent( this, pEvent );
+    case QDatabaseEvent::WriteInOutRecord :
+        ProcessWriteInOutRecordEvent( pDbEvent );
+        break;
+    }
 }
 
 void QDatabaseThread::PostDatabaseConnectEvent( ParkSolution::QStringHash& hashParam )
@@ -208,6 +258,13 @@ void QDatabaseThread::PostChangeServiceRecordEvent( QStringList& lstParams )
     PostEvent( pEvent );
 }
 
+void QDatabaseThread::PostWriteInOutRecordEvent( QStringList& lstParams )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::WriteInOutRecord );
+    pEvent->SetParamList( lstParams );
+    PostEvent( pEvent );
+}
+
 void QDatabaseThread::PostVehicleEnterQueryDataEvent( QStringList& lstParams )
 {
     QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::VehicleEnterQueryData );
@@ -247,6 +304,12 @@ void QDatabaseThread::ProcessDatabaseConnectEvent( QDatabaseEvent* pEvent )
 void QDatabaseThread::ProcessDatabaseDisconnectEvent( QDatabaseEvent* pEvent )
 {
 
+}
+
+void QDatabaseThread::ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    pMySQLDatabase->CallSP( strConnectName, ParkSolution::SpWriteInOutRecord, lstParams );
 }
 
 void QDatabaseThread::ProcessQueryCustomerVehicleDataEvent( QDatabaseEvent* pEvent )

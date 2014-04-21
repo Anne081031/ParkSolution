@@ -1,0 +1,12 @@
+#ifndef LEDMODULE_GLOBAL_H
+#define LEDMODULE_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(LEDMODULE_LIBRARY)
+#  define LEDMODULESHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define LEDMODULESHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // LEDMODULE_GLOBAL_H

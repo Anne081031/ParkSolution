@@ -7,19 +7,21 @@ SUBDIRS += \
     #DeviceControllerModule \
     #SerialPortModule \
     ConfigModule \
-    DataParse \
+    #DataParse \
     #FeeRateModule \
     #LEDModule \
-    #LPRModule \
+    LPRModule \
     NetworkModule \
-    #VideoModule \
+    VideoModule \
     #LogModule \
     #BusinessModule \
     #ParkGateUI \
     #ParkCenterServiceUI \
     #ParkAdministratorUI \
     #ParkCenterChargeUI \
-    ParkCustomerCenter \
-    TestUI \
+    #ParkCustomerCenter \
+    #TestUI \
     #TestDLL \
-    ParkCustomerInfo
+    #ParkCustomerInfo \
+    #Qt360Safe \
+    ParkServer

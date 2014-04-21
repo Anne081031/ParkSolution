@@ -2,9 +2,11 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QMenu>
+#include "qdlglogin.h"
 
 // QAction / User Interface Command
 // http://qt-project.org/doc/qt-5/layout.html GridLayout
+#include <QTextCodec>
 
 void MainWindow::HandleActivated( QSystemTrayIcon::ActivationReason reason )
 {
@@ -104,7 +106,8 @@ MainWindow::MainWindow(QWidget *parent) :
              this, SLOT(HandleShowHoverWindow(bool)) );
     pShapedClock->show();
     //setWindowFlags( Qt::Tool );
-    LayoutUI( );
+    //LayoutUI( );
+    pAxObj = NULL;
 #if false
     Qt::WindowStates eWinStates = windowState( );
     //Qt::FramelessWindowHint
@@ -199,4 +202,39 @@ MainWindow::~MainWindow()
 void MainWindow::on_lineEdit_returnPressed()
 {
 
+}
+
+void MainWindow::HandleException(int code, const QString &source, const QString &desc, const QString &help)
+{
+    qDebug( ) << source << endl;
+    qDebug( ) << desc << endl;
+    qDebug( ) << help << endl;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    //QDlgLogin dlg;
+    //dlg.exec( );
+
+    //:exception(int code, const QString & source, const QString & desc, const QString & help)
+    //SAPI.SpVoice
+    //<volume level="100"/><lang langid='804'/>川 A 1 d 2 e 3
+    //QAxObject axObj( "SAPI.SpVoice" );
+    if ( NULL == pAxObj ) {
+        pAxObj = new QAxObject( "SAPI.SpVoice" );
+        connect( pAxObj, SIGNAL( exception( int, const QString&, const QString&, const QString& ) ),
+                 this, SLOT(HandleException( int, const QString&, const QString&, const QString& ) ) );
+    }
+
+    QList< QVariant > lstVariant;
+    QString str = "<volume level='100'/><lang langid='804'/>川A 1 d 2 e 3";
+
+    QVariant varValue = str;
+    lstVariant.append( varValue );
+
+    varValue = 1;
+    lstVariant.append( varValue );
+
+    varValue = pAxObj->dynamicCall( "Speak(const QString&, uint )", lstVariant );
+    qDebug( ) << varValue.toString( ) << endl;
 }

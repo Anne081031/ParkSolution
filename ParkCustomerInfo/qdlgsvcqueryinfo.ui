@@ -73,7 +73,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="edtServiceID">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -83,7 +83,7 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="edtPlateID">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -93,7 +93,7 @@
     <item row="4" column="1">
      <widget class="QLineEdit" name="edtInsuranceAmount">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -103,7 +103,7 @@
     <item row="2" column="1">
      <widget class="QLineEdit" name="edtCategory">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -113,7 +113,7 @@
     <item row="3" column="1">
      <widget class="QLineEdit" name="edtSubCategory">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -156,7 +156,7 @@
     <item row="2" column="1">
      <widget class="QLineEdit" name="edtServiceConsumptionAmount">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -166,7 +166,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="edtServiceDepartment">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -176,7 +176,7 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="edtMaintanceman">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -208,7 +208,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="edtClaimAmount">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -246,7 +246,7 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="edtSettlementStyle">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -256,7 +256,7 @@
     <item row="2" column="1">
      <widget class="QLineEdit" name="edtMaintanceStartTime">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -266,7 +266,7 @@
     <item row="3" column="1">
      <widget class="QLineEdit" name="edtMaintanceEndTime">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -276,7 +276,7 @@
     <item row="4" column="1">
      <widget class="QLineEdit" name="edtPickupTime">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>

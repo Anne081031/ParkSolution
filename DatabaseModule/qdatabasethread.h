@@ -4,12 +4,14 @@
 #include <QThread>
 #include "qdatabaseevent.h"
 #include "qdatabasefactory.h"
+#include "../CommonModule/qbasethread.h"
 
-class DATABASEMODULESHARED_EXPORT QDatabaseThread : public QThread
+class DATABASEMODULESHARED_EXPORT QDatabaseThread : public QBaseThread
 {
     Q_OBJECT
 public:
     static QDatabaseThread* CreateInstance( );
+    void PostWriteInOutRecordEvent( QStringList& lstParams );
     void PostDatabaseConnectEvent( ParkSolution::QStringHash& hashParam );
     void PostDatabaseDisconnectEvent( );
     void PostVehicleEnterQueryDataEvent( QStringList& lstParams );
@@ -26,13 +28,19 @@ public:
     void PostQueryServiceDataEvent( QStringList& lstParams, QSqlQueryModel* pModel );
     void PostQueryCustomerDataEvent( QStringList& lstParams, QSqlQueryModel* pModel );
     void PostQueryCommonDataByTypeEvent( QStringList& lstParams, QSqlQueryModel* pModel );
+
+    bool DatabasePing( );
+
 protected:
     void run( );
     void customEvent( QEvent* pEvent );
+    bool ThreadInitialize( );
+    void ThreadUninitialize( );
 
 private:
     explicit QDatabaseThread(QObject *parent = 0);
 
+    void ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent );
     void ProcessDatabaseConnectEvent( QDatabaseEvent* pEvent );
     void ProcessDatabaseDisconnectEvent( QDatabaseEvent* pEvent );
     void ProcessQueryCustomerVehicleDataEvent( QDatabaseEvent* pEvent );
@@ -50,15 +58,12 @@ private:
     void ProcessIgnoreOrDeleteCustomerEvent( QDatabaseEvent* pEvent );
     void ProcessChangeServiceRecordEvent( QDatabaseEvent* pEvent );
 
-    inline void PostEvent( QDatabaseEvent* pEvent );
-
 private:
     static QDatabaseThread* pThreadInstance;
     QString strConnectName;
     QUnityDatabase* pMySQLDatabase;
 
 signals:
-    void Log( QString strMsg );
     void SpResult( int nSpType, QByteArray byData );
     void SpResultset( int nSpType, QObject* pQueryModel );
 

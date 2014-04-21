@@ -6,19 +6,19 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>342</width>
+    <width>242</width>
     <height>295</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>342</width>
+    <width>242</width>
     <height>295</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>342</width>
+    <width>242</width>
     <height>295</height>
    </size>
   </property>
@@ -52,7 +52,7 @@
     <rect>
      <x>10</x>
      <y>40</y>
-     <width>321</width>
+     <width>221</width>
      <height>241</height>
     </rect>
    </property>
@@ -65,6 +65,9 @@
    <property name="selectionBehavior">
     <enum>QAbstractItemView::SelectRows</enum>
    </property>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
   </widget>
  </widget>
  <resources/>

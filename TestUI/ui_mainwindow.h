@@ -22,6 +22,8 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QToolBar>
@@ -101,6 +103,12 @@ public:
     QFrame *line;
     QTableView *tabServiceRecord;
     QToolButton *toolButton;
+    QPushButton *pushButton;
+    QPushButton *pushButton_2;
+    QLineEdit *lineEdit_15;
+    QStackedWidget *stackedWidget;
+    QWidget *page;
+    QWidget *page_2;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QToolBar *mainToolBar;
@@ -427,6 +435,27 @@ public:
         toolButton->setGeometry(QRect(370, 40, 20, 20));
         toolButton->setMinimumSize(QSize(20, 20));
         toolButton->setMaximumSize(QSize(20, 20));
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(420, 20, 75, 23));
+        pushButton_2 = new QPushButton(centralWidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(290, 40, 75, 23));
+        pushButton_2->setStyleSheet(QLatin1String("color: rgb(0, 0, 255);\n"
+"background-color: rgb(0, 0, 0);"));
+        lineEdit_15 = new QLineEdit(centralWidget);
+        lineEdit_15->setObjectName(QStringLiteral("lineEdit_15"));
+        lineEdit_15->setGeometry(QRect(370, 70, 113, 20));
+        lineEdit_15->setStyleSheet(QStringLiteral("color: rgb(0, 0, 255);"));
+        stackedWidget = new QStackedWidget(centralWidget);
+        stackedWidget->setObjectName(QStringLiteral("stackedWidget"));
+        stackedWidget->setGeometry(QRect(280, 190, 120, 80));
+        page = new QWidget();
+        page->setObjectName(QStringLiteral("page"));
+        stackedWidget->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName(QStringLiteral("page_2"));
+        stackedWidget->addWidget(page_2);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -475,6 +504,9 @@ public:
         label_20->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         label_18->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         toolButton->setText(QApplication::translate("MainWindow", "...", 0));
+        pushButton->setText(QApplication::translate("MainWindow", "PushButton", 0));
+        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", 0));
+        lineEdit_15->setText(QApplication::translate("MainWindow", "asdasdasd", 0));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", 0));
 #ifndef QT_NO_STATUSTIP
         statusBar->setStatusTip(QApplication::translate("MainWindow", "Test", 0));

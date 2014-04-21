@@ -12,13 +12,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     pSysTrayIcon = NULL;
     SystemTrayIcon( );
+    CreateHoverForm( );
+
     pConfigurator = QConfigurator::CreateConfigurator( );
 
+    SetScrollAreaStyleSheet( );
     FillServiceColumnName( );
     CreateImageLabel( );
+    CreateInfoWidget( );
     LayoutUI( );
     FillHash( );
     FillInfoEditsArray( );
+    StartSpeechThread( );
     StartDatabaseThread( );
     StartPlateThread( );
     ConnectDatabase( );
@@ -31,6 +36,17 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::CreateHoverForm( )
+{
+    pHoverFrame = new QHoverFrame( NULL );
+    pShapedForm = new QShapedForm( this );
+
+    connect( pShapedForm, SIGNAL( ShowHoverWindow( bool ) ),
+             this, SLOT( HandleShowHoverWindow( bool ) ) );
+
+    pShapedForm->show();
+}
+
 void MainWindow::HandleActivated( QSystemTrayIcon::ActivationReason reason )
 {
    if ( QSystemTrayIcon::DoubleClick == reason && isMinimized( ) ) {
@@ -41,20 +57,40 @@ void MainWindow::HandleActivated( QSystemTrayIcon::ActivationReason reason )
 void MainWindow::SystemTrayIcon( )
 {
     if ( NULL == pSysTrayIcon ) {
-        QIcon icon( "addin.ico" );
+        QIcon icon( "./Image/TrayIcon.ico" );
         pSysTrayIcon = new QSystemTrayIcon( icon, this );
     }
 
+    bool bRet = pSysTrayIcon->isSystemTrayAvailable( );
+    bRet = pSysTrayIcon->supportsMessages( );
+
+    connect( pSysTrayIcon, SIGNAL( messageClicked( ) ),
+             this, SLOT( HandleMessageClicked( ) ) );
     connect( pSysTrayIcon, SIGNAL( activated( QSystemTrayIcon::ActivationReason ) ),
              this, SLOT( HandleActivated( QSystemTrayIcon::ActivationReason ) ) );
     pSysTrayIcon->setToolTip( "新来客户提示。" );
     pSysTrayIcon->show( );
 }
 
+void MainWindow::HandleMessageClicked( )
+{
+
+}
+
+void MainWindow::HandleShowHoverWindow( bool bVisible )
+{
+    pHoverFrame->setVisible( bVisible );
+}
+
+void MainWindow::showEvent(QShowEvent *)
+{
+
+}
+
 void MainWindow::changeEvent( QEvent *event )
 {
     if ( QEvent::WindowStateChange == event->type( ) ) {
-        isMinimized( ) ? pSysTrayIcon->show( ) : pSysTrayIcon->hide( );
+        isMinimized( ) ? pSysTrayIcon->show( ) : pSysTrayIcon->hide( ); 
     }
 }
 
@@ -65,6 +101,7 @@ bool MainWindow::Login( )
 
     lstParams << "";
     pDatabaseThread->PostQueryUserInfoEvent( lstParams );
+    //dlgLogin.setParent( this );
     bRet = QDialog::Accepted == dlgLogin.exec( );
 
     return bRet;
@@ -103,6 +140,13 @@ void MainWindow::StartPlateThread( )
 
     connect( pPlateParserThread, SIGNAL( PlateData( QString, QString, QByteArray ) ),
              this, SLOT( HandlePlateData( QString, QString, QByteArray ) ) );
+}
+
+void MainWindow::StartSpeechThread( )
+{
+    pSpeechThread = QSpeechThread::CreateInstance( );
+    connect( pSpeechThread, SIGNAL( Log( QString ) ),
+             this, SLOT( HandleLog( QString ) ) );
 }
 
 void MainWindow::StartDatabaseThread( )
@@ -152,7 +196,7 @@ void MainWindow::HandleSpResult( int nSpType, QByteArray byData )
 {
     qDebug( ) << "收到SP数据 " << QString( byData ) << endl;
     if ( ParkSolution::SpVehicleEnter == nSpType ) {
-        dataParser.ParseCustomerAllInfo( byData, hashWidget );
+        int nRet = dataParser.ParseCustomerAllInfo( byData, hashWidget );
 
         if ( isMinimized( ) ) {
             QString strText = QString( "客户%1光临\n车牌号为%2" ).arg(
@@ -160,6 +204,11 @@ void MainWindow::HandleSpResult( int nSpType, QByteArray byData )
                         ui->edtPlateID->text( ) );
             pSysTrayIcon->showMessage( "客户来访提示", strText, QSystemTrayIcon::Information, 3000 );
         }
+
+        if ( 1 == nRet || 2 == nRet ) { // 1 New 2 Old 3 DoubleClick
+            PlayWelcomeSound( );
+        }
+        //PlayWelcomeSound( );
     } else if ( ParkSolution::SpQueryUserInfo == nSpType ) {
         dlgLogin.FillUser( byData );
     }
@@ -189,13 +238,25 @@ void MainWindow::SetSmallPictureCustomerInfo(int nIndex, QString& strPlate, QStr
     pInfoEdits[ nIndex ][ 3 ]->setText( strEnterTime );
 }
 
+void MainWindow::MovePicture( )
+{
+    for ( int nIndex = 0; nIndex < 3; nIndex++ ) {
+         pInfoEdits[ nIndex ][ 0 ]->setText( pInfoEdits[ nIndex + 1 ][ 0 ]->text( ) );
+         pInfoEdits[ nIndex ][ 1 ]->setText( pInfoEdits[ nIndex + 1 ][ 1 ]->text( ) );
+         pInfoEdits[ nIndex ][ 2 ]->setText( pInfoEdits[ nIndex + 1 ][ 2 ]->text( ) );
+         pInfoEdits[ nIndex ][ 3 ]->setText( pInfoEdits[ nIndex + 1 ][ 3 ]->text( ) );
 
+         const QPixmap* pPixmap = pImageLabels[ nIndex + 1 ]->pixmap( );
+         pImageLabels[ nIndex ]->setPixmap( *pPixmap );
+    }
+}
 
 void MainWindow::HandlePlateData( QString strPlate, QString strDateTime, QByteArray byImage )
 {
     //qDebug( ) << "收到车牌识别数据 解析数据获取车牌相关的数据" << endl;
 
     static int nImageIndex = 0;
+    static bool bMovePicture = false;
 
     SetBigPictureIndex( nImageIndex );
     ClearEditText( );
@@ -204,15 +265,52 @@ void MainWindow::HandlePlateData( QString strPlate, QString strDateTime, QByteAr
     //QString strEnterTime = QDateTime::currentDateTime( ).toString( "yyyy-MM-dd HH:mm:ss" );
     QueryCustomerAllInfo( 0, strPlate, strDateTime );
 
+    if ( bMovePicture ) {
+        MovePicture( );
+    }
+
     SetSmallPicture( nImageIndex, byImage );
     SetBigPicture( nImageIndex );
 
     SetSmallPictureCustomerInfo( nImageIndex, strPlate, strDateTime );
     /////////////////
+    if ( 3 >= nImageIndex && !bMovePicture ) {
+        nImageIndex++;
+
+        if ( 4 == nImageIndex ) {
+            bMovePicture = true;
+            nImageIndex = 3;
+        }
+    }
+
+    /*
     nImageIndex++;
     if ( 4 <= nImageIndex ) {
         nImageIndex = 0;
+    }*/
+
+    CustomerComing( );
+}
+
+void MainWindow::PlayWelcomeSound( )
+{
+    QString strPlate = ui->edtPlateID->text( );
+    int nInsertIndex = 1;
+    int nPlateLen = strPlate.length( );
+
+    // 川_A12345
+    for ( int nIndex = 1; nIndex < nPlateLen; nIndex++ ) {
+        strPlate.insert( nInsertIndex, QChar( ' ' ) );
+        nInsertIndex += 2;
     }
+
+    QString strSound = QString( "客户%1光临 车牌号码%2 请客户专员%3接待" ).arg(
+                ui->edtName->text( ),
+                strPlate,
+                ui->edtAccountExecutive->text( ) );
+
+    //strSound = "客户张晓东光临 车牌号码川 A 1 2 3 4 5 请客户专员李东接待";
+    pSpeechThread->PostSpeakVoiceEvent( strSound );
 }
 
 void MainWindow::HandleSpResultset( int nSpType, QObject* pQSqlQueryModel )
@@ -232,6 +330,48 @@ void MainWindow::HandleSpResultset( int nSpType, QObject* pQSqlQueryModel )
     qDebug( ) << pModel->lastError( ).text( ) << endl;
 }
 
+void MainWindow::SetScrollAreaStyleSheet( )
+{
+    QCommonFunction::SetScrollAreaStyleSheet( ui->scrCustomer );
+    QCommonFunction::SetScrollAreaStyleSheet( ui->scrVehicle );
+}
+
+void MainWindow::HandleInfoBKResize( int nIndex, QSize bkSize )
+{
+    Q_UNUSED( bkSize );
+    QImageBKForm* pForm = pInfoBK[ nIndex ];
+    pForm->setMinimumHeight( 111 );
+    pForm->setMaximumHeight( 111 );
+}
+
+void MainWindow::HandleBKResize(int nIndex, QSize bkSize)
+{
+    int nDeltaX = 4;
+    bool bBigPicture = ( 4 == nIndex );
+    int nDeltaY = bBigPicture ? nDeltaX : 0;
+
+    QImageLabel* pLbl = pImageLabels[ nIndex ];
+
+    if ( !bBigPicture ) {
+        pLbl->setMaximumSize( bkSize );
+    }
+
+    pLbl->setGeometry( nDeltaX, nDeltaY,
+                       bkSize.width( ) - nDeltaX,
+                       bkSize.height( ) - nDeltaY );
+    //qDebug( ) << bkSize.width( ) << " " << bkSize.height( ) << endl;
+}
+
+void MainWindow::CreateInfoWidget( )
+{
+    for ( int nIndex = 0; nIndex < IMAGE_LABEL_COUNT - 1; nIndex++ ) {
+        QImageBKForm* pInfoForm = new QImageBKForm( nIndex );
+        pInfoBK[ nIndex ] = pInfoForm;
+        connect( pInfoForm, SIGNAL( BKResize( int, QSize ) ),
+                 this, SLOT( HandleInfoBKResize( int,QSize ) ) );
+    }
+}
+
 void MainWindow::CreateImageLabel( )
 {
     for ( int nIndex = 0; nIndex < IMAGE_LABEL_COUNT; nIndex++ ) {
@@ -239,6 +379,13 @@ void MainWindow::CreateImageLabel( )
         pImageLabels[ nIndex ] = pLbl;
         connect( pLbl, SIGNAL( DoubleCickEvent( QMouseEvent*, int )  ),
                  this, SLOT( OnImageLabelDoubleClick( QMouseEvent*, int ) ) );
+
+        QImageBKForm* pForm = new QImageBKForm( nIndex );
+        pImageBK[ nIndex ] = pForm;
+        connect( pForm, SIGNAL( BKResize( int, QSize ) ),
+                 this, SLOT( HandleBKResize( int,QSize ) ) );
+
+        pLbl->setParent( pForm );
     }
 }
 
@@ -307,8 +454,40 @@ void MainWindow::SetBigPictureIndex(int nIndex)
     pImageLabels[ IMAGE_LABEL_COUNT - 1 ]->setWhatsThis( QString::number( nIndex ) );
 }
 
+void MainWindow::GetComingString( QString &strText, int nIndex )
+{
+    //pInfoEdits[ 0 ][ 0 ] = ui->edtName0;
+    //pInfoEdits[ 0 ][ 1 ] = ui->edtCustomerCategory0;
+    //pInfoEdits[ 0 ][ 2 ] = ui->edtPlateID0;
+    //pInfoEdits[ 0 ][ 3 ] = ui->edtEnterTime0;
+
+    if ( pInfoEdits[ nIndex ][ 2 ]->text( ).isEmpty( ) ) {
+        return;
+    }
+
+    strText = QString( "客户%1 车牌号码%2 %3光临。" ).arg(
+                pInfoEdits[ nIndex ][ 0 ]->text( ),
+                pInfoEdits[ nIndex ][ 2 ]->text( ),
+                pInfoEdits[ nIndex ][ 3 ]->text( ) );
+}
+
+void MainWindow::CustomerComing( )
+{
+    QStringList lstMarquee;
+    QString strText;
+
+    for ( int nIndex = 0; nIndex < IMAGE_LABEL_COUNT - 1; nIndex++ ) {
+        strText = "";
+        GetComingString( strText, nIndex );
+        lstMarquee << strText;
+    }
+
+    pHoverFrame->SetMarqueeString( lstMarquee );
+}
+
 void MainWindow::OnImageLabelDoubleClick(QMouseEvent *, int nImageIndex)
 {
+    //CustomerComing( );
     qDebug( ) << Q_FUNC_INFO << nImageIndex << endl;
 
     if ( IMAGE_LABEL_COUNT - 1 == nImageIndex ) {
@@ -395,9 +574,7 @@ void MainWindow::FillHash( )
 
 void MainWindow::LayoutUI( )
 {
-    Qt::WindowStates winStates =  windowState( );
-    winStates |= Qt::WindowMaximized;
-    setWindowState( winStates );
+    setWindowState( Qt::WindowMaximized );
     ui->centralWidget->setLayout( ui->mainGridLayout );
 
     int nMainColMiniSize[ ] = { 400, 200 };
@@ -420,12 +597,18 @@ void MainWindow::LayoutUI( )
 
     ui->gridLayoutLeftPanel->setSpacing( 5 );
     ui->gridLayoutLeftPanel->setRowMinimumHeight( 0, 400 );
-    ui->gridLayoutLeftPanel->addWidget( pImageLabels[ 4 ], 0, 0, 1, 4 );
 
+    //ui->gridLayoutLeftPanel->addWidget( pImageLabels[ 4 ], 0, 0, 1, 4 );
+    ui->gridLayoutLeftPanel->addWidget( pImageBK[ 4 ], 0, 0, 1, 4 );
+/*
     for ( int nIndex = 0; nIndex< 4; nIndex++ ) {
         ui->gridLayoutLeftPanel->addWidget( pImageLabels[ nIndex ], 1, nIndex );
     }
-
+*/
+    for ( int nIndex = 0; nIndex < 4; nIndex++ ) {
+        ui->gridLayoutLeftPanel->addWidget( pImageBK[ nIndex ], 1, nIndex );
+    }
+/*
     ui->gridLayoutLeftPanel->addWidget( ui->widget0, 2, 0 );
     ui->gridLayoutLeftPanel->addWidget( ui->widget1, 2, 1 );
     ui->gridLayoutLeftPanel->addWidget( ui->widget2, 2, 2 );
@@ -435,6 +618,16 @@ void MainWindow::LayoutUI( )
     ui->widget1->setLayout( ui->formLayout1 );
     ui->widget2->setLayout( ui->formLayout2 );
     ui->widget3->setLayout( ui->formLayout3 );
+*/
+    ui->gridLayoutLeftPanel->addWidget( pInfoBK[ 0 ], 2, 0 );
+    ui->gridLayoutLeftPanel->addWidget( pInfoBK[ 1 ], 2, 1 );
+    ui->gridLayoutLeftPanel->addWidget( pInfoBK[ 2 ], 2, 2 );
+    ui->gridLayoutLeftPanel->addWidget( pInfoBK[ 3 ], 2, 3 );
+
+    pInfoBK[ 0 ]->setLayout( ui->formLayout0 );
+    pInfoBK[ 1 ]->setLayout( ui->formLayout1 );
+    pInfoBK[ 2 ]->setLayout( ui->formLayout2 );
+    pInfoBK[ 3 ]->setLayout( ui->formLayout3 );
 
     ui->gridLayoutRightPanel->addWidget( ui->lblDetail, 0, 0 );
     ui->gridLayoutRightPanel->addWidget( ui->widget4, 1, 0 );
@@ -539,7 +732,27 @@ void MainWindow::on_actionExit_triggered()
     close( );
 }
 
+void MainWindow::moveEvent( QMoveEvent * )
+{
+    QRect rec = geometry( );
+    QRect recFrame = frameGeometry( );
+    int nX = rec.x( ) + rec.width( ) - 95;
+    int nY = recFrame.y( ) + 5;
+
+    pShapedForm->move( nX, nY );
+}
+
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    QCommonFunction::SystemCloseEvent( this, event );
+    bool bRet = QCommonFunction::SystemCloseEvent( this, event );
+
+    if ( !bRet ) {
+        return;
+    }
+
+    pShapedForm->close( );
+    pShapedForm->deleteLater();
+
+    pHoverFrame->close( );
+    pHoverFrame->deleteLater( );
 }

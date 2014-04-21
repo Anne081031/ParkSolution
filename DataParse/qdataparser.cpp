@@ -346,24 +346,25 @@ void QDataParser::FillComboBox(QJsonArray &jsonArray, QWidget* pWgt )
     }
 }
 
-void QDataParser::ParseCustomerAllInfo( QByteArray& byJson, ParkSolution::QStringWidgetHash& wgtHash )
+int QDataParser::ParseCustomerAllInfo( QByteArray& byJson, ParkSolution::QStringWidgetHash& wgtHash )
 {
     QJsonParseError jsonError;
     QJsonDocument docJson = QJsonDocument::fromJson( byJson, &jsonError );
 
+    int nRet = 0;
     if ( QJsonParseError::NoError != jsonError.error ) {
         qDebug( ) << Q_FUNC_INFO << jsonError.errorString( ) << endl;
-        return;
+        return nRet;
     }
     //QJsonArray
     //QJsonObject
     //QJsonValue
 
     if ( docJson.isNull( ) || docJson.isEmpty( ) || !docJson.isObject( ) ) {
-        return;
+        return nRet;
     }
 
-    FillEdit( docJson, wgtHash );
+    return FillEdit( docJson, wgtHash );
 }
 
 void QDataParser::FillCustomerEdit( QJsonObject& jsonObject, ParkSolution::QStringWidgetHash& wgtHash )
@@ -551,41 +552,43 @@ void QDataParser::FillVehicleEdit( QJsonObject& jsonObject, ParkSolution::QStrin
     }
 }
 
-void QDataParser::FillEdit( QJsonDocument& docJson, ParkSolution::QStringWidgetHash& wgtHash )
+int QDataParser::FillEdit( QJsonDocument& docJson, ParkSolution::QStringWidgetHash& wgtHash )
 {
+    int nRet = 0;
     if ( !docJson.isObject( ) ) {
-        return;
+        return nRet;
     }
 
     QJsonObject jsonObject = docJson.object( );
     int nFlag = jsonObject.value( "Flag" ).toInt( );
     QString strMessage = jsonObject.value( "Message" ).toString( );
 
+    nRet = nFlag;
     qDebug( ) << Q_FUNC_INFO << strMessage << endl;
-    if ( 2 != nFlag ) {
-        return;
+    if ( 2 != nFlag ) { // 3 DoubleClick
+        return nRet;
     }
 
     QJsonValue jsonValue = jsonObject.value( "List" );
 
     if ( jsonValue.isNull( ) || !jsonValue.isArray( ) ) {
-        return;
+        return nRet;
     }
 
     QJsonArray jsonArray = jsonValue.toArray( );
     if ( jsonArray.isEmpty( ) ) {
-        return;
+        return nRet;
     }
 
     jsonValue = jsonArray.at( 0 );
     if ( jsonValue.isNull( ) || !jsonValue.isObject( ) ) {
-        return;
+        return nRet;
     }
 
     QJsonObject jsonListObject =jsonValue.toObject( );
     jsonValue = jsonListObject.value( "CustomerInfo" );
     if ( jsonValue.isNull( ) || !jsonValue.isObject( ) ) {
-        return;
+        return nRet;
     }
 
     jsonObject = jsonValue.toObject( );
@@ -594,21 +597,23 @@ void QDataParser::FillEdit( QJsonDocument& docJson, ParkSolution::QStringWidgetH
 
     jsonValue = jsonListObject.value( "VehicleInfo" );
     if ( jsonValue.isNull( ) || !jsonValue.isArray( ) ) {
-        return;
+        return nRet;
     }
 
     jsonArray = jsonValue.toArray( );
     if ( jsonArray.isEmpty( ) ) {
-        return;
+        return nRet;
     }
 
     jsonValue = jsonArray.at( 0 );
     if ( jsonValue.isNull( ) || !jsonValue.isObject( ) ) {
-        return;
+        return nRet;
     }
 
     jsonObject = jsonValue.toObject( );
     FillVehicleEdit( jsonObject, wgtHash );
+
+    return nRet;
 }
 
 void QDataParser::FillCustomerTable( QJsonDocument& docJson, QTableWidget* pTableWidget )

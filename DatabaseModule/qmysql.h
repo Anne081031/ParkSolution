@@ -81,6 +81,12 @@ private:
                            QString& strXmlPattern,
                            QStringList& lstParams );
 
+    void CallWriteInOutRecord( QString& strConnectName,
+                           ParkSolution::SpType eSpType,
+                           QString& strSpName,
+                           QString& strXmlPattern,
+                           QStringList& lstParams );
+
     void CallQueryServiceData( QString& strConnectName,
                                ParkSolution::SpType eSpType,
                                QString& strSpName,

@@ -7,6 +7,7 @@
 #include "qhoverframe.h"
 #include <QCloseEvent>
 #include "shapedclock.h"
+#include <QAxObject>
 
 
 namespace Ui {
@@ -32,6 +33,9 @@ private slots:
     void HandleMessageClicked( );
     void ClickMenuItem( );
     void HandleShowHoverWindow( bool bVisible );
+    void HandleException(int code, const QString & source, const QString & desc, const QString & help);
+
+    void on_pushButton_clicked();
 
 private:
     void LayoutUI( );
@@ -46,6 +50,7 @@ private:
     QSystemTrayIcon* pSysTrayIcon;
     QHoverFrame* pHoverFrame;
     ShapedClock* pShapedClock;
+    QAxObject* pAxObj;
 };
 
 #endif // MAINWINDOW_H

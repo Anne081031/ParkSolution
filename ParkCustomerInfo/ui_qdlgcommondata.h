@@ -36,9 +36,9 @@ public:
     {
         if (QDlgCommonData->objectName().isEmpty())
             QDlgCommonData->setObjectName(QStringLiteral("QDlgCommonData"));
-        QDlgCommonData->resize(342, 295);
-        QDlgCommonData->setMinimumSize(QSize(342, 295));
-        QDlgCommonData->setMaximumSize(QSize(342, 295));
+        QDlgCommonData->resize(242, 295);
+        QDlgCommonData->setMinimumSize(QSize(242, 295));
+        QDlgCommonData->setMaximumSize(QSize(242, 295));
         formLayoutWidget = new QWidget(QDlgCommonData);
         formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
         formLayoutWidget->setGeometry(QRect(10, 10, 201, 22));
@@ -57,10 +57,11 @@ public:
 
         tabCommonData = new QTableView(QDlgCommonData);
         tabCommonData->setObjectName(QStringLiteral("tabCommonData"));
-        tabCommonData->setGeometry(QRect(10, 40, 321, 241));
+        tabCommonData->setGeometry(QRect(10, 40, 221, 241));
         tabCommonData->setContextMenuPolicy(Qt::CustomContextMenu);
         tabCommonData->setSelectionMode(QAbstractItemView::SingleSelection);
         tabCommonData->setSelectionBehavior(QAbstractItemView::SelectRows);
+        tabCommonData->verticalHeader()->setVisible(false);
 
         retranslateUi(QDlgCommonData);
 

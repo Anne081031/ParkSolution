@@ -28,10 +28,10 @@
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>51</width>
-     <height>41</height>
+     <x>60</x>
+     <y>0</y>
+     <width>21</width>
+     <height>21</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="mainGridLayout"/>
@@ -39,9 +39,9 @@
   <widget class="QWidget" name="formLayoutWidget_11">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>270</y>
-     <width>160</width>
+     <x>10</x>
+     <y>240</y>
+     <width>261</width>
      <height>161</height>
     </rect>
    </property>
@@ -59,7 +59,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="edtPlateID">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -76,7 +76,7 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="edtMotorID">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -93,7 +93,7 @@
     <item row="2" column="1">
      <widget class="QLineEdit" name="edtBrand">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -110,7 +110,7 @@
     <item row="3" column="1">
      <widget class="QLineEdit" name="edtSeries">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -127,7 +127,7 @@
     <item row="4" column="1">
      <widget class="QLineEdit" name="edtBuyDate">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -144,7 +144,7 @@
     <item row="5" column="1">
      <widget class="QLineEdit" name="edtOdometer">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -156,9 +156,9 @@
   <widget class="QWidget" name="formLayoutWidget_9">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>90</y>
-     <width>160</width>
+     <x>286</x>
+     <y>50</y>
+     <width>261</width>
      <height>161</height>
     </rect>
    </property>
@@ -176,7 +176,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="edtMobilePhone">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -193,7 +193,7 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="edtLandline">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -210,7 +210,7 @@
     <item row="2" column="1">
      <widget class="QLineEdit" name="edtEMail">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -227,7 +227,7 @@
     <item row="3" column="1">
      <widget class="QLineEdit" name="edtAddress">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -244,7 +244,7 @@
     <item row="4" column="1">
      <widget class="QLineEdit" name="edtDistrict">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -261,7 +261,7 @@
     <item row="5" column="1">
      <widget class="QLineEdit" name="edtCredentialsID">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -273,9 +273,9 @@
   <widget class="QWidget" name="formLayoutWidget_12">
    <property name="geometry">
     <rect>
-     <x>520</x>
-     <y>270</y>
-     <width>160</width>
+     <x>285</x>
+     <y>240</y>
+     <width>261</width>
      <height>161</height>
     </rect>
    </property>
@@ -293,7 +293,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="edtColor">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -310,7 +310,7 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="edtAannualSurveyDate">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -327,7 +327,7 @@
     <item row="2" column="1">
      <widget class="QLineEdit" name="edtCommercialInsuranceExpiration">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -344,7 +344,7 @@
     <item row="3" column="1">
      <widget class="QLineEdit" name="edtMandatoryInsuranceExpiration">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -361,7 +361,7 @@
     <item row="4" column="1">
      <widget class="QLineEdit" name="edtVistCount">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -378,7 +378,7 @@
     <item row="5" column="1">
      <widget class="QLineEdit" name="edtInsurer">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -390,9 +390,9 @@
   <widget class="QWidget" name="formLayoutWidget_8">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>90</y>
-     <width>160</width>
+     <x>10</x>
+     <y>50</y>
+     <width>261</width>
      <height>161</height>
     </rect>
    </property>
@@ -410,7 +410,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="edtCustomerID">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -427,7 +427,7 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="edtName">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -444,7 +444,7 @@
     <item row="2" column="1">
      <widget class="QLineEdit" name="edtCustomerCategory">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -461,7 +461,7 @@
     <item row="3" column="1">
      <widget class="QLineEdit" name="edtDepartment">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -478,7 +478,7 @@
     <item row="4" column="1">
      <widget class="QLineEdit" name="edtAccountExecutive">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -495,7 +495,7 @@
     <item row="5" column="1">
      <widget class="QLineEdit" name="edtCustomerSource">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -507,9 +507,9 @@
   <widget class="QWidget" name="formLayoutWidget_10">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>90</y>
-     <width>160</width>
+     <x>560</x>
+     <y>50</y>
+     <width>310</width>
      <height>161</height>
     </rect>
    </property>
@@ -527,7 +527,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="edtVistFirstTime">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -544,7 +544,7 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="edtEntryTime">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -561,7 +561,7 @@
     <item row="2" column="1">
      <widget class="QLineEdit" name="edtVistNewlyTime">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -578,7 +578,7 @@
     <item row="3" column="1">
      <widget class="QLineEdit" name="edtMembershipClass">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -595,7 +595,7 @@
     <item row="4" column="1">
      <widget class="QLineEdit" name="edtMembershipCardSurplus">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -612,7 +612,7 @@
     <item row="5" column="1">
      <widget class="QLineEdit" name="edtConsumptionAmount">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -624,9 +624,9 @@
   <widget class="QWidget" name="formLayoutWidget_13">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>270</y>
-     <width>160</width>
+     <x>560</x>
+     <y>240</y>
+     <width>310</width>
      <height>161</height>
     </rect>
    </property>
@@ -644,7 +644,7 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="edtFeature">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -661,7 +661,7 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="edtMaintenanceFirstDate">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -678,7 +678,7 @@
     <item row="2" column="1">
      <widget class="QLineEdit" name="edtMaintenanceNextDate">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -695,7 +695,7 @@
     <item row="3" column="1">
      <widget class="QLineEdit" name="edtState">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 192, 192);</string>
+       <string notr="true">background-color: rgb(229, 229, 229);</string>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -707,10 +707,10 @@
   <widget class="QWidget" name="formLayoutWidget_6">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>70</y>
-     <width>160</width>
-     <height>21</height>
+     <x>10</x>
+     <y>220</y>
+     <width>860</width>
+     <height>16</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout2">
@@ -733,10 +733,10 @@
   <widget class="QWidget" name="formLayoutWidget_7">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>100</y>
-     <width>160</width>
-     <height>21</height>
+     <x>10</x>
+     <y>410</y>
+     <width>860</width>
+     <height>16</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout3">
@@ -759,10 +759,10 @@
   <widget class="QWidget" name="formLayoutWidget_5">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>40</y>
-     <width>160</width>
-     <height>21</height>
+     <x>10</x>
+     <y>30</y>
+     <width>861</width>
+     <height>16</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout1">
@@ -875,8 +875,8 @@
   <widget class="QLabel" name="lblDetail">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>20</y>
+     <x>413</x>
+     <y>10</y>
      <width>54</width>
      <height>12</height>
     </rect>
@@ -916,8 +916,8 @@
     <rect>
      <x>50</x>
      <y>550</y>
-     <width>160</width>
-     <height>31</height>
+     <width>21</width>
+     <height>16</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout"/>
@@ -938,10 +938,10 @@
   <widget class="QTableView" name="tabServiceRecord">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>260</y>
-     <width>256</width>
-     <height>192</height>
+     <x>10</x>
+     <y>430</y>
+     <width>860</width>
+     <height>180</height>
     </rect>
    </property>
    <property name="selectionMode">
@@ -956,6 +956,9 @@
    <property name="sortingEnabled">
     <bool>false</bool>
    </property>
+   <attribute name="verticalHeaderVisible">
+    <bool>false</bool>
+   </attribute>
   </widget>
  </widget>
  <tabstops>

@@ -14,14 +14,14 @@ class DATAPARSESHARED_EXPORT QDataParser : public QObject
     Q_OBJECT
 public:
     explicit QDataParser(QObject *parent = 0);
-    void ParseCustomerAllInfo( QByteArray& byJson, ParkSolution::QStringWidgetHash& wgtHash );
+    int  ParseCustomerAllInfo( QByteArray& byJson, ParkSolution::QStringWidgetHash& wgtHash );
     void ParseCommonDataInfo( QByteArray& byJson, ParkSolution::QStringWidgetHash& wgtHash );
     bool ImportData( QString& strFile, QStringList& lstCustomerData );
     bool ExportData( QString& strDir, QSqlQueryModel* pModel );
 
 private:
     void FillComboBox(QJsonArray &jsonArray, QWidget* pWgt );
-    void FillEdit( QJsonDocument& docJson, ParkSolution::QStringWidgetHash& wgtHash );
+    int FillEdit( QJsonDocument& docJson, ParkSolution::QStringWidgetHash& wgtHash );
     void FillCustomerEdit( QJsonObject& jsonObject, ParkSolution::QStringWidgetHash& wgtHash );
     void FillVehicleEdit( QJsonObject& jsonObject, ParkSolution::QStringWidgetHash& wgtHash );
     void FillCustomerTable( QJsonDocument& docJson, QTableWidget* pTableWidget );

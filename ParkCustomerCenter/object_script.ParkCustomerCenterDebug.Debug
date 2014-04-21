@@ -9,6 +9,9 @@ INPUT(
 ./debug\qplatethread.o
 ./debug\qplateparserthread.o
 ./debug\qplateevent.o
+./debug\qimagebkform.o
+./debug\qspeechthread.o
+./debug\qspeechevent.o
 ./debug\moc_mainwindow.o
 ./debug\moc_qbasezmqthread.o
 ./debug\moc_qdbzmqthread.o
@@ -16,4 +19,6 @@ INPUT(
 ./debug\moc_qimagelabel.o
 ./debug\moc_qplatethread.o
 ./debug\moc_qplateparserthread.o
+./debug\moc_qimagebkform.o
+./debug\moc_qspeechthread.o
 );

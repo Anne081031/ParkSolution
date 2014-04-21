@@ -1,0 +1,15 @@
+INPUT(
+./debug\qbasethread.o
+./debug\qcommonfunction.o
+./debug\qdlglogin.o
+./debug\qshapedform.o
+./debug\qhoverframe.o
+./debug\qserializeevent.o
+./debug\qserializethread.o
+./debug\moc_qbasethread.o
+./debug\moc_qcommonfunction.o
+./debug\moc_qdlglogin.o
+./debug\moc_qshapedform.o
+./debug\moc_qhoverframe.o
+./debug\moc_qserializethread.o
+);

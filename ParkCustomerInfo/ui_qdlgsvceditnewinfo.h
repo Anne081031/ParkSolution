@@ -17,7 +17,6 @@
 #include <QtWidgets/QDateTimeEdit>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFormLayout>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -61,11 +60,9 @@ public:
     QLineEdit *edtServiceConsumptionAmount;
     QComboBox *cbxServiceDepartment;
     QComboBox *cbxMaintanceman;
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *btnNext;
     QPushButton *btnOK;
     QPushButton *btnCancel;
+    QPushButton *btnNext;
 
     void setupUi(QDialog *QDlgSvcEditNewInfo)
     {
@@ -107,14 +104,14 @@ public:
 
         edtServiceID = new QLineEdit(formLayoutWidget);
         edtServiceID->setObjectName(QStringLiteral("edtServiceID"));
-        edtServiceID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtServiceID->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtServiceID->setReadOnly(true);
 
         formLayout1->setWidget(0, QFormLayout::FieldRole, edtServiceID);
 
         edtPlateID = new QLineEdit(formLayoutWidget);
         edtPlateID->setObjectName(QStringLiteral("edtPlateID"));
-        edtPlateID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtPlateID->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtPlateID->setReadOnly(true);
 
         formLayout1->setWidget(1, QFormLayout::FieldRole, edtPlateID);
@@ -230,27 +227,15 @@ public:
 
         formLayout3->setWidget(1, QFormLayout::FieldRole, cbxMaintanceman);
 
-        layoutWidget = new QWidget(QDlgSvcEditNewInfo);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(454, 156, 239, 25));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        btnNext = new QPushButton(layoutWidget);
-        btnNext->setObjectName(QStringLiteral("btnNext"));
-
-        horizontalLayout->addWidget(btnNext);
-
-        btnOK = new QPushButton(layoutWidget);
+        btnOK = new QPushButton(QDlgSvcEditNewInfo);
         btnOK->setObjectName(QStringLiteral("btnOK"));
-
-        horizontalLayout->addWidget(btnOK);
-
-        btnCancel = new QPushButton(layoutWidget);
+        btnOK->setGeometry(QRect(536, 157, 75, 23));
+        btnCancel = new QPushButton(QDlgSvcEditNewInfo);
         btnCancel->setObjectName(QStringLiteral("btnCancel"));
-
-        horizontalLayout->addWidget(btnCancel);
-
+        btnCancel->setGeometry(QRect(617, 157, 75, 23));
+        btnNext = new QPushButton(QDlgSvcEditNewInfo);
+        btnNext->setObjectName(QStringLiteral("btnNext"));
+        btnNext->setGeometry(QRect(455, 157, 75, 23));
 
         retranslateUi(QDlgSvcEditNewInfo);
 
@@ -279,9 +264,9 @@ public:
         label_11->setText(QApplication::translate("QDlgSvcEditNewInfo", "\347\273\264\344\277\256\351\203\250\351\227\250", 0));
         label_12->setText(QApplication::translate("QDlgSvcEditNewInfo", "\347\273\264\344\277\256\344\272\272\345\221\230", 0));
         label_13->setText(QApplication::translate("QDlgSvcEditNewInfo", "\346\266\210\350\264\271\351\207\221\351\242\235", 0));
-        btnNext->setText(QApplication::translate("QDlgSvcEditNewInfo", "\344\270\213\344\270\200\346\235\241", 0));
         btnOK->setText(QApplication::translate("QDlgSvcEditNewInfo", "\344\277\235\345\255\230", 0));
         btnCancel->setText(QApplication::translate("QDlgSvcEditNewInfo", "\345\205\263\351\227\255", 0));
+        btnNext->setText(QApplication::translate("QDlgSvcEditNewInfo", "\344\270\213\344\270\200\346\235\241", 0));
     } // retranslateUi
 
 };

@@ -7,7 +7,7 @@ QMySQL::QMySQL(QObject *parent) :
 
 void QMySQL::EmitLog( QString strTip, QString strError )
 {
-    strTip = "\n" + strError;
+    strTip = " " + strError;
     emit Log( strTip );
 }
 
@@ -38,7 +38,7 @@ void QMySQL::DebugMsg( ParkSolution::SpType eSpType, QSqlQuery &query )
     }
 
     EmitLog( strText, sqlError.text( ) );
-    qDebug ( ) << sqlError.text( ) << endl;
+    //qDebug ( ) << sqlError.text( ) << endl;
 }
 
 bool QMySQL::DbConnect( QString& strConnectName, ParkSolution::QStringHash& hashConnParams )
@@ -133,7 +133,7 @@ void QMySQL::ExecuteSP( QString& strConnectName,
                         ParkSolution::SpType eSpType,
                         QString& strSQL )
 {
-    qDebug( ) << strSQL << endl;
+    //qDebug( ) << strSQL << endl;
 
     QSqlQuery spQuery( QSqlDatabase::database( strConnectName ) );
     bool bRet = spQuery.exec( strSQL );
@@ -165,6 +165,7 @@ void QMySQL::ExecuteSP( QString& strConnectName,
                         QSqlQueryModel* pQueryModel)
 {
     qDebug( ) << strSQL << endl;
+
     if ( NULL == pQueryModel ) {
         return;
     }
@@ -415,6 +416,25 @@ void QMySQL::CallQueryUserInfo( QString& strConnectName,
     ExecuteSP( strConnectName, eSpType, strSQL );
 }
 
+void QMySQL::CallWriteInOutRecord( QString& strConnectName,
+                               ParkSolution::SpType eSpType,
+                               QString& strSpName,
+                               QString& strXmlPattern,
+                               QStringList& lstParams )
+{
+    if ( 5 > lstParams.count( ) ) {
+        return;
+    }
+
+    strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ),
+                                       lstParams.at( 1 ),
+                                       lstParams.at( 2 ),
+                                       lstParams.at( 3 ),
+                                       lstParams.at( 4 ) );
+    QString strSQL = QString( "Call %1( '%2', @txtValue )" ).arg( strSpName, strXmlPattern );
+    ExecuteSP( strConnectName, eSpType, strSQL );
+}
+
 void QMySQL::CallQueryInOutImage( QString& strConnectName,
                                ParkSolution::SpType eSpType,
                                QString& strSpName,
@@ -463,6 +483,8 @@ void QMySQL::CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStr
         CallChangeCommonData( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
     } else if ( ParkSolution::SpChangeCommonDataDelete == eSpType ) {
         CallChangeCommonData( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
+    } else if ( ParkSolution::SpWriteInOutRecord == eSpType ) {
+        CallWriteInOutRecord( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
     }
 }
 

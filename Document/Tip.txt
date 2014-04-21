@@ -1,0 +1,33 @@
+QUrl QCryptographicHash
+
+UCS-2 UCS-4 Unicode UTF-7 8 16 32
+URI( URL URN )
+百分号编码(Percent-encoding), 也称作URL编码(URL encoding), 是特定上下文的统一资源定位符 (URL)的编码机制. 实际上也适用于统一资源标志符(URI)的编码
+特殊ASCII字符表示为%两位十六进制字符 "/"===>"%2F"或"%2f" 对于非ASCII字符, 需要转换为UTF-8字节序, 然后每个字节按照上述方式表示
+
+Base64是一种基于64个可打印字符来表示二进制数据的表示方法。数据不足3byte的话，于缓冲区中剩下的bit用0补足 不了几个字节在最后的BASE64编码后的之后加几个=
+每3字节为一组 每字节的二进制码排成24位， 然后再每6位为一组转换为表索引，索引出字符
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
+0--------------------------------------------------------------63
+
+文本	        M	 a	  n
+ASCII编码	77	 97	  110
+二进制位	01001101 01100001 01101110
+索引	       19	22	5	46
+Base64编码	T	W	F	u
+
+
+Oralce p29
+Java p56
+
+
+DirectUI / SPI( Single Page Interface )
+DirectUIHWND ，意为Paint on parent dc directly。即子窗口不以窗口句柄的形式创建，只是逻辑上的窗口，绘制在父窗口之上。
+
+http://visjs.org/ 动态的基于浏览器的可视化库
+
+Offscreen 离屏模式 在后台内存区，先把要显示的画面弄好(比如画面的叠加，修改等)，再一次性传到前台缓冲区(屏幕 OSD)，实时性差，耗CPU
+Overlay 叠加模式(覆盖) 把要叠加的缓冲区都交给相应的硬件来完成(比如显卡 GPU),实时性好，少耗CPU (电视上的台标 下方的跑马灯等)
+PIP Picture In Picture
+
+Surface Canvas Scene DC GC

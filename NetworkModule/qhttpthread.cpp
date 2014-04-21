@@ -4,8 +4,29 @@
 QHttpThread* QHttpThread::pThreadInstance = NULL;
 
 QHttpThread::QHttpThread(QObject *parent) :
-    QThread(parent)
+    QBaseThread( "QHttpThread", parent )
 {
+    pNetworkAccessManager = NULL;
+}
+
+bool QHttpThread::ThreadInitialize( )
+{
+    bool bRet = QBaseThread::ThreadInitialize( );
+
+    pConfigurator = QConfigurator::CreateConfigurator( );
+    pConfigurator->GetHttpHost( strHttpHost );
+    pConfigurator->GetHttpHostPort( nHttpHostPort );
+
+    pNetworkAccessManager = new QNetworkAccessManager( this );
+
+    return bRet;
+}
+
+void QHttpThread::ThreadUninitialize( )
+{
+    if ( NULL != pNetworkAccessManager ) {
+        delete pNetworkAccessManager;
+    }
 }
 
 QHttpThread* QHttpThread::CreateInstance( )
@@ -21,6 +42,7 @@ QHttpThread* QHttpThread::CreateInstance( )
 
 void QHttpThread::run( )
 {
+    ThreadInitialize( );
     exec( );
 }
 
@@ -39,9 +61,4 @@ void QHttpThread::customEvent( QEvent *pEvent )
 void QHttpThread::ProcessGetInOutImageEvent( QHttpEvent *pEvent )
 {
     QStringList& lstParams = pEvent->GetListEventParams( );
-}
-
-void QHttpThread::PostEvent(QHttpEvent *pEvent)
-{
-    qApp->postEvent( this, ( QEvent* ) pEvent);
 }

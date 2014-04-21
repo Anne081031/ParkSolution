@@ -217,7 +217,9 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         widget2 = new QWidget(centralWidget);
         widget2->setObjectName(QStringLiteral("widget2"));
-        widget2->setGeometry(QRect(200, 40, 181, 121));
+        widget2->setGeometry(QRect(200, 40, 181, 111));
+        widget2->setMinimumSize(QSize(0, 111));
+        widget2->setMaximumSize(QSize(16777215, 111));
         formLayoutWidget_3 = new QWidget(widget2);
         formLayoutWidget_3->setObjectName(QStringLiteral("formLayoutWidget_3"));
         formLayoutWidget_3->setGeometry(QRect(10, 10, 160, 101));
@@ -248,28 +250,28 @@ public:
 
         edtName2 = new QLineEdit(formLayoutWidget_3);
         edtName2->setObjectName(QStringLiteral("edtName2"));
-        edtName2->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtName2->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtName2->setReadOnly(true);
 
         formLayout2->setWidget(0, QFormLayout::FieldRole, edtName2);
 
         edtPlateID2 = new QLineEdit(formLayoutWidget_3);
         edtPlateID2->setObjectName(QStringLiteral("edtPlateID2"));
-        edtPlateID2->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtPlateID2->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtPlateID2->setReadOnly(true);
 
         formLayout2->setWidget(2, QFormLayout::FieldRole, edtPlateID2);
 
         edtEnterTime2 = new QLineEdit(formLayoutWidget_3);
         edtEnterTime2->setObjectName(QStringLiteral("edtEnterTime2"));
-        edtEnterTime2->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtEnterTime2->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtEnterTime2->setReadOnly(true);
 
         formLayout2->setWidget(3, QFormLayout::FieldRole, edtEnterTime2);
 
         edtCustomerCategory2 = new QLineEdit(formLayoutWidget_3);
         edtCustomerCategory2->setObjectName(QStringLiteral("edtCustomerCategory2"));
-        edtCustomerCategory2->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCustomerCategory2->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCustomerCategory2->setReadOnly(true);
 
         formLayout2->setWidget(1, QFormLayout::FieldRole, edtCustomerCategory2);
@@ -285,6 +287,8 @@ public:
         widget3 = new QWidget(centralWidget);
         widget3->setObjectName(QStringLiteral("widget3"));
         widget3->setGeometry(QRect(200, 180, 181, 111));
+        widget3->setMinimumSize(QSize(0, 111));
+        widget3->setMaximumSize(QSize(16777215, 111));
         formLayoutWidget_4 = new QWidget(widget3);
         formLayoutWidget_4->setObjectName(QStringLiteral("formLayoutWidget_4"));
         formLayoutWidget_4->setGeometry(QRect(10, 0, 160, 101));
@@ -315,35 +319,37 @@ public:
 
         edtName3 = new QLineEdit(formLayoutWidget_4);
         edtName3->setObjectName(QStringLiteral("edtName3"));
-        edtName3->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtName3->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtName3->setReadOnly(true);
 
         formLayout3->setWidget(0, QFormLayout::FieldRole, edtName3);
 
         edtCustomerCategory3 = new QLineEdit(formLayoutWidget_4);
         edtCustomerCategory3->setObjectName(QStringLiteral("edtCustomerCategory3"));
-        edtCustomerCategory3->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCustomerCategory3->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCustomerCategory3->setReadOnly(true);
 
         formLayout3->setWidget(1, QFormLayout::FieldRole, edtCustomerCategory3);
 
         edtPlateID3 = new QLineEdit(formLayoutWidget_4);
         edtPlateID3->setObjectName(QStringLiteral("edtPlateID3"));
-        edtPlateID3->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtPlateID3->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtPlateID3->setReadOnly(true);
 
         formLayout3->setWidget(2, QFormLayout::FieldRole, edtPlateID3);
 
         edtEnterTime3 = new QLineEdit(formLayoutWidget_4);
         edtEnterTime3->setObjectName(QStringLiteral("edtEnterTime3"));
-        edtEnterTime3->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtEnterTime3->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtEnterTime3->setReadOnly(true);
 
         formLayout3->setWidget(3, QFormLayout::FieldRole, edtEnterTime3);
 
         widget0 = new QWidget(centralWidget);
         widget0->setObjectName(QStringLiteral("widget0"));
-        widget0->setGeometry(QRect(10, 40, 181, 121));
+        widget0->setGeometry(QRect(10, 40, 181, 111));
+        widget0->setMinimumSize(QSize(0, 111));
+        widget0->setMaximumSize(QSize(16777215, 111));
         formLayoutWidget = new QWidget(widget0);
         formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
         formLayoutWidget->setGeometry(QRect(10, 10, 160, 101));
@@ -374,28 +380,28 @@ public:
 
         edtName0 = new QLineEdit(formLayoutWidget);
         edtName0->setObjectName(QStringLiteral("edtName0"));
-        edtName0->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtName0->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtName0->setReadOnly(true);
 
         formLayout0->setWidget(0, QFormLayout::FieldRole, edtName0);
 
         edtCustomerCategory0 = new QLineEdit(formLayoutWidget);
         edtCustomerCategory0->setObjectName(QStringLiteral("edtCustomerCategory0"));
-        edtCustomerCategory0->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCustomerCategory0->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCustomerCategory0->setReadOnly(true);
 
         formLayout0->setWidget(1, QFormLayout::FieldRole, edtCustomerCategory0);
 
         edtPlateID0 = new QLineEdit(formLayoutWidget);
         edtPlateID0->setObjectName(QStringLiteral("edtPlateID0"));
-        edtPlateID0->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtPlateID0->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtPlateID0->setReadOnly(true);
 
         formLayout0->setWidget(2, QFormLayout::FieldRole, edtPlateID0);
 
         edtEnterTime0 = new QLineEdit(formLayoutWidget);
         edtEnterTime0->setObjectName(QStringLiteral("edtEnterTime0"));
-        edtEnterTime0->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtEnterTime0->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtEnterTime0->setReadOnly(true);
 
         formLayout0->setWidget(3, QFormLayout::FieldRole, edtEnterTime0);
@@ -411,6 +417,8 @@ public:
         widget1 = new QWidget(centralWidget);
         widget1->setObjectName(QStringLiteral("widget1"));
         widget1->setGeometry(QRect(10, 180, 181, 111));
+        widget1->setMinimumSize(QSize(0, 111));
+        widget1->setMaximumSize(QSize(16777215, 111));
         formLayoutWidget_2 = new QWidget(widget1);
         formLayoutWidget_2->setObjectName(QStringLiteral("formLayoutWidget_2"));
         formLayoutWidget_2->setGeometry(QRect(10, 0, 160, 101));
@@ -441,28 +449,28 @@ public:
 
         edtName1 = new QLineEdit(formLayoutWidget_2);
         edtName1->setObjectName(QStringLiteral("edtName1"));
-        edtName1->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtName1->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtName1->setReadOnly(true);
 
         formLayout1->setWidget(0, QFormLayout::FieldRole, edtName1);
 
         edtCustomerCategory1 = new QLineEdit(formLayoutWidget_2);
         edtCustomerCategory1->setObjectName(QStringLiteral("edtCustomerCategory1"));
-        edtCustomerCategory1->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCustomerCategory1->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCustomerCategory1->setReadOnly(true);
 
         formLayout1->setWidget(1, QFormLayout::FieldRole, edtCustomerCategory1);
 
         edtPlateID1 = new QLineEdit(formLayoutWidget_2);
         edtPlateID1->setObjectName(QStringLiteral("edtPlateID1"));
-        edtPlateID1->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtPlateID1->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtPlateID1->setReadOnly(true);
 
         formLayout1->setWidget(2, QFormLayout::FieldRole, edtPlateID1);
 
         edtEnterTime1 = new QLineEdit(formLayoutWidget_2);
         edtEnterTime1->setObjectName(QStringLiteral("edtEnterTime1"));
-        edtEnterTime1->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtEnterTime1->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtEnterTime1->setReadOnly(true);
 
         formLayout1->setWidget(3, QFormLayout::FieldRole, edtEnterTime1);
@@ -490,14 +498,15 @@ public:
         gridLayoutRightPanel->setContentsMargins(0, 0, 0, 0);
         lblDetail = new QLabel(centralWidget);
         lblDetail->setObjectName(QStringLiteral("lblDetail"));
-        lblDetail->setGeometry(QRect(220, 10, 54, 12));
+        lblDetail->setGeometry(QRect(220, 10, 54, 30));
+        lblDetail->setMinimumSize(QSize(0, 30));
         lblDetail->setAlignment(Qt::AlignCenter);
         widget4 = new QWidget(centralWidget);
         widget4->setObjectName(QStringLiteral("widget4"));
         widget4->setGeometry(QRect(420, 10, 221, 41));
         formLayoutWidget_5 = new QWidget(widget4);
         formLayoutWidget_5->setObjectName(QStringLiteral("formLayoutWidget_5"));
-        formLayoutWidget_5->setGeometry(QRect(10, 10, 160, 21));
+        formLayoutWidget_5->setGeometry(QRect(10, 10, 160, 32));
         formLayout4 = new QFormLayout(formLayoutWidget_5);
         formLayout4->setSpacing(6);
         formLayout4->setContentsMargins(11, 11, 11, 11);
@@ -505,6 +514,8 @@ public:
         formLayout4->setContentsMargins(0, 0, 0, 0);
         lblCustomerBasic = new QLabel(formLayoutWidget_5);
         lblCustomerBasic->setObjectName(QStringLiteral("lblCustomerBasic"));
+        lblCustomerBasic->setMinimumSize(QSize(0, 15));
+        lblCustomerBasic->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
         formLayout4->setWidget(0, QFormLayout::LabelRole, lblCustomerBasic);
 
@@ -520,7 +531,7 @@ public:
         widget5->setGeometry(QRect(420, 60, 221, 41));
         formLayoutWidget_6 = new QWidget(widget5);
         formLayoutWidget_6->setObjectName(QStringLiteral("formLayoutWidget_6"));
-        formLayoutWidget_6->setGeometry(QRect(10, 10, 160, 21));
+        formLayoutWidget_6->setGeometry(QRect(10, 10, 160, 32));
         formLayout5 = new QFormLayout(formLayoutWidget_6);
         formLayout5->setSpacing(6);
         formLayout5->setContentsMargins(11, 11, 11, 11);
@@ -528,6 +539,8 @@ public:
         formLayout5->setContentsMargins(0, 0, 0, 0);
         lblVehicleBasic = new QLabel(formLayoutWidget_6);
         lblVehicleBasic->setObjectName(QStringLiteral("lblVehicleBasic"));
+        lblVehicleBasic->setMinimumSize(QSize(0, 15));
+        lblVehicleBasic->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
         formLayout5->setWidget(0, QFormLayout::LabelRole, lblVehicleBasic);
 
@@ -543,7 +556,7 @@ public:
         widget6->setGeometry(QRect(420, 110, 221, 41));
         formLayoutWidget_7 = new QWidget(widget6);
         formLayoutWidget_7->setObjectName(QStringLiteral("formLayoutWidget_7"));
-        formLayoutWidget_7->setGeometry(QRect(10, 10, 160, 21));
+        formLayoutWidget_7->setGeometry(QRect(10, 10, 160, 32));
         formLayout6 = new QFormLayout(formLayoutWidget_7);
         formLayout6->setSpacing(6);
         formLayout6->setContentsMargins(11, 11, 11, 11);
@@ -551,6 +564,8 @@ public:
         formLayout6->setContentsMargins(0, 0, 0, 0);
         lblServiceRecord = new QLabel(formLayoutWidget_7);
         lblServiceRecord->setObjectName(QStringLiteral("lblServiceRecord"));
+        lblServiceRecord->setMinimumSize(QSize(0, 15));
+        lblServiceRecord->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
         formLayout6->setWidget(0, QFormLayout::LabelRole, lblServiceRecord);
 
@@ -595,7 +610,6 @@ public:
 
         edtCustomerID = new QLineEdit(formLayoutWidget_8);
         edtCustomerID->setObjectName(QStringLiteral("edtCustomerID"));
-        edtCustomerID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
         edtCustomerID->setReadOnly(true);
 
         formLayout7->setWidget(0, QFormLayout::FieldRole, edtCustomerID);
@@ -607,7 +621,8 @@ public:
 
         edtName = new QLineEdit(formLayoutWidget_8);
         edtName->setObjectName(QStringLiteral("edtName"));
-        edtName->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtName->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtName->setReadOnly(true);
 
         formLayout7->setWidget(1, QFormLayout::FieldRole, edtName);
@@ -619,7 +634,8 @@ public:
 
         edtCustomerCategory = new QLineEdit(formLayoutWidget_8);
         edtCustomerCategory->setObjectName(QStringLiteral("edtCustomerCategory"));
-        edtCustomerCategory->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCustomerCategory->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtCustomerCategory->setReadOnly(true);
 
         formLayout7->setWidget(2, QFormLayout::FieldRole, edtCustomerCategory);
@@ -631,7 +647,8 @@ public:
 
         edtDepartment = new QLineEdit(formLayoutWidget_8);
         edtDepartment->setObjectName(QStringLiteral("edtDepartment"));
-        edtDepartment->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtDepartment->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtDepartment->setReadOnly(true);
 
         formLayout7->setWidget(3, QFormLayout::FieldRole, edtDepartment);
@@ -643,7 +660,8 @@ public:
 
         edtAccountExecutive = new QLineEdit(formLayoutWidget_8);
         edtAccountExecutive->setObjectName(QStringLiteral("edtAccountExecutive"));
-        edtAccountExecutive->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtAccountExecutive->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtAccountExecutive->setReadOnly(true);
 
         formLayout7->setWidget(4, QFormLayout::FieldRole, edtAccountExecutive);
@@ -655,7 +673,8 @@ public:
 
         edtCustomerSource = new QLineEdit(formLayoutWidget_8);
         edtCustomerSource->setObjectName(QStringLiteral("edtCustomerSource"));
-        edtCustomerSource->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCustomerSource->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtCustomerSource->setReadOnly(true);
 
         formLayout7->setWidget(5, QFormLayout::FieldRole, edtCustomerSource);
@@ -679,7 +698,8 @@ public:
 
         edtMobilePhone = new QLineEdit(formLayoutWidget_9);
         edtMobilePhone->setObjectName(QStringLiteral("edtMobilePhone"));
-        edtMobilePhone->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMobilePhone->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtMobilePhone->setReadOnly(true);
 
         formLayout8->setWidget(0, QFormLayout::FieldRole, edtMobilePhone);
@@ -691,7 +711,8 @@ public:
 
         edtLandline = new QLineEdit(formLayoutWidget_9);
         edtLandline->setObjectName(QStringLiteral("edtLandline"));
-        edtLandline->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtLandline->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtLandline->setReadOnly(true);
 
         formLayout8->setWidget(1, QFormLayout::FieldRole, edtLandline);
@@ -703,7 +724,8 @@ public:
 
         edtEMail = new QLineEdit(formLayoutWidget_9);
         edtEMail->setObjectName(QStringLiteral("edtEMail"));
-        edtEMail->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtEMail->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtEMail->setReadOnly(true);
 
         formLayout8->setWidget(2, QFormLayout::FieldRole, edtEMail);
@@ -715,7 +737,8 @@ public:
 
         edtAddress = new QLineEdit(formLayoutWidget_9);
         edtAddress->setObjectName(QStringLiteral("edtAddress"));
-        edtAddress->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtAddress->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtAddress->setReadOnly(true);
 
         formLayout8->setWidget(3, QFormLayout::FieldRole, edtAddress);
@@ -727,7 +750,8 @@ public:
 
         edtDistrict = new QLineEdit(formLayoutWidget_9);
         edtDistrict->setObjectName(QStringLiteral("edtDistrict"));
-        edtDistrict->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtDistrict->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtDistrict->setReadOnly(true);
 
         formLayout8->setWidget(4, QFormLayout::FieldRole, edtDistrict);
@@ -739,7 +763,8 @@ public:
 
         edtCredentialsID = new QLineEdit(formLayoutWidget_9);
         edtCredentialsID->setObjectName(QStringLiteral("edtCredentialsID"));
-        edtCredentialsID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCredentialsID->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtCredentialsID->setReadOnly(true);
 
         formLayout8->setWidget(5, QFormLayout::FieldRole, edtCredentialsID);
@@ -763,7 +788,8 @@ public:
 
         edtVistFirstTime = new QLineEdit(formLayoutWidget_10);
         edtVistFirstTime->setObjectName(QStringLiteral("edtVistFirstTime"));
-        edtVistFirstTime->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtVistFirstTime->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtVistFirstTime->setReadOnly(true);
 
         formLayout9->setWidget(0, QFormLayout::FieldRole, edtVistFirstTime);
@@ -775,7 +801,8 @@ public:
 
         edtEntryTime = new QLineEdit(formLayoutWidget_10);
         edtEntryTime->setObjectName(QStringLiteral("edtEntryTime"));
-        edtEntryTime->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtEntryTime->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtEntryTime->setReadOnly(true);
 
         formLayout9->setWidget(1, QFormLayout::FieldRole, edtEntryTime);
@@ -787,7 +814,8 @@ public:
 
         edtVistNewlyTime = new QLineEdit(formLayoutWidget_10);
         edtVistNewlyTime->setObjectName(QStringLiteral("edtVistNewlyTime"));
-        edtVistNewlyTime->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtVistNewlyTime->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtVistNewlyTime->setReadOnly(true);
 
         formLayout9->setWidget(2, QFormLayout::FieldRole, edtVistNewlyTime);
@@ -799,7 +827,8 @@ public:
 
         edtMembershipClass = new QLineEdit(formLayoutWidget_10);
         edtMembershipClass->setObjectName(QStringLiteral("edtMembershipClass"));
-        edtMembershipClass->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMembershipClass->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtMembershipClass->setReadOnly(true);
 
         formLayout9->setWidget(3, QFormLayout::FieldRole, edtMembershipClass);
@@ -811,7 +840,8 @@ public:
 
         edtMembershipCardSurplus = new QLineEdit(formLayoutWidget_10);
         edtMembershipCardSurplus->setObjectName(QStringLiteral("edtMembershipCardSurplus"));
-        edtMembershipCardSurplus->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMembershipCardSurplus->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtMembershipCardSurplus->setReadOnly(true);
 
         formLayout9->setWidget(4, QFormLayout::FieldRole, edtMembershipCardSurplus);
@@ -823,7 +853,8 @@ public:
 
         edtConsumptionAmount = new QLineEdit(formLayoutWidget_10);
         edtConsumptionAmount->setObjectName(QStringLiteral("edtConsumptionAmount"));
-        edtConsumptionAmount->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtConsumptionAmount->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtConsumptionAmount->setReadOnly(true);
 
         formLayout9->setWidget(5, QFormLayout::FieldRole, edtConsumptionAmount);
@@ -844,7 +875,8 @@ public:
 
         edtPlateID = new QLineEdit(formLayoutWidget_11);
         edtPlateID->setObjectName(QStringLiteral("edtPlateID"));
-        edtPlateID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtPlateID->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtPlateID->setReadOnly(true);
 
         formLayout10->setWidget(0, QFormLayout::FieldRole, edtPlateID);
@@ -856,7 +888,8 @@ public:
 
         edtMotorID = new QLineEdit(formLayoutWidget_11);
         edtMotorID->setObjectName(QStringLiteral("edtMotorID"));
-        edtMotorID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMotorID->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtMotorID->setReadOnly(true);
 
         formLayout10->setWidget(1, QFormLayout::FieldRole, edtMotorID);
@@ -868,7 +901,8 @@ public:
 
         edtBrand = new QLineEdit(formLayoutWidget_11);
         edtBrand->setObjectName(QStringLiteral("edtBrand"));
-        edtBrand->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtBrand->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtBrand->setReadOnly(true);
 
         formLayout10->setWidget(2, QFormLayout::FieldRole, edtBrand);
@@ -880,7 +914,8 @@ public:
 
         edtSeries = new QLineEdit(formLayoutWidget_11);
         edtSeries->setObjectName(QStringLiteral("edtSeries"));
-        edtSeries->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtSeries->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtSeries->setReadOnly(true);
 
         formLayout10->setWidget(3, QFormLayout::FieldRole, edtSeries);
@@ -892,7 +927,8 @@ public:
 
         edtBuyDate = new QLineEdit(formLayoutWidget_11);
         edtBuyDate->setObjectName(QStringLiteral("edtBuyDate"));
-        edtBuyDate->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtBuyDate->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtBuyDate->setReadOnly(true);
 
         formLayout10->setWidget(4, QFormLayout::FieldRole, edtBuyDate);
@@ -904,7 +940,8 @@ public:
 
         edtOdometer = new QLineEdit(formLayoutWidget_11);
         edtOdometer->setObjectName(QStringLiteral("edtOdometer"));
-        edtOdometer->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtOdometer->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtOdometer->setReadOnly(true);
 
         formLayout10->setWidget(5, QFormLayout::FieldRole, edtOdometer);
@@ -925,7 +962,8 @@ public:
 
         edtColor = new QLineEdit(formLayoutWidget_12);
         edtColor->setObjectName(QStringLiteral("edtColor"));
-        edtColor->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtColor->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtColor->setReadOnly(true);
 
         formLayout11->setWidget(0, QFormLayout::FieldRole, edtColor);
@@ -937,7 +975,8 @@ public:
 
         edtAannualSurveyDate = new QLineEdit(formLayoutWidget_12);
         edtAannualSurveyDate->setObjectName(QStringLiteral("edtAannualSurveyDate"));
-        edtAannualSurveyDate->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtAannualSurveyDate->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtAannualSurveyDate->setReadOnly(true);
 
         formLayout11->setWidget(1, QFormLayout::FieldRole, edtAannualSurveyDate);
@@ -949,7 +988,8 @@ public:
 
         edtCommercialInsuranceExpiration = new QLineEdit(formLayoutWidget_12);
         edtCommercialInsuranceExpiration->setObjectName(QStringLiteral("edtCommercialInsuranceExpiration"));
-        edtCommercialInsuranceExpiration->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCommercialInsuranceExpiration->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtCommercialInsuranceExpiration->setReadOnly(true);
 
         formLayout11->setWidget(2, QFormLayout::FieldRole, edtCommercialInsuranceExpiration);
@@ -961,7 +1001,8 @@ public:
 
         edtMandatoryInsuranceExpiration = new QLineEdit(formLayoutWidget_12);
         edtMandatoryInsuranceExpiration->setObjectName(QStringLiteral("edtMandatoryInsuranceExpiration"));
-        edtMandatoryInsuranceExpiration->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMandatoryInsuranceExpiration->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtMandatoryInsuranceExpiration->setReadOnly(true);
 
         formLayout11->setWidget(3, QFormLayout::FieldRole, edtMandatoryInsuranceExpiration);
@@ -973,7 +1014,8 @@ public:
 
         edtVistCount = new QLineEdit(formLayoutWidget_12);
         edtVistCount->setObjectName(QStringLiteral("edtVistCount"));
-        edtVistCount->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtVistCount->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtVistCount->setReadOnly(true);
 
         formLayout11->setWidget(4, QFormLayout::FieldRole, edtVistCount);
@@ -985,7 +1027,8 @@ public:
 
         edtInsurer = new QLineEdit(formLayoutWidget_12);
         edtInsurer->setObjectName(QStringLiteral("edtInsurer"));
-        edtInsurer->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtInsurer->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtInsurer->setReadOnly(true);
 
         formLayout11->setWidget(5, QFormLayout::FieldRole, edtInsurer);
@@ -1006,7 +1049,8 @@ public:
 
         edtFeature = new QLineEdit(formLayoutWidget_13);
         edtFeature->setObjectName(QStringLiteral("edtFeature"));
-        edtFeature->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtFeature->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtFeature->setReadOnly(true);
 
         formLayout12->setWidget(0, QFormLayout::FieldRole, edtFeature);
@@ -1018,7 +1062,8 @@ public:
 
         edtMaintenanceFirstDate = new QLineEdit(formLayoutWidget_13);
         edtMaintenanceFirstDate->setObjectName(QStringLiteral("edtMaintenanceFirstDate"));
-        edtMaintenanceFirstDate->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMaintenanceFirstDate->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtMaintenanceFirstDate->setReadOnly(true);
 
         formLayout12->setWidget(1, QFormLayout::FieldRole, edtMaintenanceFirstDate);
@@ -1030,7 +1075,8 @@ public:
 
         edtMaintenanceNextDate = new QLineEdit(formLayoutWidget_13);
         edtMaintenanceNextDate->setObjectName(QStringLiteral("edtMaintenanceNextDate"));
-        edtMaintenanceNextDate->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtMaintenanceNextDate->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtMaintenanceNextDate->setReadOnly(true);
 
         formLayout12->setWidget(2, QFormLayout::FieldRole, edtMaintenanceNextDate);
@@ -1042,7 +1088,8 @@ public:
 
         edtState = new QLineEdit(formLayoutWidget_13);
         edtState->setObjectName(QStringLiteral("edtState"));
-        edtState->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtState->setStyleSheet(QLatin1String("background-color: rgb(229, 229, 229);\n"
+"border-image: url();"));
         edtState->setReadOnly(true);
 
         formLayout12->setWidget(3, QFormLayout::FieldRole, edtState);
@@ -1086,6 +1133,7 @@ public:
         tabServiceRecord->setGeometry(QRect(25, 301, 331, 241));
         tabServiceRecord->setSelectionMode(QAbstractItemView::SingleSelection);
         tabServiceRecord->setSelectionBehavior(QAbstractItemView::SelectRows);
+        tabServiceRecord->verticalHeader()->setVisible(false);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -1167,64 +1215,66 @@ public:
         actCustomerInfo->setToolTip(QApplication::translate("MainWindow", "\345\256\242\346\210\267\350\265\204\346\226\231\347\256\241\347\220\206", 0));
 #endif // QT_NO_TOOLTIP
         actionExit->setText(QApplication::translate("MainWindow", "\351\200\200\345\207\272\347\263\273\347\273\237", 0));
-        lblCustomerName2->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\345\220\215\347\247\260", 0));
-        lblCustomerCategory2->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\347\261\273\345\210\253", 0));
-        lblPlate2->setText(QApplication::translate("MainWindow", "\350\275\246\347\211\214\345\217\267\347\240\201", 0));
-        lblEnterTime2->setText(QApplication::translate("MainWindow", "\345\205\245\345\234\272\346\227\266\351\227\264", 0));
+        lblCustomerName2->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\345\220\215\347\247\260", 0));
+        lblCustomerCategory2->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\347\261\273\345\210\253", 0));
+        lblPlate2->setText(QApplication::translate("MainWindow", "  \350\275\246\347\211\214\345\217\267\347\240\201", 0));
+        lblEnterTime2->setText(QApplication::translate("MainWindow", "  \345\205\245\345\234\272\346\227\266\351\227\264", 0));
         edtPlateID2->setText(QApplication::translate("MainWindow", "\345\267\235C12345", 0));
-        lblCustomerName3->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\345\220\215\347\247\260", 0));
-        lblCustomerCategory3->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\347\261\273\345\210\253", 0));
-        lblPlate3->setText(QApplication::translate("MainWindow", "\350\275\246\347\211\214\345\217\267\347\240\201", 0));
-        lblEnterTime3->setText(QApplication::translate("MainWindow", "\345\205\245\345\234\272\346\227\266\351\227\264", 0));
+        lblCustomerName3->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\345\220\215\347\247\260", 0));
+        lblCustomerCategory3->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\347\261\273\345\210\253", 0));
+        lblPlate3->setText(QApplication::translate("MainWindow", "  \350\275\246\347\211\214\345\217\267\347\240\201", 0));
+        lblEnterTime3->setText(QApplication::translate("MainWindow", "  \345\205\245\345\234\272\346\227\266\351\227\264", 0));
         edtPlateID3->setText(QApplication::translate("MainWindow", "\346\270\235F12345", 0));
-        lblCustomerName0->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\345\220\215\347\247\260", 0));
-        lblCustomerCategory0->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\347\261\273\345\210\253", 0));
-        lblPlate0->setText(QApplication::translate("MainWindow", "\350\275\246\347\211\214\345\217\267\347\240\201", 0));
-        lblEnterTime0->setText(QApplication::translate("MainWindow", "\345\205\245\345\234\272\346\227\266\351\227\264", 0));
+        lblCustomerName0->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\345\220\215\347\247\260", 0));
+        lblCustomerCategory0->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\347\261\273\345\210\253", 0));
+        lblPlate0->setText(QApplication::translate("MainWindow", "  \350\275\246\347\211\214\345\217\267\347\240\201", 0));
+        lblEnterTime0->setText(QApplication::translate("MainWindow", "  \345\205\245\345\234\272\346\227\266\351\227\264", 0));
         edtPlateID0->setText(QApplication::translate("MainWindow", "\345\267\235A12345", 0));
-        lblCustomerName1->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\345\220\215\347\247\260", 0));
-        lblCustomerCategory1->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\347\261\273\345\210\253", 0));
-        lblPlate1->setText(QApplication::translate("MainWindow", "\350\275\246\347\211\214\345\217\267\347\240\201", 0));
-        lblEnterTime1->setText(QApplication::translate("MainWindow", "\345\205\245\345\234\272\346\227\266\351\227\264", 0));
+        lblCustomerName1->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\345\220\215\347\247\260", 0));
+        lblCustomerCategory1->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\347\261\273\345\210\253", 0));
+        lblPlate1->setText(QApplication::translate("MainWindow", "  \350\275\246\347\211\214\345\217\267\347\240\201", 0));
+        lblEnterTime1->setText(QApplication::translate("MainWindow", "  \345\205\245\345\234\272\346\227\266\351\227\264", 0));
         edtPlateID1->setText(QApplication::translate("MainWindow", "\345\267\235B56789", 0));
         lblDetail->setText(QApplication::translate("MainWindow", "\350\257\246\347\273\206\344\277\241\346\201\257", 0));
-        lblCustomerBasic->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\345\237\272\346\234\254\344\277\241\346\201\257", 0));
-        lblVehicleBasic->setText(QApplication::translate("MainWindow", "\350\275\246\350\276\206\345\237\272\346\234\254\344\277\241\346\201\257", 0));
-        lblServiceRecord->setText(QApplication::translate("MainWindow", "\346\234\215\345\212\241\350\256\260\345\275\225", 0));
-        label->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\347\274\226\345\217\267", 0));
-        label_2->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\345\220\215\347\247\260", 0));
-        label_3->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\347\261\273\345\210\253", 0));
-        label_4->setText(QApplication::translate("MainWindow", "\351\232\266\345\261\236\351\203\250\351\227\250", 0));
-        label_5->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\344\270\223\345\221\230", 0));
-        label_6->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\346\235\245\346\272\220", 0));
-        label_9->setText(QApplication::translate("MainWindow", "\346\211\213\346\234\272\345\217\267\347\240\201", 0));
-        label_10->setText(QApplication::translate("MainWindow", "\345\233\272\345\256\232\345\217\267\347\240\201", 0));
-        label_11->setText(QApplication::translate("MainWindow", "\351\202\256\347\256\261\345\234\260\345\235\200", 0));
-        label_12->setText(QApplication::translate("MainWindow", "\345\256\242\346\210\267\345\234\260\345\235\200", 0));
-        label_13->setText(QApplication::translate("MainWindow", "\346\211\200\345\261\236\345\214\272\345\237\237", 0));
-        label_14->setText(QApplication::translate("MainWindow", "\350\257\201\344\273\266\345\217\267\347\240\201", 0));
-        label_15->setText(QApplication::translate("MainWindow", "\345\210\235\346\254\241\346\235\245\350\256\277\346\227\245", 0));
-        label_16->setText(QApplication::translate("MainWindow", "\345\273\272\346\241\243\346\227\245\346\234\237", 0));
-        label_17->setText(QApplication::translate("MainWindow", "\346\234\200\350\277\221\344\270\200\346\254\241\345\210\260\345\272\227\346\227\266\351\227\264", 0));
-        label_18->setText(QApplication::translate("MainWindow", "\344\274\232\345\221\230\345\215\241\347\261\273\345\210\253", 0));
-        label_19->setText(QApplication::translate("MainWindow", "\344\274\232\345\221\230\345\215\241\344\275\231\351\242\235\346\210\226\346\254\241\346\225\260", 0));
-        label_20->setText(QApplication::translate("MainWindow", "\345\216\206\345\217\262\346\266\210\350\264\271\351\207\221\351\242\235", 0));
-        label_7->setText(QApplication::translate("MainWindow", "\350\275\246\347\211\214\345\217\267", 0));
-        label_8->setText(QApplication::translate("MainWindow", "\345\217\221\345\212\250\346\234\272\345\217\267", 0));
-        label_21->setText(QApplication::translate("MainWindow", "\345\223\201\347\211\214", 0));
-        label_22->setText(QApplication::translate("MainWindow", "\350\275\246\347\263\273", 0));
-        label_23->setText(QApplication::translate("MainWindow", "\350\264\255\350\275\246\346\227\245", 0));
-        label_24->setText(QApplication::translate("MainWindow", "\350\241\214\351\251\266\345\205\254\351\207\214\346\225\260", 0));
-        label_25->setText(QApplication::translate("MainWindow", "\350\275\246\350\276\206\351\242\234\350\211\262", 0));
-        label_26->setText(QApplication::translate("MainWindow", "\345\271\264\346\243\200\346\227\245\346\234\237", 0));
-        label_27->setText(QApplication::translate("MainWindow", "\345\225\206\344\270\232\351\231\251\345\210\260\346\234\237\346\227\245", 0));
-        label_28->setText(QApplication::translate("MainWindow", "\344\272\244\345\274\272\351\231\251\345\210\260\346\234\237\346\227\245", 0));
-        label_29->setText(QApplication::translate("MainWindow", "\345\216\206\345\217\262\346\235\245\345\272\227\346\254\241\346\225\260", 0));
-        label_30->setText(QApplication::translate("MainWindow", "\344\277\235\351\231\251\345\205\254\345\217\270", 0));
-        label_31->setText(QApplication::translate("MainWindow", "\350\275\246\350\276\206\347\261\273\345\236\213", 0));
-        label_32->setText(QApplication::translate("MainWindow", "\351\246\226\344\277\235\346\227\245\346\234\237", 0));
-        label_33->setText(QApplication::translate("MainWindow", "\344\270\213\346\254\241\344\277\235\345\205\273\346\227\245\346\234\237", 0));
-        label_34->setText(QApplication::translate("MainWindow", "\350\275\246\350\276\206\346\200\273\344\275\223\347\212\266\345\206\265", 0));
+        lblCustomerBasic->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\345\237\272\346\234\254\344\277\241\346\201\257", 0));
+        lblVehicleBasic->setText(QApplication::translate("MainWindow", "  \350\275\246\350\276\206\345\237\272\346\234\254\344\277\241\346\201\257", 0));
+        lblServiceRecord->setText(QApplication::translate("MainWindow", "  \346\234\215\345\212\241\350\256\260\345\275\225", 0));
+        label->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\347\274\226\345\217\267", 0));
+        edtCustomerID->setStyleSheet(QApplication::translate("MainWindow", "background-color: rgb(229, 229, 229);\n"
+"border-image: url();", 0));
+        label_2->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\345\220\215\347\247\260", 0));
+        label_3->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\347\261\273\345\210\253", 0));
+        label_4->setText(QApplication::translate("MainWindow", "  \351\232\266\345\261\236\351\203\250\351\227\250", 0));
+        label_5->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\344\270\223\345\221\230", 0));
+        label_6->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\346\235\245\346\272\220", 0));
+        label_9->setText(QApplication::translate("MainWindow", "  \346\211\213\346\234\272\345\217\267\347\240\201", 0));
+        label_10->setText(QApplication::translate("MainWindow", "  \345\233\272\345\256\232\345\217\267\347\240\201", 0));
+        label_11->setText(QApplication::translate("MainWindow", "  \351\202\256\347\256\261\345\234\260\345\235\200", 0));
+        label_12->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\345\234\260\345\235\200", 0));
+        label_13->setText(QApplication::translate("MainWindow", "  \346\211\200\345\261\236\345\214\272\345\237\237", 0));
+        label_14->setText(QApplication::translate("MainWindow", "  \350\257\201\344\273\266\345\217\267\347\240\201", 0));
+        label_15->setText(QApplication::translate("MainWindow", "  \345\210\235\346\254\241\346\235\245\350\256\277\346\227\245", 0));
+        label_16->setText(QApplication::translate("MainWindow", "  \345\273\272\346\241\243\346\227\245\346\234\237", 0));
+        label_17->setText(QApplication::translate("MainWindow", "  \346\234\200\350\277\221\344\270\200\346\254\241\345\210\260\345\272\227\346\227\266\351\227\264", 0));
+        label_18->setText(QApplication::translate("MainWindow", "  \344\274\232\345\221\230\345\215\241\347\261\273\345\210\253", 0));
+        label_19->setText(QApplication::translate("MainWindow", "  \344\274\232\345\221\230\345\215\241\344\275\231\351\242\235\346\210\226\346\254\241\346\225\260", 0));
+        label_20->setText(QApplication::translate("MainWindow", "  \345\216\206\345\217\262\346\266\210\350\264\271\351\207\221\351\242\235", 0));
+        label_7->setText(QApplication::translate("MainWindow", "  \350\275\246\347\211\214\345\217\267", 0));
+        label_8->setText(QApplication::translate("MainWindow", "  \345\217\221\345\212\250\346\234\272\345\217\267", 0));
+        label_21->setText(QApplication::translate("MainWindow", "  \345\223\201\347\211\214", 0));
+        label_22->setText(QApplication::translate("MainWindow", "  \350\275\246\347\263\273", 0));
+        label_23->setText(QApplication::translate("MainWindow", "  \350\264\255\350\275\246\346\227\245", 0));
+        label_24->setText(QApplication::translate("MainWindow", "  \350\241\214\351\251\266\345\205\254\351\207\214\346\225\260", 0));
+        label_25->setText(QApplication::translate("MainWindow", "  \350\275\246\350\276\206\351\242\234\350\211\262", 0));
+        label_26->setText(QApplication::translate("MainWindow", "  \345\271\264\346\243\200\346\227\245\346\234\237", 0));
+        label_27->setText(QApplication::translate("MainWindow", "  \345\225\206\344\270\232\351\231\251\345\210\260\346\234\237\346\227\245", 0));
+        label_28->setText(QApplication::translate("MainWindow", "  \344\272\244\345\274\272\351\231\251\345\210\260\346\234\237\346\227\245", 0));
+        label_29->setText(QApplication::translate("MainWindow", "  \345\216\206\345\217\262\346\235\245\345\272\227\346\254\241\346\225\260", 0));
+        label_30->setText(QApplication::translate("MainWindow", "  \344\277\235\351\231\251\345\205\254\345\217\270", 0));
+        label_31->setText(QApplication::translate("MainWindow", "  \350\275\246\350\276\206\347\261\273\345\236\213", 0));
+        label_32->setText(QApplication::translate("MainWindow", "  \351\246\226\344\277\235\346\227\245\346\234\237", 0));
+        label_33->setText(QApplication::translate("MainWindow", "  \344\270\213\346\254\241\344\277\235\345\205\273\346\227\245\346\234\237", 0));
+        label_34->setText(QApplication::translate("MainWindow", "  \350\275\246\350\276\206\346\200\273\344\275\223\347\212\266\345\206\265", 0));
         menu->setTitle(QApplication::translate("MainWindow", "\347\263\273\347\273\237\347\256\241\347\220\206", 0));
     } // retranslateUi
 

@@ -129,10 +129,11 @@ void QPlateParserThread::ProcessPlateResultDataEvent( QPlateEvent* pEvent )
     const QString& strBase64 = plateHash.value( resultInfoKey.strImageData );
     QByteArray byBase64 = pTextCodec->fromUnicode( strBase64 );
     QByteArray byImage = QByteArray::fromBase64( byBase64 );
+    //qDebug( ) << QString( byBase64 ) << endl;
 
     QString strDateTime = plateHash.value( resultInfoKey.strTimeStamp );
-    qint64 nDateTime = strDateTime.toUInt( );
-    QDateTime dtValue = QDateTime::fromMSecsSinceEpoch( nDateTime );
+    uint nDateTime = strDateTime.toUInt( );
+    QDateTime dtValue = QDateTime::fromTime_t( nDateTime );//QDateTime::fromMSecsSinceEpoch( nDateTime );
     strDateTime = dtValue.toString( "yyyy-MM-dd HH:mm:ss" );
     QString strPlate = plateHash.value( resultInfoKey.strLicense );
 

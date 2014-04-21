@@ -1,0 +1,12 @@
+#ifndef LOGMODULE_GLOBAL_H
+#define LOGMODULE_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(DATAPARSE_LIBRARY)
+#  define LOGMODULESHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define LOGMODULESHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // LOGMODULE_GLOBAL_H

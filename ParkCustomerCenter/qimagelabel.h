@@ -2,6 +2,7 @@
 #define QIMAGELABEL_H
 
 #include <QLabel>
+#include <QResizeEvent>
 
 class QImageLabel : public QLabel
 {
@@ -12,8 +13,12 @@ public:
     void LoadImage( QString& strFile );
     void LoadImage( QByteArray& byImage );
 
+    QSize sizeHint( ) const;
+
 protected:
     void mouseDoubleClickEvent( QMouseEvent* pEvent );
+    void mousePressEvent( QMouseEvent * pEvent );
+    void resizeEvent( QResizeEvent* pEvent );
 
 private:
     inline void LoadPixmap( QString& strFile );

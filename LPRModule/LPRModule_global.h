@@ -1,0 +1,12 @@
+#ifndef LPRMODULE_GLOBAL_H
+#define LPRMODULE_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(LPRMODULE_LIBRARY)
+#  define LPRMODULESHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define LPRMODULESHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // LPRMODULE_GLOBAL_H

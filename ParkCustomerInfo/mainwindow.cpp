@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QDebug>
+#include <windows.h>
 
 #define HIDE_CUSTOMER_COLUMN_COUNT ( int ) 25
 #define HIDE_SERVICE_COLUMN_COUNT   ( int ) 5
@@ -13,11 +14,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     StartLocalServer( );
     ui->setupUi(this);
+    ComInitliaze( );
     pConfigurator = QConfigurator::CreateConfigurator( );
 
     FillColumnName( lstCustomerColumnName, true );
     FillColumnName( lstServiceColumnName, false );
     LayoutUI( );
+    ControlDockWidget( );
     AssignTableviewArray( );
     StartDatabaseThread( );
     InitializeTabWidget( );
@@ -29,10 +32,39 @@ MainWindow::MainWindow(QWidget *parent) :
     EnableAllDateCtrl( false );
     InitialzieDateCtrl( );
     ControlDialog( );
+    SetButtonMiniSize( );
 
     QueryCustomerData( 2 );
     QueryCustomerData( 1 );
     QueryCustomerData( 0 );
+}
+
+void MainWindow::ComInitliaze( )
+{
+    HRESULT hr = ::CoInitialize( NULL );
+    if ( FAILED( hr ) ) {
+        QString strText = "COM初始化失败。";
+        QCommonFunction::InformationBox( NULL, strText );
+    }
+}
+
+void MainWindow::ControlDockWidget( )
+{
+    return;
+    QRect rect = ui->btnQuery->geometry( );
+    rect.setY( ui->edtAllOther->geometry( ).y( ) );
+    ui->btnQuery->setGeometry( rect );
+}
+
+void MainWindow::SetButtonMiniSize( )
+{
+    QCommonFunction::SetButtonMiniSize( ui->btnDelete );
+    QCommonFunction::SetButtonMiniSize( ui->btnNew );
+    QCommonFunction::SetButtonMiniSize( ui->btnQuery );
+    QCommonFunction::SetButtonMiniSize( ui->btnIgnore );
+    QCommonFunction::SetButtonMiniSize( ui->btnImport );
+    QCommonFunction::SetButtonMiniSize( ui->btnExport );
+    QCommonFunction::SetButtonMiniSize( ui->btnEdit );
 }
 
 bool MainWindow::Login( )
@@ -42,6 +74,7 @@ bool MainWindow::Login( )
 
     lstParams << "";
     pDatabaseThread->PostQueryUserInfoEvent( lstParams );
+    //dlgLogin.setParent( this );
     bRet = QDialog::Accepted == dlgLogin.exec( );
 
     return bRet;
@@ -66,6 +99,8 @@ MainWindow::~MainWindow()
     delete pDlgQueryInfo;
     delete pDlgEditNewInfo;
     delete ui;
+
+    ::CoUninitialize( );
 }
 
 void MainWindow::HandleForeground( )
@@ -439,7 +474,16 @@ void MainWindow::LayoutUI( )
     //ui->menuBar->setVisible( false );
 
     ui->centralWidget->setLayout( ui->horizontalLayout );
-    ui->horizontalLayout->addWidget( ui->tabWidget );
+    ui->horizontalLayout->addWidget( ui->lblLeft );
+    ui->horizontalLayout->addWidget( ui->widget );
+    ui->horizontalLayout->addWidget( ui->widget_2 );
+    ui->widget_2->setLayout( ui->verticalLayout);
+
+    ui->widget_4->setLayout( ui->verticalLayout_3 );
+
+    ui->widget->setLayout( ui->verticalLayout_2 );
+    ui->verticalLayout_2->addWidget( ui->lblTop );
+    ui->verticalLayout_2->addWidget( ui->tabWidget );
 
     ui->tabNewCustomer->setLayout( ui->gridLayout1 );
 #if true
@@ -497,8 +541,6 @@ void MainWindow::LayoutUI( )
     ui->widget32->setLayout( ui->formLayout32 );
     ui->widget33->setLayout( ui->formLayout33 );
     ui->widget34->setLayout( ui->formLayout34 );
-
-    ui->dockWidgetContents->setLayout( ui->verticalLayout );
 }
 
 void MainWindow::SetTitle(int nIndex)
@@ -522,7 +564,9 @@ void MainWindow::on_tabWidget_currentChanged(int index)
     ChangeTabBarTextColor( index );
     SetTitle( index );
 
-    HideButton( 2 == index );
+    bool bAll = ( 2 == index );
+    ui->widget_4->setMaximumHeight( bAll ? 230 : 80 );
+    HideButton( bAll );
     DisplayStatusText( index );
 }
 
@@ -696,7 +740,11 @@ void MainWindow::AssignTableviewArray( )
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    QCommonFunction::SystemCloseEvent( this, event );
+    bool bRet = QCommonFunction::SystemCloseEvent( this, event );
+
+    if ( !bRet ) {
+        return;
+    }
 }
 
 void MainWindow::on_btnExport_clicked()
@@ -709,10 +757,13 @@ void MainWindow::on_btnExport_clicked()
                                                  QFileDialog::ShowDirsOnly );
     qDebug( ) << Q_FUNC_INFO << strExportDataDir << endl;
 
+    if ( strExportDataDir.isNull( ) || strExportDataDir.isEmpty( ) ) {
+        return;
+    }
+
     QString strWhere;
     GetAllWhere( strWhere );
     ExportCustomerInfo( strWhere );
-
 }
 
 void MainWindow::ImportCustomerInfo( QStringList &lstCustomerData )
@@ -739,6 +790,10 @@ void MainWindow::on_btnImport_clicked()
                   qApp->applicationDirPath( ),
                   "Excel文件(*.xls)", NULL,
                   QFileDialog::ShowDirsOnly );
+
+    if ( strFile.isNull( ) || strFile.isEmpty( ) ) {
+        return;
+    }
 
     QStringList lstCustomerData;
     bool bRet = dataParser.ImportData( strFile,lstCustomerData );
@@ -800,7 +855,7 @@ void MainWindow::GetDateWhere( QString& strDateWhere, QDateEdit* pDateEditStart,
                 pDateEditEnd->text( ) );
 }
 
-void MainWindow::GetOtherWhere( QString& strOhterWhere, QLineEdit* pEdit, QString& strFieldName, const char* pLogic )
+void MainWindow::GetOtherWhere( QString& strOtherWhere, QLineEdit* pEdit, QString& strFieldName, const char* pLogic )
 {
     if ( NULL == pEdit ||
          NULL == pLogic ) {
@@ -812,7 +867,7 @@ void MainWindow::GetOtherWhere( QString& strOhterWhere, QLineEdit* pEdit, QStrin
         return;
     }
 
-    strOhterWhere += QString( " %1 %2 like \\'%%3%\\' " ).arg(
+    strOtherWhere += QString( " %1 %2 like \\'%%3%\\' " ).arg(
                 pLogic, strFieldName, strText );
 }
 
@@ -903,9 +958,13 @@ void MainWindow::GetAllWhere( QString& strWhere )
     switch ( ui->cbxAll->currentIndex() ) {
     case 0 :
         GetOtherWhere( strWhere, ui->edtAllOther,
-                       customerInfo.strName, "" );
+                       customerInfo.strName, " (" );
         GetOtherWhere( strWhere, ui->edtAllOther,
                        vehicleInfo.strPlateID, "Or" );
+
+        if ( !ui->edtAllOther->text( ).isEmpty( ) ) {
+            strWhere += ")";
+        }
         break;
 
     case 1 :
@@ -971,9 +1030,9 @@ void MainWindow::GetQueryWhere( QString &strWhere, int nIndex )
 
 void MainWindow::on_btnQuery_clicked()
 {
-    QString strFile = "D:/ParkSolution/Document/1月.xls";
-    QStringList lstCustomerData;
-    dataParser.ImportData( strFile, lstCustomerData );
+    //QString strFile = "D:/ParkSolution/Document/1月.xls";
+    //QStringList lstCustomerData;
+    //dataParser.ImportData( strFile, lstCustomerData );
     //QString strFormat = "";
     //strFormat.sprintf( "%s", "拟好" );
 

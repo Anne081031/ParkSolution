@@ -20,8 +20,20 @@
       <x>200</x>
       <y>40</y>
       <width>181</width>
-      <height>121</height>
+      <height>111</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>111</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>111</height>
+     </size>
     </property>
     <widget class="QWidget" name="formLayoutWidget_3">
      <property name="geometry">
@@ -36,35 +48,35 @@
       <item row="0" column="0">
        <widget class="QLabel" name="lblCustomerName2">
         <property name="text">
-         <string>客户名称</string>
+         <string>  客户名称</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="lblCustomerCategory2">
         <property name="text">
-         <string>客户类别</string>
+         <string>  客户类别</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="lblPlate2">
         <property name="text">
-         <string>车牌号码</string>
+         <string>  车牌号码</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="lblEnterTime2">
         <property name="text">
-         <string>入场时间</string>
+         <string>  入场时间</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="edtName2">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -74,7 +86,7 @@
       <item row="2" column="1">
        <widget class="QLineEdit" name="edtPlateID2">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="text">
          <string>川C12345</string>
@@ -87,7 +99,7 @@
       <item row="3" column="1">
        <widget class="QLineEdit" name="edtEnterTime2">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -97,7 +109,7 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="edtCustomerCategory2">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -132,6 +144,18 @@
       <height>111</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>111</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>111</height>
+     </size>
+    </property>
     <widget class="QWidget" name="formLayoutWidget_4">
      <property name="geometry">
       <rect>
@@ -145,35 +169,35 @@
       <item row="0" column="0">
        <widget class="QLabel" name="lblCustomerName3">
         <property name="text">
-         <string>客户名称</string>
+         <string>  客户名称</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="lblCustomerCategory3">
         <property name="text">
-         <string>客户类别</string>
+         <string>  客户类别</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="lblPlate3">
         <property name="text">
-         <string>车牌号码</string>
+         <string>  车牌号码</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="lblEnterTime3">
         <property name="text">
-         <string>入场时间</string>
+         <string>  入场时间</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="edtName3">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -183,7 +207,7 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="edtCustomerCategory3">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -193,7 +217,7 @@
       <item row="2" column="1">
        <widget class="QLineEdit" name="edtPlateID3">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="text">
          <string>渝F12345</string>
@@ -206,7 +230,7 @@
       <item row="3" column="1">
        <widget class="QLineEdit" name="edtEnterTime3">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -222,8 +246,20 @@
       <x>10</x>
       <y>40</y>
       <width>181</width>
-      <height>121</height>
+      <height>111</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>111</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>111</height>
+     </size>
     </property>
     <widget class="QWidget" name="formLayoutWidget">
      <property name="geometry">
@@ -238,35 +274,35 @@
       <item row="0" column="0">
        <widget class="QLabel" name="lblCustomerName0">
         <property name="text">
-         <string>客户名称</string>
+         <string>  客户名称</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="lblCustomerCategory0">
         <property name="text">
-         <string>客户类别</string>
+         <string>  客户类别</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="lblPlate0">
         <property name="text">
-         <string>车牌号码</string>
+         <string>  车牌号码</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="lblEnterTime0">
         <property name="text">
-         <string>入场时间</string>
+         <string>  入场时间</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="edtName0">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -276,7 +312,7 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="edtCustomerCategory0">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -286,7 +322,7 @@
       <item row="2" column="1">
        <widget class="QLineEdit" name="edtPlateID0">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="text">
          <string>川A12345</string>
@@ -299,7 +335,7 @@
       <item row="3" column="1">
        <widget class="QLineEdit" name="edtEnterTime0">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -329,6 +365,18 @@
       <height>111</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>111</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>111</height>
+     </size>
+    </property>
     <widget class="QWidget" name="formLayoutWidget_2">
      <property name="geometry">
       <rect>
@@ -342,35 +390,35 @@
       <item row="0" column="0">
        <widget class="QLabel" name="lblCustomerName1">
         <property name="text">
-         <string>客户名称</string>
+         <string>  客户名称</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="lblCustomerCategory1">
         <property name="text">
-         <string>客户类别</string>
+         <string>  客户类别</string>
         </property>
        </widget>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="lblPlate1">
         <property name="text">
-         <string>车牌号码</string>
+         <string>  车牌号码</string>
         </property>
        </widget>
       </item>
       <item row="3" column="0">
        <widget class="QLabel" name="lblEnterTime1">
         <property name="text">
-         <string>入场时间</string>
+         <string>  入场时间</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
        <widget class="QLineEdit" name="edtName1">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -380,7 +428,7 @@
       <item row="1" column="1">
        <widget class="QLineEdit" name="edtCustomerCategory1">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -390,7 +438,7 @@
       <item row="2" column="1">
        <widget class="QLineEdit" name="edtPlateID1">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="text">
          <string>川B56789</string>
@@ -403,7 +451,7 @@
       <item row="3" column="1">
        <widget class="QLineEdit" name="edtEnterTime1">
         <property name="styleSheet">
-         <string notr="true">background-color: rgb(192, 192, 192);</string>
+         <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -457,8 +505,14 @@
       <x>220</x>
       <y>10</y>
       <width>54</width>
-      <height>12</height>
+      <height>30</height>
      </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
     </property>
     <property name="text">
      <string>详细信息</string>
@@ -482,14 +536,23 @@
        <x>10</x>
        <y>10</y>
        <width>160</width>
-       <height>21</height>
+       <height>32</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout4">
       <item row="0" column="0">
        <widget class="QLabel" name="lblCustomerBasic">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>15</height>
+         </size>
+        </property>
         <property name="text">
-         <string>客户基本信息</string>
+         <string>  客户基本信息</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
         </property>
        </widget>
       </item>
@@ -518,14 +581,23 @@
        <x>10</x>
        <y>10</y>
        <width>160</width>
-       <height>21</height>
+       <height>32</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout5">
       <item row="0" column="0">
        <widget class="QLabel" name="lblVehicleBasic">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>15</height>
+         </size>
+        </property>
         <property name="text">
-         <string>车辆基本信息</string>
+         <string>  车辆基本信息</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
         </property>
        </widget>
       </item>
@@ -554,14 +626,23 @@
        <x>10</x>
        <y>10</y>
        <width>160</width>
-       <height>21</height>
+       <height>32</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout6">
       <item row="0" column="0">
        <widget class="QLabel" name="lblServiceRecord">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>15</height>
+         </size>
+        </property>
         <property name="text">
-         <string>服务记录</string>
+         <string>  服务记录</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
         </property>
        </widget>
       </item>
@@ -643,14 +724,15 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>客户编号</string>
+        <string>  客户编号</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
       <widget class="QLineEdit" name="edtCustomerID">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string>background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -660,14 +742,15 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>客户名称</string>
+        <string>  客户名称</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="edtName">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -677,14 +760,15 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>客户类别</string>
+        <string>  客户类别</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
       <widget class="QLineEdit" name="edtCustomerCategory">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -694,14 +778,15 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>隶属部门</string>
+        <string>  隶属部门</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="edtDepartment">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -711,14 +796,15 @@
      <item row="4" column="0">
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>客户专员</string>
+        <string>  客户专员</string>
        </property>
       </widget>
      </item>
      <item row="4" column="1">
       <widget class="QLineEdit" name="edtAccountExecutive">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -728,14 +814,15 @@
      <item row="5" column="0">
       <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>客户来源</string>
+        <string>  客户来源</string>
        </property>
       </widget>
      </item>
      <item row="5" column="1">
       <widget class="QLineEdit" name="edtCustomerSource">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -770,14 +857,15 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label_9">
        <property name="text">
-        <string>手机号码</string>
+        <string>  手机号码</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
       <widget class="QLineEdit" name="edtMobilePhone">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -787,14 +875,15 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_10">
        <property name="text">
-        <string>固定号码</string>
+        <string>  固定号码</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="edtLandline">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -804,14 +893,15 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_11">
        <property name="text">
-        <string>邮箱地址</string>
+        <string>  邮箱地址</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
       <widget class="QLineEdit" name="edtEMail">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -821,14 +911,15 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_12">
        <property name="text">
-        <string>客户地址</string>
+        <string>  客户地址</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="edtAddress">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -838,14 +929,15 @@
      <item row="4" column="0">
       <widget class="QLabel" name="label_13">
        <property name="text">
-        <string>所属区域</string>
+        <string>  所属区域</string>
        </property>
       </widget>
      </item>
      <item row="4" column="1">
       <widget class="QLineEdit" name="edtDistrict">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -855,14 +947,15 @@
      <item row="5" column="0">
       <widget class="QLabel" name="label_14">
        <property name="text">
-        <string>证件号码</string>
+        <string>  证件号码</string>
        </property>
       </widget>
      </item>
      <item row="5" column="1">
       <widget class="QLineEdit" name="edtCredentialsID">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -897,14 +990,15 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label_15">
        <property name="text">
-        <string>初次来访日</string>
+        <string>  初次来访日</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
       <widget class="QLineEdit" name="edtVistFirstTime">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -914,14 +1008,15 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_16">
        <property name="text">
-        <string>建档日期</string>
+        <string>  建档日期</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="edtEntryTime">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -931,14 +1026,15 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_17">
        <property name="text">
-        <string>最近一次到店时间</string>
+        <string>  最近一次到店时间</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
       <widget class="QLineEdit" name="edtVistNewlyTime">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -948,14 +1044,15 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_18">
        <property name="text">
-        <string>会员卡类别</string>
+        <string>  会员卡类别</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="edtMembershipClass">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -965,14 +1062,15 @@
      <item row="4" column="0">
       <widget class="QLabel" name="label_19">
        <property name="text">
-        <string>会员卡余额或次数</string>
+        <string>  会员卡余额或次数</string>
        </property>
       </widget>
      </item>
      <item row="4" column="1">
       <widget class="QLineEdit" name="edtMembershipCardSurplus">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -982,14 +1080,15 @@
      <item row="5" column="0">
       <widget class="QLabel" name="label_20">
        <property name="text">
-        <string>历史消费金额</string>
+        <string>  历史消费金额</string>
        </property>
       </widget>
      </item>
      <item row="5" column="1">
       <widget class="QLineEdit" name="edtConsumptionAmount">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1014,14 +1113,15 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label_7">
        <property name="text">
-        <string>车牌号</string>
+        <string>  车牌号</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
       <widget class="QLineEdit" name="edtPlateID">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1031,14 +1131,15 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_8">
        <property name="text">
-        <string>发动机号</string>
+        <string>  发动机号</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="edtMotorID">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1048,14 +1149,15 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_21">
        <property name="text">
-        <string>品牌</string>
+        <string>  品牌</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
       <widget class="QLineEdit" name="edtBrand">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1065,14 +1167,15 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_22">
        <property name="text">
-        <string>车系</string>
+        <string>  车系</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="edtSeries">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1082,14 +1185,15 @@
      <item row="4" column="0">
       <widget class="QLabel" name="label_23">
        <property name="text">
-        <string>购车日</string>
+        <string>  购车日</string>
        </property>
       </widget>
      </item>
      <item row="4" column="1">
       <widget class="QLineEdit" name="edtBuyDate">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1099,14 +1203,15 @@
      <item row="5" column="0">
       <widget class="QLabel" name="label_24">
        <property name="text">
-        <string>行驶公里数</string>
+        <string>  行驶公里数</string>
        </property>
       </widget>
      </item>
      <item row="5" column="1">
       <widget class="QLineEdit" name="edtOdometer">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1131,14 +1236,15 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label_25">
        <property name="text">
-        <string>车辆颜色</string>
+        <string>  车辆颜色</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
       <widget class="QLineEdit" name="edtColor">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1148,14 +1254,15 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_26">
        <property name="text">
-        <string>年检日期</string>
+        <string>  年检日期</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="edtAannualSurveyDate">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1165,14 +1272,15 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_27">
        <property name="text">
-        <string>商业险到期日</string>
+        <string>  商业险到期日</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
       <widget class="QLineEdit" name="edtCommercialInsuranceExpiration">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1182,14 +1290,15 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_28">
        <property name="text">
-        <string>交强险到期日</string>
+        <string>  交强险到期日</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="edtMandatoryInsuranceExpiration">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1199,14 +1308,15 @@
      <item row="4" column="0">
       <widget class="QLabel" name="label_29">
        <property name="text">
-        <string>历史来店次数</string>
+        <string>  历史来店次数</string>
        </property>
       </widget>
      </item>
      <item row="4" column="1">
       <widget class="QLineEdit" name="edtVistCount">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1216,14 +1326,15 @@
      <item row="5" column="0">
       <widget class="QLabel" name="label_30">
        <property name="text">
-        <string>保险公司</string>
+        <string>  保险公司</string>
        </property>
       </widget>
      </item>
      <item row="5" column="1">
       <widget class="QLineEdit" name="edtInsurer">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1248,14 +1359,15 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label_31">
        <property name="text">
-        <string>车辆类型</string>
+        <string>  车辆类型</string>
        </property>
       </widget>
      </item>
      <item row="0" column="1">
       <widget class="QLineEdit" name="edtFeature">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1265,14 +1377,15 @@
      <item row="1" column="0">
       <widget class="QLabel" name="label_32">
        <property name="text">
-        <string>首保日期</string>
+        <string>  首保日期</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="edtMaintenanceFirstDate">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1282,14 +1395,15 @@
      <item row="2" column="0">
       <widget class="QLabel" name="label_33">
        <property name="text">
-        <string>下次保养日期</string>
+        <string>  下次保养日期</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
       <widget class="QLineEdit" name="edtMaintenanceNextDate">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1299,14 +1413,15 @@
      <item row="3" column="0">
       <widget class="QLabel" name="label_34">
        <property name="text">
-        <string>车辆总体状况</string>
+        <string>  车辆总体状况</string>
        </property>
       </widget>
      </item>
      <item row="3" column="1">
       <widget class="QLineEdit" name="edtState">
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(192, 192, 192);</string>
+        <string notr="true">background-color: rgb(229, 229, 229);
+border-image: url();</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>
@@ -1412,6 +1527,9 @@
     <property name="selectionBehavior">
      <enum>QAbstractItemView::SelectRows</enum>
     </property>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

@@ -1,0 +1,78 @@
+QMainWindow
+{
+    border-image: url(./Image/Login.png);
+    /*qproperty-windowIcon: url(./Image/WinMini.png);*/
+}
+
+QAbstractScrollArea
+{
+    border-image: url(./Image/Login.png);
+}
+
+QTableView
+{
+    selection-background-color: rgb(229, 229, 229);
+    selection-color: black;
+}
+
+QTabWidget::pane
+{
+    border-image: url(./Image/Login.png);
+}
+
+QHeaderView::section
+{
+    background-color: rgb(229, 229, 229);
+    color: black;
+}
+
+QTableView QTableCornerButton::section
+{
+     background: rgb(229, 229, 229);
+ }
+
+QPushButton
+{
+    border-image: url(./Image/ButtonDefault.png);
+}
+
+QPushButton:pressed
+{
+    border-image: url(./Image/ButtonDown.png);
+}
+
+QDialog
+{
+    border-image: url(./Image/Login.png);
+}
+
+QTabBar::tab
+{
+    border-image: url(./Image/TabbarDefault.png);
+}
+
+QTabBar::tab:selected
+{
+    border-image: url(./Image/TabbarSelected.png);
+}
+
+QMenuBar
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 lightgray, stop:1 darkgray);
+}
+
+QMenuBar::item:selected
+{
+    border-image: url(./Image/Menubar.png);
+}
+
+QMenuBar::item:pressed
+{
+    border-image: url(./Image/Menubar.png);
+}
+
+QMenu::item:selected
+{
+    border-image: url(./Image/Menu.png);
+}

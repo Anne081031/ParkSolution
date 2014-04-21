@@ -1,0 +1,12 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\qhoverframe.o
+./debug\shapedclock.o
+./debug\qdlglogin.o
+./debug\qrc_UIRes.o
+./debug\moc_mainwindow.o
+./debug\moc_qhoverframe.o
+./debug\moc_shapedclock.o
+./debug\moc_qdlglogin.o
+);

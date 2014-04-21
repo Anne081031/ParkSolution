@@ -1,0 +1,17 @@
+WG26 WG34
+RS-232 422 485
+USB
+WIFI 电话网络无线
+网口TCP/IP
+BlueTooth
+
+电子标签(应答器Transponder 有源 无源)<----RFID------>RFID读写器(Reader/Writer)
+1-dimensional barcode
+条码 一维码仅是一个ID号(国际代号+国内代码)(要描述物品需要数据库的帮助)
+
+2-dimensional barcode
+二维码 二维条码是大容量、高可靠性信息实现存储、携带并自动识读的最理想的方法
+
+http://www.shenkashuo.com/
+http://hikingsmart.diytrade.com/
+http://hikingsmart.diytrade.com/

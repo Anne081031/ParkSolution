@@ -384,7 +384,7 @@ public:
 
         edtVistCount = new QLineEdit(formLayoutWidget_12);
         edtVistCount->setObjectName(QStringLiteral("edtVistCount"));
-        edtVistCount->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtVistCount->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtVistCount->setMaxLength(10);
         edtVistCount->setReadOnly(true);
 
@@ -518,7 +518,7 @@ public:
 
         edtConsumptionAmount = new QLineEdit(formLayoutWidget_10);
         edtConsumptionAmount->setObjectName(QStringLiteral("edtConsumptionAmount"));
-        edtConsumptionAmount->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtConsumptionAmount->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtConsumptionAmount->setMaxLength(10);
         edtConsumptionAmount->setReadOnly(true);
 
@@ -619,6 +619,7 @@ public:
         tabServiceRecord->setContextMenuPolicy(Qt::CustomContextMenu);
         tabServiceRecord->setSelectionMode(QAbstractItemView::SingleSelection);
         tabServiceRecord->setSelectionBehavior(QAbstractItemView::SelectRows);
+        tabServiceRecord->verticalHeader()->setVisible(false);
         formLayoutWidget_8 = new QWidget(QDlgEditNewInfo);
         formLayoutWidget_8->setObjectName(QStringLiteral("formLayoutWidget_8"));
         formLayoutWidget_8->setGeometry(QRect(10, 50, 261, 152));
@@ -633,7 +634,7 @@ public:
 
         edtCustomerID = new QLineEdit(formLayoutWidget_8);
         edtCustomerID->setObjectName(QStringLiteral("edtCustomerID"));
-        edtCustomerID->setStyleSheet(QStringLiteral("background-color: rgb(192, 192, 192);"));
+        edtCustomerID->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
         edtCustomerID->setReadOnly(true);
         edtCustomerID->setClearButtonEnabled(false);
 

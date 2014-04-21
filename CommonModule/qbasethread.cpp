@@ -2,17 +2,29 @@
 #include <QGuiApplication>
 #include "CommonStructType.h"
 
-QBaseThread::QBaseThread(QString& strThreadName, QObject *parent) :
+QBaseThread::QBaseThread(QString strThreadName, QObject *parent) :
     QThread(parent)
 {
     setObjectName( strThreadName );
     ThreadInitialize( );
 }
 
-void QBaseThread::ThreadInitialize( )
+QBaseThread::~QBaseThread( )
+{
+    ThreadUninitialize( );
+}
+
+bool QBaseThread::ThreadInitialize( )
 {
     connect( this, SIGNAL( started( ) ), this, SLOT( ThreadStarted( ) ) );
     connect( this, SIGNAL( finished( ) ), this, SLOT( ThreadFinished( ) ) );
+
+    return true;
+}
+
+void QBaseThread::ThreadUninitialize( )
+{
+
 }
 
 void QBaseThread::ThreadExitLaunch( )
@@ -24,7 +36,7 @@ void QBaseThread::ThreadExitLaunch( )
 void QBaseThread::PostEvent( QEvent* pEvent )
 {
     qApp->postEvent( this, pEvent );
-    ThreadEventInfo( true, pEvent );
+    //ThreadEventInfo( true, pEvent );
 }
 
 void QBaseThread::ThreadEventInfo( bool bPostEvent, QEvent *pEvent )
@@ -38,19 +50,28 @@ void QBaseThread::ThreadEventInfo( bool bPostEvent, QEvent *pEvent )
         break;
     }
 
-    QString strLog = objectName( ) + QString( " %1 %2 Event" ).arg( bPostEvent ? "Post" : "Process", strEvent );
-    emit ThreadLog( strLog );
+    QString strLog = QString( " %1 %2 Event" ).arg( bPostEvent ? "Post" : "Process", strEvent );
+    EmitLog( strLog );
+}
+
+void QBaseThread::EmitLog( QString &strLog )
+{
+    QString strDateTime;
+    QCommonFunction::GetCurrentDateTime( strDateTime );
+
+    emit Log( QString( "%1 %2 %3\n" ).arg( objectName( ), strLog, strDateTime ) );
 }
 
 void QBaseThread::ThreadStarted( )
 {
-    QString strLog = objectName( ) + " Started";
-    emit ThreadLog( strLog );
+    QString strLog = "Started";
+    EmitLog( strLog );
 }
 
 void QBaseThread::ThreadFinished( )
 {
-    QString strLog = objectName( ) + " Finished";
-    emit ThreadLog( strLog );
+    QString strLog = "Finished";
+    EmitLog( strLog );
+
     deleteLater( );
 }
