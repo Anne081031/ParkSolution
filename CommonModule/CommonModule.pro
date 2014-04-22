@@ -39,7 +39,8 @@ HEADERS += \
     qshapedform.h \
     qhoverframe.h \
     qserializeevent.h \
-    qserializethread.h
+    qserializethread.h \
+    qdlgreport.h
 
 SOURCES += \
     qbasethread.cpp \
@@ -48,9 +49,11 @@ SOURCES += \
     qshapedform.cpp \
     qhoverframe.cpp \
     qserializeevent.cpp \
-    qserializethread.cpp
+    qserializethread.cpp \
+    qdlgreport.cpp
 
 FORMS += \
     qdlglogin.ui \
     qshapedform.ui \
-    qhoverframe.ui
+    qhoverframe.ui \
+    qdlgreport.ui

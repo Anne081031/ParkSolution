@@ -462,6 +462,10 @@ void QCommonFunction::GetSpName( ParkSolution::SpType eSpType, QString& strSpNam
     case ParkSolution::SpWriteInOutRecord :
         strSpName = spName.strSpWriteInOutRecord;
         break;
+
+    case ParkSolution::SpReportInfo :
+        strSpName = spName.strReportInfo;
+        break;
     }
 }
 
@@ -536,6 +540,10 @@ void QCommonFunction::GetSpXmlPattern( ParkSolution::SpType eSpType, QString& st
 
     case ParkSolution::SpWriteInOutRecord :
         strXmlPattern = xmlPattern.strXmlWriteInOutRecord;
+        break;
+
+    case ParkSolution::SpReportInfo :
+        strXmlPattern = xmlPattern.strXmlReportInfo;
         break;
     }
 }

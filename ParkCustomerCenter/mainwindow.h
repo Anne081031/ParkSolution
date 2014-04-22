@@ -15,6 +15,7 @@
 #include "../CommonModule/qshapedform.h"
 #include "../CommonModule/qhoverframe.h"
 #include "qspeechthread.h"
+#include "../CommonModule/qdlgreport.h"
 
 #define IMAGE_LABEL_COUNT   ( int ) 5
 
@@ -65,6 +66,7 @@ private:
     void StartProcess( );
     bool SendData( );
     void CreateHoverForm( );
+    void CreateReportDlg( );
     void CustomerComing( );
     void GetComingString( QString& strText, int nIndex );
     void PlayWelcomeSound( );
@@ -90,8 +92,10 @@ private:
     QHoverFrame* pHoverFrame;
     QShapedForm* pShapedForm;
     QSpeechThread* pSpeechThread;
+    QDlgReport* pDlgReport;
 
 private slots:
+    void HandleReportQuery( QStringList lstParams );
     void HandleActivated( QSystemTrayIcon::ActivationReason reason );
     void HandleMessageClicked( );
     void HandleShowHoverWindow( bool bVisible );
@@ -105,6 +109,7 @@ private slots:
     void HandleSpResultset( int nSpType, QObject* pQSqlQueryModel );
     void on_actCustomerInfo_triggered();
     void on_actionExit_triggered();
+    void on_actVehicleStatistics_triggered();
 };
 
 #endif // MAINWINDOW_H

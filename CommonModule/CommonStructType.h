@@ -324,6 +324,7 @@ namespace ParkSolution {
         QString strSpChangeCommonData;
         QString strSpQueryCommonDataByType;
         QString strSpWriteInOutRecord;
+        QString strReportInfo;
 
         __SpName( )
         {
@@ -342,6 +343,7 @@ namespace ParkSolution {
             strSpChangeCommonData = "ChangeCommonData";
             strSpQueryCommonDataByType = "QueryCommonDataByType";
             strSpWriteInOutRecord = "WriteInOutRecord";
+            strReportInfo = "ReportInfo";
         }
     } SpName;
 
@@ -363,6 +365,7 @@ namespace ParkSolution {
         QString strXmlChangeCommonDataDelete;
         QString strXmlQueryCommonDataByType;
         QString strXmlWriteInOutRecord;
+        QString strXmlReportInfo;
 
         __SpXmlPattern( )
         {
@@ -420,6 +423,7 @@ namespace ParkSolution {
             strXmlChangeCommonDataDelete = "<Data><Flag>%1</Flag><DataType>%2</DataType><ValueID>%3</ValueID><Value>%4</Value></Data>";
             strXmlQueryCommonDataByType = "<Data><DataType>%1</DataType></Data>";
             strXmlWriteInOutRecord = "<Data><Flag>%1</Flag><Plate>%2</Plate><DateTime>%3</DateTime><Image>%4</Image><UUID>%5</UUID></Data>";
+            strXmlReportInfo = "<Data><Flag>%1</Flag><StartTime>%2</StartTime><EndTime>%3</EndTime></Data>";
         }
     } SpXmlPattern;
 }

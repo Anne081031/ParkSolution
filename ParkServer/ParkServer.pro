@@ -3,10 +3,10 @@
 # Project created by QtCreator 2014-04-07T19:53:31
 #
 #-------------------------------------------------
-#DEFINES += StartupDebug
-DEFINES += StartupRelease
+DEFINES += StartupDebug
+#DEFINES += StartupRelease
 #LIBS += -L/your/lib/path  -lyour_lib_name
-QT       += core gui sql network axcontainer
+QT       += core gui sql network axcontainer webkitwidgets
 
 INCLUDEPATH += ../Zmq
 

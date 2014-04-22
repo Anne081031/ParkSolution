@@ -51,6 +51,8 @@ private:
     void SendPlate2Client( const QString& strPlate, const QString& strDateTime, const QString& strBase64 );
     void ParseSpResult( QByteArray& byJson, bool& bSuccess, QString& strUUID );
 
+    void DisplayReport( const QByteArray& byJson );
+
 private slots:
     void HandleSerializeLog( QString strLog );
     void HandlePlateSerializeData( QString strPlate, QString strDateTime, QByteArray byFileData );
@@ -68,6 +70,8 @@ private slots:
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
+
+    void on_btQuery_clicked();
 
 private:
     Ui::MainWindow *ui;

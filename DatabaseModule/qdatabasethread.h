@@ -11,6 +11,7 @@ class DATABASEMODULESHARED_EXPORT QDatabaseThread : public QBaseThread
     Q_OBJECT
 public:
     static QDatabaseThread* CreateInstance( );
+    void PostReportInfoEvent( QStringList& lstParams );
     void PostWriteInOutRecordEvent( QStringList& lstParams );
     void PostDatabaseConnectEvent( ParkSolution::QStringHash& hashParam );
     void PostDatabaseDisconnectEvent( );
@@ -40,6 +41,7 @@ protected:
 private:
     explicit QDatabaseThread(QObject *parent = 0);
 
+    void ProcessReportInfoEvent( QDatabaseEvent* pEvent );
     void ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent );
     void ProcessDatabaseConnectEvent( QDatabaseEvent* pEvent );
     void ProcessDatabaseDisconnectEvent( QDatabaseEvent* pEvent );

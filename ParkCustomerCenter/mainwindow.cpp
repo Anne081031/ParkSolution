@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
     FillServiceColumnName( );
     CreateImageLabel( );
     CreateInfoWidget( );
+    CreateReportDlg( );
     LayoutUI( );
     FillHash( );
     FillInfoEditsArray( );
@@ -31,9 +32,18 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    delete pDlgReport;
     delete pSysTrayIcon;
     DestroyImageLabel( );
     delete ui;
+}
+
+void MainWindow::CreateReportDlg( )
+{
+    pDlgReport = new QDlgReport( this);
+
+    connect( pDlgReport, SIGNAL( ReportQuery( QStringList ) ),
+                   this, SLOT( HandleReportQuery( QStringList ) ) );
 }
 
 void MainWindow::CreateHoverForm( )
@@ -132,6 +142,7 @@ void MainWindow::SetServiceViewColumnName( QSqlQueryModel* pModel )
 
 void MainWindow::StartPlateThread( )
 {
+    //return;
     pPlateParserThread = QPlateParserThread::CreateInstance( );
     pPlateThread = QPlateThread::CreateInstance( );
     connect( pPlateThread, SIGNAL( Log( QString ) ),
@@ -211,6 +222,8 @@ void MainWindow::HandleSpResult( int nSpType, QByteArray byData )
         //PlayWelcomeSound( );
     } else if ( ParkSolution::SpQueryUserInfo == nSpType ) {
         dlgLogin.FillUser( byData );
+    } else if ( ParkSolution::SpReportInfo == nSpType ) {
+        pDlgReport->DisplayReport( byData );
     }
 }
 
@@ -755,4 +768,14 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
     pHoverFrame->close( );
     pHoverFrame->deleteLater( );
+}
+
+void MainWindow::HandleReportQuery( QStringList lstParams )
+{
+    pDatabaseThread->PostReportInfoEvent( lstParams );
+}
+
+void MainWindow::on_actVehicleStatistics_triggered()
+{
+    pDlgReport->exec( );
 }

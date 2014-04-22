@@ -144,9 +144,9 @@ void QMySQL::ExecuteSP( QString& strConnectName,
 
     bRet = spQuery.exec( "SELECT @txtValue" );
     DebugMsg( eSpType, spQuery );
-     if ( !bRet ) {
-         return;
-     }
+    if ( !bRet ) {
+        return;
+    }
 
     if ( !spQuery.next( ) ) {
         DebugMsg( eSpType, spQuery );
@@ -435,6 +435,23 @@ void QMySQL::CallWriteInOutRecord( QString& strConnectName,
     ExecuteSP( strConnectName, eSpType, strSQL );
 }
 
+void QMySQL::CallReportInfo( QString& strConnectName,
+                               ParkSolution::SpType eSpType,
+                               QString& strSpName,
+                               QString& strXmlPattern,
+                               QStringList& lstParams )
+{
+    if ( 3 > lstParams.count( ) ) {
+        return;
+    }
+
+    strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ),
+                                       lstParams.at( 1 ),
+                                       lstParams.at( 2 ) );
+    QString strSQL = QString( "Call %1( '%2', @txtValue )" ).arg( strSpName, strXmlPattern );
+    ExecuteSP( strConnectName, eSpType, strSQL );
+}
+
 void QMySQL::CallQueryInOutImage( QString& strConnectName,
                                ParkSolution::SpType eSpType,
                                QString& strSpName,
@@ -485,6 +502,8 @@ void QMySQL::CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStr
         CallChangeCommonData( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
     } else if ( ParkSolution::SpWriteInOutRecord == eSpType ) {
         CallWriteInOutRecord( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
+    } else if ( ParkSolution::SpReportInfo == eSpType ) {
+        CallReportInfo( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
     }
 }
 

@@ -171,6 +171,10 @@ void QDatabaseThread::customEvent( QEvent *pEvent )
     case QDatabaseEvent::WriteInOutRecord :
         ProcessWriteInOutRecordEvent( pDbEvent );
         break;
+
+    case QDatabaseEvent::ReportInfo :
+        ProcessReportInfoEvent( pDbEvent );
+        break;
     }
 }
 
@@ -258,6 +262,13 @@ void QDatabaseThread::PostChangeServiceRecordEvent( QStringList& lstParams )
     PostEvent( pEvent );
 }
 
+void QDatabaseThread::PostReportInfoEvent( QStringList& lstParams )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::ReportInfo );
+    pEvent->SetParamList( lstParams );
+    PostEvent( pEvent );
+}
+
 void QDatabaseThread::PostWriteInOutRecordEvent( QStringList& lstParams )
 {
     QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::WriteInOutRecord );
@@ -304,6 +315,12 @@ void QDatabaseThread::ProcessDatabaseConnectEvent( QDatabaseEvent* pEvent )
 void QDatabaseThread::ProcessDatabaseDisconnectEvent( QDatabaseEvent* pEvent )
 {
 
+}
+
+void QDatabaseThread::ProcessReportInfoEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    pMySQLDatabase->CallSP( strConnectName, ParkSolution::SpReportInfo, lstParams );
 }
 
 void QDatabaseThread::ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent )

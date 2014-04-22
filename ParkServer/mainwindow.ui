@@ -43,6 +43,116 @@
       <string>视频</string>
      </attribute>
     </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>报表</string>
+     </attribute>
+     <widget class="QWebView" name="webView">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>40</y>
+        <width>781</width>
+        <height>371</height>
+       </rect>
+      </property>
+      <property name="url">
+       <url>
+        <string>about:blank</string>
+       </url>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>8</x>
+        <y>6</y>
+        <width>616</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>起始时间</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dtStart"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>截止时间</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QDateTimeEdit" name="dtEnd"/>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>类别</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="cbxType">
+         <item>
+          <property name="text">
+           <string>全部</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按年</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按季</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按月</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按年周</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按年月周</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按日</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按时</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="btQuery">
+         <property name="text">
+          <string>查询</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
     <widget class="QWidget" name="tabPlate">
      <attribute name="title">
       <string>车牌识别结果</string>
@@ -169,6 +279,13 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKitWidgets/QWebView</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

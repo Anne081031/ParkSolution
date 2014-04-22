@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>QDlgReport</class>
+ <widget class="QDialog" name="QDlgReport">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>647</width>
+    <height>637</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>647</width>
+    <height>637</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>647</width>
+    <height>637</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>车辆进入报表查询</string>
+  </property>
+  <widget class="QWebView" name="webView">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>40</y>
+     <width>631</width>
+     <height>590</height>
+    </rect>
+   </property>
+   <property name="url">
+    <url>
+     <string>about:blank</string>
+    </url>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>218</x>
+     <y>7</y>
+     <width>48</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>截止时间</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btQuery">
+   <property name="geometry">
+    <rect>
+     <x>555</x>
+     <y>7</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>查询</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>421</x>
+     <y>7</y>
+     <width>24</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>类别</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>16</x>
+     <y>7</y>
+     <width>48</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>起始时间</string>
+   </property>
+  </widget>
+  <widget class="QDateTimeEdit" name="dtEnd">
+   <property name="geometry">
+    <rect>
+     <x>273</x>
+     <y>8</y>
+     <width>142</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="cbxType">
+   <property name="geometry">
+    <rect>
+     <x>475</x>
+     <y>8</y>
+     <width>74</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>全部</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>按年</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>按季</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>按月</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>按年周</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>按年月周</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>按日</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>按时</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QDateTimeEdit" name="dtStart">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>8</y>
+     <width>142</width>
+     <height>20</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKitWidgets/QWebView</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

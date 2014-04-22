@@ -25,7 +25,8 @@ public:
         QueryInOutImage,
         QueryCommonDataByType,
         ChangeCommonData,
-        WriteInOutRecord
+        WriteInOutRecord,
+        ReportInfo
     } DatabaseEvent;
 
     static QDatabaseEvent* CreateDatabaseEvent( DatabaseEvent eDbEvent );

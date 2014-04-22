@@ -286,11 +286,44 @@ void MainWindow::ParseSpResult( QByteArray& byJson, bool& bSuccess, QString& str
     strUUID = jsonObj.value( "UUID" ).toString( );
 }
 
+void MainWindow::DisplayReport(const QByteArray &byJson)
+{
+    QJsonParseError jsonError;
+    QJsonDocument jsonDoc = QJsonDocument::fromJson( byJson, &jsonError );
+
+    if ( QJsonParseError::NoError != jsonError.error ) {
+        return;
+    }
+
+    if ( jsonDoc.isNull( ) || jsonDoc.isEmpty( ) ) {
+        return;
+    }
+
+    QJsonObject jsonObj = jsonDoc.object( );
+    if ( jsonObj.isEmpty( ) ) {
+        return;
+    }
+
+    QJsonValue jsonValue = jsonObj.value( "HTML" );
+    if ( jsonValue.isNull( ) ) {
+        return;
+    }
+
+    QString strHTML = jsonValue.toString( );
+
+    ui->webView->setHtml( strHTML );
+}
+
 void MainWindow::HandleSpResult( int nSpType, QByteArray byData )
 {
     Q_UNUSED( nSpType );
     QString strText = QString( byData ) + "\n";
     ui->txtDbLog->appendPlainText( strText );
+
+    if ( ParkSolution::SpReportInfo == nSpType ) {
+        DisplayReport( byData );
+        return;
+    }
 
     pProcessResultThread->PostDatabaseResultEvent( nSpType, byData );
 return;
@@ -486,4 +519,16 @@ void MainWindow::on_pushButton_4_clicked()
 
     QString strName = "000011130160855出.jpg";
     pFtpThread->PostUploadFileEvent( strName, byData);
+}
+
+void MainWindow::on_btQuery_clicked()
+{
+    if ( !pDatabaseThread->DatabasePing( ) ) {
+        return;
+    }
+
+    QStringList lstParams;
+
+    lstParams << QString::number( ui->cbxType->currentIndex( ) ) << ui->dtStart->text( ) << ui->dtEnd->text( );
+    pDatabaseThread->PostReportInfoEvent( lstParams );
 }

@@ -6,10 +6,12 @@ INPUT(
 ./debug\qhoverframe.o
 ./debug\qserializeevent.o
 ./debug\qserializethread.o
+./debug\qdlgreport.o
 ./debug\moc_qbasethread.o
 ./debug\moc_qcommonfunction.o
 ./debug\moc_qdlglogin.o
 ./debug\moc_qshapedform.o
 ./debug\moc_qhoverframe.o
 ./debug\moc_qserializethread.o
+./debug\moc_qdlgreport.o
 );

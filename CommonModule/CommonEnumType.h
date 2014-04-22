@@ -25,7 +25,8 @@ namespace ParkSolution {
         SpQueryCommonDataByType,
         SpChangeCommonDataUI,
         SpChangeCommonDataDelete,
-        SpWriteInOutRecord
+        SpWriteInOutRecord,
+        SpReportInfo
     } SpType;
 
     typedef union __SelectResult {

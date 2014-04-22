@@ -34,6 +34,7 @@ class Ui_MainWindow
 public:
     QAction *actCustomerInfo;
     QAction *actionExit;
+    QAction *actVehicleStatistics;
     QWidget *centralWidget;
     QWidget *widget2;
     QWidget *formLayoutWidget_3;
@@ -202,6 +203,7 @@ public:
     QTableView *tabServiceRecord;
     QMenuBar *menuBar;
     QMenu *menu;
+    QMenu *menu_2;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -213,6 +215,8 @@ public:
         actCustomerInfo->setObjectName(QStringLiteral("actCustomerInfo"));
         actionExit = new QAction(MainWindow);
         actionExit->setObjectName(QStringLiteral("actionExit"));
+        actVehicleStatistics = new QAction(MainWindow);
+        actVehicleStatistics->setObjectName(QStringLiteral("actVehicleStatistics"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         widget2 = new QWidget(centralWidget);
@@ -1140,6 +1144,8 @@ public:
         menuBar->setGeometry(QRect(0, 0, 1170, 19));
         menu = new QMenu(menuBar);
         menu->setObjectName(QStringLiteral("menu"));
+        menu_2 = new QMenu(menuBar);
+        menu_2->setObjectName(QStringLiteral("menu_2"));
         MainWindow->setMenuBar(menuBar);
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
@@ -1198,9 +1204,11 @@ public:
         QWidget::setTabOrder(scrVehicle, tabServiceRecord);
 
         menuBar->addAction(menu->menuAction());
+        menuBar->addAction(menu_2->menuAction());
         menu->addAction(actCustomerInfo);
         menu->addSeparator();
         menu->addAction(actionExit);
+        menu_2->addAction(actVehicleStatistics);
 
         retranslateUi(MainWindow);
 
@@ -1215,6 +1223,7 @@ public:
         actCustomerInfo->setToolTip(QApplication::translate("MainWindow", "\345\256\242\346\210\267\350\265\204\346\226\231\347\256\241\347\220\206", 0));
 #endif // QT_NO_TOOLTIP
         actionExit->setText(QApplication::translate("MainWindow", "\351\200\200\345\207\272\347\263\273\347\273\237", 0));
+        actVehicleStatistics->setText(QApplication::translate("MainWindow", "\350\275\246\350\276\206\350\277\233\345\205\245\347\273\237\350\256\241", 0));
         lblCustomerName2->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\345\220\215\347\247\260", 0));
         lblCustomerCategory2->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\347\261\273\345\210\253", 0));
         lblPlate2->setText(QApplication::translate("MainWindow", "  \350\275\246\347\211\214\345\217\267\347\240\201", 0));
@@ -1276,6 +1285,7 @@ public:
         label_33->setText(QApplication::translate("MainWindow", "  \344\270\213\346\254\241\344\277\235\345\205\273\346\227\245\346\234\237", 0));
         label_34->setText(QApplication::translate("MainWindow", "  \350\275\246\350\276\206\346\200\273\344\275\223\347\212\266\345\206\265", 0));
         menu->setTitle(QApplication::translate("MainWindow", "\347\263\273\347\273\237\347\256\241\347\220\206", 0));
+        menu_2->setTitle(QApplication::translate("MainWindow", "\346\212\245\350\241\250", 0));
     } // retranslateUi
 
 };
