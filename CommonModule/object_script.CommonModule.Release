@@ -7,6 +7,7 @@ INPUT(
 ./release\qserializeevent.o
 ./release\qserializethread.o
 ./release\qdlgreport.o
+./release\qjsondata.o
 ./release\moc_qbasethread.o
 ./release\moc_qcommonfunction.o
 ./release\moc_qdlglogin.o
@@ -14,4 +15,5 @@ INPUT(
 ./release\moc_qhoverframe.o
 ./release\moc_qserializethread.o
 ./release\moc_qdlgreport.o
+./release\moc_qjsondata.o
 );

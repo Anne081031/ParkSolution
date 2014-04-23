@@ -16,6 +16,8 @@ class NETWORKMODULESHARED_EXPORT QZmqServerThread : public QBaseThread
 public:
     static QZmqServerThread* CreateInstance( QObject* pParent = NULL );
 
+    void PostPublishDataEvent( const QByteArray& byPublishData );
+
 protected:
     void run( );
     void customEvent( QEvent* pEvent );

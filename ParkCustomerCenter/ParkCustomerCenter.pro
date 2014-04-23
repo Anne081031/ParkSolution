@@ -6,7 +6,7 @@
 DEFINES += StartupDebug
 #DEFINES += StartupRelease
 
-QT       += core gui sql network axcontainer
+QT       += core gui sql network axcontainer printsupport
 
 INCLUDEPATH += ../Zmq
 

@@ -1,11 +1,12 @@
-QT       += core gui sql webkitwidgets
+QT       += core gui sql webkitwidgets axcontainer printsupport
+#DEFINES += _WIN32_WINNT=0x0501
 
 MYTARGET = $$quote( CommonModule%1 )
 MYDESTDIR = $$quote( ../LibExeFiles/%1 )
 MYDESTLIB = $$quote( %1/lib%2%3.a )
 
 #INCLUDEPATH += ./Mysql/include
-#LIBS += ./Mysql/lib/liblibmysql.a
+LIBS += ../WinLib/libpsapi.a
 
 Debug {
     TARGET = $$sprintf( $$MYTARGET, "Debug" )
@@ -40,7 +41,8 @@ HEADERS += \
     qhoverframe.h \
     qserializeevent.h \
     qserializethread.h \
-    qdlgreport.h
+    qdlgreport.h \
+    qjsondata.h
 
 SOURCES += \
     qbasethread.cpp \
@@ -50,7 +52,8 @@ SOURCES += \
     qhoverframe.cpp \
     qserializeevent.cpp \
     qserializethread.cpp \
-    qdlgreport.cpp
+    qdlgreport.cpp \
+    qjsondata.cpp
 
 FORMS += \
     qdlglogin.ui \

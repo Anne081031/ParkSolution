@@ -473,6 +473,11 @@ release/moc_mainwindow.cpp: F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/QMa
 		qprocessresultthread.h \
 		qprocessresultevent.h \
 		../VideoModule/qanalogcamerathread.h \
+		../NetworkModule/qzmqserverthread.h \
+		../NetworkModule/qzmqserverevent.h \
+		../Zmq/zmq.h \
+		../Zmq/zmq_utils.h \
+		../CommonModule/qjsondata.h \
 		mainwindow.h
 	F:\Qt\Qt5.2.1\5.2.1\mingw48_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 $(INCPATH) mainwindow.h -o release\moc_mainwindow.cpp
 
@@ -825,6 +830,11 @@ release/moc_qprocessresultthread.cpp: F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtC
 		../LPRModule/LPKernelEx.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QMutex \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QMutexLocker \
+		../NetworkModule/qzmqserverthread.h \
+		../NetworkModule/qzmqserverevent.h \
+		../Zmq/zmq.h \
+		../Zmq/zmq_utils.h \
+		../CommonModule/qjsondata.h \
 		qprocessresultthread.h
 	F:\Qt\Qt5.2.1\5.2.1\mingw48_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 $(INCPATH) qprocessresultthread.h -o release\moc_qprocessresultthread.cpp
 
@@ -1211,7 +1221,12 @@ release/main.o: main.cpp mainwindow.h \
 		../CommonModule/qserializeevent.h \
 		qprocessresultthread.h \
 		qprocessresultevent.h \
-		../VideoModule/qanalogcamerathread.h
+		../VideoModule/qanalogcamerathread.h \
+		../NetworkModule/qzmqserverthread.h \
+		../NetworkModule/qzmqserverevent.h \
+		../Zmq/zmq.h \
+		../Zmq/zmq_utils.h \
+		../CommonModule/qjsondata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o main.cpp
 
 release/mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -1575,6 +1590,11 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		qprocessresultthread.h \
 		qprocessresultevent.h \
 		../VideoModule/qanalogcamerathread.h \
+		../NetworkModule/qzmqserverthread.h \
+		../NetworkModule/qzmqserverevent.h \
+		../Zmq/zmq.h \
+		../Zmq/zmq_utils.h \
+		../CommonModule/qjsondata.h \
 		ui_mainwindow.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWebKitWidgets/QWebView \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWebKitWidgets/qwebview.h \
@@ -1968,7 +1988,12 @@ release/qprocessresultthread.o: qprocessresultthread.cpp qprocessresultthread.h 
 		../LPRModule/qplateevent.h \
 		../LPRModule/LPKernelEx.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QMutex \
-		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QMutexLocker
+		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QMutexLocker \
+		../NetworkModule/qzmqserverthread.h \
+		../NetworkModule/qzmqserverevent.h \
+		../Zmq/zmq.h \
+		../Zmq/zmq_utils.h \
+		../CommonModule/qjsondata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\qprocessresultthread.o qprocessresultthread.cpp
 
 release/qprocessresultevent.o: qprocessresultevent.cpp qprocessresultevent.h \

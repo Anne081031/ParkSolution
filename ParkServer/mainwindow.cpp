@@ -511,6 +511,8 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
+    pProcessResultThread->PostPlateImage( );
+    return;
     QString strFile = "D:/VBPlate/000011130160855出.jpg";
     QFile file( strFile );
     file.open( QFile::ReadOnly );

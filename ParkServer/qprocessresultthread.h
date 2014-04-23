@@ -10,6 +10,8 @@
 #include "../VideoModule/qanalogcamerathread.h"
 #include "../ConfigModule/qconfigurator.h"
 #include "../CommonModule/qbasethread.h"
+#include "../NetworkModule/qzmqserverthread.h"
+#include "../CommonModule/qjsondata.h"
 
 class QProcessResultThread : public QBaseThread
 {
@@ -17,6 +19,7 @@ class QProcessResultThread : public QBaseThread
 public:
     static QProcessResultThread* CreateInstance( QObject* pParent = NULL );
     void PostDatabaseResultEvent( int nSpType, const QByteArray& byJson );
+    void PostPlateImage( );
     void PostPlateResultEvent( const QString& strPlate, const QString& strDateTime, int nChannel, bool bEnter );
 
     void SetAnalogCameraThread( QAnalogCameraThread* pAnalog );
@@ -30,8 +33,11 @@ protected:
 private:
     explicit QProcessResultThread(QObject *parent = 0);
 
+    void CreateVehicleJson( QByteArray& byJson, const QString& strPlate, const QString& strDateTime, const QString& strBase64 );
+
     void ProcessDatabaseResultEvent( QProcessResultEvent* pEvent  );
     void ProcessPlateResultEvent( QProcessResultEvent* pEvent  );
+    void ProcessPlateImageEvent( QProcessResultEvent* pEvent  );
 
     void CaptureImage( QString& strFile, const QString& strPlate, int nChannel );
 
@@ -48,6 +54,8 @@ private:
     QString strImagePath;
     bool bDeleteImage;
     QConfigurator* pConfigurator;
+    QZmqServerThread* pZmqServerThread;
+    QJsonData jsonData;
 
 signals:
 

@@ -7,6 +7,7 @@ INPUT(
 ./debug\qserializeevent.o
 ./debug\qserializethread.o
 ./debug\qdlgreport.o
+./debug\qjsondata.o
 ./debug\moc_qbasethread.o
 ./debug\moc_qcommonfunction.o
 ./debug\moc_qdlglogin.o
@@ -14,4 +15,5 @@ INPUT(
 ./debug\moc_qhoverframe.o
 ./debug\moc_qserializethread.o
 ./debug\moc_qdlgreport.o
+./debug\moc_qjsondata.o
 );

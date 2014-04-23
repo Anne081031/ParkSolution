@@ -20,6 +20,14 @@ QZmqServerThread* QZmqServerThread::CreateInstance( QObject* pParent )
     return pThreadInstance;
 }
 
+void QZmqServerThread::PostPublishDataEvent( const QByteArray &byPublishData )
+{
+    QZmqServerEvent* pEvent = QZmqServerEvent::CreateServerEvent( QZmqServerEvent::PusblishData );
+    pEvent->SetSendData( byPublishData );
+
+    PostEvent( pEvent );
+}
+
 bool QZmqServerThread::ThreadInitialize( )
 {
     QBaseThread::ThreadInitialize( );

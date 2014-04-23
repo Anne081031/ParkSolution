@@ -9,7 +9,8 @@ class QProcessResultEvent : public QEvent
 public:
     typedef enum __ProcessResultEvent {
         DatabaseResult = User,
-        PlateReslut
+        PlateReslut,
+        PlateImage
     } ProcessResultEvent;
 
     static QProcessResultEvent* CreateProcessResultEvent( ProcessResultEvent eEvent );

@@ -41,6 +41,8 @@ bool QProcessResultThread::ThreadInitialize()
     connect( pSerializeThread, SIGNAL( PlateSerializeData( QString, QString, QByteArray ) ),
                    this, SLOT( HandlePlateSerializeData( QString, QString, QByteArray ) ) );
 
+    pZmqServerThread = QZmqServerThread::CreateInstance( );
+
     return bRet;
 }
 
@@ -56,6 +58,12 @@ void QProcessResultThread::CaptureImage( QString& strFile, const QString& strPla
     strFile += QString( "%1%2_%3.jpg" ).arg( strImagePath, strPlate, strDtDigital );
 
     pAnalogCamera->CaptureStaticImage( strFile, nChannel );
+}
+
+void QProcessResultThread::PostPlateImage( )
+{
+    QProcessResultEvent* pEvent = QProcessResultEvent::CreateProcessResultEvent( QProcessResultEvent::PlateImage );
+    PostEvent( pEvent );
 }
 
 void QProcessResultThread::PostDatabaseResultEvent( int nSpType, const QByteArray& byJson )
@@ -97,7 +105,54 @@ void QProcessResultThread::customEvent( QEvent* pEvent )
     case QProcessResultEvent::PlateReslut :
         ProcessPlateResultEvent( pResultEvent );
         break;
+
+    case QProcessResultEvent::PlateImage :
+        ProcessPlateImageEvent( pResultEvent );
+        break;
     }
+}
+
+void QProcessResultThread::CreateVehicleJson( QByteArray &byJson, const QString &strPlate,
+                                             const QString &strDateTime, const QString &strBase64 )
+{
+    QJsonData jsonData;
+    QJsonData::QDataHash dataHash;
+    QByteArray byCommonHead;
+    QByteArray byAuxHead;
+    QByteArray byBody;
+
+     // Common Head
+    QString strValue = QString::number( QJsonData::VehicleAccess );
+    dataHash.insert( QJsonData::MessageType, strValue );
+    jsonData.CreateCommonHead( byCommonHead, dataHash );
+
+    // Aux Head
+    dataHash.clear( );
+    jsonData.CreateAuxHead( byAuxHead, QJsonData::VehicleAccess, dataHash );
+
+    // Body
+    dataHash.insert( QJsonData::VehiclePlate, strPlate );
+    dataHash.insert( QJsonData::VehicleTime, strDateTime );
+    dataHash.insert( QJsonData::VehicleImage, strBase64 );
+    jsonData.CreateBody( byBody, QJsonData::VehicleAccess, dataHash );
+
+    jsonData.GetJsonData( byJson, byCommonHead, byAuxHead, byBody );
+}
+
+void QProcessResultThread::ProcessPlateImageEvent(QProcessResultEvent *pEvent)
+{
+    QByteArray byData;
+    QString strPlate = "川A12345";
+
+    QString strDateTime;
+    QCommonFunction::GetCurrentDateTime( strDateTime );
+
+    QString strFile = "mvc.jpg";
+    QString strBase64;
+    QCommonFunction::GetImageBase64( strBase64, strFile );
+
+    CreateVehicleJson( byData, strPlate, strDateTime, strBase64 );
+    pZmqServerThread->PostPublishDataEvent( byData );
 }
 
 void QProcessResultThread::ProcessDatabaseResultEvent( QProcessResultEvent* pEvent  )
@@ -146,7 +201,9 @@ void QProcessResultThread::Send2FtpServer( const QString &strPlate, const QStrin
 
 void QProcessResultThread::SendPlate2Client( const QString &strPlate, const QString& strDateTime, const QString &strBase64 )
 {
-
+    QByteArray byPublishData;
+    CreateVehicleJson( byPublishData, strPlate, strDateTime, strBase64 );
+    pZmqServerThread->PostPublishDataEvent( byPublishData );
 }
 
 void QProcessResultThread::HandlePlateSerializeData( QString strPlate, QString strDateTime, QByteArray byFileData )

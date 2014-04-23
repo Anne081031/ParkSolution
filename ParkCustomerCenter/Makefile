@@ -172,6 +172,7 @@ Makefile: ParkCustomerCenter.pro F:/Qt/Qt5.2.1/5.2.1/mingw48_32/mkspecs/win32-g+
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Gui.prl \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Core.prl \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Widgets.prl \
+		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5PrintSupport.prl \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Network.prl \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Sql.prl
 	$(QMAKE) -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ParkCustomerCenter.pro
@@ -288,6 +289,7 @@ F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5AxBase.prl:
 F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Gui.prl:
 F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Core.prl:
 F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Widgets.prl:
+F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5PrintSupport.prl:
 F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Network.prl:
 F:/Qt/Qt5.2.1/5.2.1/mingw48_32/lib/Qt5Sql.prl:
 qmake: FORCE

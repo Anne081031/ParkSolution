@@ -142,7 +142,7 @@ void MainWindow::SetServiceViewColumnName( QSqlQueryModel* pModel )
 
 void MainWindow::StartPlateThread( )
 {
-    //return;
+    return;
     pPlateParserThread = QPlateParserThread::CreateInstance( );
     pPlateThread = QPlateThread::CreateInstance( );
     connect( pPlateThread, SIGNAL( Log( QString ) ),
