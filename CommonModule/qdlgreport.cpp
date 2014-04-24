@@ -1,6 +1,7 @@
 #include "qdlgreport.h"
 #include "ui_qdlgreport.h"
 #include <QtCore>
+#include <winsock2.h>
 #include <windows.h>
 #include <psapi.h>
 

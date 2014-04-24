@@ -3,6 +3,7 @@
 
 #include <QThread>
 #include "qcameraevent.h"
+#include <winsock2.h>
 #include <windows.h>
 #include <QApplication>
 #include <QFile>

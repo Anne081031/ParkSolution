@@ -2,6 +2,7 @@
 #define QCAMERAEVENT_H
 
 #include <QEvent>
+#include <winsock2.h>
 #include <windows.h>
 #include <QString>
 

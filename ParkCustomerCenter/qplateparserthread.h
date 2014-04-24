@@ -34,7 +34,7 @@ signals:
     void PlateData( QString strPlate, QString strDateTime, QByteArray byImage );
 
 public slots:
-
+    void HandleZmqClientData( QByteArray byData );
 };
 
 #endif // QPLATEPARSERTHREAD_H

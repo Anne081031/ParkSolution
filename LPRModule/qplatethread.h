@@ -4,6 +4,7 @@
 #include "LPRModule_global.h"
 #include <QThread>
 #include "qplateevent.h"
+#include <winsock2.h>
 #include <windows.h>
 #include "../CommonModule/qcommonfunction.h"
 #include "../CommonModule/qbasethread.h"

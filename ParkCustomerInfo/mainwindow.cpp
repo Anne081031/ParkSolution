@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QDebug>
+#include <winsock2.h>
 #include <windows.h>
 
 #define HIDE_CUSTOMER_COLUMN_COUNT ( int ) 25

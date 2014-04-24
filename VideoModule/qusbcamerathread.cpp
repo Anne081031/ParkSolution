@@ -1,5 +1,6 @@
 ﻿#include "qusbcamerathread.h"
 #include "TmSDK/UsbCameraDll.h"
+#include <winsock2.h>
 #include <windows.h>
 
 static LPBYTE pVidBuff = NULL;

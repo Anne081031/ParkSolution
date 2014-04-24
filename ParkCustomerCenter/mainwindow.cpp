@@ -26,7 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
     FillInfoEditsArray( );
     StartSpeechThread( );
     StartDatabaseThread( );
-    StartPlateThread( );
+    //StartPlateThread( );
+    StartZmqClientThread( );
     ConnectDatabase( );
 }
 
@@ -140,9 +141,19 @@ void MainWindow::SetServiceViewColumnName( QSqlQueryModel* pModel )
     }
 }
 
+void MainWindow::StartZmqClientThread( )
+{
+    pZmqClientThread = QZmqClientThread::CreateInstance( );
+
+    pPlateParserThread = QPlateParserThread::CreateInstance( );
+    connect( pPlateParserThread, SIGNAL( PlateData( QString, QString, QByteArray ) ),
+             this, SLOT( HandlePlateData( QString, QString, QByteArray ) ) );
+    connect( pZmqClientThread, SIGNAL( ZmqClientData( QByteArray ) ),
+             pPlateParserThread, SLOT( HandleZmqClientData( QByteArray ) ) );
+}
+
 void MainWindow::StartPlateThread( )
 {
-    return;
     pPlateParserThread = QPlateParserThread::CreateInstance( );
     pPlateThread = QPlateThread::CreateInstance( );
     connect( pPlateThread, SIGNAL( Log( QString ) ),

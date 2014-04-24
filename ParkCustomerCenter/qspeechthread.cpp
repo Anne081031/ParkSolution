@@ -1,6 +1,7 @@
 #include "qspeechthread.h"
 #include <QApplication>
 #include <QDebug>
+#include <winsock2.h>
 #include <windows.h>
 
 QSpeechThread* QSpeechThread::pThreadInstance = NULL;

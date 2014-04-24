@@ -16,6 +16,7 @@
 #include "../CommonModule/qhoverframe.h"
 #include "qspeechthread.h"
 #include "../CommonModule/qdlgreport.h"
+#include "../NetworkModule/qzmqclientthread.h"
 
 #define IMAGE_LABEL_COUNT   ( int ) 5
 
@@ -49,6 +50,7 @@ private:
     void FillCustomerEdit( );
     void FillVehicleEdit( );
     void StartPlateThread( );
+    void StartZmqClientThread( );
     void StartDatabaseThread( );
     void StartSpeechThread( );
     void ConnectDatabase( );
@@ -92,6 +94,7 @@ private:
     QHoverFrame* pHoverFrame;
     QShapedForm* pShapedForm;
     QSpeechThread* pSpeechThread;
+    QZmqClientThread* pZmqClientThread;
     QDlgReport* pDlgReport;
 
 private slots:

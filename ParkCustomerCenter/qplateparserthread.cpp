@@ -47,6 +47,7 @@ void QPlateParserThread::ParsePlateData( const QByteArray &byData )
     QString strDateTime = dataHashBody.value( QJsonData::VehicleTime );
     QString strImage = dataHashBody.value( QJsonData::VehicleImage );
     QByteArray byImage = strImage.toUtf8( );
+    byImage = QByteArray::fromBase64( byImage );
 
     emit PlateData( strPlate, strDateTime, byImage );
 }
@@ -165,6 +166,11 @@ void QPlateParserThread::PostPlateResultData( QByteArray &byData )
     pEvent->SetPlateResultData( byData );
 
     PostEvent( pEvent );
+}
+
+void QPlateParserThread::HandleZmqClientData( QByteArray byData )
+{
+    PostPlateResultData( byData );
 }
 
 void QPlateParserThread::run( )
