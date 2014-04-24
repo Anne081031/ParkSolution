@@ -4,6 +4,7 @@
 #include <QThread>
 #include "qplateevent.h"
 #include "../CommonModule/CommonHeader.h"
+#include "../CommonModule/qjsondata.h"
 
 class QPlateParserThread : public QThread
 {
@@ -18,10 +19,10 @@ protected:
 
 private:
     QPlateParserThread(QObject *parent = 0);
-    void ParsePlateData( );
     inline void PostEvent(QPlateEvent *pEvent );
 
-    void ParsePlateData( QByteArray& byData, ParkSolution::QStringHash& plateHash, ParkSolution::PlateResult& resultInfoKey );
+    void ParsePlateData( const QByteArray& byData );
+    void ParsePlateData( const QByteArray& byData, ParkSolution::QStringHash& plateHash, ParkSolution::PlateResult& resultInfoKey );
     inline void GetPlateResult( QJsonValue& jsonValue, QString& strKey, ParkSolution::QStringHash& plateHash );
     void ProcessPlateResultDataEvent( QPlateEvent* pEvent );
 

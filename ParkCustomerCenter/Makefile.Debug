@@ -424,6 +424,7 @@ debug/moc_mainwindow.cpp: F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/QMain
 		qplateparserthread.h \
 		qplateevent.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QEvent \
+		../CommonModule/qjsondata.h \
 		../DatabaseModule/qdatabasethread.h \
 		../DatabaseModule/qdatabaseevent.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtSql/QtSql \
@@ -1146,6 +1147,7 @@ debug/moc_qplatethread.cpp: F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QThrea
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/QScrollArea \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/qscrollarea.h \
 		../CommonModule/commonmodule_global.h \
+		../CommonModule/qjsondata.h \
 		qplatethread.h
 	F:\Qt\Qt5.2.1\5.2.1\mingw48_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 $(INCPATH) qplatethread.h -o debug\moc_qplatethread.cpp
 
@@ -1401,6 +1403,7 @@ debug/moc_qplateparserthread.cpp: F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/QScrollArea \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/qscrollarea.h \
 		../CommonModule/commonmodule_global.h \
+		../CommonModule/qjsondata.h \
 		qplateparserthread.h
 	F:\Qt\Qt5.2.1\5.2.1\mingw48_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 $(INCPATH) qplateparserthread.h -o debug\moc_qplateparserthread.cpp
 
@@ -1905,6 +1908,7 @@ debug/main.o: main.cpp mainwindow.h \
 		qplateparserthread.h \
 		qplateevent.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QEvent \
+		../CommonModule/qjsondata.h \
 		../DatabaseModule/qdatabasethread.h \
 		../DatabaseModule/qdatabaseevent.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtSql/QtSql \
@@ -2284,6 +2288,7 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		qplateparserthread.h \
 		qplateevent.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtCore/QEvent \
+		../CommonModule/qjsondata.h \
 		../DatabaseModule/qdatabasethread.h \
 		../DatabaseModule/qdatabaseevent.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtSql/QtSql \
@@ -3133,7 +3138,8 @@ debug/qplatethread.o: qplatethread.cpp qplatethread.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/qabstractbutton.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/QScrollArea \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/qscrollarea.h \
-		../CommonModule/commonmodule_global.h
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/qjsondata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\qplatethread.o qplatethread.cpp
 
 debug/qplateparserthread.o: qplateparserthread.cpp qplateparserthread.h \
@@ -3388,7 +3394,8 @@ debug/qplateparserthread.o: qplateparserthread.cpp qplateparserthread.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/qabstractbutton.h \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/QScrollArea \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/include/QtWidgets/qscrollarea.h \
-		../CommonModule/commonmodule_global.h
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/qjsondata.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\qplateparserthread.o qplateparserthread.cpp
 
 debug/qplateevent.o: qplateevent.cpp qplateevent.h \

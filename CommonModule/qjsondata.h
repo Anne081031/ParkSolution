@@ -16,6 +16,7 @@ class COMMONMODULESHARED_EXPORT QJsonData : public QObject
 
 public:
     enum DataType {
+        InvalidType,
         VehicleAccess //车辆进出相关的数据
     };
 
@@ -55,19 +56,21 @@ public:
     typedef QHash< int, QString > QDataHash;
 
     explicit QJsonData(QObject *parent = 0);
-    void GetJsonData( QByteArray &byJson,
-                      const QByteArray& byCommonHead,
-                      const QByteArray& byAuxHead,
-                      const QByteArray& byBody );
-    void CreateCommonHead( QByteArray& byCommonHeadJson, QDataHash& dataHash );
-    void CreateAuxHead( QByteArray& byAuxHeadJson, DataType eType, QDataHash& dataHash );
-    void CreateBody( QByteArray& byBodyJson, DataType eType, QDataHash& dataHash );
-
-
+    void GetJsonData( QByteArray &byJson, DataType eType, const QDataHash& dataHashCommon,
+                                              const QDataHash& dataHashAux, const QDataHash& dataHashBody );
+    void ParseJsonData( const QByteArray& byJson, QDataHash& dataHashCommon,
+                        QDataHash& dataHashAux, QDataHash& dataHashBody );
 private:
     inline void AppendJson( QByteArray& byJson, QString& strPartJson, const QByteArray& byPartJson );
     inline void AppendJson( QByteArray& byJson, QString& strPartJson );
-    void CreateJsonObject( QByteArray& byJson, int nMemberStart, int nMemberEnd, ObjectType objType,  QDataHash& dataHash  );
+    inline void AppendJson( QByteArray& byJson, QByteArray& byJsonData );
+
+    inline void CreateCommonHead( QByteArray& byCommonHeadJson, const QDataHash& dataHash );
+    inline void CreateAuxHead( QByteArray& byAuxHeadJson, DataType eType, const QDataHash& dataHash );
+    inline void CreateBody( QByteArray& byBodyJson, DataType eType, const QDataHash& dataHash );
+
+    void ParseJsonObject( const QJsonObject& jsonObj, int nMemberStart, int nMemberEnd, ObjectType objType,  QDataHash& dataHash  );
+    void CreateJsonObject( QByteArray& byJson, int nMemberStart, int nMemberEnd, ObjectType objType,  const QDataHash& dataHash  );
     void GetDataMemberName( const char* pEnumName, int nMember, QString& strName );
 
     inline void GetJsonExternalName( JsonExternalMember eMember, QString& strName );
@@ -75,6 +78,10 @@ private:
     inline void GetVehicleAuxHeadMemberName( VehicleAuxHeadMember eMember, QString& strName );
     inline void GetVehicleBodyMemberName( VehicleBodyMember eMember, QString& strName );
 
+    void ParseExternalJson( const QJsonObject& jsonObj, DataType eType, JsonExternalMember eMember, QDataHash& dataHash );
+    void ParseCommonHead( const QJsonObject&  jsonObj, QDataHash& dataHash );
+    void ParseAuxHead( const QJsonObject&  jsonObj, DataType eType, QDataHash& dataHash );
+    void ParseBody( const QJsonObject&  jsonObj, DataType eType, QDataHash& dataHash );
 private:
     QTextCodec* pTextCodec;
 

@@ -116,27 +116,30 @@ void QProcessResultThread::CreateVehicleJson( QByteArray &byJson, const QString 
                                              const QString &strDateTime, const QString &strBase64 )
 {
     QJsonData jsonData;
-    QJsonData::QDataHash dataHash;
-    QByteArray byCommonHead;
-    QByteArray byAuxHead;
-    QByteArray byBody;
+
+    QJsonData::QDataHash dataHashCommon;
+    QJsonData::QDataHash dataHashAux;
+    QJsonData::QDataHash dataHashBody;
 
      // Common Head
     QString strValue = QString::number( QJsonData::VehicleAccess );
-    dataHash.insert( QJsonData::MessageType, strValue );
-    jsonData.CreateCommonHead( byCommonHead, dataHash );
+    dataHashCommon.insert( QJsonData::MessageType, strValue );
 
     // Aux Head
-    dataHash.clear( );
-    jsonData.CreateAuxHead( byAuxHead, QJsonData::VehicleAccess, dataHash );
 
     // Body
-    dataHash.insert( QJsonData::VehiclePlate, strPlate );
-    dataHash.insert( QJsonData::VehicleTime, strDateTime );
-    dataHash.insert( QJsonData::VehicleImage, strBase64 );
-    jsonData.CreateBody( byBody, QJsonData::VehicleAccess, dataHash );
+    dataHashBody.insert( QJsonData::VehiclePlate, strPlate );
+    dataHashBody.insert( QJsonData::VehicleTime, strDateTime );
+    dataHashBody.insert( QJsonData::VehicleImage, strBase64 );
 
-    jsonData.GetJsonData( byJson, byCommonHead, byAuxHead, byBody );
+    jsonData.GetJsonData( byJson, QJsonData::VehicleAccess, dataHashCommon, dataHashAux, dataHashBody );
+
+    return;
+    dataHashCommon.clear( );
+    dataHashAux.clear( );
+    dataHashBody.clear( );
+
+    jsonData.ParseJsonData( byJson, dataHashCommon, dataHashAux, dataHashBody );
 }
 
 void QProcessResultThread::ProcessPlateImageEvent(QProcessResultEvent *pEvent)

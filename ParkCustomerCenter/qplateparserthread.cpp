@@ -34,7 +34,24 @@ void QPlateParserThread::GetPlateResult( QJsonValue& jsonValue, QString& strKey,
                                         QString::number( jsonValue.toVariant( ).toUInt( ) ) );
 }
 
-void QPlateParserThread::ParsePlateData( QByteArray &byData,
+void QPlateParserThread::ParsePlateData( const QByteArray &byData )
+{
+    QJsonData jsonData;
+    QJsonData::QDataHash dataHashCommon;
+    QJsonData::QDataHash dataHashAux;
+    QJsonData::QDataHash dataHashBody;
+
+    jsonData.ParseJsonData( byData, dataHashCommon, dataHashAux, dataHashBody );
+
+    QString strPlate = dataHashBody.value( QJsonData::VehiclePlate );
+    QString strDateTime = dataHashBody.value( QJsonData::VehicleTime );
+    QString strImage = dataHashBody.value( QJsonData::VehicleImage );
+    QByteArray byImage = strImage.toUtf8( );
+
+    emit PlateData( strPlate, strDateTime, byImage );
+}
+
+void QPlateParserThread::ParsePlateData( const QByteArray &byData,
                                  ParkSolution::QStringHash &plateHash,
                                  ParkSolution::PlateResult& resultInfoKey )
 {
@@ -114,6 +131,8 @@ void QPlateParserThread::ParsePlateData( QByteArray &byData,
 void QPlateParserThread::ProcessPlateResultDataEvent( QPlateEvent* pEvent )
 {
     QByteArray& byData = pEvent->GetPlateResultData( );
+    ParsePlateData( byData );
+    return;
     QString strText = pTextCodec->toUnicode( byData );
     strText.replace( "\"{", "{" );
     strText.replace( "\\n", "" );
@@ -125,7 +144,7 @@ void QPlateParserThread::ProcessPlateResultDataEvent( QPlateEvent* pEvent )
     ParkSolution::PlateResult resultInfoKey;
     ParkSolution::QStringHash plateHash;
 
-    ParsePlateData( byData, plateHash, resultInfoKey );
+    //ParsePlateData( byData, plateHash, resultInfoKey );
     const QString& strBase64 = plateHash.value( resultInfoKey.strImageData );
     QByteArray byBase64 = pTextCodec->fromUnicode( strBase64 );
     QByteArray byImage = QByteArray::fromBase64( byBase64 );
