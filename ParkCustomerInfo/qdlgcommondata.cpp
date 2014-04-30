@@ -121,6 +121,7 @@ void QDlgCommonData::FillComboBox( )
     InsertItem( dataType.strAccountExecutive, "客户专员" );
     InsertItem( dataType.strCustomerCategory, "客户类别" );
     InsertItem( dataType.strMembershipClass, "会员卡类别" );
+    InsertItem( dataType.strCustomerLevel, "客户级别" );
 
     InsertItem( dataType.strBrand, "车辆品牌" );
     InsertItem( dataType.strSeries, "车系" );

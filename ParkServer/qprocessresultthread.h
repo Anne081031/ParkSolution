@@ -12,6 +12,7 @@
 #include "../CommonModule/qbasethread.h"
 #include "../NetworkModule/qzmqserverthread.h"
 #include "../CommonModule/qjsondata.h"
+#include "../AssessibilityModule/qsmsthread.h"
 
 class QProcessResultThread : public QBaseThread
 {
@@ -32,6 +33,7 @@ protected:
 
 private:
     explicit QProcessResultThread(QObject *parent = 0);
+    inline void GetStringValue( QString& strValue, const char* pKey, const QJsonObject& jsonObj );
 
     void CreateVehicleJson( QByteArray& byJson, const QString& strPlate, const QString& strDateTime, const QString& strBase64 );
 
@@ -44,6 +46,7 @@ private:
     void ParseSpResult( QByteArray& byJson, bool& bSuccess, QString& strUUID );
     void Send2FtpServer( const QString &strPlate, const QString& strDateTime, QByteArray &byData );
     void SendPlate2Client( const QString &strPlate, const QString& strDateTime, const QString &strBase64 );
+    void SendShortMessage( const QString &strPlate, const QString& strDateTime, const QString& strName, const QString& strMobile );
 
 private:
     static QProcessResultThread* pThreadInstance;
@@ -56,6 +59,8 @@ private:
     QConfigurator* pConfigurator;
     QZmqServerThread* pZmqServerThread;
     QJsonData jsonData;
+    bool bSmsStartup;
+    QSmsThread* pSmsThread;
 
 signals:
 

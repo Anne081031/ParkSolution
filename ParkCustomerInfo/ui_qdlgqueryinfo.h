@@ -139,6 +139,8 @@ public:
     QGridLayout *gridLayout;
     QLabel *lblSpace;
     QTableView *tabServiceRecord;
+    QLabel *label_35;
+    QLineEdit *edtCustomerLevel;
 
     void setupUi(QDialog *QDlgQueryInfo)
     {
@@ -711,6 +713,14 @@ public:
         tabServiceRecord->setGridStyle(Qt::SolidLine);
         tabServiceRecord->setSortingEnabled(false);
         tabServiceRecord->verticalHeader()->setVisible(false);
+        label_35 = new QLabel(QDlgQueryInfo);
+        label_35->setObjectName(QStringLiteral("label_35"));
+        label_35->setGeometry(QRect(563, 7, 60, 20));
+        edtCustomerLevel = new QLineEdit(QDlgQueryInfo);
+        edtCustomerLevel->setObjectName(QStringLiteral("edtCustomerLevel"));
+        edtCustomerLevel->setGeometry(QRect(665, 6, 206, 20));
+        edtCustomerLevel->setStyleSheet(QStringLiteral("background-color: rgb(229, 229, 229);"));
+        edtCustomerLevel->setReadOnly(true);
         QWidget::setTabOrder(edtCustomerID, edtName);
         QWidget::setTabOrder(edtName, edtCustomerCategory);
         QWidget::setTabOrder(edtCustomerCategory, edtDepartment);
@@ -795,6 +805,7 @@ public:
         lblDetail->setText(QApplication::translate("QDlgQueryInfo", "\350\257\246\347\273\206\344\277\241\346\201\257", 0));
         pushButton->setText(QApplication::translate("QDlgQueryInfo", "PushButton", 0));
         lblSpace->setText(QString());
+        label_35->setText(QApplication::translate("QDlgQueryInfo", "\345\256\242\346\210\267\347\272\247\345\210\253", 0));
     } // retranslateUi
 
 };

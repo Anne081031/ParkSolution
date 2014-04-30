@@ -144,6 +144,8 @@ public:
     QComboBox *cbxDepartment;
     QComboBox *cbxAccountExecutive;
     QComboBox *cbxCustomerSource;
+    QComboBox *cbxCustomerLevel;
+    QLabel *label_35;
 
     void setupUi(QDialog *QDlgEditNewInfo)
     {
@@ -692,6 +694,12 @@ public:
 
         formLayout4->setWidget(5, QFormLayout::FieldRole, cbxCustomerSource);
 
+        cbxCustomerLevel = new QComboBox(QDlgEditNewInfo);
+        cbxCustomerLevel->setObjectName(QStringLiteral("cbxCustomerLevel"));
+        cbxCustomerLevel->setGeometry(QRect(660, 6, 206, 20));
+        label_35 = new QLabel(QDlgEditNewInfo);
+        label_35->setObjectName(QStringLiteral("label_35"));
+        label_35->setGeometry(QRect(558, 6, 60, 20));
         QWidget::setTabOrder(edtCustomerID, edtName);
         QWidget::setTabOrder(edtName, cbxCustomerCategory);
         QWidget::setTabOrder(cbxCustomerCategory, cbxDepartment);
@@ -793,6 +801,7 @@ public:
         label_4->setText(QApplication::translate("QDlgEditNewInfo", "\351\232\266\345\261\236\351\203\250\351\227\250", 0));
         label_5->setText(QApplication::translate("QDlgEditNewInfo", "\345\256\242\346\210\267\344\270\223\345\221\230", 0));
         label_6->setText(QApplication::translate("QDlgEditNewInfo", "\345\256\242\346\210\267\346\235\245\346\272\220", 0));
+        label_35->setText(QApplication::translate("QDlgEditNewInfo", "\345\256\242\346\210\267\347\272\247\345\210\253", 0));
     } // retranslateUi
 
 };

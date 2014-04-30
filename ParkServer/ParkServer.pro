@@ -3,8 +3,8 @@
 # Project created by QtCreator 2014-04-07T19:53:31
 #
 #-------------------------------------------------
-#DEFINES += StartupDebug
-DEFINES += StartupRelease
+DEFINES += StartupDebug
+#DEFINES += StartupRelease
 #LIBS += -L/your/lib/path  -lyour_lib_name
 QT       += core gui sql network axcontainer webkitwidgets
 
@@ -25,6 +25,7 @@ contains( DEFINES, StartupDebug ) {
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "LPRModule", "Debug" )
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "NetworkModule", "Debug" )
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "VideoModule", "Debug" )
+        LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "AssessibilityModule", "Debug" )
 
         DESTDIR = "./Debug"
 
@@ -35,6 +36,7 @@ contains( DEFINES, StartupDebug ) {
         system( copy ..\\LibExeFiles\\Debug\\NetworkModuleDebug.dll .\\Debug )
         system( copy ..\\LibExeFiles\\Debug\\VideoModuleDebug.dll .\\Debug )
         system( copy ..\\LibExeFiles\\Debug\\libzmq-v100-mt-gd-4_0_3.dll .\\Debug )
+        system( copy ..\\LibExeFiles\\Debug\\AssessibilityModuleDebug.dll .\\Debug )
     }
 }
 
@@ -49,6 +51,7 @@ contains( DEFINES, StartupRelease ) {
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "LPRModule", "" )
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "NetworkModule", "" )
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "VideoModule", "" )
+        LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "AssessibilityModule", "" )
 
         DESTDIR = "./Release"
 
@@ -59,6 +62,7 @@ contains( DEFINES, StartupRelease ) {
         system( copy ..\\LibExeFiles\\Release\\NetworkModule.dll .\\Release )
         system( copy ..\\LibExeFiles\\Release\\VideoModule.dll .\\Release )
         system( copy ..\\LibExeFiles\\Release\\libzmq-v100-mt-gd-4_0_3.dll .\\Release )
+        system( copy ..\\LibExeFiles\\Release\\AssessibilityModule.dll .\\Release )
     }
 }
 

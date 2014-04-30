@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     pConfigurator = QConfigurator::CreateConfigurator( );
     GetMiscellaneous( );
 
+    StartSmsThread( );
     StartDatabaseThread( );
     StartFtpThread( );
     StartSeriaizeThread( );
@@ -24,6 +25,17 @@ void MainWindow::GetMiscellaneous( )
     pConfigurator->GetDisplayPlateLog( bDislpayPlateLog );
     pConfigurator->GetDisplayFtpLog( bDislpayFtpLog );
     pConfigurator->GetDisplaySerializeLog( bDisplaySerializeLog );
+}
+
+void MainWindow::StartSmsThread( )
+{
+    bool bStartup;
+    pConfigurator->GetSmsStartup( bStartup );
+    if (!bStartup ) {
+        return;
+    }
+
+    QSmsThread::CreateInstance(  );
 }
 
 void MainWindow::StartProcessResultThread( )
@@ -116,8 +128,8 @@ void MainWindow::StartCaptureCardVideo( )
 {
     pConfigurator->GetVideoWay( nVideoWay );
 
-    hVideoWnds[ 0 ] = ( HWND ) ui->tabVideo->winId( );
-    hVideoWnds[ 1 ] = NULL;
+    hVideoWnds[ 0 ] = ( HWND ) ui->tabInVideo->winId( );
+    hVideoWnds[ 1 ] = ( HWND ) ui->tabOutVideo->winId( );;
     hVideoWnds[ 2 ] = NULL;
     hVideoWnds[ 3 ] = NULL;
 
@@ -194,7 +206,7 @@ void MainWindow::StartIPCVideo( )
     pDigitalCamera->PostIPCSetReconnectTimeEvent( );
     pDigitalCamera->PostIPCLoginEvent( strIP );
 
-    HWND hPlayWnd = ( HWND ) ui->tabVideo->winId( );
+    HWND hPlayWnd = ( HWND ) ui->tabInVideo->winId( );
     pDigitalCamera->PostIPCStartRealPlayEvent( strIP, bMainStream,
                                                false, hPlayWnd );
 }

@@ -143,6 +143,7 @@ void MainWindow::SetServiceViewColumnName( QSqlQueryModel* pModel )
 
 void MainWindow::StartZmqClientThread( )
 {
+    return;
     pZmqClientThread = QZmqClientThread::CreateInstance( );
 
     pPlateParserThread = QPlateParserThread::CreateInstance( );

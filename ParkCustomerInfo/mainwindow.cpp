@@ -6,7 +6,7 @@
 #include <winsock2.h>
 #include <windows.h>
 
-#define HIDE_CUSTOMER_COLUMN_COUNT ( int ) 25
+#define HIDE_CUSTOMER_COLUMN_COUNT ( int ) 26
 #define HIDE_SERVICE_COLUMN_COUNT   ( int ) 5
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -441,7 +441,7 @@ void MainWindow::FillColumnName( QStringList& lstColName, bool bCustomer )
 {
     if ( bCustomer ) {
         lstColName << "客户编号" << "客户名称" << "证件号码"
-                          << "客户地址" << "所属区域"<< "手机号码"
+                          << "客户地址" << "所属区域"<< "客户级别" << "手机号码"
                           << "固定号码" << "邮箱地址" << "客户来源"
                           << "隶属部门" << "客户专员" << "初次来访日"
                           << "建档日" << "客户类别" << "最近一次到店时间"
@@ -654,6 +654,7 @@ void MainWindow::GetQueryCommonDataWhere( QString &strWhere )
     ConcatCommonDataWhere( byWhere, dataType.strAccountExecutive, true );
     ConcatCommonDataWhere( byWhere, dataType.strCustomerCategory, true );
     ConcatCommonDataWhere( byWhere, dataType.strMembershipClass, true );
+    ConcatCommonDataWhere( byWhere, dataType.strCustomerLevel, true );
 
     ConcatCommonDataWhere( byWhere, dataType.strBrand, true );
     ConcatCommonDataWhere( byWhere, dataType.strSeries, true );

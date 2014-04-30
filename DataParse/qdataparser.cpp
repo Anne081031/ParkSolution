@@ -60,7 +60,7 @@ bool QDataParser::GetNeededColumn( QAxObject *pWorksheet,
         }
     }
 
-    return ( 2== hashColumn.count( ) );
+    return ( 2 == hashColumn.count( ) );
 }
 
 bool QDataParser::ImportData( QString& strFile, QStringList& lstCustomerData )
@@ -279,6 +279,9 @@ void QDataParser::ParseCommonDataInfo( QByteArray &byJson, ParkSolution::QString
     jsonArray = jsonObject.value( dataType.strMembershipClass ).toArray( );
     FillComboBox( jsonArray, wgtHash[ customerInfo.strMembershipClass ] );
 
+    jsonArray = jsonObject.value( dataType.strCustomerLevel ).toArray( );
+    FillComboBox( jsonArray, wgtHash[ customerInfo.strCustomerLevel ] );
+
     ParkSolution::TabVehicleInfo vehicleInfo;
     jsonArray = jsonObject.value( dataType.strBrand ).toArray( );
     FillComboBox( jsonArray, wgtHash[ vehicleInfo.strBrand ] );
@@ -336,13 +339,14 @@ void QDataParser::FillComboBox(QJsonArray &jsonArray, QWidget* pWgt )
         }
 
         strText = jsonObject.value( commonData.strValue ).toString( );
-        nValueID = jsonObject.value( commonData.strValueID ).toInt( );
+        nValueID = jsonObject.value( commonData.strValueID ).toString( ).toInt( );
 
         if ( strText.isNull( ) || strText.isEmpty( ) ) {
             continue;
         }
 
-        pCbx->addItem( strText, nValueID );
+        QVariant varTmp( nValueID );
+        pCbx->addItem( strText, varTmp );
     }
 }
 
@@ -461,6 +465,10 @@ void QDataParser::FillCustomerEdit( QJsonObject& jsonObject, ParkSolution::QStri
         pEdit->setText( jsonObject.value( tabCustomer.strMembershipCardSurplus ).toString( ) );
     }
 
+    pEdit = ( QLineEdit* ) wgtHash[ tabCustomer.strCustomerLevel ];
+    if ( NULL != pEdit ) {
+        pEdit->setText( jsonObject.value( tabCustomer.strCustomerLevel ).toString( ) );
+    }
     //QString strCustomerState;
 }
 

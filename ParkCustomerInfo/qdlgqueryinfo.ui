@@ -960,6 +960,35 @@
     <bool>false</bool>
    </attribute>
   </widget>
+  <widget class="QLabel" name="label_35">
+   <property name="geometry">
+    <rect>
+     <x>563</x>
+     <y>7</y>
+     <width>60</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>客户级别</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="edtCustomerLevel">
+   <property name="geometry">
+    <rect>
+     <x>665</x>
+     <y>6</y>
+     <width>206</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(229, 229, 229);</string>
+   </property>
+   <property name="readOnly">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
  <tabstops>
   <tabstop>edtCustomerID</tabstop>

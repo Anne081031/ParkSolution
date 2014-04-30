@@ -3,8 +3,8 @@
 # Project created by QtCreator 2014-02-18T10:33:36
 #
 #-------------------------------------------------
-#DEFINES += StartupDebug
-DEFINES += StartupRelease
+DEFINES += StartupDebug
+#DEFINES += StartupRelease
 
 QT       += core gui sql network axcontainer printsupport
 

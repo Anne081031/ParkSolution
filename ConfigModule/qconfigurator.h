@@ -12,117 +12,157 @@ class CONFIGMODULESHARED_EXPORT QConfigurator : public QObject
 public:
     static QConfigurator* CreateConfigurator( );
 
-    void SetZmpClientHost( QString& strHost );
-    void GetZmqClientHost( QString& strHost );
+    // Qt  Enum Value
+    void SetComName( const QString& strName );
+    void GetComName( QString& strName ) const;
 
-    void SetZmqClientHostPort( quint16 nPort );
-    void GetZmqClientHostPort( quint16& nPort );
+    void SetComBaudRate( const int nBaudRate );
+    void GetComBaudRate( int& nBaudRate ) const;
 
-    void SetZmqServerListenPort( quint16 nPort );
-    void GetZmqServerListenPort( quint16& nPort );
+    void SetComDataBit( const int nDataBit );
+    void GetComDataBit( int& nDataBit ) const;
 
-    void SetDisplaySerializeLog( bool bDisplay );
-    void GetDisplaySerializeLog( bool& bDisplay );
+    void SetComStopBit( const int nStopBit );
+    void GetComStopBit( int& nStopBit ) const;
 
-    void SetDisplayPlateLog( bool bDisplay );
-    void GetDisplayPlateLog( bool& bDisplay );
+    void SetComParity( const int nParity );
+    void GetComParity( int& nParity ) const;
 
-    void SetDisplayDbLog( bool bDisplay );
-    void GetDisplayDbLog( bool& bDisplay );
+    void SetComFlowControl( const int nFlowControl );
+    void GetComFlowControl( int& nFlowControl ) const;
 
-    void SetDisplayFtpLog( bool bDisplay );
-    void GetDisplayFtpLog( bool& bDisplay );
+    void SetComProtocol( const int nProtocol );
+    void GetComProtocol( int& nProtocol ) const;
 
-    void SetDeleteImageFile( bool bDetele );
-    void GetDeleteImageFile( bool& bDetele );
+    void SetComLoopWriteCount( const int nLoopWriteCount );
+    void GetComLoopWriteCount( int& nLoopWriteCount ) const;
 
-    void SetIPCInA( QString& strIP );
-    void GetIPCInA( QString& strIP );
+    void SetComWriteSleep( const int nWriteSleep );
+    void GetComWriteSleep( int& nWriteSleep ) const;
 
-    void SetIPCInB( QString& strIP );
-    void GetIPCInB( QString& strIP );
+    void SetSmsAccessCode( const QString& strAccessCode );
+    void GetSmsAccessCode( QString& strAccessCode ) const;
 
-    void SetIPCOutA( QString& strIP );
-    void GetIPCOutA( QString& strIP );
+    void SetSmsCOM( const QString& strCOM );
+    void GetSmsCOM( QString& strCOM ) const;
 
-    void SetIPCOutB( QString& strIP );
-    void GetIPCOutB( QString& strIP );
+    void SetSmsCOMBaudRate( const int& nBaudRate );
+    void GetSmsCOMBaudRate( int& nBaudRate ) const;
 
-    void SetVideoType( bool bIPC );
-    void GetVideoType( bool& bIPC );
+    void SetSmsStartup( const bool bStartup );
+    void GetSmsStartup( bool& bStartup ) const;
 
-    void SetVideoWay( int nWay );
-    void GetVideoWay( int& nWay );
+    void SetZmpClientHost( const QString& strHost );
+    void GetZmqClientHost( QString& strHost ) const;
 
-    void SetCaptureCard( QString& strCardType );
-    void GetCaptureCard( QString& strCardType );
+    void SetZmqClientHostPort( const quint16 nPort );
+    void GetZmqClientHostPort( quint16& nPort ) const;
 
-    void SetIPCamera( QString& strIPCType );
-    void GetIPCamera( QString& strIPCType );
+    void SetZmqServerListenPort( const quint16 nPort );
+    void GetZmqServerListenPort( quint16& nPort ) const;
 
-    void SetIPCMainStream( bool bMainStream );
-    void GetIPCMainStream( bool& bMainStream );
+    void SetDisplaySerializeLog( const bool bDisplay );
+    void GetDisplaySerializeLog( bool& bDisplay ) const;
 
-    void SetDongleOneWay( bool bOneWay );
-    void GetDongleOneWay( bool& bOneWay );
+    void SetDisplayPlateLog( const bool bDisplay );
+    void GetDisplayPlateLog( bool& bDisplay ) const;
 
-    void SetPlateVideo( bool bVideo );
-    void GetPlateVideo( bool& bVideo );
+    void SetDisplayDbLog( const bool bDisplay );
+    void GetDisplayDbLog( bool& bDisplay ) const;
 
-    void SetPlateProvider( QString& strProvider );
-    void GetPlateProvider( QString& strProvider );
+    void SetDisplayFtpLog( const bool bDisplay );
+    void GetDisplayFtpLog( bool& bDisplay ) const;
 
-    void SetPlateMultiThread( bool bMultiThread );
-    void GetPlateMultiThread( bool& bMultiThread );
+    void SetDeleteImageFile( const bool bDetele );
+    void GetDeleteImageFile( bool& bDetele ) const;
 
-    void SetPlateWay( int nWay );
-    void GetPlateWay( int& nWay );
+    void SetIPCInA( const QString& strIP );
+    void GetIPCInA( QString& strIP ) const;
 
-    void SetFtpHost( QString& strHost );
-    void GetFtpHost( QString& strHost );
+    void SetIPCInB( const QString& strIP );
+    void GetIPCInB( QString& strIP ) const;
 
-    void SetFtpHostPort( quint16 nPort );
-    void GetFtpHostPort( quint16& nPort );
+    void SetIPCOutA( const QString& strIP );
+    void GetIPCOutA( QString& strIP ) const;
 
-    void SetFtpUser( QString& strUser );
-    void GetFtpUser( QString& strUser );
+    void SetIPCOutB( const QString& strIP );
+    void GetIPCOutB( QString& strIP ) const;
 
-    void SetFtpPwd( QString& strPwd );
-    void GetFtpPwd( QString& strPwd );
+    void SetVideoType( const bool bIPC );
+    void GetVideoType( bool& bIPC ) const;
 
-    void SetFtpBasePath( QString& strBasePath );
-    void GetFtpBasePath( QString& strBasePath );
+    void SetVideoWay( const int nWay );
+    void GetVideoWay( int& nWay ) const;
 
-    void SetHttpHost( QString& strHost );
-    void GetHttpHost( QString& strHost );
+    void SetCaptureCard( const QString& strCardType );
+    void GetCaptureCard( QString& strCardType ) const;
 
-    void SetHttpHostPort( quint16 nPort );
-    void GetHttpHostPort( quint16& nPort );
+    void SetIPCamera( const QString& strIPCType );
+    void GetIPCamera( QString& strIPCType ) const;
 
-    void SetPlateHost( QString& strHost );
-    void GetPlateHost( QString& strHost );
+    void SetIPCMainStream( const bool bMainStream );
+    void GetIPCMainStream( bool& bMainStream ) const;
 
-    void SetPlateHostPort( quint16 nPort );
-    void GetPlateHostPort( quint16& nPort );
+    void SetDongleOneWay( const bool bOneWay );
+    void GetDongleOneWay( bool& bOneWay ) const;
+
+    void SetPlateVideo( const bool bVideo );
+    void GetPlateVideo( bool& bVideo ) const;
+
+    void SetPlateProvider( const QString& strProvider );
+    void GetPlateProvider( QString& strProvider ) const;
+
+    void SetPlateMultiThread( const bool bMultiThread );
+    void GetPlateMultiThread( bool& bMultiThread ) const;
+
+    void SetPlateWay( const int nWay );
+    void GetPlateWay( int& nWay ) const;
+
+    void SetFtpHost( const QString& strHost );
+    void GetFtpHost( QString& strHost ) const;
+
+    void SetFtpHostPort( const quint16 nPort );
+    void GetFtpHostPort( quint16& nPort ) const;
+
+    void SetFtpUser( const QString& strUser );
+    void GetFtpUser( QString& strUser ) const;
+
+    void SetFtpPwd( const QString& strPwd );
+    void GetFtpPwd( QString& strPwd ) const;
+
+    void SetFtpBasePath( const QString& strBasePath );
+    void GetFtpBasePath( QString& strBasePath ) const;
+
+    void SetHttpHost( const QString& strHost );
+    void GetHttpHost( QString& strHost ) const;
+
+    void SetHttpHostPort( const quint16 nPort );
+    void GetHttpHostPort( quint16& nPort ) const;
+
+    void SetPlateHost( const QString& strHost );
+    void GetPlateHost( QString& strHost ) const;
+
+    void SetPlateHostPort( const quint16 nPort );
+    void GetPlateHostPort( quint16& nPort ) const;
 
     // Database connection parameter
-    void SetDbHost( QString& strHost );
-    void GetDbHost( QString& strHost );
+    void SetDbHost( const QString& strHost );
+    void GetDbHost( QString& strHost ) const;
 
-    void SetDbHostPort( quint16 nPort );
-    void GetDbHostPort( quint16& nPort );
+    void SetDbHostPort( const quint16 nPort );
+    void GetDbHostPort( quint16& nPort ) const;
 
-    void SetDbUser( QString& strUser );
-    void GetDbUser( QString& strUser );
+    void SetDbUser( const QString& strUser );
+    void GetDbUser( QString& strUser ) const;
 
-    void SetDbPwd( QString& strPwd );
-    void GetDbPwd( QString& strPwd );
+    void SetDbPwd( const QString& strPwd );
+    void GetDbPwd( QString& strPwd ) const;
 
-    void SetDbSchema( QString& strSchema );
-    void GetDbSchema( QString& strSchema );
+    void SetDbSchema( const QString& strSchema );
+    void GetDbSchema( QString& strSchema ) const;
 
-    void GetCustomerNameTitle( QStringList& lstNameTitle );
-    void GetCustomerPlateTitle( QStringList& lstPlateTitle );
+    void GetCustomerNameTitle( QStringList& lstNameTitle ) const ;
+    void GetCustomerPlateTitle( QStringList& lstPlateTitle ) const;
 
 private:
     explicit QConfigurator(QObject *parent = 0);

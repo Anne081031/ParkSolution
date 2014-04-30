@@ -39,6 +39,7 @@ private:
     void StartVideoThread( );
     void StartSeriaizeThread( );
     void StartProcessResultThread( );
+    void StartSmsThread( );
 
     void StartCaptureCardVideo( );
     void StartIPCVideo( );

@@ -7,6 +7,8 @@ QProcessResultThread::QProcessResultThread(QObject *parent) :
     QBaseThread( "QProcessResultThread", parent)
 {
     pAnalogCamera = NULL;
+    bSmsStartup = false;
+    pSmsThread = NULL;
 }
 
 QProcessResultThread* QProcessResultThread::CreateInstance( QObject* pParent )
@@ -31,6 +33,7 @@ bool QProcessResultThread::ThreadInitialize()
 
     pConfigurator = QConfigurator::CreateConfigurator( );
     pConfigurator->GetDeleteImageFile( bDeleteImage );
+    pConfigurator->GetSmsStartup( bSmsStartup );
 
     QCommonFunction::GetAppCaptureImagePath( strImagePath );
 
@@ -41,7 +44,7 @@ bool QProcessResultThread::ThreadInitialize()
     connect( pSerializeThread, SIGNAL( PlateSerializeData( QString, QString, QByteArray ) ),
                    this, SLOT( HandlePlateSerializeData( QString, QString, QByteArray ) ) );
 
-    pZmqServerThread = QZmqServerThread::CreateInstance( );
+    //pZmqServerThread = QZmqServerThread::CreateInstance( );
 
     return bRet;
 }
@@ -169,6 +172,8 @@ void QProcessResultThread::ProcessDatabaseResultEvent( QProcessResultEvent* pEve
 
 void QProcessResultThread::ParseSpResult( QByteArray& byJson, bool& bSuccess, QString& strUUID )
 {
+    strUUID = "";
+    bSuccess = false;
     QJsonParseError jsonError;
     QJsonDocument jsonDoc = QJsonDocument::fromJson( byJson, &jsonError );
 
@@ -186,8 +191,62 @@ void QProcessResultThread::ParseSpResult( QByteArray& byJson, bool& bSuccess, QS
         return;
     }
 
-    bSuccess = jsonObj.value( "Flag" ).toInt( );
-    strUUID = jsonObj.value( "UUID" ).toString( );
+    QJsonValue jsonVal = jsonObj.value( "Flag" );
+    if ( jsonVal.isDouble( ) ) {
+        bSuccess = jsonVal.toInt( );
+    }
+
+    GetStringValue( strUUID, "UUID",  jsonObj );
+
+    if ( !bSuccess ) {
+        return;
+    }
+
+    QString strDateTime = "";
+    GetStringValue( strDateTime, "DateTime",  jsonObj );
+
+    QString strPlate = "";
+    GetStringValue( strPlate, "Plate",  jsonObj );
+
+    QString strMobile = "";
+    GetStringValue( strMobile, "MobilePhone",  jsonObj );
+
+    QString strName = "";
+    GetStringValue( strName, "Name",  jsonObj );
+
+    if ( strMobile.isEmpty( ) ) {
+        return;
+    }
+
+    SendShortMessage( strPlate, strDateTime, strName, strMobile );
+}
+
+void QProcessResultThread::SendShortMessage( const QString &strPlate, const QString& strDateTime, const QString& strName, const QString& strMobile )
+{
+    if ( !bSmsStartup ) {
+        return;
+    }
+
+    QString strText = QString( "客户%1 车牌号%2 %3光临。" ).arg( strName, strPlate, strDateTime );
+
+    if ( NULL == pSmsThread ) {
+        pSmsThread = QSmsThread::CreateInstance( );
+    }
+
+    QStringList lstTelphoneID;
+    lstTelphoneID << strMobile;
+
+    pSmsThread->PostSendSmsEvent( lstTelphoneID, strText );
+}
+
+void QProcessResultThread::GetStringValue( QString& strValue, const char* pKey, const QJsonObject& jsonObj )
+{
+    strValue = "";
+
+    QJsonValue jsonVal = jsonObj.value( pKey );
+    if ( !jsonVal.isUndefined( ) && jsonVal.isString( ) ) {
+        strValue = jsonVal.toString( );
+    }
 }
 
 void QProcessResultThread::Send2FtpServer( const QString &strPlate, const QString& strDateTime, QByteArray &byData )
@@ -206,7 +265,7 @@ void QProcessResultThread::SendPlate2Client( const QString &strPlate, const QStr
 {
     QByteArray byPublishData;
     CreateVehicleJson( byPublishData, strPlate, strDateTime, strBase64 );
-    pZmqServerThread->PostPublishDataEvent( byPublishData );
+    //pZmqServerThread->PostPublishDataEvent( byPublishData );
 }
 
 void QProcessResultThread::HandlePlateSerializeData( QString strPlate, QString strDateTime, QByteArray byFileData )

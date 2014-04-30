@@ -89,6 +89,7 @@ void QDlgQueryInfo::FillCustomerEdit( )
     hashWidget.insert( tabCustomer.strConsumptionAmount, ui->edtConsumptionAmount );
     hashWidget.insert( tabCustomer.strMembershipClass, ui->edtMembershipClass );
     hashWidget.insert( tabCustomer.strMembershipCardSurplus, ui->edtMembershipCardSurplus );
+    hashWidget.insert( tabCustomer.strCustomerLevel, ui->edtCustomerLevel );
 }
 
 void QDlgQueryInfo::FillHash( )

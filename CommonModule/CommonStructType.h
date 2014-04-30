@@ -80,6 +80,7 @@ namespace ParkSolution {
         QString strAccountExecutive;
         QString strCustomerCategory;
         QString strMembershipClass;
+        QString strCustomerLevel;
 
         QString strBrand;
         QString strSeries;
@@ -102,6 +103,7 @@ namespace ParkSolution {
             strAccountExecutive = "AccountExecutive";
             strCustomerCategory = "CustomerCategory";
             strMembershipClass = "MembershipClass";
+            strCustomerLevel = "CustomerLevel";
 
             strBrand = "Brand";
             strSeries = "Series";
@@ -275,6 +277,8 @@ namespace ParkSolution {
         QString strMembershipClassID;
         QString strMembershipCardSurplus;
         QString strCustomerState;
+        QString strCustomerLevel;
+        QString strCustomerLevelID;
 
         __TabCustomerInfo( )
         {
@@ -303,6 +307,8 @@ namespace ParkSolution {
             strMembershipClassID = "MembershipClassID";
             strMembershipCardSurplus = "MembershipCardSurplus";
             strCustomerState = "CustomerState";
+            strCustomerLevel = "CustomerLevel";
+            strCustomerLevelID = "CustomerLevelID";
         }
     } TabCustomerInfo;
 
@@ -391,17 +397,18 @@ namespace ParkSolution {
                     <ConsumptionAmount>%17</ConsumptionAmount>\
                     <MembershipClass>%18</MembershipClass>\
                     <MembershipCardSurplus>%19</MembershipCardSurplus>\
-                    </Customer><Vehicle><PlateID>%20</PlateID><Brand>%21</Brand>\
-                    <Series>%22</Series><Color>%23</Color>\
-                    <Feature>%24</Feature><BuyDate>%25</BuyDate>\
-                    <MaintenanceFirstDate>%26</MaintenanceFirstDate>\
-                    <MaintenanceNextDate>%27</MaintenanceNextDate>\
-                    <AannualSurveyDate>%28</AannualSurveyDate>\
-                    <CommercialInsuranceExpiration>%29</CommercialInsuranceExpiration>\
-                    <MandatoryInsuranceExpiration>%30</MandatoryInsuranceExpiration>\
-                    <Insurer>%31</Insurer><VistCount>%32</VistCount>\
-                    <VehicleState>%33</VehicleState><MotorID>%34</MotorID>\
-                    <Odometer>%35</Odometer><VehicleID>%36</VehicleID>\
+                    <CustomerLevel>%20</CustomerLevel>\
+                    </Customer><Vehicle><PlateID>%21</PlateID><Brand>%22</Brand>\
+                    <Series>%23</Series><Color>%24</Color>\
+                    <Feature>%25</Feature><BuyDate>%26</BuyDate>\
+                    <MaintenanceFirstDate>%27</MaintenanceFirstDate>\
+                    <MaintenanceNextDate>%28</MaintenanceNextDate>\
+                    <AannualSurveyDate>%29</AannualSurveyDate>\
+                    <CommercialInsuranceExpiration>%30</CommercialInsuranceExpiration>\
+                    <MandatoryInsuranceExpiration>%31</MandatoryInsuranceExpiration>\
+                    <Insurer>%32</Insurer><VistCount>%33</VistCount>\
+                    <VehicleState>%34</VehicleState><MotorID>%35</MotorID>\
+                    <Odometer>%36</Odometer><VehicleID>%37</VehicleID>\
                     </Vehicle></Data>";
             strXmlChangeCustomerVehicleDataDelete = "<Data><Flag>%1</Flag><Customer><CustomerID>%2</CustomerID></Customer></Data>";
             strXmlChangeServiceRecordUI = "<Data><Flag>%1</Flag><ServiceID>%2</ServiceID>\

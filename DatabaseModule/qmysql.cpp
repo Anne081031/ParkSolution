@@ -296,7 +296,7 @@ void QMySQL::CallChangeCustomerVehicleData( QString& strConnectName,
                                QStringList& lstParams )
 {
     if ( ParkSolution::SpChangeCustomerVehicleDataUI == eSpType ) {
-        if ( 36 > lstParams.count( ) ) {
+        if ( 37 > lstParams.count( ) ) {
             return;
         }
 
@@ -323,8 +323,8 @@ void QMySQL::CallChangeCustomerVehicleData( QString& strConnectName,
                                             lstParams.at( 31 ), lstParams.at( 32 ),
                                             lstParams.at( 33 ), lstParams.at( 34 ),
                                             lstParams.at( 35 ) );
-    }
-    else if ( ParkSolution::SpChangeCustomerVehicleDataDelete == eSpType ) {
+         strXmlPattern = strXmlPattern.arg( lstParams.at( 36 )  );
+    } else if ( ParkSolution::SpChangeCustomerVehicleDataDelete == eSpType ) {
         if ( 2 > lstParams.count( ) ) {
             return;
         }

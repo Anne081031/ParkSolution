@@ -166,6 +166,8 @@ void QDHkIPCThread::ProcessDataStream( LONG lRealHandle, BYTE *pBuffer, DWORD dw
     int nHeight = 0;
     ParseResolution( lRealHandle, nWidth, nHeight );
 
+    nWidth = 704;
+    nHeight = 576;
     if ( 0 == nWidth || 0 == nHeight ) {
         return;
     }
@@ -299,10 +301,14 @@ void QDHkIPCThread::GetDeviceAbility( LONG lUserID, LONG lRealHandle )
     // #define  XML_BUF 3*1024*1024
     //char cOutBuf[ 1024 ] = { 0 };
     //char* pOutBuf = new char[ 1024 * 1024 * 3 ];
-    //BOOL bRet = FALSE;
+    BOOL bRet = FALSE;
     //char* pInBuf = "<CurrentCompressInfo><ChannelNumber>1</ChannelNumber><VideoEncodeType>0</VideoEncodeType><VideoResolution>17</VideoResolution></CurrentCompressInfo>";
 
-    //bRet = NET_DVR_GetDeviceAbility( lUserID, DEVICE_ENCODE_ALL_ABILITY, NULL, 0, pOutBuf, 1024 * 1024 * 3  );
+    long nChannel = 1;
+    NET_DVR_COMPRESSIONCFG_ABILITY sAbility;
+
+    bRet = NET_DVR_GetDeviceAbility( lUserID, COMPRESSIONCFG_ABILITY, ( char* ) &nChannel,
+                                     4, ( char* ) &sAbility, sizeof ( sAbility )  );
     //qDebug( ) << QString( pOutBuf ) << Q_FUNC_INFO << endl;
     //QString strFile = "d:/xml.txt";
     //QString strData = QString( pOutBuf );

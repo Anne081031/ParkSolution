@@ -38,9 +38,14 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tabVideo">
+    <widget class="QWidget" name="tabInVideo">
      <attribute name="title">
-      <string>视频</string>
+      <string>入口视频</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tabOutVideo">
+     <attribute name="title">
+      <string>出口视频</string>
      </attribute>
     </widget>
     <widget class="QWidget" name="tab_2">

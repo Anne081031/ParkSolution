@@ -1,4 +1,4 @@
-QT       += core gui sql network axcontainer
+QT       += core gui sql network axcontainer serialport
 
 MYTARGET = $$quote( SerialPortModule%1 )
 MYDESTDIR = $$quote( ../LibExeFiles/%1 )
@@ -9,6 +9,7 @@ Debug {
     DESTDIR = $$sprintf( $$MYDESTDIR, "Debug" )
 
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "Debug" )
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "Debug" )
 }
 
 Release {
@@ -16,6 +17,7 @@ Release {
     DESTDIR = $$sprintf( $$MYDESTDIR, "Release" )
 
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "" )
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "" )
 }
 
 #TARGET = DatabaseModule
@@ -29,9 +31,15 @@ HEADERS += \
     SerialPortModule_global.h \
     qserialreaderthread.h \
     qserialwriterthread.h \
-    qserialparserthread.h
+    qserialparserthread.h \
+    qserialparserevent.h \
+    qserialreaderevent.h \
+    qserialwriterevent.h
 
 SOURCES += \
     qserialreaderthread.cpp \
     qserialwriterthread.cpp \
-    qserialparserthread.cpp
+    qserialparserthread.cpp \
+    qserialparserevent.cpp \
+    qserialreaderevent.cpp \
+    qserialwriterevent.cpp

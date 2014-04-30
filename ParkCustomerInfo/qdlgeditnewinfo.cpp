@@ -207,6 +207,7 @@ void QDlgEditNewInfo::FillCustomerEdit( )
     hashWidget.insert( tabCustomer.strMembershipClass, ui->cbxMembershipClass );
     hashWidget.insert( tabCustomer.strMembershipCardSurplus, ui->edtMembershipCardSurplus );
     SetIntValidator( ui->edtMembershipCardSurplus, 0, 2147483647 );
+    hashWidget.insert( tabCustomer.strCustomerLevel, ui->cbxCustomerLevel );
 }
 
 void QDlgEditNewInfo::FillHash( )
@@ -286,7 +287,9 @@ void QDlgEditNewInfo::SetControlValue( QSqlRecord& sqlRow, QString& strFieldName
         QComboBox* pCbx = ( QComboBox* ) pWgt;
 
         if ( NULL != pCbx ) {
-            pCbx->setCurrentIndex( varValue.toInt( ) );
+            QVariant varTmp( varValue.toInt( ) );
+            int nIndex = pCbx->findData( varTmp );
+            pCbx->setCurrentIndex( nIndex  );
         }
     } else if ( pWgt->metaObject( )->className( ) ==
                 QDateEdit::staticMetaObject.className( ) ) {
@@ -323,6 +326,7 @@ void QDlgEditNewInfo::InitializeDialog( QModelIndex &index )
     SetControlValue( sqlRow, customerInfo.strCredentialsID, customerInfo.strCredentialsID );
     SetControlValue( sqlRow, customerInfo.strAddress, customerInfo.strAddress );
     SetControlValue( sqlRow, customerInfo.strDistrictID, customerInfo.strDistrict );
+    SetControlValue( sqlRow, customerInfo.strCustomerLevelID, customerInfo.strCustomerLevel );
     SetControlValue( sqlRow, customerInfo.strMobilePhone, customerInfo.strMobilePhone );
     SetControlValue( sqlRow, customerInfo.strLandline, customerInfo.strLandline );
     SetControlValue( sqlRow, customerInfo.strEMail, customerInfo.strEMail );
@@ -401,34 +405,35 @@ void QDlgEditNewInfo::FillParamsList( )
               << ui->edtName->text( )
               << ui->edtCredentialsID->text( )
               << ui->edtAddress->text( )
-              << QString::number( ui->cbxDistrict->currentIndex( ) )
+              << QString::number( ui->cbxDistrict->currentData( ).toInt( ) )
               << ui->edtMobilePhone->text( )
               << ui->edtLandline->text( )
               << ui->edtEMail->text( )
-              << QString::number( ui->cbxCustomerSource->currentIndex( ) )
-              << QString::number( ui->cbxDepartment->currentIndex( ) )
-              << QString::number( ui->cbxAccountExecutive->currentIndex( ) )
+              << QString::number( ui->cbxCustomerSource->currentData( ).toInt( ) )
+              << QString::number( ui->cbxDepartment->currentData( ) .toInt( ))
+              << QString::number( ui->cbxAccountExecutive->currentData( ).toInt( ) )
               << ui->dtVistFirstTime->text( )
               << ui->dtEntryTime->text( )
-              << QString::number( ui->cbxCustomerCategory->currentIndex( ) )
+              << QString::number( ui->cbxCustomerCategory->currentData( ).toInt( ) )
               << ui->dtVistNewlyTime->text( )
               << ui->edtConsumptionAmount->text( )
-              << QString::number( ui->cbxMembershipClass->currentIndex( ) )
+              << QString::number( ui->cbxMembershipClass->currentData( ).toInt( ) )
               << ui->edtMembershipCardSurplus->text( )
+              << QString::number( ui->cbxCustomerLevel->currentData( ).toInt( ) )
               << ui->edtPlateID->text( ).toUpper( )
-              << QString::number( ui->cbxBrand->currentIndex( ) )
-              << QString::number( ui->cbxSeries->currentIndex( ) )
-              << QString::number( ui->cbxColor->currentIndex( ) )
-              << QString::number( ui->cbxFeature->currentIndex( ) )
+              << QString::number( ui->cbxBrand->currentData( ).toInt( ) )
+              << QString::number( ui->cbxSeries->currentData( ).toInt( ) )
+              << QString::number( ui->cbxColor->currentData( ).toInt( ) )
+              << QString::number( ui->cbxFeature->currentData( ).toInt( ) )
               << ui->dtBuyDate->text( )
               << ui->dtMaintenanceFirstDate->text( )
               << ui->dtMaintenanceNextDate->text( )
               << ui->dtAannualSurveyDate->text( )
               << ui->dtCommercialInsuranceExpiration->text( )
               << ui->dtMandatoryInsuranceExpiration->text( )
-              << QString::number( ui->cbxInsurer->currentIndex( ) )
+              << QString::number( ui->cbxInsurer->currentData( ).toInt( ) )
               << ui->edtVistCount->text( )
-              << QString::number( ui->cbxState->currentIndex( ) )
+              << QString::number( ui->cbxState->currentData( ).toInt( ) )
               << ui->edtMotorID->text( )
               << ui->edtOdometer->text( )
               << ( bEditData ? ui->edtVehicleID->text( ) : ( ui->edtVehicleID->text( ).isEmpty( ) ? "0" : ui->edtVehicleID->text( ) ) );
