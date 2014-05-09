@@ -406,6 +406,8 @@ void QDatabaseThread::ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent )
     QByteArray bySpResult;
     pMySQLDatabase->CallSP( strConnectName, ParkSolution::SpWriteInOutRecord, lstParams,  bySpResult );
 
+     qDebug( ) << Q_FUNC_INFO <<  pEvent->GetSubThreadId( ) << strConnectName << endl;
+
     if ( 0 == bySpResult.size( ) ) {
         return;
     }

@@ -25,15 +25,14 @@ DEL_DIR       = rmdir
 MOVE          = move
 SUBTARGETS    =  \
 		sub-CommonModule \
-		sub-DatabaseModule \
-		sub-SerialPortModule \
 		sub-ConfigModule \
-		sub-DataParse \
+		sub-AssessibilityModule \
+		sub-DatabaseModule \
 		sub-LPRModule \
 		sub-NetworkModule \
 		sub-VideoModule \
-		sub-ParkServer \
-		sub-AssessibilityModule
+		sub-SerialPortModule \
+		sub-ParkServer
 
 
 sub-CommonModule-qmake_all:  FORCE
@@ -61,56 +60,6 @@ sub-CommonModule-install_subtargets: FORCE
 sub-CommonModule-uninstall_subtargets: FORCE
 	@if not exist CommonModule\ mkdir CommonModule\ & if not exist CommonModule\ exit 1
 	cd CommonModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CommonModule\CommonModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
-sub-DatabaseModule-qmake_all:  FORCE
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
-	cd DatabaseModule\ && $(MAKE) -f Makefile qmake_all
-sub-DatabaseModule: FORCE
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
-sub-DatabaseModule-make_first: FORCE
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
-sub-DatabaseModule-all: FORCE
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
-sub-DatabaseModule-clean: FORCE
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
-sub-DatabaseModule-distclean: FORCE
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
-sub-DatabaseModule-install_subtargets: FORCE
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
-sub-DatabaseModule-uninstall_subtargets: FORCE
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
-sub-SerialPortModule-qmake_all:  FORCE
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
-	cd SerialPortModule\ && $(MAKE) -f Makefile qmake_all
-sub-SerialPortModule: FORCE
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
-sub-SerialPortModule-make_first: FORCE
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
-sub-SerialPortModule-all: FORCE
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
-sub-SerialPortModule-clean: FORCE
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
-sub-SerialPortModule-distclean: FORCE
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
-sub-SerialPortModule-install_subtargets: FORCE
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
-sub-SerialPortModule-uninstall_subtargets: FORCE
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-ConfigModule-qmake_all:  FORCE
 	@if not exist ConfigModule\ mkdir ConfigModule\ & if not exist ConfigModule\ exit 1
 	cd ConfigModule\ && $(QMAKE) D:\ParkSolution\ConfigModule\ConfigModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
@@ -136,31 +85,56 @@ sub-ConfigModule-install_subtargets: FORCE
 sub-ConfigModule-uninstall_subtargets: FORCE
 	@if not exist ConfigModule\ mkdir ConfigModule\ & if not exist ConfigModule\ exit 1
 	cd ConfigModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ConfigModule\ConfigModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
-sub-DataParse-qmake_all:  FORCE
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
-	cd DataParse\ && $(MAKE) -f Makefile qmake_all
-sub-DataParse: FORCE
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
-sub-DataParse-make_first: FORCE
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
-sub-DataParse-all: FORCE
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
-sub-DataParse-clean: FORCE
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
-sub-DataParse-distclean: FORCE
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
-sub-DataParse-install_subtargets: FORCE
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
-sub-DataParse-uninstall_subtargets: FORCE
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
+sub-AssessibilityModule-qmake_all:  FORCE
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
+	cd AssessibilityModule\ && $(MAKE) -f Makefile qmake_all
+sub-AssessibilityModule: FORCE
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
+sub-AssessibilityModule-make_first: FORCE
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
+sub-AssessibilityModule-all: FORCE
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
+sub-AssessibilityModule-clean: FORCE
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
+sub-AssessibilityModule-distclean: FORCE
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
+sub-AssessibilityModule-install_subtargets: FORCE
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
+sub-AssessibilityModule-uninstall_subtargets: FORCE
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
+sub-DatabaseModule-qmake_all:  FORCE
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
+	cd DatabaseModule\ && $(MAKE) -f Makefile qmake_all
+sub-DatabaseModule: FORCE
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
+sub-DatabaseModule-make_first: FORCE
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
+sub-DatabaseModule-all: FORCE
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
+sub-DatabaseModule-clean: FORCE
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
+sub-DatabaseModule-distclean: FORCE
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
+sub-DatabaseModule-install_subtargets: FORCE
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
+sub-DatabaseModule-uninstall_subtargets: FORCE
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-LPRModule-qmake_all:  FORCE
 	@if not exist LPRModule\ mkdir LPRModule\ & if not exist LPRModule\ exit 1
 	cd LPRModule\ && $(QMAKE) D:\ParkSolution\LPRModule\LPRModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
@@ -236,6 +210,31 @@ sub-VideoModule-install_subtargets: FORCE
 sub-VideoModule-uninstall_subtargets: FORCE
 	@if not exist VideoModule\ mkdir VideoModule\ & if not exist VideoModule\ exit 1
 	cd VideoModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\VideoModule\VideoModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
+sub-SerialPortModule-qmake_all:  FORCE
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
+	cd SerialPortModule\ && $(MAKE) -f Makefile qmake_all
+sub-SerialPortModule: FORCE
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
+sub-SerialPortModule-make_first: FORCE
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
+sub-SerialPortModule-all: FORCE
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
+sub-SerialPortModule-clean: FORCE
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
+sub-SerialPortModule-distclean: FORCE
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
+sub-SerialPortModule-install_subtargets: FORCE
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
+sub-SerialPortModule-uninstall_subtargets: FORCE
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 sub-ParkServer-qmake_all:  FORCE
 	@if not exist ParkServer\ mkdir ParkServer\ & if not exist ParkServer\ exit 1
 	cd ParkServer\ && $(QMAKE) D:\ParkSolution\ParkServer\ParkServer.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
@@ -261,31 +260,6 @@ sub-ParkServer-install_subtargets: FORCE
 sub-ParkServer-uninstall_subtargets: FORCE
 	@if not exist ParkServer\ mkdir ParkServer\ & if not exist ParkServer\ exit 1
 	cd ParkServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkServer\ParkServer.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
-sub-AssessibilityModule-qmake_all:  FORCE
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile
-	cd AssessibilityModule\ && $(MAKE) -f Makefile qmake_all
-sub-AssessibilityModule: FORCE
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile
-sub-AssessibilityModule-make_first: FORCE
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile 
-sub-AssessibilityModule-all: FORCE
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile all
-sub-AssessibilityModule-clean: FORCE
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile clean
-sub-AssessibilityModule-distclean: FORCE
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile distclean
-sub-AssessibilityModule-install_subtargets: FORCE
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile install
-sub-AssessibilityModule-uninstall_subtargets: FORCE
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 
 Makefile: ParkSolution.pro F:/Qt/Qt5.2.1/5.2.1/mingw48_32/mkspecs/win32-g++/qmake.conf F:/Qt/Qt5.2.1/5.2.1/mingw48_32/mkspecs/features/spec_pre.prf \
 		F:/Qt/Qt5.2.1/5.2.1/mingw48_32/mkspecs/qdevice.pri \
@@ -495,31 +469,28 @@ ParkSolution.pro:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ParkSolution.pro
 
-qmake_all: sub-CommonModule-qmake_all sub-DatabaseModule-qmake_all sub-SerialPortModule-qmake_all sub-ConfigModule-qmake_all sub-DataParse-qmake_all sub-LPRModule-qmake_all sub-NetworkModule-qmake_all sub-VideoModule-qmake_all sub-ParkServer-qmake_all sub-AssessibilityModule-qmake_all FORCE
+qmake_all: sub-CommonModule-qmake_all sub-ConfigModule-qmake_all sub-AssessibilityModule-qmake_all sub-DatabaseModule-qmake_all sub-LPRModule-qmake_all sub-NetworkModule-qmake_all sub-VideoModule-qmake_all sub-SerialPortModule-qmake_all sub-ParkServer-qmake_all FORCE
 
-make_first: sub-CommonModule-make_first sub-DatabaseModule-make_first sub-SerialPortModule-make_first sub-ConfigModule-make_first sub-DataParse-make_first sub-LPRModule-make_first sub-NetworkModule-make_first sub-VideoModule-make_first sub-ParkServer-make_first sub-AssessibilityModule-make_first FORCE
-all: sub-CommonModule-all sub-DatabaseModule-all sub-SerialPortModule-all sub-ConfigModule-all sub-DataParse-all sub-LPRModule-all sub-NetworkModule-all sub-VideoModule-all sub-ParkServer-all sub-AssessibilityModule-all FORCE
-clean: sub-CommonModule-clean sub-DatabaseModule-clean sub-SerialPortModule-clean sub-ConfigModule-clean sub-DataParse-clean sub-LPRModule-clean sub-NetworkModule-clean sub-VideoModule-clean sub-ParkServer-clean sub-AssessibilityModule-clean FORCE
-distclean: sub-CommonModule-distclean sub-DatabaseModule-distclean sub-SerialPortModule-distclean sub-ConfigModule-distclean sub-DataParse-distclean sub-LPRModule-distclean sub-NetworkModule-distclean sub-VideoModule-distclean sub-ParkServer-distclean sub-AssessibilityModule-distclean FORCE
+make_first: sub-CommonModule-make_first sub-ConfigModule-make_first sub-AssessibilityModule-make_first sub-DatabaseModule-make_first sub-LPRModule-make_first sub-NetworkModule-make_first sub-VideoModule-make_first sub-SerialPortModule-make_first sub-ParkServer-make_first FORCE
+all: sub-CommonModule-all sub-ConfigModule-all sub-AssessibilityModule-all sub-DatabaseModule-all sub-LPRModule-all sub-NetworkModule-all sub-VideoModule-all sub-SerialPortModule-all sub-ParkServer-all FORCE
+clean: sub-CommonModule-clean sub-ConfigModule-clean sub-AssessibilityModule-clean sub-DatabaseModule-clean sub-LPRModule-clean sub-NetworkModule-clean sub-VideoModule-clean sub-SerialPortModule-clean sub-ParkServer-clean FORCE
+distclean: sub-CommonModule-distclean sub-ConfigModule-distclean sub-AssessibilityModule-distclean sub-DatabaseModule-distclean sub-LPRModule-distclean sub-NetworkModule-distclean sub-VideoModule-distclean sub-SerialPortModule-distclean sub-ParkServer-distclean FORCE
 	-$(DEL_FILE) Makefile
-install_subtargets: sub-CommonModule-install_subtargets sub-DatabaseModule-install_subtargets sub-SerialPortModule-install_subtargets sub-ConfigModule-install_subtargets sub-DataParse-install_subtargets sub-LPRModule-install_subtargets sub-NetworkModule-install_subtargets sub-VideoModule-install_subtargets sub-ParkServer-install_subtargets sub-AssessibilityModule-install_subtargets FORCE
-uninstall_subtargets: sub-CommonModule-uninstall_subtargets sub-DatabaseModule-uninstall_subtargets sub-SerialPortModule-uninstall_subtargets sub-ConfigModule-uninstall_subtargets sub-DataParse-uninstall_subtargets sub-LPRModule-uninstall_subtargets sub-NetworkModule-uninstall_subtargets sub-VideoModule-uninstall_subtargets sub-ParkServer-uninstall_subtargets sub-AssessibilityModule-uninstall_subtargets FORCE
+install_subtargets: sub-CommonModule-install_subtargets sub-ConfigModule-install_subtargets sub-AssessibilityModule-install_subtargets sub-DatabaseModule-install_subtargets sub-LPRModule-install_subtargets sub-NetworkModule-install_subtargets sub-VideoModule-install_subtargets sub-SerialPortModule-install_subtargets sub-ParkServer-install_subtargets FORCE
+uninstall_subtargets: sub-CommonModule-uninstall_subtargets sub-ConfigModule-uninstall_subtargets sub-AssessibilityModule-uninstall_subtargets sub-DatabaseModule-uninstall_subtargets sub-LPRModule-uninstall_subtargets sub-NetworkModule-uninstall_subtargets sub-VideoModule-uninstall_subtargets sub-SerialPortModule-uninstall_subtargets sub-ParkServer-uninstall_subtargets FORCE
 
 sub-CommonModule-debug:
 	@if not exist CommonModule\ mkdir CommonModule\ & if not exist CommonModule\ exit 1
 	cd CommonModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CommonModule\CommonModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
-sub-DatabaseModule-debug:
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
-sub-SerialPortModule-debug:
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
 sub-ConfigModule-debug:
 	@if not exist ConfigModule\ mkdir ConfigModule\ & if not exist ConfigModule\ exit 1
 	cd ConfigModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ConfigModule\ConfigModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
-sub-DataParse-debug:
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
+sub-AssessibilityModule-debug:
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
+sub-DatabaseModule-debug:
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
 sub-LPRModule-debug:
 	@if not exist LPRModule\ mkdir LPRModule\ & if not exist LPRModule\ exit 1
 	cd LPRModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\LPRModule\LPRModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
@@ -529,29 +500,26 @@ sub-NetworkModule-debug:
 sub-VideoModule-debug:
 	@if not exist VideoModule\ mkdir VideoModule\ & if not exist VideoModule\ exit 1
 	cd VideoModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\VideoModule\VideoModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
+sub-SerialPortModule-debug:
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
 sub-ParkServer-debug:
 	@if not exist ParkServer\ mkdir ParkServer\ & if not exist ParkServer\ exit 1
 	cd ParkServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkServer\ParkServer.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
-sub-AssessibilityModule-debug:
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile debug
-debug: sub-CommonModule-debug sub-DatabaseModule-debug sub-SerialPortModule-debug sub-ConfigModule-debug sub-DataParse-debug sub-LPRModule-debug sub-NetworkModule-debug sub-VideoModule-debug sub-ParkServer-debug sub-AssessibilityModule-debug
+debug: sub-CommonModule-debug sub-ConfigModule-debug sub-AssessibilityModule-debug sub-DatabaseModule-debug sub-LPRModule-debug sub-NetworkModule-debug sub-VideoModule-debug sub-SerialPortModule-debug sub-ParkServer-debug
 
 sub-CommonModule-release:
 	@if not exist CommonModule\ mkdir CommonModule\ & if not exist CommonModule\ exit 1
 	cd CommonModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CommonModule\CommonModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
-sub-DatabaseModule-release:
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
-sub-SerialPortModule-release:
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
 sub-ConfigModule-release:
 	@if not exist ConfigModule\ mkdir ConfigModule\ & if not exist ConfigModule\ exit 1
 	cd ConfigModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ConfigModule\ConfigModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
-sub-DataParse-release:
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
+sub-AssessibilityModule-release:
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
+sub-DatabaseModule-release:
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
 sub-LPRModule-release:
 	@if not exist LPRModule\ mkdir LPRModule\ & if not exist LPRModule\ exit 1
 	cd LPRModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\LPRModule\LPRModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
@@ -561,29 +529,26 @@ sub-NetworkModule-release:
 sub-VideoModule-release:
 	@if not exist VideoModule\ mkdir VideoModule\ & if not exist VideoModule\ exit 1
 	cd VideoModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\VideoModule\VideoModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
+sub-SerialPortModule-release:
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
 sub-ParkServer-release:
 	@if not exist ParkServer\ mkdir ParkServer\ & if not exist ParkServer\ exit 1
 	cd ParkServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkServer\ParkServer.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
-sub-AssessibilityModule-release:
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile release
-release: sub-CommonModule-release sub-DatabaseModule-release sub-SerialPortModule-release sub-ConfigModule-release sub-DataParse-release sub-LPRModule-release sub-NetworkModule-release sub-VideoModule-release sub-ParkServer-release sub-AssessibilityModule-release
+release: sub-CommonModule-release sub-ConfigModule-release sub-AssessibilityModule-release sub-DatabaseModule-release sub-LPRModule-release sub-NetworkModule-release sub-VideoModule-release sub-SerialPortModule-release sub-ParkServer-release
 
 sub-CommonModule-check:
 	@if not exist CommonModule\ mkdir CommonModule\ & if not exist CommonModule\ exit 1
 	cd CommonModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CommonModule\CommonModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
-sub-DatabaseModule-check:
-	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
-	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
-sub-SerialPortModule-check:
-	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
-	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
 sub-ConfigModule-check:
 	@if not exist ConfigModule\ mkdir ConfigModule\ & if not exist ConfigModule\ exit 1
 	cd ConfigModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ConfigModule\ConfigModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
-sub-DataParse-check:
-	@if not exist DataParse\ mkdir DataParse\ & if not exist DataParse\ exit 1
-	cd DataParse\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DataParse\DataParse.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
+sub-AssessibilityModule-check:
+	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
+	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
+sub-DatabaseModule-check:
+	@if not exist DatabaseModule\ mkdir DatabaseModule\ & if not exist DatabaseModule\ exit 1
+	cd DatabaseModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\DatabaseModule\DatabaseModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
 sub-LPRModule-check:
 	@if not exist LPRModule\ mkdir LPRModule\ & if not exist LPRModule\ exit 1
 	cd LPRModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\LPRModule\LPRModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
@@ -593,13 +558,13 @@ sub-NetworkModule-check:
 sub-VideoModule-check:
 	@if not exist VideoModule\ mkdir VideoModule\ & if not exist VideoModule\ exit 1
 	cd VideoModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\VideoModule\VideoModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
+sub-SerialPortModule-check:
+	@if not exist SerialPortModule\ mkdir SerialPortModule\ & if not exist SerialPortModule\ exit 1
+	cd SerialPortModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\SerialPortModule\SerialPortModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
 sub-ParkServer-check:
 	@if not exist ParkServer\ mkdir ParkServer\ & if not exist ParkServer\ exit 1
 	cd ParkServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkServer\ParkServer.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
-sub-AssessibilityModule-check:
-	@if not exist AssessibilityModule\ mkdir AssessibilityModule\ & if not exist AssessibilityModule\ exit 1
-	cd AssessibilityModule\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\AssessibilityModule\AssessibilityModule.pro -spec win32-g++ CONFIG+=debug CONFIG+=declarative_debug CONFIG+=qml_debug -o Makefile ) && $(MAKE) -f Makefile check
-check: sub-CommonModule-check sub-DatabaseModule-check sub-SerialPortModule-check sub-ConfigModule-check sub-DataParse-check sub-LPRModule-check sub-NetworkModule-check sub-VideoModule-check sub-ParkServer-check sub-AssessibilityModule-check
+check: sub-CommonModule-check sub-ConfigModule-check sub-AssessibilityModule-check sub-DatabaseModule-check sub-LPRModule-check sub-NetworkModule-check sub-VideoModule-check sub-SerialPortModule-check sub-ParkServer-check
 install: install_subtargets  FORCE
 
 uninstall:  uninstall_subtargets FORCE

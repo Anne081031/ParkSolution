@@ -38,6 +38,7 @@ bool QProcessResultThread::ThreadInitialize()
     pConfigurator->GetDeleteImageFile( bDeleteImage );
     pConfigurator->GetSmsStartup( bSmsStartup );
     pConfigurator->GetDbConnectPoolMaxConnect( nConnectPoolCount );
+    pConfigurator->GetPlateInterval( nSamePlateInterval );
 
     QCommonFunction::GetAppCaptureImagePath( strImagePath );
 
@@ -339,6 +340,34 @@ void QProcessResultThread::HandlePlateSerializeData( QString strPlate, QString s
     SendPlate2Client( strPlate, strDateTime, strImageBase64 );
 }
 
+bool QProcessResultThread::SamePlateInInterval( const QString &strPlate, const QString &strDateTime )
+{
+    bool bRet = false;
+
+    const QString strValue = hashPlateDateTime.value( strPlate, "" );
+    bRet = strValue.isEmpty( );
+
+    if ( bRet ) { // First
+        hashPlateDateTime.insert( strPlate, strDateTime );
+        return false;
+    }
+
+    QDateTime dtStart;
+    QDateTime dtEnd;
+
+    QCommonFunction::String2DateTime( strValue, dtStart );
+    QCommonFunction::String2DateTime( strDateTime, dtEnd );
+
+    int nSecods = dtEnd.toTime_t( ) - dtStart.toTime_t( );
+    bRet = ( nSecods <= nSamePlateInterval );
+
+    if ( !bRet ) {
+        hashPlateDateTime[ strPlate ] = strDateTime;
+    }
+
+    return bRet;
+}
+
 void QProcessResultThread::ProcessPlateResultEvent( QProcessResultEvent* pEvent  )
 {
     //if ( !pDatabaseThread->DatabasePing(  ) ) {
@@ -351,6 +380,10 @@ void QProcessResultThread::ProcessPlateResultEvent( QProcessResultEvent* pEvent 
     QString strIP = pEvent->GetIP( );
     int nChannel = pEvent->GetImageChannel( );
     bool bEnter = pEvent->GetEnterFlag( );
+
+    if ( SamePlateInInterval( strPlate, strDateTime ) ) {
+        return;
+    }
 
     QString strFile;
 

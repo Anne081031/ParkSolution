@@ -119,6 +119,9 @@ public:
     void SetPlateWay( const int nWay );
     void GetPlateWay( int& nWay ) const;
 
+    void SetPlateInterval( const int nInterval );
+    void GetPlateInterval( int& nInterval ) const;
+
     void SetFtpHost( const QString& strHost );
     void GetFtpHost( QString& strHost ) const;
 

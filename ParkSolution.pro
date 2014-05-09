@@ -3,16 +3,17 @@ TEMPLATE = subdirs
 # Build sequence
 SUBDIRS += \
     CommonModule \
+    ConfigModule \
+    AssessibilityModule \
     DatabaseModule \
     #DeviceControllerModule \
-    SerialPortModule \
-    ConfigModule \
-    DataParse \
+    #DataParse \
     #FeeRateModule \
     #LEDModule \
     LPRModule \
     NetworkModule \
     VideoModule \
+    SerialPortModule \
     #LogModule \
     #BusinessModule \
     #ParkGateUI \
@@ -24,5 +25,4 @@ SUBDIRS += \
     #TestDLL \
     #ParkCustomerInfo \
     #Qt360Safe \
-    ParkServer \
-    AssessibilityModule
+    ParkServer

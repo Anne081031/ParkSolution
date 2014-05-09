@@ -395,6 +395,16 @@ void QConfigurator::SetFtpHost( const QString& strHost )
     pSettings->setValue( "FtpServer/Host", strHost );
 }
 
+void QConfigurator::SetPlateInterval( const int nInterval )
+{
+    pSettings->setValue( "LPR/SamePlateInterval", nInterval );
+}
+
+void QConfigurator::GetPlateInterval( int& nInterval ) const
+{
+    nInterval = pSettings->value( "LPR/SamePlateInterval", 30 ).toInt( );
+}
+
 void QConfigurator::GetFtpHost( QString& strHost ) const
 {
     strHost = pSettings->value( "FtpServer/Host", "127.0.0.1" ).toString( );

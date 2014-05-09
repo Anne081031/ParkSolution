@@ -75,3 +75,4 @@ void QBaseThread::ThreadFinished( )
 
     deleteLater( );
 }
+
