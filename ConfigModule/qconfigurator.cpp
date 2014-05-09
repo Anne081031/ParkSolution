@@ -13,6 +13,28 @@ QConfigurator::QConfigurator(QObject *parent) :
     // Key=Value 值内不能都逗号
 }
 
+void QConfigurator::GetDbParams( ParkSolution::QStringHash& hashParam )
+{
+    ParkSolution::DbConnectInfo dbInfo;
+
+    QString strValue;
+    GetDbHost( strValue );
+    hashParam[ dbInfo.strHost ] = strValue;
+
+    quint16 nPort = 0;
+    GetDbHostPort( nPort );
+    hashParam[ dbInfo.strPort ] = QString::number( nPort );
+
+    GetDbUser( strValue );
+    hashParam[ dbInfo.strUser ] = strValue;
+
+    GetDbPwd( strValue );
+    hashParam[ dbInfo.strPwd ] = strValue;
+
+    GetDbSchema( strValue );
+    hashParam[ dbInfo.strSchema ] = strValue;
+}
+
 void QConfigurator::SetComName( const QString& strName )
 {
      pSettings->setValue( "SerialPort/Name", strName );
@@ -506,6 +528,26 @@ void QConfigurator::SetDbSchema( const QString& strSchema )
 void QConfigurator::GetDbSchema( QString& strSchema ) const
 {
     strSchema = pSettings->value( "DatabaseServer/Schema", "" ).toString( );
+}
+
+void QConfigurator::SetDbThreadPoolMaxThread( const int nThreadCount )
+{
+    pSettings->setValue( "DatabaseServer/ThreadPoolMaxThread", nThreadCount );
+}
+
+void QConfigurator::GetDbThreadPoolMaxThread( int& nThreadCount ) const
+{
+    nThreadCount = pSettings->value( "DatabaseServer/ThreadPoolMaxThread", 10 ).toInt( );
+}
+
+void QConfigurator::SetDbConnectPoolMaxConnect( const int nConnectCount )
+{
+    pSettings->setValue( "DatabaseServer/ConnectPoolMaxConnect", nConnectCount );
+}
+
+void QConfigurator::GetDbConnectPoolMaxConnect( int& nConnectCount ) const
+{
+    nConnectCount = pSettings->value( "DatabaseServer/ConnectPoolMaxConnect", 10 ).toInt( );
 }
 
 void QConfigurator::GetCustomerNameTitle( QStringList& lstNameTitle ) const

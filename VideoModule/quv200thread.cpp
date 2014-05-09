@@ -185,7 +185,7 @@ void QUv200Thread::VidCapCallBack( long lnCardID, long pBuf, long lnWidth, long 
     QByteArray byVideo;
     byVideo.append( ( const char* ) pBuf, lnWidth * lnHeight * lnBiCount / 8 );
 
-    pThreadInstance->GetPlateThread( )->PostPlateVideoRecognize( byVideo, lnWidth, lnHeight, lnCardID );
+    pThreadInstance->GetPlateThread( )->PostPlateVideoRecognize( byVideo, lnWidth, lnHeight, lnCardID + 1 );
 }
 
 void QUv200Thread::MotionDelectCB( long lnCardID, BOOL bMove, LPVOID lpContext )

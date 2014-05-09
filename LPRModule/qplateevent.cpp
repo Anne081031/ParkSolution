@@ -3,7 +3,7 @@
 QPlateEvent::QPlateEvent( Type evtType ) : QEvent( evtType )
 {
     nImageFormat = 0;
-    nInOutChannel = 0;
+    nInOutChannel = -1;
     nVideoWidth = 0;
     nVideoHeight = 0;
     bMultiThread = false;

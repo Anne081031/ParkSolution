@@ -18,6 +18,9 @@ public:
     void SetPlate( const QString& strPlate );
     QString& GetPlate( );
 
+    void SetIP( QString& strIP );
+    QString& GetIP( );
+
     void SetDateTime( const QString& strDateTime );
     QString& GetDateTime( );
 
@@ -33,14 +36,23 @@ public:
     void SetDbSpType( int nType );
     int GetDbSpType( );
 
+    void SetIpcCamera( bool bIpc );
+    bool GetIpcCamera( );
+
+    void SetSpParams( const QStringList& lstParams );
+    QStringList& GetSpParams( );
+
 private:
     QProcessResultEvent( ProcessResultEvent eEvent );
 
 private:
     QString strPlateValue;
     QString strDateTimeValue;
+    QString strIpcIP;
     int nImageChannel;
     bool bEnterValue;
+    bool bNetCamera;
+    QStringList lstSpParams;
 
     QByteArray byDbJson;
     int nSpType;

@@ -186,7 +186,7 @@ void QHkCaptureCardThread::ImageStreamCB( UINT channelNumber, void *context )
     QHkCaptureCardThread* pThread = ( QHkCaptureCardThread* ) context;
 
     if ( !pThread->GetMotionDetect( channelNumber ) ) {
-        return;
+        //return;
     }
 
     pThread->SetMotionDetect( false, channelNumber );
@@ -200,7 +200,7 @@ void QHkCaptureCardThread::ImageStreamCB( UINT channelNumber, void *context )
    // pThread->CaptureStaticImage( strFile, channelNumber );
 
     QPlateThread* pPlate = pThread->GetPlateThread( );
-    pPlate->PostPlateVideoRecognize( byVideo, 704, 576, channelNumber, true );
+    pPlate->PostPlateVideoRecognize( byVideo, 704, 576, channelNumber + 1, true );
 }
 
 void QHkCaptureCardThread::ProcessStartMotionDetectEvent( QCameraEvent* pEvent )

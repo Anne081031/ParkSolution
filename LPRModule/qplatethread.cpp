@@ -44,6 +44,11 @@ void QPlateThread::HandlePlateResult( QStringList lstPlateParam, int nChannel, b
     emit PlateResult( lstPlateParam, nChannel, bSuccess, bVideo );
 }
 
+void QPlateThread::HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, QString strIP, bool bSuccess, bool bVideo )
+{
+    emit PlateIpcResult( lstPlateParam, nChannel, strIP, bSuccess, bVideo );
+}
+
 void QPlateThread::HandleUIPlateResult( QString strPlate, int nChannel, bool bSuccess,
                     bool bVideo, int nWidth, int nHeight, int nConfidence,
                     QString strDirection, QByteArray byData, QRect rectPlate, QRect rectVideo )
@@ -66,11 +71,15 @@ QPlateThread* QPlateThread::CreateSubThread( QString &strThreadKey )
         pThread->SetPlateMultiThread( GetPlateMultiThread( ) );
         connect( pThread, SIGNAL( PlateResult( QStringList, int, bool, bool ) ),
                  this, SLOT( HandlePlateResult( QStringList, int, bool, bool ) ) );
+        connect( pThread, SIGNAL( PlateIpcResult( QStringList, int, QString, bool, bool ) ),
+                         this, SLOT( HandlePlateIpcResult( QStringList, int, QString, bool, bool ) ) );
         connect( pThread, SIGNAL(UIPlateResult( QString, int, bool, bool, int, int, int, QString, QByteArray, QRect, QRect ) ),
                  this, SLOT( HandleUIPlateResult( QString, int, bool, bool, int, int, int, QString, QByteArray, QRect, QRect ) ) );
 
         objSubThreadHash.insert( strThreadKey, pThread );
     }
+
+    //qDebug( ) << Q_FUNC_INFO << strThreadKey << QString::number( ( int )  pThread )  << endl;
 
     return pThread;
 }
@@ -80,6 +89,8 @@ QPlateThread* QPlateThread::NewThread( )
     QPlateThread* pThread = new QPlateThread( );
     pThread->moveToThread( pThread );
     pThread->start( );
+
+    qDebug( ) << Q_FUNC_INFO << endl;
 
     return pThread;
 }
@@ -202,6 +213,21 @@ void QPlateThread::PostPlateVideoRecognize( QByteArray &byVideo, int nWidth, int
     PostEvent( pEvent );
 }
 
+void QPlateThread::PostPlateVideoRecognize( QByteArray& byVideo, int nWidth, int nHeight, int nChannel, QString& strIP, bool bMultiThread )
+{
+    QPlateEvent* pEvent = new QPlateEvent( ( QPlateEvent::Type ) QPlateEvent::PlateVideoRecognize );
+    pEvent->SetVideoFrame( byVideo );
+    pEvent->SetIpcIp( strIP );
+    pEvent->SetVideoWidth( nWidth );
+    pEvent->SetVideoHeight( nHeight );
+    pEvent->SetIpcVideoSource( true );
+    pEvent->SetChannel( nChannel );
+    bMultiThread = bPlateMultiThread;
+    pEvent->SetMultiThread( bMultiThread );
+
+    PostEvent( pEvent );
+}
+
 void QPlateThread::PostPlateInitEvent( int nFormat, int nChannel, bool bMultiThread )
 {
     QPlateEvent* pEvent = new QPlateEvent( ( QPlateEvent::Type ) QPlateEvent::PlateInit );
@@ -226,14 +252,18 @@ void QPlateThread::PostEvent( QEvent *pEvent )
     QPlateEvent* pPlateEvent = ( QPlateEvent* ) pEvent;
     bool bMultiThread = pPlateEvent->GetMultiThread( );
     QPlateThread* pReceiver = this;
+    QString strChannel = QString::number( pPlateEvent->GetChannel( ) );
 
     if ( bMultiThread && !bDongleOneWay ) {
-        bool bIpcIP = pPlateEvent->GetIpcVideoSource( );
-        QString strThreadKey = bIpcIP ? pPlateEvent->GetIpcIp( ) : QString::number( pPlateEvent->GetChannel( ) );
+        //bool bIpcIP = pPlateEvent->GetIpcVideoSource( );
+        //QString strChannel = QString::number( pPlateEvent->GetChannel( ) );
+        QString strThreadKey = strChannel;//bIpcIP ? pPlateEvent->GetIpcIp( ) + strChannel : strChannel;
         pReceiver = CreateSubThread( strThreadKey );
     }
 
-    QBaseThread::PostEvent( pEvent );
+    //QBaseThread::PostEvent( pEvent );
+    qApp->postEvent( pReceiver, pEvent );
+    //qDebug( ) << Q_FUNC_INFO << strChannel << ( int ) pReceiver << endl;
 }
 
 QString QPlateThread::GetPlateMoveDirection( int nDirection )
@@ -327,12 +357,12 @@ void QPlateThread::SendUIResult( int nChannel, bool bSuccess, qint32 nNum, TH_Pl
 
         rect.setRect( pResult[ nIndex ].rcLocation.left, pResult[ nIndex ].rcLocation.top,
                       nWidth, nHeight );
-        emit UIPlateResult( strPlate, nChannel, bSuccess, bVideo, nWidth, nHeight,
+        emit UIPlateResult( strPlate, nChannel - 1, bSuccess, bVideo, nWidth, nHeight,
                             pResult[ nIndex ].nConfidence,
                             GetPlateMoveDirection( pResult[ nIndex ].nDirection ), byData, rect, rectVideo );
     }
 
-    //qDebug( ) << Q_FUNC_INFO << QThread::currentThreadId( ) << endl;
+    //qDebug( ) << Q_FUNC_INFO << QString::number( nChannel ) << " " << QString::number( ( int )  this ) << endl;
 }
 
 void QPlateThread::GetResultInfo( QStringList &lstResult, QString &strFile, bool bSuccess, qint32 nNum, TH_PlateResult *pResult )
@@ -361,7 +391,7 @@ void QPlateThread::FileRecognize( QPlateEvent *pEvent )
 
     int nChannel = pEvent->GetChannel( );
 
-    if ( nChannel >= nPlateWay ) {
+    if ( nChannel > nPlateWay ) {
         return;
     }  
 
@@ -377,7 +407,7 @@ void QPlateThread::FileRecognize( QPlateEvent *pEvent )
     QByteArray byPath = pCodec->fromUnicode( strPlatePath );
     char* pPath = NULL;//byPath.data( );
 
-    BOOL bRet = LPR_FileEx( pFile, pPath, result, nNum, &rcRange, bDongleOneWay ? 1 : nChannel + 1 );
+    BOOL bRet = LPR_FileEx( pFile, pPath, result, nNum, &rcRange, bDongleOneWay ? 1 : nChannel );
     QStringList lstResult;
 
     if ( !bRet || 0 == nNum ) {
@@ -389,7 +419,7 @@ void QPlateThread::FileRecognize( QPlateEvent *pEvent )
     }
 
     GetResultInfo( lstResult, strFile, bRet, nNum, result );
-    emit PlateResult( lstResult, nChannel, bRet, false );
+    emit PlateResult( lstResult, nChannel - 1, bRet, false );
     SendUIResult( nChannel, bRet, nNum, result, false, pEvent );
 
     if ( pEvent->GetDeletFile( ) ) {
@@ -399,10 +429,6 @@ void QPlateThread::FileRecognize( QPlateEvent *pEvent )
 
 void QPlateThread::VideoRecognize( QPlateEvent *pEvent )
 {
-    //if ( bStopRecognize ) {
-    //    return;
-    //}
-
     QByteArray& byVideo = pEvent->GetVideoFrame( );
 
     if ( 0 == byVideo.length( ) ) {
@@ -411,7 +437,7 @@ void QPlateThread::VideoRecognize( QPlateEvent *pEvent )
 
     int nChannel = pEvent->GetChannel( );
 
-    if ( nChannel >= nPlateWay ) {
+    if ( nChannel > nPlateWay ) {
         return;
     }
 
@@ -425,7 +451,7 @@ void QPlateThread::VideoRecognize( QPlateEvent *pEvent )
     ZeroMemory( result, sizeof ( result ) );
     QString strFile = pEvent->GetFilePath( );
 
-    BOOL bRet = LPR_RGB888Ex( ( PBYTE ) byVideo.data( ), nWidth, nHeight, result, nNum, &rcRange, bDongleOneWay ? 1 : nChannel + 1 );
+    BOOL bRet = LPR_RGB888Ex( ( PBYTE ) byVideo.data( ), nWidth, nHeight, result, nNum, &rcRange, bDongleOneWay ? 1 : nChannel );
     QStringList lstResult;
 
     if ( !bRet || 0 == nNum ) {
@@ -437,7 +463,13 @@ void QPlateThread::VideoRecognize( QPlateEvent *pEvent )
     }
 
     GetResultInfo( lstResult, strFile, bRet, nNum, result );
-    emit PlateResult( lstResult, nChannel, bRet, true );
+
+    if ( pEvent->GetIpcVideoSource( ) ) {
+        emit PlateIpcResult( lstResult, nChannel - 1, pEvent->GetIpcIp( ), bRet, true );
+    } else {
+        emit PlateResult( lstResult, nChannel - 1, bRet, true );
+    }
+
     SendUIResult( nChannel, bRet, nNum, result, true, pEvent );
 }
 

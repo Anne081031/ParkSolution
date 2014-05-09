@@ -1,0 +1,12 @@
+INPUT(
+./debug\qunitydatabase.o
+./debug\qdatabasefactory.o
+./debug\qmysql.o
+./debug\qdatabaseevent.o
+./debug\qdatabasethread.o
+./debug\qdbpooltask.o
+./debug\moc_qunitydatabase.o
+./debug\moc_qdatabasefactory.o
+./debug\moc_qmysql.o
+./debug\moc_qdatabasethread.o
+);

@@ -14,6 +14,7 @@ Debug {
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "HCNetSDK", "" )
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "tmControlClient", "" )
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "LPRModule", "Debug" )
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "Debug" )
 }
 
 Release {
@@ -26,6 +27,7 @@ Release {
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "HCNetSDK", "" )
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "tmControlClient", "" )
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "LPRModule", "" )
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "" )
 }
 
 #TARGET = DatabaseModule

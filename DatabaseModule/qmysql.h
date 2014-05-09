@@ -17,6 +17,7 @@ public:
     bool DbRollbackTransaction( QString& strConnectName );
 
     void CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStringList& lstParams );
+    void CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStringList& lstParams, QByteArray& bySpResult );
     void CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStringList& lstParams, QSqlQueryModel* pQueryModel );
 
     bool DbExecuteSQL( QString& strConnectName, QSqlQueryModel& sqlQueryModel, QStringList& lstParams, ParkSolution::SelectResult uResult );
@@ -87,6 +88,13 @@ private:
                            QString& strXmlPattern,
                            QStringList& lstParams );
 
+    void CallWriteInOutRecord( QString& strConnectName,
+                           ParkSolution::SpType eSpType,
+                           QString& strSpName,
+                           QString& strXmlPattern,
+                           QStringList& lstParams,
+                           QByteArray& bySpResult );
+
     void CallReportInfo( QString& strConnectName,
                                    ParkSolution::SpType eSpType,
                                    QString& strSpName,
@@ -124,6 +132,10 @@ private:
     void ExecuteSP( QString& strConnectName,
                     ParkSolution::SpType eSpType,
                     QString& strSQL );
+
+    void ExecuteSP( QString& strConnectName,
+                    ParkSolution::SpType eSpType,
+                    QString& strSQL, QByteArray& bySopResult );
 
     void ExecuteSP( QString& strConnectName,
                     ParkSolution::SpType eSpType,

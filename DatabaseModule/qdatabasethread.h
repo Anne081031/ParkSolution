@@ -13,7 +13,9 @@ public:
     static QDatabaseThread* CreateInstance( );
     void PostReportInfoEvent( QStringList& lstParams );
     void PostWriteInOutRecordEvent( QStringList& lstParams );
+    void PostWriteInOutRecordEvent( QStringList& lstParams, int nIndex );
     void PostDatabaseConnectEvent( ParkSolution::QStringHash& hashParam );
+    void PostDatabaseConnectEvent( ParkSolution::QStringHash& hashParam, int nIndex );
     void PostDatabaseDisconnectEvent( );
     void PostVehicleEnterQueryDataEvent( QStringList& lstParams );
     void PostQueryCustomerVehicleDataEvent( QStringList& lstParams );
@@ -37,9 +39,16 @@ protected:
     void customEvent( QEvent* pEvent );
     bool ThreadInitialize( );
     void ThreadUninitialize( );
+    void PostEvent( QEvent* pEvent );
 
 private:
-    explicit QDatabaseThread(QObject *parent = 0);
+    explicit QDatabaseThread( int nConnectID, QObject *parent = 0);
+
+    typedef QHash< int, QDatabaseThread* > QThreadHash;
+    QThreadHash objSubThreadHash;
+
+    static QDatabaseThread* NewThread( int nIndex );
+    QDatabaseThread* CreateSubThread( int nIndex );
 
     void ProcessReportInfoEvent( QDatabaseEvent* pEvent );
     void ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent );
@@ -64,15 +73,24 @@ private:
     static QDatabaseThread* pThreadInstance;
     QString strConnectName;
     QUnityDatabase* pMySQLDatabase;
+    ParkSolution::QStringHash dbParams;
+    int nThreadConnectID;
 
 signals:
     void SpResult( int nSpType, QByteArray byData );
     void SpResultset( int nSpType, QObject* pQueryModel );
 
+    void SpThreadResult( int nSpType, QByteArray byJson, QStringList lstParams );
+
 private slots:
     void HandleLog( QString strLog );
     void HandleSpResult( int nSpType, QByteArray byData );
     void HandleSpResultset( int nSpType, QObject* pQueryModel );
+
+    void HandleThreadSpResult( int nSpType, QByteArray byData );
+    void HandleThreadSpResultset( int nSpType, QObject* pQueryModel );
+
+    void HandleSpThreadResult( int nSpType, QByteArray byJson, QStringList lstParams );
 };
 
 #endif // QDATABASETHREAD_H

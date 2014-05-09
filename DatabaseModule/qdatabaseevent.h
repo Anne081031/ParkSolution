@@ -46,6 +46,9 @@ public:
     void SetParamList( QStringList& lstParams );
     QStringList& GetParamList( );
 
+    void SetSubThreadId( int nThreadID );
+    int GetSubThreadId( );
+
 private:
     QDatabaseEvent( DatabaseEvent eDbEvent);
 
@@ -55,6 +58,7 @@ private:
     QString strQueryPlate;
     QSqlQueryModel* pQueryModel;
     QStringList lstSpParams;
+    int nSubThreadID;
 };
 
 #endif // QDATABASEEVENT_H

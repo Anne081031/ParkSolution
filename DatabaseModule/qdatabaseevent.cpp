@@ -2,6 +2,7 @@
 
 QDatabaseEvent::QDatabaseEvent( DatabaseEvent eDbEvent ) : QEvent( ( Type ) eDbEvent )
 {
+    nSubThreadID = 0;
 }
 
 QDatabaseEvent* QDatabaseEvent::CreateDatabaseEvent(DatabaseEvent eDbEvent)
@@ -57,4 +58,14 @@ void QDatabaseEvent::SetParamList( QStringList& lstParams )
 QStringList& QDatabaseEvent::GetParamList( )
 {
     return lstSpParams;
+}
+
+void QDatabaseEvent::SetSubThreadId( int nThreadID )
+{
+    nSubThreadID = nThreadID;
+}
+
+int QDatabaseEvent::GetSubThreadId( )
+{
+    return nSubThreadID;
 }

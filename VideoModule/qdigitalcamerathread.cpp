@@ -110,9 +110,19 @@ void QDigitalCameraThread::SetPlayHandle( HWND hPlayWnd, LONG lPlayHandle )
     hashWnd_PlayHandle.insert( hPlayWnd, lPlayHandle );
 }
 
+HWND QDigitalCameraThread::GetPlayWnd( LONG lPlayHandle )
+{
+    return hashWnd_PlayHandle.key( lPlayHandle );
+}
+
 void QDigitalCameraThread::SetIP( LONG lPlayHandle, QString& strIP )
 {
     hashPlayHandle_IP.insert( lPlayHandle, strIP );
+}
+
+LONG QDigitalCameraThread::GetPlayHandleByChannel( LONG lChannel )
+{
+    return hashPlayHandleChannel.key( lChannel );
 }
 
 QString QDigitalCameraThread::GetIP( LONG lPlayHandle )
@@ -162,6 +172,16 @@ void QDigitalCameraThread::RemovePlayHandle( HWND hPlayWnd )
     }
 
     hashWnd_PlayHandle.remove( hPlayWnd );
+}
+
+void QDigitalCameraThread::SetChannel( LONG lPlayHandle, LONG lChannel )
+{
+    hashPlayHandleChannel.insert( lPlayHandle, lChannel );
+}
+
+LONG QDigitalCameraThread::GetChannel( LONG lPlayHandle )
+{
+    return hashPlayHandleChannel.value( lPlayHandle );
 }
 
 void QDigitalCameraThread::ClearHash( )

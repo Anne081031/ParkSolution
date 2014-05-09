@@ -27,49 +27,58 @@ public:
     virtual void CaptureStaticImage( QString& strIP, QString& strFileName, HWND hPlayWnd = NULL );
     QPlateThread* GetPlateThread( );
 
-protected:
-    explicit QDigitalCameraThread(QObject *parent = 0);
-
-    void SetUserID( QString& strIP, LONG lUserID );
-    LONG GetUserID( QString& strIP );
-    void RemoveUserID( QString& strIP );
-
-    void SetIP( LONG lPlayHandle, QString& strIP );
+    LONG GetPlayHandleByChannel( LONG lChannel );
     QString GetIP( LONG lPlayHandle );
-    void RemoveIP( LONG lPlayHandle );
 
-    void SetResolution( LONG lPlayHandle, QString& strResolution );
-    QString GetResolution( LONG lPlayHandle );
-    void RemoveResolution( LONG lPlayHandle );
+    protected:
+        explicit QDigitalCameraThread(QObject *parent = 0);
 
-    void SetPlayHandle( HWND hPlayWnd, LONG lPlayHandle );
-    LONG GetPlayHandle( HWND hPlayWnd );
-    void RemovePlayHandle( HWND hPlayWnd );
-    void ClearHash( );
+        void SetUserID( QString& strIP, LONG lUserID );
+        LONG GetUserID( QString& strIP );
+        void RemoveUserID( QString& strIP );
 
-    void SendCaptureImage( QString& strFile, QString& strIP );
+        void SetIP( LONG lPlayHandle, QString& strIP );
+        //QString GetIP( LONG lPlayHandle );
+        void RemoveIP( LONG lPlayHandle );
 
-    QTextCodec* pCodec;
+        void SetResolution( LONG lPlayHandle, QString& strResolution );
+        QString GetResolution( LONG lPlayHandle );
+        void RemoveResolution( LONG lPlayHandle );
 
-private:
-    inline void PostEvent( QCameraEvent* pEvent );
+        void SetPlayHandle( HWND hPlayWnd, LONG lPlayHandle );
+        LONG GetPlayHandle( HWND hPlayWnd );
+        HWND GetPlayWnd( LONG lPlayHandle );
+        void RemovePlayHandle( HWND hPlayWnd );
+        void ClearHash( );
 
-private:
-    QPlateThread* pPlateThread;
+        void SetChannel( LONG lPlayHandle, LONG lChannel );
+        LONG GetChannel( LONG lPlayHandle );
 
-private:
-    typedef QHash< QString, LONG > QIPLoginIDHash;
-    typedef QHash< HWND, LONG > QWndPlayHandleHash;
-    typedef QHash< LONG, QString > QPlayHandleIP;
-    typedef QHash< LONG, QString > QPlayHandleResolution;
+        void SendCaptureImage( QString& strFile, QString& strIP );
 
-    QIPLoginIDHash hashIP_UserHandle;
-    QWndPlayHandleHash hashWnd_PlayHandle;
-    QPlayHandleIP hashPlayHandle_IP;
-    QPlayHandleResolution hashPlayHandle_Resolution;
+        QTextCodec* pCodec;
 
-signals:
-    void CaptureImage( QString strFile, QString strIP );
+    private:
+        inline void PostEvent( QCameraEvent* pEvent );
+
+    private:
+        QPlateThread* pPlateThread;
+
+    private:
+        typedef QHash< QString, LONG > QIPLoginIDHash;
+        typedef QHash< HWND, LONG > QWndPlayHandleHash;
+        typedef QHash< LONG, QString > QPlayHandleIP;
+        typedef QHash< LONG, QString > QPlayHandleResolution;
+        typedef QHash< LONG, LONG > QPlayHandleChannel;
+
+        QIPLoginIDHash hashIP_UserHandle;
+        QWndPlayHandleHash hashWnd_PlayHandle;
+        QPlayHandleIP hashPlayHandle_IP;
+        QPlayHandleResolution hashPlayHandle_Resolution;
+        QPlayHandleChannel hashPlayHandleChannel;
+
+    signals:
+        void CaptureImage( QString strFile, QString strIP );
     
 public slots:
     

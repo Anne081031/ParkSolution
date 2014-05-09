@@ -3,8 +3,8 @@
 # Project created by QtCreator 2014-04-07T19:53:31
 #
 #-------------------------------------------------
-DEFINES += StartupDebug
-#DEFINES += StartupRelease
+#DEFINES += StartupDebug
+DEFINES += StartupRelease
 #LIBS += -L/your/lib/path  -lyour_lib_name
 QT       += core gui sql network axcontainer webkitwidgets
 
@@ -73,10 +73,14 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     qprocessresultthread.cpp \
-    qprocessresultevent.cpp
+    qprocessresultevent.cpp \
+    qdbpooltask.cpp \
+    qdbpoolnewtask.cpp
 
 HEADERS  += mainwindow.h \
     qprocessresultthread.h \
-    qprocessresultevent.h
+    qprocessresultevent.h \
+    qdbpooltask.h \
+    qdbpoolnewtask.h
 
 FORMS    += mainwindow.ui

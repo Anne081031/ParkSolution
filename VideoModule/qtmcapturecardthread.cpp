@@ -182,7 +182,7 @@ void QTmCaptureCardThread::VidCapCallBack( DWORD dwCard, BYTE *pbuff, DWORD dwSi
     QByteArray byVideo;
     byVideo.append( ( const char* ) pbuff, dwSize );
 
-    pThreadInstance->GetPlateThread( )->PostPlateVideoRecognize( byVideo, 352, 288, dwCard );
+    pThreadInstance->GetPlateThread( )->PostPlateVideoRecognize( byVideo, 352, 288, dwCard + 1 );
 }
 
 void QTmCaptureCardThread::MotionDelectCB( DWORD dwCard, BOOL bMove, BYTE *pbuff, DWORD dwSize, LPVOID lpContext )

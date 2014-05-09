@@ -41,6 +41,8 @@ void MainWindow::StartSmsThread( )
 void MainWindow::StartProcessResultThread( )
 {
     pProcessResultThread = QProcessResultThread::CreateInstance( );
+    connect( pProcessResultThread, SIGNAL( ThreadPoolTaskData( QByteArray ) ),
+             this, SLOT( HandleThreadPoolTaskData( QByteArray ) ) );
 }
 
 void MainWindow::StartSeriaizeThread( )
@@ -117,22 +119,21 @@ void MainWindow::StartVideoThread( )
     pAnalogCamera = NULL;
     pDigitalCamera = NULL;
     nVideoWay = 1;
-
     bool bIPC;
+
     pConfigurator->GetVideoType( bIPC );
+    pConfigurator->GetVideoWay( nVideoWay );
+
+    hVideoWnds[ 0 ] = ( HWND ) ui->tabInVideo->winId( );
+    hVideoWnds[ 1 ] = ( HWND ) ui->tabOutVideo->winId( );
+    hVideoWnds[ 2 ] = NULL;
+    hVideoWnds[ 3 ] = NULL;
 
     bIPC ? StartIPCVideo( ) : StartCaptureCardVideo( );
 }
 
 void MainWindow::StartCaptureCardVideo( )
 {
-    pConfigurator->GetVideoWay( nVideoWay );
-
-    hVideoWnds[ 0 ] = ( HWND ) ui->tabInVideo->winId( );
-    hVideoWnds[ 1 ] = ( HWND ) ui->tabOutVideo->winId( );;
-    hVideoWnds[ 2 ] = NULL;
-    hVideoWnds[ 3 ] = NULL;
-
     QString strCardType;
     pConfigurator->GetCaptureCard( strCardType );
 
@@ -195,43 +196,41 @@ void MainWindow::StartIPCVideo( )
         return;
     }
 
+    pProcessResultThread->SetDigitalCameraThread( pDigitalCamera );
+
     connect( pDigitalCamera, SIGNAL( CaptureImage( QString, QString ) ),
                      this, SLOT( HandleCaptureImage( QString, QString ) ) );
-
-    QString strIP;
-    pConfigurator->GetIPCInA( strIP );
 
     pDigitalCamera->PostIPCStartupEvent( );
     pDigitalCamera->PostIPCSetConnectTimeoutEvent( );
     pDigitalCamera->PostIPCSetReconnectTimeEvent( );
-    pDigitalCamera->PostIPCLoginEvent( strIP );
 
-    HWND hPlayWnd = ( HWND ) ui->tabInVideo->winId( );
+    QString strIPs[  MAX_VIDEO_WAY ];
+    pConfigurator->GetIPCInA( strIPs[ 0 ] );
+    pConfigurator->GetIPCInB( strIPs[ 1 ] );
+    pConfigurator->GetIPCOutA( strIPs[ 2 ] );
+    pConfigurator->GetIPCOutB( strIPs[ 3 ] );
+
+    for ( int nIndex = 0; nIndex < nVideoWay; nIndex++ ) {
+        StartIPCPlayVideo( strIPs[ nIndex ], bMainStream, nIndex );
+    }
+}
+
+void MainWindow::StartIPCPlayVideo( QString& strIP, bool bMainStream, int nChannel )
+{
+    if ( strIP.isEmpty( ) ) {
+        return;
+    }
+
+    pDigitalCamera->PostIPCLoginEvent( strIP );
     pDigitalCamera->PostIPCStartRealPlayEvent( strIP, bMainStream,
-                                               false, hPlayWnd );
+                                               false, hVideoWnds[ nChannel ] );
 }
 
 void MainWindow::ConnectDatabase( )
 {
     ParkSolution::QStringHash hashParam;
-    ParkSolution::DbConnectInfo dbInfo;
-
-    QString strValue;
-    pConfigurator->GetDbHost( strValue );
-    hashParam[ dbInfo.strHost ] = strValue;
-
-    quint16 nPort = 0;
-    pConfigurator->GetDbHostPort( nPort );
-    hashParam[ dbInfo.strPort ] = QString::number( nPort );
-
-    pConfigurator->GetDbUser( strValue );
-    hashParam[ dbInfo.strUser ] = strValue;
-
-    pConfigurator->GetDbPwd( strValue );
-    hashParam[ dbInfo.strPwd ] = strValue;
-
-    pConfigurator->GetDbSchema( strValue );
-    hashParam[ dbInfo.strSchema ] = strValue;
+    pConfigurator->GetDbParams( hashParam );
 
     pDatabaseThread->PostDatabaseConnectEvent( hashParam );
 }
@@ -245,13 +244,25 @@ void MainWindow::StartDatabaseThread( )
     connect( pDatabaseThread, SIGNAL( SpResult( int, QByteArray ) ),
              this, SLOT( HandleSpResult( int, QByteArray ) ) ); //JSON
 
+    connect( pDatabaseThread, SIGNAL( SpThreadResult( int, QByteArray, QStringList ) ),
+             this, SLOT( HandleSpThreadResult( int, QByteArray, QStringList ) ) ); //JSON
+
     ConnectDatabase( );
+}
+void MainWindow::HandleThreadPoolTaskData( QByteArray byData )
+{
+    QString strLog( byData );
+    HandleDatabaseLog( strLog );
 }
 
 void MainWindow::HandleDatabaseLog( QString strLog )
 {
     if ( !bDislpayDbLog ) {
         return;
+    }
+
+    if ( 1000 < ui->txtDbLog->blockCount( ) ) {
+        ui->txtDbLog->clear( );
     }
 
     ui->txtDbLog->appendPlainText( strLog );
@@ -263,6 +274,10 @@ void MainWindow::HandlePlateLog( QString strLog )
         return;
     }
 
+    if ( 1000 < ui->txtPlateLog->blockCount( ) ) {
+        ui->txtPlateLog->clear( );
+    }
+
     ui->txtPlateLog->appendPlainText( strLog );
 }
 
@@ -270,6 +285,10 @@ void MainWindow::HandleFtpLog( QString strLog )
 {
     if ( !bDislpayFtpLog ) {
         return;
+    }
+
+    if ( 1000 < ui->txtFtpLog->blockCount( ) ) {
+        ui->txtFtpLog->clear( );
     }
 
     ui->txtFtpLog->appendPlainText( strLog );
@@ -326,6 +345,20 @@ void MainWindow::DisplayReport(const QByteArray &byJson)
     ui->webView->setHtml( strHTML );
 }
 
+void MainWindow::HandleSpThreadResult( int nSpType, QByteArray byData, QStringList lstParams )
+{
+    Q_UNUSED( nSpType );
+    QString strText = QString( byData ) + "\n";
+    ui->txtDbLog->appendPlainText( strText );
+
+    if ( ParkSolution::SpReportInfo == nSpType ) {
+        DisplayReport( byData );
+        return;
+    }
+
+    pProcessResultThread->PostDatabaseResultEvent( nSpType, byData, lstParams );
+}
+
 void MainWindow::HandleSpResult( int nSpType, QByteArray byData )
 {
     Q_UNUSED( nSpType );
@@ -349,10 +382,12 @@ return;
 void MainWindow::StartPlateThread( )
 {
     //视频识别成功
-    strPlateResultPattern = "通道%1 %2识别%3 车牌%4 识别时间%5 可信度%6 颜色%7 尺寸%8 方向%9 ";
+    strPlateResultPattern = "通道%1 %2识别%3 车牌%4 识别时间%5 可信度%6 颜色%7 尺寸%8 方向%9 %10";
     pPlateThread = QPlateThread::GetInstance( );
     connect( pPlateThread, SIGNAL( PlateResult( QStringList, int, bool, bool ) ),
              this, SLOT( HandlePlateResult( QStringList, int, bool, bool ) ) );
+    connect( pPlateThread, SIGNAL( PlateIpcResult( QStringList, int, QString, bool, bool ) ),
+             this, SLOT( HandlePlateIpcResult( QStringList, int, QString, bool, bool ) ) );
     connect( pPlateThread, SIGNAL( Log( QString ) ),
              this, SLOT( HandlePlateLog( QString ) ) );
 
@@ -390,9 +425,11 @@ int MainWindow::GetImageFormat( )
     pConfigurator->GetCaptureCard( strCardType );
 
     if ( bIPC ) {
-
+        if ( "HK" == strIPCCamera.toUpper( ) && bPlateVideo ) {
+            nFormat = ImageFormatYUV420COMPASS;
+        }
     } else {
-        if ( "HK" == strCardType && bPlateVideo ) {
+        if ( "HK" == strCardType.toUpper( ) && bPlateVideo ) {
             nFormat = ImageFormatYUV420COMPASS;
         }
     }
@@ -405,6 +442,37 @@ void MainWindow::StartFtpThread( )
     pFtpThread = QFtpThread::CreateInstance( );
     connect( pFtpThread, SIGNAL( Log( QString ) ),
              this, SLOT( HandleFtpLog( QString ) ) );
+}
+
+void MainWindow::HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, QString strIP, bool bSuccess, bool bVideo )
+{
+    if ( 7 > lstPlateParam.size( ) ) {
+        return;
+    }
+
+    const QString& strPlate = lstPlateParam.at( 0 );
+    bool bEnter = ( 0 == nChannel % 2 );
+    QString strText = strPlateResultPattern.arg( QString::number( nChannel ) ,
+                                                   bVideo ? "视频流" : "文件",
+                                                   bSuccess ? "成功" : "失败",
+                                                   strPlate,
+                                                   lstPlateParam.at( 1 ),
+                                                   lstPlateParam.at( 2 ),
+                                                   lstPlateParam.at( 3 ),
+                                                   lstPlateParam.at( 4 ),
+                                                   lstPlateParam.at( 5 )  );
+    strText =strText.arg( strIP );
+    QString strDateTime;
+    QCommonFunction::GetCurrentDateTime( strDateTime );
+
+    strText += " " + strDateTime + "\n";
+    HandlePlateLog( strText );
+
+    if ( !bSuccess ) {
+        return;
+    }
+
+    ProcessPlate( strPlate, bEnter, nChannel, strIP, true );
 }
 
 void MainWindow::HandlePlateResult( QStringList lstPlateParam, int nChannel, bool bSuccess, bool bVideo )
@@ -424,6 +492,7 @@ void MainWindow::HandlePlateResult( QStringList lstPlateParam, int nChannel, boo
                                                    lstPlateParam.at( 3 ),
                                                    lstPlateParam.at( 4 ),
                                                    lstPlateParam.at( 5 ) );
+    strText = strText.arg( "" );
     QString strDateTime;
     QCommonFunction::GetCurrentDateTime( strDateTime );
 
@@ -434,7 +503,9 @@ void MainWindow::HandlePlateResult( QStringList lstPlateParam, int nChannel, boo
         return;
     }
 
-    ProcessPlate( strPlate, bEnter, nChannel );
+    QString strIP = "";
+
+    ProcessPlate( strPlate, bEnter, nChannel, strIP, false );
 }
 
 void MainWindow::SendPlate2Client( const QString &strPlate, const QString& strDateTime, const QString &strBase64 )
@@ -480,7 +551,7 @@ void MainWindow::Send2FtpServer( const QString &strPlate, const QString& strDate
      pAnalogCamera->CaptureStaticImage( strFile, nChannel );
 }
 
-void MainWindow::ProcessPlate( const QString &strPlate, bool bEnter, int  nChannel )
+void MainWindow::ProcessPlate( const QString &strPlate, bool bEnter, int  nChannel , QString& strIP, bool bIpc )
 {
     //QString strFile;
     //CaptureImage( strFile, strPlate, nChannel );
@@ -493,7 +564,7 @@ void MainWindow::ProcessPlate( const QString &strPlate, bool bEnter, int  nChann
     QString strDateTime;
     QCommonFunction::GetCurrentDateTime( strDateTime );
 
-    pProcessResultThread->PostPlateResultEvent( strPlate, strDateTime, nChannel, bEnter );
+    pProcessResultThread->PostPlateResultEvent( strPlate, strDateTime, nChannel, bEnter, strIP, bIpc  );
     //WriteDatabase( strPlate, strDateTime, byFileData, bEnter );
 }
 

@@ -1,10 +1,55 @@
 ﻿#include "qdhkipcthread.h"
+#define HK_PLAY_CTRL "PlayCtrl.dll"
 
 QDigitalCameraThread* QDHkIPCThread::pThreadInstance = NULL;
 
 QDHkIPCThread::QDHkIPCThread(QObject *parent) :
     QDigitalCameraThread(parent)
 {
+    for ( int nIndex = 0; nIndex < MAX_IPC_WAY; nIndex++ ) {
+        lPlayPorts[ nIndex ] = -1;
+    }
+
+    nChannel = 0;
+    GetFunctionPointer( );
+
+    pConfigurator = QConfigurator::CreateConfigurator( );
+    pConfigurator->GetPlateVideo( bPlateVideo );
+}
+
+QDHkIPCThread::~QDHkIPCThread( )
+{
+    if ( NULL != hDllMod ) {
+        BOOL bRet = ::FreeLibrary( hDllMod );
+        if ( !bRet ) {
+
+        }
+    }
+}
+
+void QDHkIPCThread::GetFunctionPointer( )
+{
+    MyPlayM4_GetPort = NULL;
+    MyPlayM4_SetStreamOpenMode = NULL;
+    MyPlayM4_SetDisplayCallBack = NULL;
+    MyPlayM4_OpenStream = NULL;
+    MyPlayM4_InputData = NULL;
+    MyPlayM4_Play = NULL;
+
+    QString strPath = qApp->applicationDirPath( ) + "/" + HK_PLAY_CTRL;
+    WCHAR* pPath = ( WCHAR* ) strPath.utf16( );
+
+    hDllMod = ::LoadLibrary( pPath );
+    if ( NULL == hDllMod ) {
+        return;
+    }
+
+    MyPlayM4_GetPort = ( PlayM4_GetPort ) ::GetProcAddress( hDllMod, "PlayM4_GetPort" );
+    MyPlayM4_SetStreamOpenMode = ( PlayM4_SetStreamOpenMode ) ::GetProcAddress( hDllMod, "PlayM4_SetStreamOpenMode" );
+    MyPlayM4_SetDisplayCallBack = ( PlayM4_SetDisplayCallBack ) ::GetProcAddress( hDllMod, "PlayM4_SetDisplayCallBack" );
+    MyPlayM4_OpenStream = ( PlayM4_OpenStream ) ::GetProcAddress( hDllMod, "PlayM4_OpenStream" );
+    MyPlayM4_InputData = ( PlayM4_InputData ) ::GetProcAddress( hDllMod, "PlayM4_InputData" );
+    MyPlayM4_Play = ( PlayM4_Play ) ::GetProcAddress( hDllMod, "PlayM4_Play" );
 }
 
 QDigitalCameraThread* QDHkIPCThread::GetInstance( )
@@ -135,6 +180,78 @@ void QDHkIPCThread::RealDataStreamCallback( LONG lRealHandle, DWORD dwDataType, 
     pThread->RealStream( lRealHandle, dwDataType, pBuffer, dwBufSize );
 }
 
+void QDHkIPCThread::RealDataCallback( LONG lRealHandle, DWORD dwDataType, BYTE *pBuffer, DWORD dwBufSize, void *pUser )
+{
+    if ( NULL == pUser ) {
+        return;
+    }
+
+    QDHkIPCThread* pThread = ( QDHkIPCThread* ) pUser;
+    pThread->ProcessRealDataCallback( lRealHandle, dwDataType, pBuffer, dwBufSize );
+}
+
+void QDHkIPCThread::DisplayCBFun( long nPort, char *pBuf, long nSize,
+                                  long nWidth, long nHeight, long nStamp,
+                                  long nType, long nReceved )
+{
+    Q_UNUSED( nStamp )
+    Q_UNUSED( nType )
+    Q_UNUSED( nReceved )
+
+    if ( NULL == pBuf || 0 >= nSize ) {
+        return;
+    }
+
+    QByteArray byVideo;
+    byVideo.append( ( const char* ) pBuf, nSize );
+    static QDigitalCameraThread* pThread = GetInstance( );
+    LONG lPlayHandle = pThread->GetPlayHandleByChannel( nPort );
+    QString strIP = pThread->GetIP( lPlayHandle );
+    pThread->GetPlateThread( )->PostPlateVideoRecognize( byVideo, nWidth, nHeight, nPort + 1, strIP, true );
+}
+
+void QDHkIPCThread::ProcessRealDataCallback( LONG lRealHandle, DWORD dwDataType, BYTE *pBuffer, DWORD dwBufSize)
+{
+    LONG& nChannelID = lPlayPorts[ GetChannel( lRealHandle ) ];
+
+    switch ( dwDataType ) {
+    case NET_DVR_SYSHEAD :
+
+        if ( NULL == MyPlayM4_GetPort || !MyPlayM4_GetPort( &nChannelID ) ) {
+            break;
+        }
+
+        if ( dwBufSize > 0 ) {
+            if ( NULL == MyPlayM4_SetStreamOpenMode || !MyPlayM4_SetStreamOpenMode( nChannelID, STREAME_REALTIME ) ) {
+                break;
+            }
+
+            if ( NULL == MyPlayM4_OpenStream || !MyPlayM4_OpenStream( nChannelID, pBuffer, dwBufSize, 1920 * 1280 ) ) {
+                break;
+            }
+
+            if ( NULL == MyPlayM4_SetDisplayCallBack || !MyPlayM4_SetDisplayCallBack( nChannelID, DisplayCBFun ) ) {
+                break;
+            }
+
+            HWND hPlayWnd = GetPlayWnd( lRealHandle );
+            if ( INVALID_HANDLE_VALUE == hPlayWnd ||
+                 NULL == MyPlayM4_Play ||
+                 !MyPlayM4_Play( nChannelID, hPlayWnd ) ) {
+                break;
+            }
+        }
+
+    case NET_DVR_STREAMDATA :
+        if ( dwBufSize > 0 && nChannelID != -1 ) {
+            if ( NULL == MyPlayM4_InputData || !MyPlayM4_InputData( nChannelID, pBuffer, dwBufSize ) )
+            {
+                break;
+            }
+        }
+    }
+}
+
 void QDHkIPCThread::RealStream( LONG lRealHandle, DWORD dwDataType, BYTE *pBuffer, DWORD dwBufSize )
 {
     if ( NET_DVR_STREAMDATA != dwDataType ) {
@@ -166,8 +283,6 @@ void QDHkIPCThread::ProcessDataStream( LONG lRealHandle, BYTE *pBuffer, DWORD dw
     int nHeight = 0;
     ParseResolution( lRealHandle, nWidth, nHeight );
 
-    nWidth = 704;
-    nHeight = 576;
     if ( 0 == nWidth || 0 == nHeight ) {
         return;
     }
@@ -338,16 +453,17 @@ void QDHkIPCThread::ProcessIPCStartRealPlayEvent( QCameraEvent* pEvent )
     NET_DVR_CLIENTINFO sClientInfo;
     sClientInfo.lChannel = 1;
     sClientInfo.lLinkMode  = bMainStream ? 0x00000000 : 0x80000000;
-    sClientInfo.hPlayWnd = hPlayWnd;
+    sClientInfo.hPlayWnd = bPlateVideo ? NULL : hPlayWnd;
 
-    lPlayHandle = NET_DVR_RealPlay_V30( lUserID, &sClientInfo, NULL );
+    lPlayHandle = NET_DVR_RealPlay_V30( lUserID, &sClientInfo, bPlateVideo ? RealDataCallback : NULL, this );
 
     if ( bRealStream ) {
-        bRet = NET_DVR_SetRealDataCallBack( lPlayHandle, RealDataStreamCallback, ( DWORD ) this );
+        //bRet = NET_DVR_SetRealDataCallBack( lPlayHandle, RealDataStreamCallback, ( DWORD ) this );
     } else {
-        bRet = NET_DVR_SetStandardDataCallBack( lPlayHandle, RealStandardDataStreamCallback, ( DWORD ) this );
+        //bRet = NET_DVR_SetStandardDataCallBack( lPlayHandle, RealStandardDataStreamCallback, ( DWORD ) this );
     }
 
+    SetChannel( lPlayHandle, nChannel++ );
     SetIP( lPlayHandle, strIP );
     SetPlayHandle( hPlayWnd, lPlayHandle );
     GetDeviceAbility( lUserID, lPlayHandle );

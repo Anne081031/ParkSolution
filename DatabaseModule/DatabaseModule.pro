@@ -14,6 +14,7 @@ Debug {
     DESTDIR = $$sprintf( $$MYDESTDIR, "Debug" )
 
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "Debug" )
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "Debug" )
 }
 
 Release {
@@ -21,6 +22,7 @@ Release {
     DESTDIR = $$sprintf( $$MYDESTDIR, "Release" )
 
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "" )
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "" )
 }
 
 #TARGET = DatabaseModule
@@ -36,14 +38,16 @@ HEADERS += \
     qdatabasefactory.h \
     qmysql.h \
     qdatabaseevent.h \
-    qdatabasethread.h
+    qdatabasethread.h \
+    qdbpooltask.h
 
 SOURCES += \
     qunitydatabase.cpp \
     qdatabasefactory.cpp \
     qmysql.cpp \
     qdatabaseevent.cpp \
-    qdatabasethread.cpp
+    qdatabasethread.cpp \
+    qdbpooltask.cpp
 
 unix {
     target.path = /usr/lib

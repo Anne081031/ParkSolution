@@ -5,6 +5,7 @@
 #include <QSettings>
 #include <QTextCodec>
 #include "ConfigModule_global.h"
+#include "../CommonModule/CommonTypedef.h"
 
 class CONFIGMODULESHARED_EXPORT QConfigurator : public QObject
 {
@@ -160,6 +161,14 @@ public:
 
     void SetDbSchema( const QString& strSchema );
     void GetDbSchema( QString& strSchema ) const;
+
+    void GetDbParams( ParkSolution::QStringHash& hashParam );
+
+    void SetDbThreadPoolMaxThread( const int nThreadCount );
+    void GetDbThreadPoolMaxThread( int& nThreadCount ) const;
+
+    void SetDbConnectPoolMaxConnect( const int nConnectCount );
+    void GetDbConnectPoolMaxConnect( int& nConnectCount ) const;
 
     void GetCustomerNameTitle( QStringList& lstNameTitle ) const ;
     void GetCustomerPlateTitle( QStringList& lstPlateTitle ) const;

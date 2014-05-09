@@ -46,23 +46,27 @@ private:
 
     void GetMiscellaneous( );
     void CaptureImage( QString& strFile, const QString& strPlate, int nChannel );
-    void ProcessPlate( const QString& strPlate, bool bEnter, int nChannel );
+    void ProcessPlate( const QString& strPlate, bool bEnter, int nChannel, QString& strIP, bool bIpc );
     void Send2FtpServer( const QString& strPlate, const QString& strDateTime, QByteArray& byData );
     inline void WriteDatabase( const QString& strPlate, const QString& strDateTime, const QByteArray& byFileData, bool bEnter );
     void SendPlate2Client( const QString& strPlate, const QString& strDateTime, const QString& strBase64 );
     void ParseSpResult( QByteArray& byJson, bool& bSuccess, QString& strUUID );
 
     void DisplayReport( const QByteArray& byJson );
+    inline void StartIPCPlayVideo( QString& strIP, bool bMainStream, int nChannel );
 
 private slots:
     void HandleSerializeLog( QString strLog );
     void HandlePlateSerializeData( QString strPlate, QString strDateTime, QByteArray byFileData );
     void HandlePlateResult( QStringList lstPlateParam, int nChannel, bool bSuccess, bool bVideo );
+    void HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, QString strIP, bool bSuccess, bool bVideo );
     void HandlePlateLog( QString strLog );
     void HandleDatabaseLog( QString strLog );
     void HandleFtpLog( QString strLog );
     void HandleSpResult( int nSpType, QByteArray byData );
+    void HandleSpThreadResult( int nSpType, QByteArray byData, QStringList lstParams );
     void HandleCaptureImage( QString strFile, QString strIP );
+    void HandleThreadPoolTaskData( QByteArray byData );
 
     void on_pushButton_clicked();
 

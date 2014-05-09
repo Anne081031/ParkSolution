@@ -47,7 +47,13 @@ bool QMySQL::DbConnect( QString& strConnectName, ParkSolution::QStringHash& hash
     // 独立运行 程序文件目录\libmysql.dll
     bool bRet = false;
     //You can have multiple connections to one database by a connect name.
-    QSqlDatabase sqlDb = QSqlDatabase::addDatabase( "QMYSQL", strConnectName );
+    QSqlDatabase sqlDb = QSqlDatabase::database( strConnectName );
+
+    if ( sqlDb.isValid( ) ) {
+        return true;
+    }
+
+    sqlDb = QSqlDatabase::addDatabase( "QMYSQL", strConnectName );
     if ( !sqlDb.isValid( ) ) {
         EmitLog( "没找到MySQL Qt驱动", sqlDb.lastError( ).text( ) );
         return bRet;
@@ -127,6 +133,37 @@ void QMySQL::EmitResult( ParkSolution::SpType eSpType, QByteArray &byData )
 void QMySQL::EmitResultset( ParkSolution::SpType eSpType, QSqlQueryModel *pQueryModel )
 {
     emit SpResultset( eSpType, pQueryModel );
+}
+
+void QMySQL::ExecuteSP( QString &strConnectName,
+                        ParkSolution::SpType eSpType,
+                        QString &strSQL,
+                        QByteArray &bySopResult )
+{
+    //qDebug( ) << Q_FUNC_INFO << strSQL << endl;
+
+    QSqlQuery spQuery( QSqlDatabase::database( strConnectName ) );
+    bool bRet = spQuery.exec( strSQL );
+    DebugMsg( eSpType, spQuery );
+    if ( !bRet ) {
+        return;
+    }
+
+    bRet = spQuery.exec( "SELECT @txtValue" );
+    DebugMsg( eSpType, spQuery );
+    if ( !bRet ) {
+        return;
+    }
+
+    if ( !spQuery.next( ) ) {
+        DebugMsg( eSpType, spQuery );
+        return;
+    }
+
+    QVariant varOut = spQuery.value( 0 );
+    bySopResult = varOut.toString( ).toUtf8( );
+    //EmitResult( eSpType, byData );
+    spQuery.clear( );
 }
 
 void QMySQL::ExecuteSP( QString& strConnectName,
@@ -416,6 +453,26 @@ void QMySQL::CallQueryUserInfo( QString& strConnectName,
     ExecuteSP( strConnectName, eSpType, strSQL );
 }
 
+void QMySQL::CallWriteInOutRecord( QString &strConnectName,
+                                  ParkSolution::SpType eSpType,
+                                  QString &strSpName,
+                                  QString &strXmlPattern,
+                                  QStringList &lstParams,
+                                  QByteArray &bySpResult )
+{
+    if ( 5 > lstParams.count( ) ) {
+        return;
+    }
+
+    strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ),
+                                       lstParams.at( 1 ),
+                                       lstParams.at( 2 ),
+                                       lstParams.at( 3 ),
+                                       lstParams.at( 4 ) );
+    QString strSQL = QString( "Call %1( '%2', @txtValue )" ).arg( strSpName, strXmlPattern );
+    ExecuteSP( strConnectName, eSpType, strSQL, bySpResult );
+}
+
 void QMySQL::CallWriteInOutRecord( QString& strConnectName,
                                ParkSolution::SpType eSpType,
                                QString& strSpName,
@@ -467,6 +524,18 @@ void QMySQL::CallQueryInOutImage( QString& strConnectName,
                                        lstParams.at( 2 ) );
     QString strSQL = QString( "Call %1( '%2', @txtValue )" ).arg( strSpName, strXmlPattern );
     ExecuteSP( strConnectName, eSpType, strSQL );
+}
+
+void QMySQL::CallSP( QString &strConnectName, ParkSolution::SpType eSpType, QStringList &lstParams, QByteArray &bySpResult )
+{
+    QString strSpName;
+    QCommonFunction::GetSpName( eSpType, strSpName );
+    QString strXmlPattern;
+    QCommonFunction::GetSpXmlPattern( eSpType, strXmlPattern );
+
+    if ( ParkSolution::SpWriteInOutRecord == eSpType ) {
+        CallWriteInOutRecord( strConnectName, eSpType, strSpName, strXmlPattern, lstParams, bySpResult );
+    }
 }
 
 void QMySQL::CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStringList& lstParams )

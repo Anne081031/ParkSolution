@@ -152,7 +152,7 @@ void QUsbCameraThread::VidCapCallBack( LPBYTE pFrameData, long lFrameSize, long 
 
     qDebug( ) << byVideo.toHex( ) << endl;
 
-    pThreadInstance->GetPlateThread( )->PostPlateVideoRecognize( byVideo, lWidth, lHeight, 0 );
+    pThreadInstance->GetPlateThread( )->PostPlateVideoRecognize( byVideo, lWidth, lHeight, 1 );
 }
 
 void QUsbCameraThread::ProcessStartPreviewEvent( QCameraEvent* pEvent )

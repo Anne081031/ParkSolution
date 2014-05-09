@@ -17,6 +17,7 @@ public:
     virtual bool DbPing( );
 
     virtual void CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStringList& lstParams ) = 0;
+    virtual void CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStringList& lstParams, QByteArray& bySpResult ) = 0;
     virtual void CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStringList& lstParams, QSqlQueryModel* pQueryModel ) = 0;
 
     virtual bool DbBeginTransaction( QString& strConnectName ) = 0;

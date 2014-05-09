@@ -2,6 +2,7 @@
 
 QProcessResultEvent::QProcessResultEvent( ProcessResultEvent eEvent ) : QEvent( ( Type ) eEvent )
 {
+    bNetCamera = false;
 }
 
 QProcessResultEvent* QProcessResultEvent::CreateProcessResultEvent( ProcessResultEvent eEvent )
@@ -17,6 +18,16 @@ void QProcessResultEvent::SetPlate( const QString& strPlate )
 QString& QProcessResultEvent::GetPlate( )
 {
     return strPlateValue;
+}
+
+void QProcessResultEvent::SetIP( QString& strIP )
+{
+    strIpcIP = strIP;
+}
+
+QString& QProcessResultEvent::GetIP( )
+{
+    return strIpcIP;
 }
 
 void QProcessResultEvent::SetDateTime( const QString& strDateTime )
@@ -67,4 +78,24 @@ void QProcessResultEvent::SetDbSpType( int nType )
 int QProcessResultEvent::GetDbSpType( )
 {
     return nSpType;
+}
+
+void QProcessResultEvent::SetIpcCamera( bool bIpc )
+{
+    bNetCamera = bIpc;
+}
+
+bool QProcessResultEvent::GetIpcCamera( )
+{
+    return bNetCamera;
+}
+
+void QProcessResultEvent::SetSpParams( const QStringList& lstParams )
+{
+    lstSpParams = lstParams;
+}
+
+QStringList& QProcessResultEvent::GetSpParams( )
+{
+    return lstSpParams;
 }

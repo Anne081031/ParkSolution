@@ -25,6 +25,7 @@ public:
 
     void PostPlateVideoRecognize( QByteArray& byVideo, int nWidth, int nHeight, int nChanne, bool bMultiThread = false );
     void PostPlateVideoRecognize( QByteArray& byVideo, int nWidth, int nHeight, QString& strIP, bool bMultiThread = false );
+    void PostPlateVideoRecognize( QByteArray& byVideo, int nWidth, int nHeight, int nChannel, QString& strIP, bool bMultiThread = false );
 
     void PostPlateInitEvent( int nFormat, int nChannel, bool bMultiThread = false );
     void PostPlateUninitEvent( int nChannel, bool bMultiThread = false );
@@ -80,12 +81,14 @@ private:
     
 signals:
     void PlateResult( QStringList lstPlateParam, int nChannel, bool bSuccess, bool bVideo );
+    void PlateIpcResult( QStringList lstPlateParam, int nChannel, QString strIP, bool bSuccess, bool bVideo );
     void UIPlateResult( QString strPlate, int nChannel, bool bSuccess,
                         bool bVideo, int nWidth, int nHeight, int nConfidence,
                         QString strDirection, QByteArray byData, QRect rectPlate, QRect rectVideo );
     
 private slots:
     void HandlePlateResult( QStringList lstPlateParam, int nChannel, bool bSuccess, bool bVideo );
+    void HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, QString strIP, bool bSuccess, bool bVideo );
     void HandleUIPlateResult( QString strPlate, int nChannel, bool bSuccess,
                         bool bVideo, int nWidth, int nHeight, int nConfidence,
                         QString strDirection, QByteArray byData, QRect rectPlate, QRect rectVideo );

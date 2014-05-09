@@ -8,6 +8,7 @@
 #include "../DatabaseModule/qdatabasethread.h"
 #include "../NetworkModule/qftpthread.h"
 #include "../VideoModule/qanalogcamerathread.h"
+#include "../VideoModule/qdigitalcamerathread.h"
 #include "../ConfigModule/qconfigurator.h"
 #include "../CommonModule/qbasethread.h"
 #include "../NetworkModule/qzmqserverthread.h"
@@ -19,11 +20,13 @@ class QProcessResultThread : public QBaseThread
     Q_OBJECT
 public:
     static QProcessResultThread* CreateInstance( QObject* pParent = NULL );
+    void PostDatabaseResultEvent( int nSpType, const QByteArray& byJson, const QStringList& lstParams );
     void PostDatabaseResultEvent( int nSpType, const QByteArray& byJson );
     void PostPlateImage( );
-    void PostPlateResultEvent( const QString& strPlate, const QString& strDateTime, int nChannel, bool bEnter );
+    void PostPlateResultEvent( const QString& strPlate, const QString& strDateTime, int nChannel, bool bEnter, QString& strIP, bool bIpc );
 
     void SetAnalogCameraThread( QAnalogCameraThread* pAnalog );
+    void SetDigitalCameraThread( QDigitalCameraThread* pDigital );
 
 protected:
     void run( );
@@ -41,7 +44,8 @@ private:
     void ProcessPlateResultEvent( QProcessResultEvent* pEvent  );
     void ProcessPlateImageEvent( QProcessResultEvent* pEvent  );
 
-    void CaptureImage( QString& strFile, const QString& strPlate, int nChannel );
+    void CaptureImage( QString& strFile, const QString& strPlate, int nChanne );
+    void CaptureImage( QString& strFile, const QString& strPlate, QString& strIP );
 
     void ParseSpResult( QByteArray& byJson, bool& bSuccess, QString& strUUID );
     void Send2FtpServer( const QString &strPlate, const QString& strDateTime, QByteArray &byData );
@@ -54,6 +58,7 @@ private:
     QDatabaseThread* pDatabaseThread;
     QFtpThread* pFtpThread;
     QAnalogCameraThread* pAnalogCamera;
+    QDigitalCameraThread* pDigitalCamera;
     QString strImagePath;
     bool bDeleteImage;
     QConfigurator* pConfigurator;
@@ -61,8 +66,11 @@ private:
     QJsonData jsonData;
     bool bSmsStartup;
     QSmsThread* pSmsThread;
+    int nConnectPoolCount;
+    QThreadPool* pThreadPool;
 
 signals:
+    void ThreadPoolTaskData( QByteArray byData );
 
 private slots:
     void HandlePlateSerializeData( QString strPlate, QString strDateTime, QByteArray byFileData );

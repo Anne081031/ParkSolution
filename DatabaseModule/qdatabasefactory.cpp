@@ -13,6 +13,15 @@ QDatabaseFactory/*< T >*/::QDatabaseFactory(QObject *parent) :
 {
 }
 
+void QDatabaseFactory::DestroyDatabaseObj( QUnityDatabase *pDatabase )
+{
+    if ( NULL == pDatabase ) {
+        return;
+    }
+
+    pDatabase->deleteLater( );
+}
+
 QUnityDatabase* QDatabaseFactory::CreateDatabaseObj( ParkSolution::DatabaseType eDbType )
 {
     QUnityDatabase* pDatabase = NULL;

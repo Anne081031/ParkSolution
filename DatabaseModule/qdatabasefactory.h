@@ -9,7 +9,7 @@ class DATABASEMODULESHARED_EXPORT QDatabaseFactory : public QObject
     Q_OBJECT
 public:
     static QUnityDatabase* CreateDatabaseObj( ParkSolution::DatabaseType eDbType );
-    //static QUnityDatabase* CreateDatabaseObj( );
+    static void DestroyDatabaseObj( QUnityDatabase* pDatabase );
 private:
     explicit QDatabaseFactory(QObject *parent = 0);
 

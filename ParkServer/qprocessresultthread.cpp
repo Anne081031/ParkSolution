@@ -1,5 +1,6 @@
 #include "qprocessresultthread.h"
 #include "../CommonModule/qcommonfunction.h"
+#include "qdbpoolnewtask.h"
 
 QProcessResultThread* QProcessResultThread::pThreadInstance = NULL;
 
@@ -7,8 +8,10 @@ QProcessResultThread::QProcessResultThread(QObject *parent) :
     QBaseThread( "QProcessResultThread", parent)
 {
     pAnalogCamera = NULL;
+    pDigitalCamera = NULL;
     bSmsStartup = false;
     pSmsThread = NULL;
+    pThreadPool = NULL;
 }
 
 QProcessResultThread* QProcessResultThread::CreateInstance( QObject* pParent )
@@ -24,7 +27,7 @@ QProcessResultThread* QProcessResultThread::CreateInstance( QObject* pParent )
 
 void QProcessResultThread::ThreadUninitialize( )
 {
-
+    pThreadPool->deleteLater( );
 }
 
 bool QProcessResultThread::ThreadInitialize()
@@ -34,8 +37,15 @@ bool QProcessResultThread::ThreadInitialize()
     pConfigurator = QConfigurator::CreateConfigurator( );
     pConfigurator->GetDeleteImageFile( bDeleteImage );
     pConfigurator->GetSmsStartup( bSmsStartup );
+    pConfigurator->GetDbConnectPoolMaxConnect( nConnectPoolCount );
 
     QCommonFunction::GetAppCaptureImagePath( strImagePath );
+
+    pThreadPool = new QThreadPool( );
+    int nThread = QThread::idealThreadCount( ) * 3;
+    pConfigurator->GetDbThreadPoolMaxThread( nThread );
+    pThreadPool->setMaxThreadCount( nThread );
+
 
     pSerializeThread = QSerializeThread::CreateInstance( );
     pFtpThread = QFtpThread::CreateInstance( );
@@ -54,13 +64,35 @@ void QProcessResultThread::SetAnalogCameraThread( QAnalogCameraThread *pAnalog )
     pAnalogCamera = pAnalog;
 }
 
+void QProcessResultThread::SetDigitalCameraThread( QDigitalCameraThread *pDigital )
+{
+    pDigitalCamera = pDigital;
+}
+
 void QProcessResultThread::CaptureImage( QString& strFile, const QString& strPlate, int nChannel )
 {
+    if ( NULL == pAnalogCamera ) {
+        return;
+    }
+
     QString strDtDigital;
     QCommonFunction::GetCurrentDateTimeDigital( strDtDigital );
     strFile += QString( "%1%2_%3.jpg" ).arg( strImagePath, strPlate, strDtDigital );
 
     pAnalogCamera->CaptureStaticImage( strFile, nChannel );
+}
+
+void QProcessResultThread::CaptureImage( QString& strFile, const QString& strPlate, QString& strIP )
+{
+    if ( NULL == pDigitalCamera ) {
+        return;
+    }
+
+    QString strDtDigital;
+    QCommonFunction::GetCurrentDateTimeDigital( strDtDigital );
+    strFile += QString( "%1%2_%3.jpg" ).arg( strImagePath, strPlate, strDtDigital );
+
+    pDigitalCamera->CaptureStaticImage( strIP, strFile );
 }
 
 void QProcessResultThread::PostPlateImage( )
@@ -78,13 +110,26 @@ void QProcessResultThread::PostDatabaseResultEvent( int nSpType, const QByteArra
     PostEvent( pEvent );
 }
 
-void QProcessResultThread::PostPlateResultEvent( const QString& strPlate, const QString& strDateTime,  int nChannel, bool bEnter )
+void QProcessResultThread::PostDatabaseResultEvent( int nSpType, const QByteArray& byJson, const QStringList& lstParams )
+{
+    QProcessResultEvent* pEvent = QProcessResultEvent::CreateProcessResultEvent( QProcessResultEvent::DatabaseResult );
+    pEvent->SetDbSpType( nSpType );
+    pEvent->SetDbJson( byJson );
+    pEvent->SetSpParams( lstParams );
+
+    PostEvent( pEvent );
+}
+
+void QProcessResultThread::PostPlateResultEvent( const QString& strPlate, const QString& strDateTime,
+                                                 int nChannel, bool bEnter, QString& strIP, bool bIpc )
 {
     QProcessResultEvent* pEvent = QProcessResultEvent::CreateProcessResultEvent( QProcessResultEvent::PlateReslut );
     pEvent->SetPlate( strPlate );
     pEvent->SetDateTime( strDateTime );
     pEvent->SetImageChannel( nChannel );
     pEvent->SetEnterFlag( bEnter );
+    pEvent->SetIpcCamera( bIpc );
+    pEvent->SetIP( strIP );
 
     PostEvent( pEvent );
 }
@@ -165,9 +210,26 @@ void QProcessResultThread::ProcessDatabaseResultEvent( QProcessResultEvent* pEve
 {
     bool bSuccess;
     QString strUUID;
+    QByteArray& byJson = pEvent->GetDbJson( );
 
-    ParseSpResult( pEvent->GetDbJson( ), bSuccess, strUUID );
-    pSerializeThread->PostGetPlateDataEvent( strUUID, bSuccess );
+    ParseSpResult( byJson, bSuccess, strUUID );
+    //pSerializeThread->PostGetPlateDataEvent( strUUID, bSuccess );
+
+    emit ThreadPoolTaskData( byJson );
+
+    if ( !bSuccess ) {
+        return;
+    }
+
+    QStringList& lstParams = pEvent->GetSpParams( );
+    if ( 4 > lstParams.size( ) ) {
+        return;
+    }
+
+    QString strPlate = lstParams.at( 1 );
+    QString strDateTime = lstParams.at( 2 );
+    QByteArray byImage = QByteArray::fromBase64( lstParams.at( 3 ).toUtf8( ) );
+    HandlePlateSerializeData( strPlate, strDateTime, byImage );
 }
 
 void QProcessResultThread::ParseSpResult( QByteArray& byJson, bool& bSuccess, QString& strUUID )
@@ -279,18 +341,24 @@ void QProcessResultThread::HandlePlateSerializeData( QString strPlate, QString s
 
 void QProcessResultThread::ProcessPlateResultEvent( QProcessResultEvent* pEvent  )
 {
-    if ( !pDatabaseThread->DatabasePing(  ) ) {
-        return;
-    }
+    //if ( !pDatabaseThread->DatabasePing(  ) ) {
+    //    return;
+    //}
 
-    QStringList lstParasm;
+    QStringList lstParams;
     const QString strPlate = pEvent->GetPlate( );
     const QString strDateTime = pEvent->GetDateTime( );
+    QString strIP = pEvent->GetIP( );
     int nChannel = pEvent->GetImageChannel( );
     bool bEnter = pEvent->GetEnterFlag( );
 
     QString strFile;
-    CaptureImage( strFile, strPlate, nChannel );
+
+    if ( pEvent->GetIpcCamera( ) ) {
+        CaptureImage( strFile, strPlate, strIP );
+    } else {
+        CaptureImage( strFile, strPlate, nChannel );
+    }
 
     QByteArray byFileData;
     QCommonFunction::ReadAllFile( strFile, byFileData );
@@ -305,9 +373,16 @@ void QProcessResultThread::ProcessPlateResultEvent( QProcessResultEvent* pEvent 
     QUuid uuid = QUuid::createUuid( );
     QString strUUID = uuid.toString( );
 
-    lstParasm << ( bEnter ? "1" : "0" ) <<strPlate
+    lstParams << ( bEnter ? "1" : "0" ) <<strPlate
               << strDateTime << strImageBase64 << strUUID;
 
-    pDatabaseThread->PostWriteInOutRecordEvent( lstParasm );
-    pSerializeThread->PostSetPlateDataEvent( strUUID, strPlate, strDateTime, byFileData );
+    static int nConnectID = 1;
+    //QDbPoolNewTask* pTask = QDbPoolNewTask::CreateTask( ParkSolution::SpWriteInOutRecord, lstParams, this, nConnectID++ );
+    //pThreadPool->start( pTask );
+    pDatabaseThread->PostWriteInOutRecordEvent( lstParams, nConnectID );
+    if ( nConnectPoolCount == nConnectID++ ) {
+        nConnectID = 1;
+    }
+
+    //pSerializeThread->PostSetPlateDataEvent( strUUID, strPlate, strDateTime, byFileData );
 }
