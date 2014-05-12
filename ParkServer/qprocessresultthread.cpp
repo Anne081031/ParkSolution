@@ -38,7 +38,8 @@ bool QProcessResultThread::ThreadInitialize()
     pConfigurator->GetDeleteImageFile( bDeleteImage );
     pConfigurator->GetSmsStartup( bSmsStartup );
     pConfigurator->GetDbConnectPoolMaxConnect( nConnectPoolCount );
-    pConfigurator->GetPlateInterval( nSamePlateInterval );
+    pConfigurator->GetPlateSameChannelInterval( nPlateSameChannelInterval );
+    pConfigurator->GetPlateDifferentChannelInterval( nPlateDifferentChannelInterval );
 
     QCommonFunction::GetAppCaptureImagePath( strImagePath );
 
@@ -227,10 +228,22 @@ void QProcessResultThread::ProcessDatabaseResultEvent( QProcessResultEvent* pEve
         return;
     }
 
+    //lstParams << ( bEnter ? "1" : "0" ) << strPlate
+    //          << strDateTime << strImageBase64 << strUUID << nChannel;
+    bool bEnter = lstParams.at( 0 ).toInt( );
     QString strPlate = lstParams.at( 1 );
     QString strDateTime = lstParams.at( 2 );
-    QByteArray byImage = QByteArray::fromBase64( lstParams.at( 3 ).toUtf8( ) );
-    HandlePlateSerializeData( strPlate, strDateTime, byImage );
+    QString strImage = lstParams.at( 3 );
+    QByteArray byImage = QByteArray::fromBase64( strImage.toUtf8( ) );
+    //int nChannel = lstParams.at( 5 ).toInt( );
+    //HandlePlateSerializeData( strPlate, strDateTime, byImage );
+
+    if ( bEnter ) {
+        hashPlateDateTime[ !bEnter ].remove( strPlate );
+    }
+
+    Send2FtpServer( strPlate, strDateTime, byImage );
+    SendPlate2Client( strPlate, strDateTime, strImage );
 }
 
 void QProcessResultThread::ParseSpResult( QByteArray& byJson, bool& bSuccess, QString& strUUID )
@@ -340,29 +353,58 @@ void QProcessResultThread::HandlePlateSerializeData( QString strPlate, QString s
     SendPlate2Client( strPlate, strDateTime, strImageBase64 );
 }
 
-bool QProcessResultThread::SamePlateInInterval( const QString &strPlate, const QString &strDateTime )
+bool QProcessResultThread::TimeDifferenceInInterval( const QString& strStart, const QString& strEnd, int nInterval )
 {
-    bool bRet = false;
-
-    const QString strValue = hashPlateDateTime.value( strPlate, "" );
-    bRet = strValue.isEmpty( );
-
-    if ( bRet ) { // First
-        hashPlateDateTime.insert( strPlate, strDateTime );
-        return false;
-    }
-
     QDateTime dtStart;
     QDateTime dtEnd;
 
-    QCommonFunction::String2DateTime( strValue, dtStart );
-    QCommonFunction::String2DateTime( strDateTime, dtEnd );
+    QCommonFunction::String2DateTime( strStart, dtStart );
+    QCommonFunction::String2DateTime( strEnd, dtEnd );
 
     int nSecods = dtEnd.toTime_t( ) - dtStart.toTime_t( );
-    bRet = ( nSecods <= nSamePlateInterval );
+    bool bRet = ( nSecods <= nInterval );
 
-    if ( !bRet ) {
-        hashPlateDateTime[ strPlate ] = strDateTime;
+    return bRet;
+}
+
+bool QProcessResultThread::SamePlateInInterval( bool bEnter, const QString &strPlate, const QString &strDateTime )
+{
+    bool bRet = false;
+    ParkSolution::QStringHash& hashDateTime = hashPlateDateTime[ bEnter ];
+    ParkSolution::QStringHash& hashInverseDateTime = hashPlateDateTime[ !bEnter ];
+    const QString strValue = hashDateTime.value( strPlate, "" );
+    const QString strInverseValue = hashInverseDateTime.value( strPlate, "" );
+    bRet = strValue.isEmpty( );
+
+    if ( bEnter ) { // Enter
+        if ( bRet ) { // First Enter
+            hashDateTime.insert( strPlate, strDateTime );
+            return false;
+        }
+
+        if ( !strInverseValue.isEmpty( ) ) {
+            return true;
+        }
+
+        bRet = TimeDifferenceInInterval( strValue, strDateTime, nPlateSameChannelInterval );
+
+        if ( !bRet ) { // Next Enter
+            hashDateTime[ strPlate ] = strDateTime;
+        }
+    } else { // Leave
+        if ( bRet ) { // First Leave
+            bRet = TimeDifferenceInInterval( strInverseValue, strDateTime, nPlateDifferentChannelInterval );
+
+            if ( !bRet ) {
+                hashDateTime.insert( strPlate, strDateTime );
+            }
+        } else {
+            bRet = TimeDifferenceInInterval( strValue, strDateTime, nPlateSameChannelInterval );
+
+            if ( !bRet ) {
+                hashDateTime[ strPlate ] = strDateTime;
+            }
+        }
     }
 
     return bRet;
@@ -381,7 +423,7 @@ void QProcessResultThread::ProcessPlateResultEvent( QProcessResultEvent* pEvent 
     int nChannel = pEvent->GetImageChannel( );
     bool bEnter = pEvent->GetEnterFlag( );
 
-    if ( SamePlateInInterval( strPlate, strDateTime ) ) {
+    if ( SamePlateInInterval( bEnter, strPlate, strDateTime ) ) {
         return;
     }
 
@@ -406,8 +448,9 @@ void QProcessResultThread::ProcessPlateResultEvent( QProcessResultEvent* pEvent 
     QUuid uuid = QUuid::createUuid( );
     QString strUUID = uuid.toString( );
 
-    lstParams << ( bEnter ? "1" : "0" ) <<strPlate
-              << strDateTime << strImageBase64 << strUUID;
+    lstParams << ( bEnter ? "1" : "0" ) << strPlate
+              << strDateTime << strImageBase64 << strUUID
+              << QString::number( nChannel );
 
     static int nConnectID = 1;
     //QDbPoolNewTask* pTask = QDbPoolNewTask::CreateTask( ParkSolution::SpWriteInOutRecord, lstParams, this, nConnectID++ );

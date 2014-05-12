@@ -17,8 +17,10 @@
 #include "qspeechthread.h"
 #include "../CommonModule/qdlgreport.h"
 #include "../NetworkModule/qzmqclientthread.h"
+#include "../VideoModule/qdhkipcthread.h"
 
 #define IMAGE_LABEL_COUNT   ( int ) 5
+#define MAX_VIDEO_WAY ( int ) 4
 
 namespace Ui {
 class MainWindow;
@@ -42,6 +44,8 @@ protected:
 private:
     inline void SetScrollAreaStyleSheet( );
     void SystemTrayIcon( );
+    void StartVideoThread( );
+    void StartIPCPlayVideo( QString& strIP, bool bMainStream, int nChannel );
     void LayoutUI( );
     void CreateImageLabel( );
     void CreateInfoWidget( );
@@ -73,6 +77,7 @@ private:
     void GetComingString( QString& strText, int nIndex );
     void PlayWelcomeSound( );
     void MovePicture( );
+    void GetCommonConfigData( );
 
 private:
     Ui::MainWindow *ui;
@@ -96,6 +101,13 @@ private:
     QSpeechThread* pSpeechThread;
     QZmqClientThread* pZmqClientThread;
     QDlgReport* pDlgReport;
+
+    bool bIPCVideo;
+    bool bCustomerInVideo;
+    bool bCustomerOutVideo;
+    int nVideoWay;
+    HWND hVideoWnds[ MAX_VIDEO_WAY ];
+    QDigitalCameraThread* pDigitalCamera;
 
 private slots:
     void HandleReportQuery( QStringList lstParams );

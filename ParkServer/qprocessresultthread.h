@@ -37,7 +37,8 @@ protected:
 private:
     explicit QProcessResultThread(QObject *parent = 0);
     inline void GetStringValue( QString& strValue, const char* pKey, const QJsonObject& jsonObj );
-    bool SamePlateInInterval( const QString& strPlate, const QString& strDateTime );
+    bool SamePlateInInterval( bool bEnter, const QString& strPlate, const QString& strDateTime );
+    bool TimeDifferenceInInterval( const QString& strStart, const QString& strEnd, int nInterval );
 
     void CreateVehicleJson( QByteArray& byJson, const QString& strPlate, const QString& strDateTime, const QString& strBase64 );
 
@@ -68,10 +69,11 @@ private:
     bool bSmsStartup;
     QSmsThread* pSmsThread;
     int nConnectPoolCount;
-    int nSamePlateInterval;
+    int nPlateSameChannelInterval;
+    int nPlateDifferentChannelInterval;
     QThreadPool* pThreadPool;
 
-    ParkSolution::QStringHash hashPlateDateTime;
+    ParkSolution::QStringHash hashPlateDateTime[ 2 ];
 
 signals:
     void ThreadPoolTaskData( QByteArray byData );

@@ -3,8 +3,8 @@
 # Project created by QtCreator 2014-02-18T10:33:36
 #
 #-------------------------------------------------
-DEFINES += StartupDebug
-#DEFINES += StartupRelease
+#DEFINES += StartupDebug
+DEFINES += StartupRelease
 
 QT       += core gui sql network axcontainer printsupport
 
@@ -24,6 +24,7 @@ contains( DEFINES, StartupDebug ) {
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "Debug" )
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "Debug" )
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "NetworkModule", "Debug" )
+        LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "VideoModule", "Debug" )
 
         DESTDIR = "./Debug"
         system( copy ..\\LibExeFiles\\Debug\\libzmq-v100-mt-gd-4_0_3.dll .\\Debug )
@@ -32,6 +33,8 @@ contains( DEFINES, StartupDebug ) {
         system( copy ..\\LibExeFiles\\Debug\\CommonModuleDebug.dll .\\Debug )
         system( copy ..\\LibExeFiles\\Debug\\ConfigModuleDebug.dll .\\Debug )
         system( copy ..\\LibExeFiles\\Debug\\NetworkModuleDebug.dll .\\Debug )
+        system( copy ..\\LibExeFiles\\Debug\\VideoModuleDebug.dll .\\Debug )
+        system( copy ..\\LibExeFiles\\Debug\\LPRModuleDebug.dll .\\Debug )
     }
 }
 
@@ -45,6 +48,7 @@ contains( DEFINES, StartupRelease ) {
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "" )
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "" )
         LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "NetworkModule", "" )
+        LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "VideoModule", "" )
 
         DESTDIR = "./Release"
         system( copy ..\\LibExeFiles\\Release\\libzmq-v100-mt-4_0_3.dll .\\Release )
@@ -53,6 +57,8 @@ contains( DEFINES, StartupRelease ) {
         system( copy ..\\LibExeFiles\\Release\\CommonModule.dll .\\Release )
         system( copy ..\\LibExeFiles\\Release\\ConfigModule.dll .\\Release )
         system( copy ..\\LibExeFiles\\Debug\\NetworkModule.dll .\\Release )
+        system( copy ..\\LibExeFiles\\Debug\\VideoModule.dll .\\Release )
+        system( copy ..\\LibExeFiles\\Debug\\LPRModule.dll .\\Release )
     }
 }
 

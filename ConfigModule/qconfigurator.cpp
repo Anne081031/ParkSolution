@@ -35,6 +35,26 @@ void QConfigurator::GetDbParams( ParkSolution::QStringHash& hashParam )
     hashParam[ dbInfo.strSchema ] = strValue;
 }
 
+void QConfigurator::SetCustomerInVideo( const bool bVideo )
+{
+    pSettings->setValue( "CustomerVideo/InVideo", bVideo );
+}
+
+void QConfigurator::GetCustomerInVideo( bool& bVideo ) const
+{
+    bVideo = pSettings->value( "CustomerVideo/InVideo", false ).toBool( );
+}
+
+void QConfigurator::SetCustomerOutVideo( const bool bVideo )
+{
+    pSettings->setValue( "CustomerVideo/OutVideo", bVideo );
+}
+
+void QConfigurator::GetCustomerOutVideo( bool& bVideo ) const
+{
+    bVideo = pSettings->value( "CustomerVideo/OutVideo", false ).toBool( );
+}
+
 void QConfigurator::SetComName( const QString& strName )
 {
      pSettings->setValue( "SerialPort/Name", strName );
@@ -395,14 +415,24 @@ void QConfigurator::SetFtpHost( const QString& strHost )
     pSettings->setValue( "FtpServer/Host", strHost );
 }
 
-void QConfigurator::SetPlateInterval( const int nInterval )
+void QConfigurator::SetPlateSameChannelInterval( const int nInterval )
 {
-    pSettings->setValue( "LPR/SamePlateInterval", nInterval );
+    pSettings->setValue( "InOutPlateInterval/SameChannelInterval", nInterval );
 }
 
-void QConfigurator::GetPlateInterval( int& nInterval ) const
+void QConfigurator::GetPlateSameChannelInterval( int& nInterval ) const
 {
-    nInterval = pSettings->value( "LPR/SamePlateInterval", 30 ).toInt( );
+    nInterval = pSettings->value( "InOutPlateInterval/SameChannelInterval", 30 ).toInt( );
+}
+
+void QConfigurator::SetPlateDifferentChannelInterval( const int nInterval )
+{
+    pSettings->setValue( "InOutPlateInterval/DifferentChannelInterval", nInterval );
+}
+
+void QConfigurator::GetPlateDifferentChannelInterval( int& nInterval ) const
+{
+    nInterval = pSettings->value( "InOutPlateInterval/DifferentChannelInterval", 60 ).toInt( );
 }
 
 void QConfigurator::GetFtpHost( QString& strHost ) const

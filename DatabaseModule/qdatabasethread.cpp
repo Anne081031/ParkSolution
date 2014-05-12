@@ -35,7 +35,7 @@ QDatabaseThread* QDatabaseThread::CreateSubThread( int nIndex )
 {
     QDatabaseThread* pThread = this; // MainThread---SubThread
 
-    if ( 0 == objSubThreadHash.count( ) ) {
+    if ( 0 == objSubThreadHash.count( ) && 0 == nIndex ) {
         objSubThreadHash.insert( nIndex, this );
     } else if ( NULL == ( pThread = objSubThreadHash.value( nIndex, NULL ) ) ) {
         pThread = NewThread( nIndex );
@@ -406,7 +406,7 @@ void QDatabaseThread::ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent )
     QByteArray bySpResult;
     pMySQLDatabase->CallSP( strConnectName, ParkSolution::SpWriteInOutRecord, lstParams,  bySpResult );
 
-     qDebug( ) << Q_FUNC_INFO <<  pEvent->GetSubThreadId( ) << strConnectName << endl;
+    //qDebug( ) << Q_FUNC_INFO <<  pEvent->GetSubThreadId( ) << strConnectName << endl;
 
     if ( 0 == bySpResult.size( ) ) {
         return;

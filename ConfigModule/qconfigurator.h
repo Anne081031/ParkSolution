@@ -13,6 +13,12 @@ class CONFIGMODULESHARED_EXPORT QConfigurator : public QObject
 public:
     static QConfigurator* CreateConfigurator( );
 
+    void SetCustomerInVideo( const bool bVideo );
+    void GetCustomerInVideo( bool& bVideo ) const;
+
+    void SetCustomerOutVideo( const bool bVideo );
+    void GetCustomerOutVideo( bool& bVideo ) const;
+
     // Qt  Enum Value
     void SetComName( const QString& strName );
     void GetComName( QString& strName ) const;
@@ -119,8 +125,11 @@ public:
     void SetPlateWay( const int nWay );
     void GetPlateWay( int& nWay ) const;
 
-    void SetPlateInterval( const int nInterval );
-    void GetPlateInterval( int& nInterval ) const;
+    void SetPlateSameChannelInterval( const int nInterval );
+    void GetPlateSameChannelInterval( int& nInterval ) const;
+
+    void SetPlateDifferentChannelInterval( const int nInterval );
+    void GetPlateDifferentChannelInterval( int& nInterval ) const;
 
     void SetFtpHost( const QString& strHost );
     void GetFtpHost( QString& strHost ) const;

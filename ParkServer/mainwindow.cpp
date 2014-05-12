@@ -207,8 +207,8 @@ void MainWindow::StartIPCVideo( )
 
     QString strIPs[  MAX_VIDEO_WAY ];
     pConfigurator->GetIPCInA( strIPs[ 0 ] );
-    pConfigurator->GetIPCInB( strIPs[ 1 ] );
-    pConfigurator->GetIPCOutA( strIPs[ 2 ] );
+    pConfigurator->GetIPCOutA( strIPs[ 1 ] );
+    pConfigurator->GetIPCInB( strIPs[ 2 ] );
     pConfigurator->GetIPCOutB( strIPs[ 3 ] );
 
     for ( int nIndex = 0; nIndex < nVideoWay; nIndex++ ) {
@@ -224,7 +224,7 @@ void MainWindow::StartIPCPlayVideo( QString& strIP, bool bMainStream, int nChann
 
     pDigitalCamera->PostIPCLoginEvent( strIP );
     pDigitalCamera->PostIPCStartRealPlayEvent( strIP, bMainStream,
-                                               false, hVideoWnds[ nChannel ] );
+                                               bPlateVideo, hVideoWnds[ nChannel ] );
 }
 
 void MainWindow::ConnectDatabase( )

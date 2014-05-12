@@ -4,7 +4,7 @@
 #include "QDigitalCameraThread.h"
 #include "HikIPC/HCNetSDK.h"
 #include "HikIPC/PlayM4.h"
-#include "../ConfigModule/qconfigurator.h"
+//#include "../ConfigModule/qconfigurator.h"
 
 #define MAX_IPC_WAY ( int ) 100
 
@@ -79,8 +79,8 @@ private:
     PlayM4_InputData MyPlayM4_InputData;
     PlayM4_Play MyPlayM4_Play;
     
-    QConfigurator* pConfigurator;
-    bool bPlateVideo;
+    //QConfigurator* pConfigurator;
+    //bool bPlateVideo;
 signals:
     
 public slots:

@@ -12,9 +12,6 @@ QDHkIPCThread::QDHkIPCThread(QObject *parent) :
 
     nChannel = 0;
     GetFunctionPointer( );
-
-    pConfigurator = QConfigurator::CreateConfigurator( );
-    pConfigurator->GetPlateVideo( bPlateVideo );
 }
 
 QDHkIPCThread::~QDHkIPCThread( )
@@ -453,9 +450,9 @@ void QDHkIPCThread::ProcessIPCStartRealPlayEvent( QCameraEvent* pEvent )
     NET_DVR_CLIENTINFO sClientInfo;
     sClientInfo.lChannel = 1;
     sClientInfo.lLinkMode  = bMainStream ? 0x00000000 : 0x80000000;
-    sClientInfo.hPlayWnd = bPlateVideo ? NULL : hPlayWnd;
+    sClientInfo.hPlayWnd = bRealStream ? NULL : hPlayWnd;
 
-    lPlayHandle = NET_DVR_RealPlay_V30( lUserID, &sClientInfo, bPlateVideo ? RealDataCallback : NULL, this );
+    lPlayHandle = NET_DVR_RealPlay_V30( lUserID, &sClientInfo, bRealStream ? RealDataCallback : NULL, this );
 
     if ( bRealStream ) {
         //bRet = NET_DVR_SetRealDataCallBack( lPlayHandle, RealDataStreamCallback, ( DWORD ) this );

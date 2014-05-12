@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     pConfigurator = QConfigurator::CreateConfigurator( );
 
+    GetCommonConfigData( );
     SetScrollAreaStyleSheet( );
     FillServiceColumnName( );
     CreateImageLabel( );
@@ -27,8 +28,9 @@ MainWindow::MainWindow(QWidget *parent) :
     StartSpeechThread( );
     StartDatabaseThread( );
     //StartPlateThread( );
-    StartZmqClientThread( );
+    //StartZmqClientThread( );
     ConnectDatabase( );
+    StartVideoThread( );
 }
 
 MainWindow::~MainWindow()
@@ -37,6 +39,13 @@ MainWindow::~MainWindow()
     delete pSysTrayIcon;
     DestroyImageLabel( );
     delete ui;
+}
+
+void MainWindow::GetCommonConfigData( )
+{
+    pConfigurator->GetVideoType( bIPCVideo );
+    pConfigurator->GetCustomerInVideo( bCustomerInVideo );
+    pConfigurator->GetCustomerOutVideo( bCustomerOutVideo );
 }
 
 void MainWindow::CreateReportDlg( )
@@ -395,6 +404,74 @@ void MainWindow::CreateInfoWidget( )
         connect( pInfoForm, SIGNAL( BKResize( int, QSize ) ),
                  this, SLOT( HandleInfoBKResize( int,QSize ) ) );
     }
+}
+
+void MainWindow::StartVideoThread( )
+{
+    if ( !bIPCVideo ) {
+        return;
+    }
+
+    pDigitalCamera = NULL;
+    nVideoWay = 1;
+
+    pConfigurator->GetVideoWay( nVideoWay );
+
+    hVideoWnds[ 0 ] = ( HWND ) pImageLabels[ IMAGE_LABEL_COUNT - 1 ]->winId( );
+    hVideoWnds[ 1 ] = NULL;
+    hVideoWnds[ 2 ] = NULL;
+    hVideoWnds[ 3 ] = NULL;
+
+    QString strIPCCamera;
+    pConfigurator->GetIPCamera( strIPCCamera );
+
+    bool bMainStream;
+    pConfigurator->GetIPCMainStream( bMainStream );
+
+    if ( "HK" == strIPCCamera ) {
+        pDigitalCamera = QDHkIPCThread::GetInstance( );
+    }
+
+    if ( NULL == pDigitalCamera ) {
+        return;
+    }
+
+    pDigitalCamera->PostIPCStartupEvent( );
+    pDigitalCamera->PostIPCSetConnectTimeoutEvent( );
+    pDigitalCamera->PostIPCSetReconnectTimeEvent( );
+
+    QString strIPs[  MAX_VIDEO_WAY ];
+    pConfigurator->GetIPCInA( strIPs[ 0 ] );
+    pConfigurator->GetIPCOutA( strIPs[ 1 ] );
+    pConfigurator->GetIPCInB( strIPs[ 2 ] );
+    pConfigurator->GetIPCOutB( strIPs[ 3 ] );
+
+    for ( int nIndex = 0; nIndex < nVideoWay; nIndex++ ) {
+        StartIPCPlayVideo( strIPs[ nIndex ], bMainStream, nIndex );
+    }
+}
+
+void MainWindow::StartIPCPlayVideo( QString& strIP, bool bMainStream, int nChannel )
+{
+    if ( strIP.isEmpty( ) ) {
+        return;
+    }
+
+    bool bEnter = ( 0 == nChannel % 2 );
+
+    if ( bEnter ) {
+        if ( !bCustomerInVideo ) {
+            return;
+        }
+    } else {
+        if ( !bCustomerOutVideo ) {
+            return;
+        }
+    }
+
+    pDigitalCamera->PostIPCLoginEvent( strIP );
+    pDigitalCamera->PostIPCStartRealPlayEvent( strIP, bMainStream,
+                                               false, hVideoWnds[ nChannel ] );
 }
 
 void MainWindow::CreateImageLabel( )
