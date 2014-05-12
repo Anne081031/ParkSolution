@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     StartSpeechThread( );
     StartDatabaseThread( );
     //StartPlateThread( );
-    //StartZmqClientThread( );
+    StartZmqClientThread( );
     ConnectDatabase( );
     StartVideoThread( );
 }
