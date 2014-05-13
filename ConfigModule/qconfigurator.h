@@ -125,6 +125,9 @@ public:
     void SetPlateWay( const int nWay );
     void GetPlateWay( int& nWay ) const;
 
+    void SetPlateStartupInterval( const bool bStartup );
+    void GetPlateStartupInterval( bool& bStartup ) const;
+
     void SetPlateSameChannelInterval( const int nInterval );
     void GetPlateSameChannelInterval( int& nInterval ) const;
 

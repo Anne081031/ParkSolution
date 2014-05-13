@@ -234,6 +234,13 @@ void QCommonFunction::DisableHelpButton( QWidget *pWidget )
     pWidget->setWindowFlags( flags ); // Help
 }
 
+void QCommonFunction::DisableCloseButton( QWidget *pWidget )
+{
+    Qt::WindowFlags flags = pWidget->windowFlags( );
+    flags &= ( ~Qt::WindowCloseButtonHint );
+    pWidget->setWindowFlags( flags ); // Close
+}
+
 void QCommonFunction::SetButtonMiniSize( QAbstractButton *pBtn )
 {
     if ( NULL == pBtn ) {
@@ -243,17 +250,37 @@ void QCommonFunction::SetButtonMiniSize( QAbstractButton *pBtn )
     pBtn->setMinimumSize( 75, 23 );
 }
 
+void QCommonFunction::SetMessageBoxProperty( QMessageBox& msgBox, QMessageBox::Icon icon,
+                                             QString& strTitle, QString& strText, Qt::WindowModality winModality,
+                                             bool bDisableHelpButton,bool bDisableCloseButton )
+{
+    msgBox.setIcon( icon );
+    msgBox.setWindowTitle( strTitle );
+    msgBox.setText( strText );
+    msgBox.setWindowModality( winModality );
+
+    if ( bDisableHelpButton ) {
+        DisableHelpButton( &msgBox );
+    }
+
+    if ( bDisableCloseButton ) {
+        DisableCloseButton( &msgBox );
+    }
+}
+
 void QCommonFunction::InformationBox( QWidget *pParent, QString& strText )
 {
   QMessageBox messageBox( pParent );
+  QString strTitle = "提示";
 
-  messageBox.setIcon( QMessageBox::Information );
-  messageBox.setWindowTitle( "提示" );
-  messageBox.setText( strText );
+  SetMessageBoxProperty( messageBox,  QMessageBox::Information,
+                         strTitle, strText, Qt::ApplicationModal );
+
   QPushButton* pBtn = messageBox.addButton( "确定", QMessageBox::ActionRole );
   SetButtonMiniSize( pBtn );
 
-  messageBox.exec();
+
+  messageBox.exec( );
 }
 
 QMessageBox::StandardButtons QCommonFunction::MessageBox( QString &strTitle, QString &strText, QWidget *pParent, QMessageBox::Icon icon )
@@ -261,9 +288,8 @@ QMessageBox::StandardButtons QCommonFunction::MessageBox( QString &strTitle, QSt
     QMessageBox::StandardButtons stdButtons;
     QMessageBox messageBox( pParent );
 
-    messageBox.setIcon( icon );
-    messageBox.setWindowTitle( strTitle );
-    messageBox.setText( strText );
+    SetMessageBoxProperty( messageBox,  icon,
+                           strTitle, strText, Qt::ApplicationModal );
 
     QAbstractButton *btnOK = ( QAbstractButton* ) messageBox.addButton( "确定", QMessageBox::ActionRole );
     SetButtonMiniSize( btnOK );
@@ -271,7 +297,7 @@ QMessageBox::StandardButtons QCommonFunction::MessageBox( QString &strTitle, QSt
     QAbstractButton *btnCancel = ( QAbstractButton* ) messageBox.addButton( "取消", QMessageBox::ActionRole );
     SetButtonMiniSize( btnCancel );
 
-    messageBox.exec();
+    messageBox.exec( );
     QAbstractButton* btnClicked = messageBox.clickedButton( );
 
     if ( btnClicked == btnOK ) {
@@ -287,10 +313,11 @@ QMessageBox::StandardButtons QCommonFunction::SaveDataBox(QWidget *pParent)
 {
     QMessageBox::StandardButtons stdButtons;
     QMessageBox messageBox( pParent );
+    QString strTitle = "提示";
+    QString strText = "确定要保存数据吗？";
 
-    messageBox.setIcon( QMessageBox::Question );
-    messageBox.setWindowTitle( "提示" );
-    messageBox.setText( "确定要保存数据吗？" );
+    SetMessageBoxProperty( messageBox,  QMessageBox::Question,
+                           strTitle, strText, Qt::ApplicationModal );
 
     QAbstractButton *btnOK = ( QAbstractButton* ) messageBox.addButton( "确定", QMessageBox::ActionRole );
     SetButtonMiniSize( btnOK );
@@ -298,7 +325,7 @@ QMessageBox::StandardButtons QCommonFunction::SaveDataBox(QWidget *pParent)
     QAbstractButton *btnCancel = ( QAbstractButton* ) messageBox.addButton( "取消", QMessageBox::ActionRole );
     SetButtonMiniSize( btnCancel );
 
-    messageBox.exec();
+    messageBox.exec( );
     QAbstractButton* btnClicked = messageBox.clickedButton( );
 
     if ( btnClicked == btnOK ) {
@@ -313,10 +340,11 @@ QMessageBox::StandardButtons QCommonFunction::SaveDataBox(QWidget *pParent)
 void QCommonFunction::CloseDiaglogBox( QWidget *pParent, QCloseEvent *pEvent )
 {
     QMessageBox messageBox( pParent );
+    QString strTitle = "提示";
+    QString strText = "确定要关闭该对话框吗？";
 
-    messageBox.setIcon( QMessageBox::Question );
-    messageBox.setWindowTitle( "提示" );
-    messageBox.setText( "确定要关闭该对话框吗？" );
+    SetMessageBoxProperty( messageBox,  QMessageBox::Question,
+                           strTitle, strText, Qt::ApplicationModal );
 
     QAbstractButton *btnOK = ( QAbstractButton* ) messageBox.addButton( "确定", QMessageBox::ActionRole );
     SetButtonMiniSize( btnOK );
@@ -324,7 +352,7 @@ void QCommonFunction::CloseDiaglogBox( QWidget *pParent, QCloseEvent *pEvent )
     QAbstractButton *btnCancel = ( QAbstractButton* ) messageBox.addButton( "取消", QMessageBox::ActionRole );
     SetButtonMiniSize( btnCancel );
 
-    messageBox.exec();
+    messageBox.exec( );
     QAbstractButton* btnClicked = messageBox.clickedButton( );
 
     if ( btnClicked == btnOK ) {
@@ -338,10 +366,10 @@ QMessageBox::StandardButtons QCommonFunction::DeleteDataBox( QWidget *pParent, Q
 {
     QMessageBox::StandardButtons stdButtons;
     QMessageBox messageBox( pParent );
+    QString strTitle = "提示";
 
-    messageBox.setIcon( QMessageBox::Question );
-    messageBox.setWindowTitle( "提示" );
-    messageBox.setText( strText );
+    SetMessageBoxProperty( messageBox,  QMessageBox::Question,
+                           strTitle, strText, Qt::ApplicationModal );
 
     QAbstractButton *btnOK = ( QAbstractButton* ) messageBox.addButton( "确定", QMessageBox::ActionRole );
     SetButtonMiniSize( btnOK );
@@ -349,7 +377,7 @@ QMessageBox::StandardButtons QCommonFunction::DeleteDataBox( QWidget *pParent, Q
     QAbstractButton *btnCancel = ( QAbstractButton* ) messageBox.addButton( "取消", QMessageBox::ActionRole );
     SetButtonMiniSize( btnCancel );
 
-    messageBox.exec();
+    messageBox.exec( );
     QAbstractButton* btnClicked = messageBox.clickedButton( );
 
     if ( btnClicked == btnOK ) {
@@ -365,10 +393,11 @@ bool QCommonFunction::SystemCloseEvent( QWidget* pParent, QCloseEvent *pEvent )
 {
     bool bRet = true;
     QMessageBox messageBox( pParent );
+    QString strTitle = "提示";
+    QString strText = "确定要退出系统吗？";
 
-    messageBox.setIcon( QMessageBox::Question );
-    messageBox.setWindowTitle( "提示" );
-    messageBox.setText( "确定要退出系统吗？" );
+    SetMessageBoxProperty( messageBox,  QMessageBox::Question,
+                           strTitle, strText, Qt::ApplicationModal );
 
     QAbstractButton *btnOK = ( QAbstractButton* ) messageBox.addButton( "确定", QMessageBox::ActionRole );
     SetButtonMiniSize( btnOK );
@@ -376,7 +405,7 @@ bool QCommonFunction::SystemCloseEvent( QWidget* pParent, QCloseEvent *pEvent )
     QAbstractButton *btnCancel = ( QAbstractButton* ) messageBox.addButton( "取消", QMessageBox::ActionRole );
     SetButtonMiniSize( btnCancel );
 
-    messageBox.exec();
+    messageBox.exec( );
     QAbstractButton* btnClicked = messageBox.clickedButton( );
 
     if ( btnClicked == btnOK ) {

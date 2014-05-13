@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    InitializeUI( );
 
     pConfigurator = QConfigurator::CreateConfigurator( );
     GetMiscellaneous( );
@@ -17,6 +18,15 @@ MainWindow::MainWindow(QWidget *parent) :
     StartProcessResultThread( );
     StartPlateThread( );
     StartVideoThread( );
+}
+
+void MainWindow::InitializeUI( )
+{
+    QDateTime dtDateTime = QDateTime::currentDateTime( );
+    ui->dtEnd->setDateTime( dtDateTime );
+
+    dtDateTime = dtDateTime.addMonths( -1 );
+    ui->dtStart->setDateTime( dtDateTime );
 }
 
 void MainWindow::GetMiscellaneous( )
@@ -566,44 +576,6 @@ void MainWindow::ProcessPlate( const QString &strPlate, bool bEnter, int  nChann
 
     pProcessResultThread->PostPlateResultEvent( strPlate, strDateTime, nChannel, bEnter, strIP, bIpc  );
     //WriteDatabase( strPlate, strDateTime, byFileData, bEnter );
-}
-
-void MainWindow::on_pushButton_clicked()
-{
-    QString strFile = "D:/VBPlate/000021130142506入.jpg";
-    pPlateThread->PostPlateFileRecognize( strFile, 0 );
-}
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    QString strFile = "D:/VBPlate/000021130142506入.jpg";
-    pPlateThread->PostPlateFileRecognize( strFile, 1 );
-}
-
-void MainWindow::on_pushButton_3_clicked()
-{
-    QString strFile = "D:/VBPlate/000021130142506入.jpg";
-    QFile file( strFile );
-    file.open( QFile::ReadOnly );
-    QByteArray byData = file.readAll( );
-    file.close( );
-
-    QString strName = "000021130142506入.jpg";
-    pFtpThread->PostUploadFileEvent( strName, byData );
-}
-
-void MainWindow::on_pushButton_4_clicked()
-{
-    pProcessResultThread->PostPlateImage( );
-    return;
-    QString strFile = "D:/VBPlate/000011130160855出.jpg";
-    QFile file( strFile );
-    file.open( QFile::ReadOnly );
-    QByteArray byData = file.readAll( );
-    file.close( );
-
-    QString strName = "000011130160855出.jpg";
-    pFtpThread->PostUploadFileEvent( strName, byData);
 }
 
 void MainWindow::on_btQuery_clicked()

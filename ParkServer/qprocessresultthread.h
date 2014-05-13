@@ -69,6 +69,7 @@ private:
     bool bSmsStartup;
     QSmsThread* pSmsThread;
     int nConnectPoolCount;
+    bool bStartupInterval;
     int nPlateSameChannelInterval;
     int nPlateDifferentChannelInterval;
     QThreadPool* pThreadPool;

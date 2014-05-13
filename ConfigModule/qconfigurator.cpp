@@ -415,6 +415,16 @@ void QConfigurator::SetFtpHost( const QString& strHost )
     pSettings->setValue( "FtpServer/Host", strHost );
 }
 
+void QConfigurator::SetPlateStartupInterval( const bool bStartup )
+{
+     pSettings->setValue( "InOutPlateInterval/StartupInterval", bStartup );
+}
+
+void QConfigurator::GetPlateStartupInterval( bool& bStartup ) const
+{
+    bStartup = pSettings->value( "InOutPlateInterval/StartupInterval", false ).toBool( );
+}
+
 void QConfigurator::SetPlateSameChannelInterval( const int nInterval )
 {
     pSettings->setValue( "InOutPlateInterval/SameChannelInterval", nInterval );

@@ -43,7 +43,7 @@ private:
 
     void StartCaptureCardVideo( );
     void StartIPCVideo( );
-
+    void InitializeUI( );
     void GetMiscellaneous( );
     void CaptureImage( QString& strFile, const QString& strPlate, int nChannel );
     void ProcessPlate( const QString& strPlate, bool bEnter, int nChannel, QString& strIP, bool bIpc );
@@ -67,14 +67,6 @@ private slots:
     void HandleSpThreadResult( int nSpType, QByteArray byData, QStringList lstParams );
     void HandleCaptureImage( QString strFile, QString strIP );
     void HandleThreadPoolTaskData( QByteArray byData );
-
-    void on_pushButton_clicked();
-
-    void on_pushButton_2_clicked();
-
-    void on_pushButton_3_clicked();
-
-    void on_pushButton_4_clicked();
 
     void on_btQuery_clicked();
 

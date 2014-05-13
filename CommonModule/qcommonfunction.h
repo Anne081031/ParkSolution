@@ -35,9 +35,14 @@ public:
     static void CloseDiaglogBox( QWidget* pParent, QCloseEvent* pEvent );
     static QMessageBox::StandardButtons MessageBox( QString& strTitle, QString& strText, QWidget* pParent, QMessageBox::Icon icon );
     static void InformationBox( QWidget* pParent, QString& strText );
+    static void SetMessageBoxProperty( QMessageBox& msgBox, QMessageBox::Icon icon,
+                                       QString& strTitle, QString& strText, Qt::WindowModality winModality,
+                                       bool bDisableHelpButton = true,
+                                       bool bDisableCloseButton = true );
     static void SetWindowIcon( QWidget *pWidget );
     static void SetApplicationIcon( );
     static void DisableHelpButton( QWidget *pWidget );
+    static void DisableCloseButton( QWidget *pWidget );
     static void SingleApplication( const char* pGUID );
     static QTextCodec* GetTextCodec( );
     static void GetUIStyleSheet( QString& strStyleSheet );

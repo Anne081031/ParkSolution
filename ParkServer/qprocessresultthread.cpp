@@ -40,6 +40,7 @@ bool QProcessResultThread::ThreadInitialize()
     pConfigurator->GetDbConnectPoolMaxConnect( nConnectPoolCount );
     pConfigurator->GetPlateSameChannelInterval( nPlateSameChannelInterval );
     pConfigurator->GetPlateDifferentChannelInterval( nPlateDifferentChannelInterval );
+    pConfigurator->GetPlateStartupInterval( bStartupInterval );
 
     QCommonFunction::GetAppCaptureImagePath( strImagePath );
 
@@ -238,7 +239,7 @@ void QProcessResultThread::ProcessDatabaseResultEvent( QProcessResultEvent* pEve
     //int nChannel = lstParams.at( 5 ).toInt( );
     //HandlePlateSerializeData( strPlate, strDateTime, byImage );
 
-    if ( bEnter ) {
+    if ( bEnter && bStartupInterval ) {
         hashPlateDateTime[ !bEnter ].remove( strPlate );
     }
 
@@ -370,6 +371,11 @@ bool QProcessResultThread::TimeDifferenceInInterval( const QString& strStart, co
 bool QProcessResultThread::SamePlateInInterval( bool bEnter, const QString &strPlate, const QString &strDateTime )
 {
     bool bRet = false;
+
+    if ( !bStartupInterval ) {
+        return bRet;
+    }
+
     ParkSolution::QStringHash& hashDateTime = hashPlateDateTime[ bEnter ];
     ParkSolution::QStringHash& hashInverseDateTime = hashPlateDateTime[ !bEnter ];
     const QString strValue = hashDateTime.value( strPlate, "" );
