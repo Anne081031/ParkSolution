@@ -200,7 +200,20 @@ void QDHkIPCThread::DisplayCBFun( long nPort, char *pBuf, long nSize,
     }
 
     QByteArray byVideo;
-    byVideo.append( ( const char* ) pBuf, nSize );
+    //byVideo.append( ( const char* ) pBuf, nSize );
+
+    QBuffer byBuffer( &byVideo );
+    if ( !byBuffer.open( QBuffer::WriteOnly ) ) {
+        return;
+    }
+
+    qint64 nRet = byBuffer.write( ( const char* ) pBuf, nSize );
+    byBuffer.close( );
+
+    if ( nRet != nSize ) {
+        return;
+    }
+
     static QDigitalCameraThread* pThread = GetInstance( );
     LONG lPlayHandle = pThread->GetPlayHandleByChannel( nPort );
     QString strIP = pThread->GetIP( lPlayHandle );
@@ -213,7 +226,6 @@ void QDHkIPCThread::ProcessRealDataCallback( LONG lRealHandle, DWORD dwDataType,
 
     switch ( dwDataType ) {
     case NET_DVR_SYSHEAD :
-
         if ( NULL == MyPlayM4_GetPort || !MyPlayM4_GetPort( &nChannelID ) ) {
             break;
         }
@@ -239,6 +251,8 @@ void QDHkIPCThread::ProcessRealDataCallback( LONG lRealHandle, DWORD dwDataType,
             }
         }
 
+        break;
+
     case NET_DVR_STREAMDATA :
         if ( dwBufSize > 0 && nChannelID != -1 ) {
             if ( NULL == MyPlayM4_InputData || !MyPlayM4_InputData( nChannelID, pBuffer, dwBufSize ) )
@@ -246,6 +260,8 @@ void QDHkIPCThread::ProcessRealDataCallback( LONG lRealHandle, DWORD dwDataType,
                 break;
             }
         }
+
+        break;
     }
 }
 

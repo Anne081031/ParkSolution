@@ -6,6 +6,7 @@ QBaseThread::QBaseThread(QString strThreadName, QObject *parent) :
     QThread(parent)
 {
     setObjectName( strThreadName );
+    qDebug( ) << strThreadName << endl;
     ThreadInitialize( );
 }
 
