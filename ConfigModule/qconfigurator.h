@@ -134,6 +134,9 @@ public:
     void SetPlateDifferentChannelInterval( const int nInterval );
     void GetPlateDifferentChannelInterval( int& nInterval ) const;
 
+    void SetPlateOutputAll( const bool bAll );
+    void GetPlateOutputAll( bool& bAll ) const;
+
     void SetFtpHost( const QString& strHost );
     void GetFtpHost( QString& strHost ) const;
 
@@ -148,6 +151,9 @@ public:
 
     void SetFtpBasePath( const QString& strBasePath );
     void GetFtpBasePath( QString& strBasePath ) const;
+
+    void SetFtpStartupUpload( const bool bStartup );
+    void GetFtpStartupUpload( bool& bStartup ) const;
 
     void SetHttpHost( const QString& strHost );
     void GetHttpHost( QString& strHost ) const;

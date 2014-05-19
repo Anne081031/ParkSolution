@@ -425,6 +425,16 @@ void QConfigurator::GetPlateStartupInterval( bool& bStartup ) const
     bStartup = pSettings->value( "InOutPlateInterval/StartupInterval", false ).toBool( );
 }
 
+void QConfigurator::SetPlateOutputAll( const bool bAll )
+{
+    pSettings->setValue( "LPR/PlateOutputAll", bAll );
+}
+
+void QConfigurator::GetPlateOutputAll( bool& bAll ) const
+{
+    bAll = pSettings->value( "LPR/PlateOutputAll", false ).toBool( );
+}
+
 void QConfigurator::SetPlateSameChannelInterval( const int nInterval )
 {
     pSettings->setValue( "InOutPlateInterval/SameChannelInterval", nInterval );
@@ -493,6 +503,16 @@ void QConfigurator::GetFtpBasePath( QString& strBasePath ) const
 void QConfigurator::SetHttpHost( const QString& strHost )
 {
     pSettings->setValue( "HttpServer/Host", strHost );
+}
+
+void QConfigurator::SetFtpStartupUpload( const bool bStartup )
+{
+    pSettings->setValue( "FtpServer/StartupUpload", bStartup );
+}
+
+void QConfigurator::GetFtpStartupUpload( bool& bStartup ) const
+{
+    pSettings->setValue( "FtpServer/StartupUpload", bStartup );
 }
 
 void QConfigurator::GetHttpHost( QString& strHost ) const

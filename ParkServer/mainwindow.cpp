@@ -57,9 +57,9 @@ void MainWindow::StartProcessResultThread( )
 
 void MainWindow::StartSeriaizeThread( )
 {
-    pSerializeThread = QSerializeThread::CreateInstance( );
-    connect( pSerializeThread, SIGNAL( Log( QString ) ),
-             this, SLOT( HandleSerializeLog( QString ) ) );
+    //pSerializeThread = QSerializeThread::CreateInstance( );
+    //connect( pSerializeThread, SIGNAL( Log( QString ) ),
+    //         this, SLOT( HandleSerializeLog( QString ) ) );
 }
 
 void MainWindow::HandleSerializeLog( QString strLog )
@@ -386,7 +386,7 @@ return;
     QString strUUID;
     ParseSpResult( byData, bSuccess, strUUID );
 
-    pSerializeThread->PostGetPlateDataEvent( strUUID, bSuccess );
+    //pSerializeThread->PostGetPlateDataEvent( strUUID, bSuccess );
 }
 
 void MainWindow::StartPlateThread( )
@@ -537,7 +537,7 @@ void MainWindow::WriteDatabase( const QString &strPlate, const QString &strDateT
               << strDateTime << strImageBase64 << strUUID;
 
     pDatabaseThread->PostWriteInOutRecordEvent( lstParasm );
-    pSerializeThread->PostSetPlateDataEvent( strUUID, strPlate, strDateTime, byFileData );
+    //pSerializeThread->PostSetPlateDataEvent( strUUID, strPlate, strDateTime, byFileData );
 }
 
 void MainWindow::Send2FtpServer( const QString &strPlate, const QString& strDateTime, QByteArray &byData )

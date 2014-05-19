@@ -41,6 +41,7 @@ bool QProcessResultThread::ThreadInitialize()
     pConfigurator->GetPlateSameChannelInterval( nPlateSameChannelInterval );
     pConfigurator->GetPlateDifferentChannelInterval( nPlateDifferentChannelInterval );
     pConfigurator->GetPlateStartupInterval( bStartupInterval );
+    pConfigurator->GetFtpStartupUpload( bFtpStartupUpload );
 
     QCommonFunction::GetAppCaptureImagePath( strImagePath );
 
@@ -50,14 +51,14 @@ bool QProcessResultThread::ThreadInitialize()
     pThreadPool->setMaxThreadCount( nThread );
 
 
-    pSerializeThread = QSerializeThread::CreateInstance( );
+    //pSerializeThread = QSerializeThread::CreateInstance( );
     pFtpThread = QFtpThread::CreateInstance( );
     pDatabaseThread = QDatabaseThread::CreateInstance( );
 
-    connect( pSerializeThread, SIGNAL( PlateSerializeData( QString, QString, QByteArray ) ),
-                   this, SLOT( HandlePlateSerializeData( QString, QString, QByteArray ) ) );
+    //connect( pSerializeThread, SIGNAL( PlateSerializeData( QString, QString, QByteArray ) ),
+    //               this, SLOT( HandlePlateSerializeData( QString, QString, QByteArray ) ) );
 
-    //pZmqServerThread = QZmqServerThread::CreateInstance( );
+    pZmqServerThread = QZmqServerThread::CreateInstance( );
 
     return bRet;
 }
@@ -328,6 +329,10 @@ void QProcessResultThread::GetStringValue( QString& strValue, const char* pKey, 
 
 void QProcessResultThread::Send2FtpServer( const QString &strPlate, const QString& strDateTime, QByteArray &byData )
 {
+    if ( !bFtpStartupUpload ) {
+        return;
+    }
+
     QDateTime dtDateTime;
     QCommonFunction::String2DateTime( strDateTime, dtDateTime );
 
@@ -342,7 +347,7 @@ void QProcessResultThread::SendPlate2Client( const QString &strPlate, const QStr
 {
     QByteArray byPublishData;
     CreateVehicleJson( byPublishData, strPlate, strDateTime, strBase64 );
-    //pZmqServerThread->PostPublishDataEvent( byPublishData );
+    pZmqServerThread->PostPublishDataEvent( byPublishData );
 }
 
 void QProcessResultThread::HandlePlateSerializeData( QString strPlate, QString strDateTime, QByteArray byFileData )

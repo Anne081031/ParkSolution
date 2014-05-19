@@ -79,7 +79,7 @@ private:
     QConfigurator* pConfigurator;
     QAnalogCameraThread* pAnalogCamera;
     QDigitalCameraThread* pDigitalCamera;
-    QSerializeThread*  pSerializeThread;
+    //QSerializeThread*  pSerializeThread;
     QString strImagePath;
     QProcessResultThread* pProcessResultThread;
     HWND hVideoWnds[ MAX_VIDEO_WAY ];

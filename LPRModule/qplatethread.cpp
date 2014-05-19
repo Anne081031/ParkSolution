@@ -10,10 +10,12 @@ QPlateThread::QPlateThread(QObject *parent) :
 {
     pCodec = QCommonFunction::GetTextCodec( );
     //QCommon::GetPlatePicPath( strPlatePath );
+    pConfigurator = QConfigurator::CreateConfigurator( );
     bStopRecognize = false;
     nPlateWay = 1;
     bDongleOneWay = false;
     bPlateMultiThread = false;
+    pConfigurator->GetPlateOutputAll( bOutputAllPlate );
 }
 
 QPlateThread::~QPlateThread( )
@@ -464,10 +466,36 @@ void QPlateThread::VideoRecognize( QPlateEvent *pEvent )
 
     GetResultInfo( lstResult, strFile, bRet, nNum, result );
 
+    ///////////////////////////////////////////////// Only a Plate
+    bool bSame = true;
+
+    if ( bRet && !bOutputAllPlate ) {
+        const QString& strCurrentPlate = lstResult.at( 0 );
+        //qDebug( ) << Q_FUNC_INFO << strCurrentPlate << endl;
+
+        if ( hashChannelPlate.contains( nChannel ) ) {
+            bSame = ( hashChannelPlate[ nChannel ] == strCurrentPlate );
+
+            if ( !bSame ) {
+                hashChannelPlate[ nChannel ] = strCurrentPlate;
+            }
+        } else {
+            bSame = false;
+            hashChannelPlate.insert( nChannel, strCurrentPlate );
+        }
+    }
+    /////////////////////////////////////////////////
+
+    bool bOutput = ( !bSame || bOutputAllPlate );
+
     if ( pEvent->GetIpcVideoSource( ) ) {
-        emit PlateIpcResult( lstResult, nChannel - 1, pEvent->GetIpcIp( ), bRet, true );
+        if ( bOutput ) {
+            emit PlateIpcResult( lstResult, nChannel - 1, pEvent->GetIpcIp( ), bRet, true );
+        }
     } else {
-        emit PlateResult( lstResult, nChannel - 1, bRet, true );
+        if ( bOutput ) {
+            emit PlateResult( lstResult, nChannel - 1, bRet, true );
+        }
     }
 
     SendUIResult( nChannel, bRet, nNum, result, true, pEvent );

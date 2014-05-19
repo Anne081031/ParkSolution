@@ -8,6 +8,7 @@ Debug {
     DESTDIR = $$sprintf( $$MYDESTDIR, "Debug" )
 
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "Debug" )
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "Debug" )
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "LPKernelEx", "" )
 }
 
@@ -16,6 +17,7 @@ Release {
     DESTDIR = $$sprintf( $$MYDESTDIR, "Release" )
 
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "" )
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "" )
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "LPKernelEx", "" )
 }
 

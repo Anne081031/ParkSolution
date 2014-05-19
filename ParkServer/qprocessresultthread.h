@@ -56,7 +56,7 @@ private:
 
 private:
     static QProcessResultThread* pThreadInstance;
-    QSerializeThread* pSerializeThread;
+    //QSerializeThread* pSerializeThread;
     QDatabaseThread* pDatabaseThread;
     QFtpThread* pFtpThread;
     QAnalogCameraThread* pAnalogCamera;
@@ -73,6 +73,7 @@ private:
     int nPlateSameChannelInterval;
     int nPlateDifferentChannelInterval;
     QThreadPool* pThreadPool;
+    bool bFtpStartupUpload;
 
     ParkSolution::QStringHash hashPlateDateTime[ 2 ];
 

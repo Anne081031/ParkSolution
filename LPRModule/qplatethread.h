@@ -7,6 +7,7 @@
 #include <winsock2.h>
 #include <windows.h>
 #include "../CommonModule/qcommonfunction.h"
+#include "../ConfigModule/qconfigurator.h"
 #include "../CommonModule/qbasethread.h"
 #include <QStringList>
 #include "LPKernelEx.h"
@@ -78,6 +79,9 @@ private:
     bool bPlateMultiThread;
     typedef QHash< QString, QPlateThread* > QThreadHash;
     QThreadHash objSubThreadHash;
+    ParkSolution::QIntStringHash hashChannelPlate;
+    bool bOutputAllPlate;
+    QConfigurator* pConfigurator;
     
 signals:
     void PlateResult( QStringList lstPlateParam, int nChannel, bool bSuccess, bool bVideo );

@@ -375,7 +375,7 @@ void QDHkIPCThread::ProcessIPCSetConnectTimeoutEvent( QCameraEvent* pEvent )
     // 300,75000 // Reserved
 
     Q_UNUSED( pEvent )
-    BOOL bRet = NET_DVR_SetConnectTime( 5000, 1 );
+    BOOL bRet = NET_DVR_SetConnectTime( 3000, 3 );
     bRet = TRUE;
 }
 

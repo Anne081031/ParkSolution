@@ -20,7 +20,7 @@ SUBDIRS += \
     #ParkCenterServiceUI \
     #ParkAdministratorUI \
     #ParkCenterChargeUI \
-    #ParkCustomerCenter \
+    ParkCustomerCenter \
     #TestUI \
     #TestDLL \
     #ParkCustomerInfo \
