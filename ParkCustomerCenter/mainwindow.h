@@ -18,6 +18,7 @@
 #include "../CommonModule/qdlgreport.h"
 #include "../NetworkModule/qzmqclientthread.h"
 #include "../VideoModule/qdhkipcthread.h"
+#include "../CommonModule/qframequerydata.h"
 
 #define IMAGE_LABEL_COUNT   ( int ) 5
 #define MAX_VIDEO_WAY ( int ) 4
@@ -48,6 +49,7 @@ private:
     void StartIPCPlayVideo( QString& strIP, bool bMainStream, int nChannel );
     void LayoutUI( );
     void CreateImageLabel( );
+    void CreateQueryFrame( );
     void CreateInfoWidget( );
     void DestroyImageLabel( );
     void FillHash( );
@@ -84,6 +86,8 @@ private:
     QImageLabel* pImageLabels[ IMAGE_LABEL_COUNT ];
     QImageBKForm* pImageBK[ IMAGE_LABEL_COUNT ];
     QImageBKForm* pInfoBK[ IMAGE_LABEL_COUNT - 1 ];
+    QImageLabel* pOutWayLabel;
+    QImageBKForm* pOutWayBK;
     QLineEdit* pInfoEdits[ 4 ][ 4 ];
     ParkSolution::QStringWidgetHash hashWidget;
     QPlateThread* pPlateThread;
@@ -101,8 +105,10 @@ private:
     QSpeechThread* pSpeechThread;
     QZmqClientThread* pZmqClientThread;
     QDlgReport* pDlgReport;
+    QFrameQueryData* pFrameQueryData;
 
     bool bIPCVideo;
+    bool bCustomerCenter;
     bool bCustomerInVideo;
     bool bCustomerOutVideo;
     int nVideoWay;
@@ -114,6 +120,8 @@ private slots:
     void HandleActivated( QSystemTrayIcon::ActivationReason reason );
     void HandleMessageClicked( );
     void HandleShowHoverWindow( bool bVisible );
+    void HandleQueryDataset( QStringList lstParams, QObject * pModel );
+    void HandleQueryData( QStringList lstParams );
 
     void HandleBKResize( int nIndex, QSize bkSize );
     void HandleInfoBKResize( int nIndex, QSize bkSize );
@@ -125,6 +133,7 @@ private slots:
     void on_actCustomerInfo_triggered();
     void on_actionExit_triggered();
     void on_actVehicleStatistics_triggered();
+    void on_actQueryData_triggered();
 };
 
 #endif // MAINWINDOW_H

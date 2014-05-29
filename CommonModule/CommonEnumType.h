@@ -26,6 +26,7 @@ namespace ParkSolution {
         SpChangeCommonDataUI,
         SpChangeCommonDataDelete,
         SpWriteInOutRecord,
+        SpQueryInOutRecord,
         SpReportInfo
     } SpType;
 

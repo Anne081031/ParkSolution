@@ -111,6 +111,12 @@ void QCommonFunction::GetAppCaptureImagePath( QString &strPath )
    dir.mkpath( strPath );
 }
 
+void QCommonFunction::GetImageFromBase64( QByteArray& byImage, const QString& strBase64 )
+{
+    QByteArray byBase64 = strBase64.toUtf8( );
+    byImage = QByteArray::fromBase64( byBase64 );
+}
+
 void QCommonFunction::GetImageBase64(QString &strBase64, const QString &strFile)
 {
     if ( !QFile::exists( strFile ) ) {
@@ -241,13 +247,13 @@ void QCommonFunction::DisableCloseButton( QWidget *pWidget )
     pWidget->setWindowFlags( flags ); // Close
 }
 
-void QCommonFunction::SetButtonMiniSize( QAbstractButton *pBtn )
+void QCommonFunction::SetButtonMiniSize( QAbstractButton *pBtn, int nWidth, int nHeight )
 {
     if ( NULL == pBtn ) {
         return;
     }
 
-    pBtn->setMinimumSize( 75, 23 );
+    pBtn->setMinimumSize( nWidth, nHeight );
 }
 
 void QCommonFunction::SetMessageBoxProperty( QMessageBox& msgBox, QMessageBox::Icon icon,
@@ -337,8 +343,9 @@ QMessageBox::StandardButtons QCommonFunction::SaveDataBox(QWidget *pParent)
     return stdButtons;
 }
 
-void QCommonFunction::CloseDiaglogBox( QWidget *pParent, QCloseEvent *pEvent )
+bool QCommonFunction::CloseDiaglogBox( QWidget *pParent, QCloseEvent *pEvent )
 {
+    bool bRet = false;
     QMessageBox messageBox( pParent );
     QString strTitle = "提示";
     QString strText = "确定要关闭该对话框吗？";
@@ -357,9 +364,12 @@ void QCommonFunction::CloseDiaglogBox( QWidget *pParent, QCloseEvent *pEvent )
 
     if ( btnClicked == btnOK ) {
         pEvent->accept( );
+        bRet = true;
     } else if ( btnClicked == btnCancel ) {
         pEvent->ignore( );
     }
+
+    return bRet;
 }
 
 QMessageBox::StandardButtons QCommonFunction::DeleteDataBox( QWidget *pParent, QString& strText )
@@ -394,7 +404,7 @@ bool QCommonFunction::SystemCloseEvent( QWidget* pParent, QCloseEvent *pEvent )
     bool bRet = true;
     QMessageBox messageBox( pParent );
     QString strTitle = "提示";
-    QString strText = "确定要退出系统吗？";
+    QString strText = "确定要退出吗？";
 
     SetMessageBoxProperty( messageBox,  QMessageBox::Question,
                            strTitle, strText, Qt::ApplicationModal );
@@ -492,6 +502,10 @@ void QCommonFunction::GetSpName( ParkSolution::SpType eSpType, QString& strSpNam
         strSpName = spName.strSpWriteInOutRecord;
         break;
 
+    case ParkSolution::SpQueryInOutRecord :
+        strSpName = spName.strSpQueryInOutRecord;
+        break;
+
     case ParkSolution::SpReportInfo :
         strSpName = spName.strReportInfo;
         break;
@@ -569,6 +583,10 @@ void QCommonFunction::GetSpXmlPattern( ParkSolution::SpType eSpType, QString& st
 
     case ParkSolution::SpWriteInOutRecord :
         strXmlPattern = xmlPattern.strXmlWriteInOutRecord;
+        break;
+
+    case ParkSolution::SpQueryInOutRecord :
+        strXmlPattern = xmlPattern.strXmlQueryInOutRecord;
         break;
 
     case ParkSolution::SpReportInfo :

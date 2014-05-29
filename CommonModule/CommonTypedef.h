@@ -8,5 +8,6 @@ namespace ParkSolution {
     typedef QHash< QString, QString > QStringHash;
     typedef QHash< QString, QWidget* >  QStringWidgetHash;
     typedef QHash< int, QObject* > QIntObjectHash;
+    typedef QHash< QString, QByteArray > QStringByteArrayHash;
 }
 #endif // COMMONTYPEDEF_H

@@ -7,6 +7,8 @@
 //#include "../ConfigModule/qconfigurator.h"
 
 #define MAX_IPC_WAY ( int ) 100
+#define MAX_IPC_VIDEO_WAY ( int ) 2
+#define MAX_FRAME_SIZE ( int ) 6 * 1024 * 1024
 
 class VIDEOMODULESHARED_EXPORT QDHkIPCThread : public QDigitalCameraThread
 {
@@ -55,29 +57,44 @@ private:
     void ProcessDataStream( LONG lRealHandle, BYTE *pBuffer, DWORD dwBufSize );
     void ParseResolution( LONG lRealHandle, int& nWidth, int& nHeight );
     void GetDeviceAbility( LONG lUserID, LONG lRealHandle );
+    void FreePlayPort( LONG lHandle );
 
 private:
     static QDigitalCameraThread* pThreadInstance;
     LONG lPlayPorts[ MAX_IPC_WAY ];
     HMODULE hDllMod;
     int nChannel;
+    static char caFrameBuffer[ MAX_IPC_VIDEO_WAY ][ MAX_FRAME_SIZE ];
 
     typedef BOOL ( WINAPI *PlayM4_GetPort ) ( LONG* nPort );
+    typedef BOOL ( WINAPI *PlayM4_FreePort ) ( LONG nPort );
+
     typedef BOOL ( WINAPI *PlayM4_SetStreamOpenMode ) ( LONG nPort, DWORD nMode );
+
     typedef BOOL ( WINAPI *PlayM4_OpenStream ) ( LONG nPort, PBYTE pFileHeadBuf, DWORD nSize,
                                                  DWORD nBufPoolSize );
+    typedef BOOL ( WINAPI *PlayM4_CloseStream ) ( LONG nPort );
+
     typedef BOOL ( WINAPI *PlayM4_Play ) ( LONG nPort, HWND hWnd );
+    typedef BOOL ( WINAPI *PlayM4_Stop ) ( LONG nPort );
+
     typedef BOOL ( WINAPI *PlayM4_SetDisplayCallBack ) ( LONG nPort,
                                                          void ( CALLBACK* DisplayCBFun )( long nPort,char * pBuf, long nSize, long nWidth,
                                                                                        long nHeight, long nStamp, long nType, long nReserved ) );
     typedef BOOL ( WINAPI *PlayM4_InputData ) ( LONG nPort, PBYTE pBuf, DWORD nSize );
 
     PlayM4_GetPort MyPlayM4_GetPort;
-    PlayM4_SetStreamOpenMode MyPlayM4_SetStreamOpenMode;
+    PlayM4_FreePort MyPlayM4_FreePort;
+
     PlayM4_OpenStream MyPlayM4_OpenStream;
+    PlayM4_CloseStream MyPlayM4_CloseStream;
+
+    PlayM4_SetStreamOpenMode MyPlayM4_SetStreamOpenMode;
     PlayM4_SetDisplayCallBack MyPlayM4_SetDisplayCallBack;
     PlayM4_InputData MyPlayM4_InputData;
+
     PlayM4_Play MyPlayM4_Play;
+    PlayM4_Stop MyPlayM4_Stop;
     
     //QConfigurator* pConfigurator;
     //bool bPlateVideo;

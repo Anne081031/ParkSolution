@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'qunitydatabase.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'qunitydatabase.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.3.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,12 +20,12 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_QUnityDatabase_t {
     QByteArrayData data[9];
-    char stringdata[76];
+    char stringdata[75];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_QUnityDatabase_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_QUnityDatabase_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_QUnityDatabase_t qt_meta_stringdata_QUnityDatabase = {
     {
@@ -40,7 +40,7 @@ QT_MOC_LITERAL(7, 51, 11),
 QT_MOC_LITERAL(8, 63, 11)
     },
     "QUnityDatabase\0Log\0\0strLog\0SpResult\0"
-    "nSpType\0byData\0SpResultset\0pQueryModel\0"
+    "nSpType\0byData\0SpResultset\0pQueryModel"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,9 +58,9 @@ static const uint qt_meta_data_QUnityDatabase[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   29,    2, 0x06,
-       4,    2,   32,    2, 0x06,
-       7,    2,   37,    2, 0x06,
+       1,    1,   29,    2, 0x06 /* Public */,
+       4,    2,   32,    2, 0x06 /* Public */,
+       7,    2,   37,    2, 0x06 /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,

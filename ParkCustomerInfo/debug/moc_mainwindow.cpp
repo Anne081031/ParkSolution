@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.3.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,12 +20,12 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[32];
-    char stringdata[611];
+    char stringdata[610];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_MainWindow_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_MainWindow_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
@@ -79,7 +79,7 @@ QT_MOC_LITERAL(31, 589, 20)
     "on_cbxUpdating_currentIndexChanged\0"
     "on_cbxAll_currentIndexChanged\0"
     "on_actCommonData_triggered\0"
-    "on_actExit_triggered\0"
+    "on_actExit_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -97,28 +97,28 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,  124,    2, 0x08,
-       5,    2,  127,    2, 0x08,
-       7,    1,  132,    2, 0x08,
-       8,    1,  135,    2, 0x08,
-       9,    1,  138,    2, 0x08,
-      11,    2,  141,    2, 0x08,
-      14,    2,  146,    2, 0x08,
-      16,    1,  151,    2, 0x08,
-      18,    1,  154,    2, 0x08,
-      19,    0,  157,    2, 0x08,
-      20,    0,  158,    2, 0x08,
-      21,    0,  159,    2, 0x08,
-      22,    0,  160,    2, 0x08,
-      23,    0,  161,    2, 0x08,
-      24,    0,  162,    2, 0x08,
-      25,    0,  163,    2, 0x08,
-      26,    0,  164,    2, 0x08,
-      27,    1,  165,    2, 0x08,
-      28,    1,  168,    2, 0x08,
-      29,    1,  171,    2, 0x08,
-      30,    0,  174,    2, 0x08,
-      31,    0,  175,    2, 0x08,
+       1,    1,  124,    2, 0x08 /* Private */,
+       5,    2,  127,    2, 0x08 /* Private */,
+       7,    1,  132,    2, 0x08 /* Private */,
+       8,    1,  135,    2, 0x08 /* Private */,
+       9,    1,  138,    2, 0x08 /* Private */,
+      11,    2,  141,    2, 0x08 /* Private */,
+      14,    2,  146,    2, 0x08 /* Private */,
+      16,    1,  151,    2, 0x08 /* Private */,
+      18,    1,  154,    2, 0x08 /* Private */,
+      19,    0,  157,    2, 0x08 /* Private */,
+      20,    0,  158,    2, 0x08 /* Private */,
+      21,    0,  159,    2, 0x08 /* Private */,
+      22,    0,  160,    2, 0x08 /* Private */,
+      23,    0,  161,    2, 0x08 /* Private */,
+      24,    0,  162,    2, 0x08 /* Private */,
+      25,    0,  163,    2, 0x08 /* Private */,
+      26,    0,  164,    2, 0x08 /* Private */,
+      27,    1,  165,    2, 0x08 /* Private */,
+      28,    1,  168,    2, 0x08 /* Private */,
+      29,    1,  171,    2, 0x08 /* Private */,
+      30,    0,  174,    2, 0x08 /* Private */,
+      31,    0,  175,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, 0x80000000 | 3,    4,

@@ -7,7 +7,7 @@ SUBDIRS += \
     AssessibilityModule \
     DatabaseModule \
     #DeviceControllerModule \
-    #DataParse \
+    DataParse \
     #FeeRateModule \
     #LEDModule \
     LPRModule \
@@ -23,7 +23,7 @@ SUBDIRS += \
     ParkCustomerCenter \
     #TestUI \
     #TestDLL \
-    #ParkCustomerInfo \
+    ParkCustomerInfo \
     #Qt360Safe \
     ParkServer \
     Config

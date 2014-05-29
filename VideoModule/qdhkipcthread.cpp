@@ -2,6 +2,7 @@
 #define HK_PLAY_CTRL "PlayCtrl.dll"
 
 QDigitalCameraThread* QDHkIPCThread::pThreadInstance = NULL;
+char QDHkIPCThread::caFrameBuffer[ MAX_IPC_VIDEO_WAY ][ MAX_FRAME_SIZE ] = { 0 };
 
 QDHkIPCThread::QDHkIPCThread(QObject *parent) :
     QDigitalCameraThread(parent)
@@ -27,11 +28,14 @@ QDHkIPCThread::~QDHkIPCThread( )
 void QDHkIPCThread::GetFunctionPointer( )
 {
     MyPlayM4_GetPort = NULL;
+    MyPlayM4_FreePort = NULL;
     MyPlayM4_SetStreamOpenMode = NULL;
     MyPlayM4_SetDisplayCallBack = NULL;
     MyPlayM4_OpenStream = NULL;
+    MyPlayM4_CloseStream = NULL;
     MyPlayM4_InputData = NULL;
     MyPlayM4_Play = NULL;
+    MyPlayM4_Stop = NULL;
 
     QString strPath = qApp->applicationDirPath( ) + "/" + HK_PLAY_CTRL;
     WCHAR* pPath = ( WCHAR* ) strPath.utf16( );
@@ -42,11 +46,17 @@ void QDHkIPCThread::GetFunctionPointer( )
     }
 
     MyPlayM4_GetPort = ( PlayM4_GetPort ) ::GetProcAddress( hDllMod, "PlayM4_GetPort" );
+    MyPlayM4_FreePort = ( PlayM4_FreePort ) ::GetProcAddress( hDllMod, "PlayM4_FreePort" );
+
     MyPlayM4_SetStreamOpenMode = ( PlayM4_SetStreamOpenMode ) ::GetProcAddress( hDllMod, "PlayM4_SetStreamOpenMode" );
     MyPlayM4_SetDisplayCallBack = ( PlayM4_SetDisplayCallBack ) ::GetProcAddress( hDllMod, "PlayM4_SetDisplayCallBack" );
-    MyPlayM4_OpenStream = ( PlayM4_OpenStream ) ::GetProcAddress( hDllMod, "PlayM4_OpenStream" );
     MyPlayM4_InputData = ( PlayM4_InputData ) ::GetProcAddress( hDllMod, "PlayM4_InputData" );
+
+    MyPlayM4_OpenStream = ( PlayM4_OpenStream ) ::GetProcAddress( hDllMod, "PlayM4_OpenStream" );
+    MyPlayM4_CloseStream = ( PlayM4_CloseStream ) ::GetProcAddress( hDllMod, "PlayM4_CloseStream" );
+
     MyPlayM4_Play = ( PlayM4_Play ) ::GetProcAddress( hDllMod, "PlayM4_Play" );
+    MyPlayM4_Stop = ( PlayM4_Stop ) ::GetProcAddress( hDllMod, "PlayM4_Stop" );
 }
 
 QDigitalCameraThread* QDHkIPCThread::GetInstance( )
@@ -58,6 +68,26 @@ QDigitalCameraThread* QDHkIPCThread::GetInstance( )
     }
 
     return pThreadInstance;
+}
+
+void QDHkIPCThread::FreePlayPort( LONG lRealHandle )
+{
+    LONG& nChannelID = lPlayPorts[ GetChannel( lRealHandle ) ];
+    bool bValid = ( -1 != nChannelID );
+
+    if ( bValid && NULL != MyPlayM4_Stop ) {
+         MyPlayM4_Stop( nChannelID );
+    }
+
+    if ( bValid && NULL != MyPlayM4_CloseStream ) {
+         MyPlayM4_CloseStream( nChannelID ) ;
+    }
+
+    if ( bValid && NULL != MyPlayM4_FreePort ) {
+         MyPlayM4_FreePort( nChannelID ) ;
+    }
+
+    nChannelID = -1;
 }
 
 void QDHkIPCThread::SendNotify( DWORD dwType, LONG lUserID, LONG lHandle )
@@ -90,6 +120,7 @@ void QDHkIPCThread::SendNotify( DWORD dwType, LONG lUserID, LONG lHandle )
 
     case EXCEPTION_RECONNECT :
         strText = "预览时重连";
+        FreePlayPort( lHandle );
         break;
 
     case EXCEPTION_ALARMRECONNECT :
@@ -179,7 +210,10 @@ void QDHkIPCThread::RealDataStreamCallback( LONG lRealHandle, DWORD dwDataType, 
 
 void QDHkIPCThread::RealDataCallback( LONG lRealHandle, DWORD dwDataType, BYTE *pBuffer, DWORD dwBufSize, void *pUser )
 {
-    if ( NULL == pUser ) {
+    //qDebug( ) << Q_FUNC_INFO << QThread::currentThread( )->objectName( )
+    //         << QThread::currentThreadId( ) << endl;
+
+    if ( NULL == pUser ) { //run at HK Thread
         return;
     }
 
@@ -195,12 +229,20 @@ void QDHkIPCThread::DisplayCBFun( long nPort, char *pBuf, long nSize,
     Q_UNUSED( nType )
     Q_UNUSED( nReceved )
 
-    if ( NULL == pBuf || 0 >= nSize ) {
+    //qDebug( ) << Q_FUNC_INFO << QThread::currentThread( )->objectName( )
+    //          << QThread::currentThreadId( ) << endl;
+
+    if ( NULL == pBuf || 0 >= nSize || 0 > nPort ) { // run at HK two Threads
         return;
     }
 
     QByteArray byVideo;
+    byVideo.reserve( nSize );
     //byVideo.append( ( const char* ) pBuf, nSize );
+
+    //bool bEnter = ( 0 == nPort % 2 );
+
+    //CopyMemory( caFrameBuffer[ bEnter ], pBuf, nSize );
 
     QBuffer byBuffer( &byVideo );
     if ( !byBuffer.open( QBuffer::WriteOnly ) ) {
@@ -524,6 +566,9 @@ void QDHkIPCThread::ProcessIPCCleanupEvent( QCameraEvent* pEvent )
 
 void QDHkIPCThread::customEvent( QEvent *e )
 {
+    //qDebug( ) << Q_FUNC_INFO << QThread::currentThread( )->objectName( )
+    //          << QThread::currentThreadId( ) << endl;
+
     QCameraEvent* pEvent = ( QCameraEvent* ) e;
     QCameraEvent::CameraEventType evtType = ( QCameraEvent::CameraEventType ) pEvent->type( );
 

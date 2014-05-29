@@ -114,7 +114,9 @@ void MainWindow::closeEvent( QCloseEvent *e )
         return;
     }
 
-    pPlateThread->PostPlateUninitEvent( 0 );
+    for ( int nIndex = 0; nIndex < nPlateWay; nIndex++ ) {
+        pPlateThread->PostPlateUninitEvent( nIndex );
+    }
 }
 
 MainWindow::~MainWindow()
@@ -409,15 +411,14 @@ void MainWindow::StartPlateThread( )
     pConfigurator->GetPlateMultiThread( bMultiThread );
     pPlateThread->SetPlateMultiThread( bMultiThread );
 
-    int nWay;
-    pConfigurator->GetPlateWay( nWay );
-    pPlateThread->SetPlateWay( nWay );
+    pConfigurator->GetPlateWay( nPlateWay );
+    pPlateThread->SetPlateWay( nPlateWay );
 
     pConfigurator->GetPlateVideo( bPlateVideo );
 
     int nFormat = GetImageFormat( );//ImageFormatBGR;
 
-    for ( int nIndex = 0; nIndex < nWay; nIndex++ ) {
+    for ( int nIndex = 0; nIndex < nPlateWay; nIndex++ ) {
         pPlateThread->PostPlateInitEvent( nFormat, nIndex, bMultiThread );
     }
 }

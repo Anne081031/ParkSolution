@@ -16,6 +16,7 @@ class COMMONMODULESHARED_EXPORT QCommonFunction : public QObject
 public:
     static void ReadAllFile( const QString& strFile, QByteArray& byData );
     static void GetAppCaptureImagePath( QString& strPath );
+    static void GetImageFromBase64( QByteArray& byImage, const QString& strBase64 );
     static void GetImageBase64( QString &strBase64, const QString& strFile );
     static void GetImageBase64( QString &strBase64, const QByteArray& byFile );
     static void GetCurrentDateTime( QString& strDateTime );
@@ -32,7 +33,7 @@ public:
     static bool SystemCloseEvent( QWidget* pParent, QCloseEvent* pEvent );
     static QMessageBox::StandardButtons SaveDataBox( QWidget* pParent );
     static QMessageBox::StandardButtons DeleteDataBox( QWidget* pParent, QString& strText );
-    static void CloseDiaglogBox( QWidget* pParent, QCloseEvent* pEvent );
+    static bool CloseDiaglogBox( QWidget* pParent, QCloseEvent* pEvent );
     static QMessageBox::StandardButtons MessageBox( QString& strTitle, QString& strText, QWidget* pParent, QMessageBox::Icon icon );
     static void InformationBox( QWidget* pParent, QString& strText );
     static void SetMessageBoxProperty( QMessageBox& msgBox, QMessageBox::Icon icon,
@@ -50,7 +51,7 @@ public:
     static void GetDlgLoginStyleSheet( QString& strDlgStyleSheet );
     static void GetCbxStyleSheet( QString& strCbxStyleSheet );
     static void GetTableViewStyleSheet( QString& strTabViewStyleSheet );
-    static void SetButtonMiniSize( QAbstractButton* pBtn );
+    static void SetButtonMiniSize( QAbstractButton* pBtn, int nWidth = 75, int nHeight = 23 );
     static void SetScrollAreaStyleSheet( QScrollArea* pScrArea );
 
 private:

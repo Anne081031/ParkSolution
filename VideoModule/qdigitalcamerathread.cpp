@@ -5,12 +5,16 @@
 QDigitalCameraThread::QDigitalCameraThread(QObject *parent) :
     QThread(parent)
 {
-    pPlateThread = QPlateThread::GetInstance( );
+    pPlateThread = NULL;
     pCodec = QCommonFunction::GetTextCodec( );
 }
 
 QPlateThread* QDigitalCameraThread::GetPlateThread( )
 {
+    if ( NULL == pPlateThread ) {
+        pPlateThread = QPlateThread::GetInstance( );
+    }
+
     return pPlateThread;
 }
 

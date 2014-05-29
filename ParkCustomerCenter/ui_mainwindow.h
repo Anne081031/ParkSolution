@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.2.1
+** Created by: Qt User Interface Compiler version 5.3.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -35,6 +35,7 @@ public:
     QAction *actCustomerInfo;
     QAction *actionExit;
     QAction *actVehicleStatistics;
+    QAction *actQueryData;
     QWidget *centralWidget;
     QWidget *widget2;
     QWidget *formLayoutWidget_3;
@@ -210,18 +211,20 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1170, 607);
+        MainWindow->resize(1408, 830);
         actCustomerInfo = new QAction(MainWindow);
         actCustomerInfo->setObjectName(QStringLiteral("actCustomerInfo"));
         actionExit = new QAction(MainWindow);
         actionExit->setObjectName(QStringLiteral("actionExit"));
         actVehicleStatistics = new QAction(MainWindow);
         actVehicleStatistics->setObjectName(QStringLiteral("actVehicleStatistics"));
+        actQueryData = new QAction(MainWindow);
+        actQueryData->setObjectName(QStringLiteral("actQueryData"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         widget2 = new QWidget(centralWidget);
         widget2->setObjectName(QStringLiteral("widget2"));
-        widget2->setGeometry(QRect(200, 40, 181, 111));
+        widget2->setGeometry(QRect(220, 20, 181, 111));
         widget2->setMinimumSize(QSize(0, 111));
         widget2->setMaximumSize(QSize(16777215, 111));
         formLayoutWidget_3 = new QWidget(widget2);
@@ -282,7 +285,7 @@ public:
 
         wgtLeftPanel = new QWidget(centralWidget);
         wgtLeftPanel->setObjectName(QStringLiteral("wgtLeftPanel"));
-        wgtLeftPanel->setGeometry(QRect(70, 0, 31, 31));
+        wgtLeftPanel->setGeometry(QRect(410, 20, 31, 31));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -290,7 +293,7 @@ public:
         wgtLeftPanel->setSizePolicy(sizePolicy);
         widget3 = new QWidget(centralWidget);
         widget3->setObjectName(QStringLiteral("widget3"));
-        widget3->setGeometry(QRect(200, 180, 181, 111));
+        widget3->setGeometry(QRect(230, 150, 181, 111));
         widget3->setMinimumSize(QSize(0, 111));
         widget3->setMaximumSize(QSize(16777215, 111));
         formLayoutWidget_4 = new QWidget(widget3);
@@ -351,7 +354,7 @@ public:
 
         widget0 = new QWidget(centralWidget);
         widget0->setObjectName(QStringLiteral("widget0"));
-        widget0->setGeometry(QRect(10, 40, 181, 111));
+        widget0->setGeometry(QRect(20, 20, 181, 111));
         widget0->setMinimumSize(QSize(0, 111));
         widget0->setMaximumSize(QSize(16777215, 111));
         formLayoutWidget = new QWidget(widget0);
@@ -412,7 +415,7 @@ public:
 
         gridLayoutWidget_2 = new QWidget(centralWidget);
         gridLayoutWidget_2->setObjectName(QStringLiteral("gridLayoutWidget_2"));
-        gridLayoutWidget_2->setGeometry(QRect(30, 0, 31, 21));
+        gridLayoutWidget_2->setGeometry(QRect(1200, 250, 16, 21));
         gridLayoutLeftPanel = new QGridLayout(gridLayoutWidget_2);
         gridLayoutLeftPanel->setSpacing(6);
         gridLayoutLeftPanel->setContentsMargins(11, 11, 11, 11);
@@ -420,7 +423,7 @@ public:
         gridLayoutLeftPanel->setContentsMargins(0, 0, 0, 0);
         widget1 = new QWidget(centralWidget);
         widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(10, 180, 181, 111));
+        widget1->setGeometry(QRect(20, 150, 181, 111));
         widget1->setMinimumSize(QSize(0, 111));
         widget1->setMaximumSize(QSize(16777215, 111));
         formLayoutWidget_2 = new QWidget(widget1);
@@ -481,7 +484,7 @@ public:
 
         gridLayoutWidget = new QWidget(centralWidget);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
-        gridLayoutWidget->setGeometry(QRect(0, 0, 21, 21));
+        gridLayoutWidget->setGeometry(QRect(1200, 280, 21, 21));
         mainGridLayout = new QGridLayout(gridLayoutWidget);
         mainGridLayout->setSpacing(6);
         mainGridLayout->setContentsMargins(11, 11, 11, 11);
@@ -489,12 +492,12 @@ public:
         mainGridLayout->setContentsMargins(0, 0, 0, 0);
         wgtRightPanel = new QWidget(centralWidget);
         wgtRightPanel->setObjectName(QStringLiteral("wgtRightPanel"));
-        wgtRightPanel->setGeometry(QRect(120, 0, 31, 31));
+        wgtRightPanel->setGeometry(QRect(500, 20, 31, 31));
         sizePolicy.setHeightForWidth(wgtRightPanel->sizePolicy().hasHeightForWidth());
         wgtRightPanel->setSizePolicy(sizePolicy);
         gridLayoutWidget_3 = new QWidget(centralWidget);
         gridLayoutWidget_3->setObjectName(QStringLiteral("gridLayoutWidget_3"));
-        gridLayoutWidget_3->setGeometry(QRect(170, 0, 31, 31));
+        gridLayoutWidget_3->setGeometry(QRect(1200, 320, 21, 21));
         gridLayoutRightPanel = new QGridLayout(gridLayoutWidget_3);
         gridLayoutRightPanel->setSpacing(6);
         gridLayoutRightPanel->setContentsMargins(11, 11, 11, 11);
@@ -502,12 +505,12 @@ public:
         gridLayoutRightPanel->setContentsMargins(0, 0, 0, 0);
         lblDetail = new QLabel(centralWidget);
         lblDetail->setObjectName(QStringLiteral("lblDetail"));
-        lblDetail->setGeometry(QRect(220, 10, 54, 30));
+        lblDetail->setGeometry(QRect(600, 30, 54, 30));
         lblDetail->setMinimumSize(QSize(0, 30));
         lblDetail->setAlignment(Qt::AlignCenter);
         widget4 = new QWidget(centralWidget);
         widget4->setObjectName(QStringLiteral("widget4"));
-        widget4->setGeometry(QRect(420, 10, 221, 41));
+        widget4->setGeometry(QRect(830, 310, 221, 41));
         formLayoutWidget_5 = new QWidget(widget4);
         formLayoutWidget_5->setObjectName(QStringLiteral("formLayoutWidget_5"));
         formLayoutWidget_5->setGeometry(QRect(10, 10, 160, 32));
@@ -532,7 +535,7 @@ public:
 
         widget5 = new QWidget(centralWidget);
         widget5->setObjectName(QStringLiteral("widget5"));
-        widget5->setGeometry(QRect(420, 60, 221, 41));
+        widget5->setGeometry(QRect(830, 360, 221, 41));
         formLayoutWidget_6 = new QWidget(widget5);
         formLayoutWidget_6->setObjectName(QStringLiteral("formLayoutWidget_6"));
         formLayoutWidget_6->setGeometry(QRect(10, 10, 160, 32));
@@ -557,7 +560,7 @@ public:
 
         widget6 = new QWidget(centralWidget);
         widget6->setObjectName(QStringLiteral("widget6"));
-        widget6->setGeometry(QRect(420, 110, 221, 41));
+        widget6->setGeometry(QRect(830, 410, 221, 41));
         formLayoutWidget_7 = new QWidget(widget6);
         formLayoutWidget_7->setObjectName(QStringLiteral("formLayoutWidget_7"));
         formLayoutWidget_7->setGeometry(QRect(10, 10, 160, 32));
@@ -582,7 +585,7 @@ public:
 
         scrCustomer = new QScrollArea(centralWidget);
         scrCustomer->setObjectName(QStringLiteral("scrCustomer"));
-        scrCustomer->setGeometry(QRect(430, 160, 120, 80));
+        scrCustomer->setGeometry(QRect(470, 80, 120, 80));
         scrCustomer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         scrCustomer->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         scrCustomer->setWidgetResizable(true);
@@ -592,7 +595,7 @@ public:
         scrCustomer->setWidget(scrollAreaWidgetContents);
         scrVehicle = new QScrollArea(centralWidget);
         scrVehicle->setObjectName(QStringLiteral("scrVehicle"));
-        scrVehicle->setGeometry(QRect(430, 260, 120, 80));
+        scrVehicle->setGeometry(QRect(470, 180, 120, 80));
         scrVehicle->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
@@ -600,7 +603,7 @@ public:
         scrVehicle->setWidget(scrollAreaWidgetContents_2);
         formLayoutWidget_8 = new QWidget(centralWidget);
         formLayoutWidget_8->setObjectName(QStringLiteral("formLayoutWidget_8"));
-        formLayoutWidget_8->setGeometry(QRect(660, 10, 160, 161));
+        formLayoutWidget_8->setGeometry(QRect(1230, 0, 160, 161));
         formLayout7 = new QFormLayout(formLayoutWidget_8);
         formLayout7->setSpacing(6);
         formLayout7->setContentsMargins(11, 11, 11, 11);
@@ -685,10 +688,10 @@ public:
 
         widget7 = new QWidget(centralWidget);
         widget7->setObjectName(QStringLiteral("widget7"));
-        widget7->setGeometry(QRect(570, 170, 41, 41));
+        widget7->setGeometry(QRect(90, 300, 41, 41));
         formLayoutWidget_9 = new QWidget(centralWidget);
         formLayoutWidget_9->setObjectName(QStringLiteral("formLayoutWidget_9"));
-        formLayoutWidget_9->setGeometry(QRect(830, 10, 160, 161));
+        formLayoutWidget_9->setGeometry(QRect(1230, 170, 160, 161));
         formLayout8 = new QFormLayout(formLayoutWidget_9);
         formLayout8->setSpacing(6);
         formLayout8->setContentsMargins(11, 11, 11, 11);
@@ -775,10 +778,10 @@ public:
 
         widget8 = new QWidget(centralWidget);
         widget8->setObjectName(QStringLiteral("widget8"));
-        widget8->setGeometry(QRect(620, 170, 41, 41));
+        widget8->setGeometry(QRect(30, 300, 41, 41));
         formLayoutWidget_10 = new QWidget(centralWidget);
         formLayoutWidget_10->setObjectName(QStringLiteral("formLayoutWidget_10"));
-        formLayoutWidget_10->setGeometry(QRect(1000, 10, 160, 161));
+        formLayoutWidget_10->setGeometry(QRect(1230, 340, 160, 161));
         formLayout9 = new QFormLayout(formLayoutWidget_10);
         formLayout9->setSpacing(6);
         formLayout9->setContentsMargins(11, 11, 11, 11);
@@ -865,7 +868,7 @@ public:
 
         formLayoutWidget_11 = new QWidget(centralWidget);
         formLayoutWidget_11->setObjectName(QStringLiteral("formLayoutWidget_11"));
-        formLayoutWidget_11->setGeometry(QRect(660, 190, 160, 161));
+        formLayoutWidget_11->setGeometry(QRect(880, 540, 160, 161));
         formLayout10 = new QFormLayout(formLayoutWidget_11);
         formLayout10->setSpacing(6);
         formLayout10->setContentsMargins(11, 11, 11, 11);
@@ -952,7 +955,7 @@ public:
 
         formLayoutWidget_12 = new QWidget(centralWidget);
         formLayoutWidget_12->setObjectName(QStringLiteral("formLayoutWidget_12"));
-        formLayoutWidget_12->setGeometry(QRect(830, 190, 160, 161));
+        formLayoutWidget_12->setGeometry(QRect(1070, 520, 160, 161));
         formLayout11 = new QFormLayout(formLayoutWidget_12);
         formLayout11->setSpacing(6);
         formLayout11->setContentsMargins(11, 11, 11, 11);
@@ -1039,7 +1042,7 @@ public:
 
         formLayoutWidget_13 = new QWidget(centralWidget);
         formLayoutWidget_13->setObjectName(QStringLiteral("formLayoutWidget_13"));
-        formLayoutWidget_13->setGeometry(QRect(1000, 190, 160, 161));
+        formLayoutWidget_13->setGeometry(QRect(1250, 510, 160, 161));
         formLayout12 = new QFormLayout(formLayoutWidget_13);
         formLayout12->setSpacing(6);
         formLayout12->setContentsMargins(11, 11, 11, 11);
@@ -1100,7 +1103,7 @@ public:
 
         gridLayoutWidget_4 = new QWidget(centralWidget);
         gridLayoutWidget_4->setObjectName(QStringLiteral("gridLayoutWidget_4"));
-        gridLayoutWidget_4->setGeometry(QRect(670, 360, 61, 41));
+        gridLayoutWidget_4->setGeometry(QRect(1200, 220, 21, 21));
         gridLayoutCustomer = new QGridLayout(gridLayoutWidget_4);
         gridLayoutCustomer->setSpacing(6);
         gridLayoutCustomer->setContentsMargins(11, 11, 11, 11);
@@ -1108,7 +1111,7 @@ public:
         gridLayoutCustomer->setContentsMargins(0, 0, 0, 0);
         gridLayoutWidget_5 = new QWidget(centralWidget);
         gridLayoutWidget_5->setObjectName(QStringLiteral("gridLayoutWidget_5"));
-        gridLayoutWidget_5->setGeometry(QRect(770, 360, 61, 41));
+        gridLayoutWidget_5->setGeometry(QRect(1200, 190, 21, 21));
         gridLayoutVehicle = new QGridLayout(gridLayoutWidget_5);
         gridLayoutVehicle->setSpacing(6);
         gridLayoutVehicle->setContentsMargins(11, 11, 11, 11);
@@ -1116,32 +1119,32 @@ public:
         gridLayoutVehicle->setContentsMargins(0, 0, 0, 0);
         widget9 = new QWidget(centralWidget);
         widget9->setObjectName(QStringLiteral("widget9"));
-        widget9->setGeometry(QRect(570, 230, 41, 31));
+        widget9->setGeometry(QRect(150, 300, 41, 31));
         widget10 = new QWidget(centralWidget);
         widget10->setObjectName(QStringLiteral("widget10"));
-        widget10->setGeometry(QRect(570, 270, 41, 31));
+        widget10->setGeometry(QRect(210, 300, 41, 31));
         widget11 = new QWidget(centralWidget);
         widget11->setObjectName(QStringLiteral("widget11"));
-        widget11->setGeometry(QRect(570, 320, 41, 31));
+        widget11->setGeometry(QRect(270, 300, 41, 31));
         widget12 = new QWidget(centralWidget);
         widget12->setObjectName(QStringLiteral("widget12"));
-        widget12->setGeometry(QRect(570, 360, 41, 31));
+        widget12->setGeometry(QRect(330, 300, 41, 31));
         widget13 = new QWidget(centralWidget);
         widget13->setObjectName(QStringLiteral("widget13"));
-        widget13->setGeometry(QRect(570, 400, 41, 31));
+        widget13->setGeometry(QRect(380, 300, 41, 31));
         widget14 = new QWidget(centralWidget);
         widget14->setObjectName(QStringLiteral("widget14"));
-        widget14->setGeometry(QRect(570, 440, 41, 31));
+        widget14->setGeometry(QRect(440, 300, 41, 31));
         tabServiceRecord = new QTableView(centralWidget);
         tabServiceRecord->setObjectName(QStringLiteral("tabServiceRecord"));
-        tabServiceRecord->setGeometry(QRect(25, 301, 331, 241));
+        tabServiceRecord->setGeometry(QRect(60, 580, 131, 81));
         tabServiceRecord->setSelectionMode(QAbstractItemView::SingleSelection);
         tabServiceRecord->setSelectionBehavior(QAbstractItemView::SelectRows);
         tabServiceRecord->verticalHeader()->setVisible(false);
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1170, 19));
+        menuBar->setGeometry(QRect(0, 0, 1408, 19));
         menu = new QMenu(menuBar);
         menu->setObjectName(QStringLiteral("menu"));
         menu_2 = new QMenu(menuBar);
@@ -1209,6 +1212,7 @@ public:
         menu->addSeparator();
         menu->addAction(actionExit);
         menu_2->addAction(actVehicleStatistics);
+        menu_2->addAction(actQueryData);
 
         retranslateUi(MainWindow);
 
@@ -1223,7 +1227,11 @@ public:
         actCustomerInfo->setToolTip(QApplication::translate("MainWindow", "\345\256\242\346\210\267\350\265\204\346\226\231\347\256\241\347\220\206", 0));
 #endif // QT_NO_TOOLTIP
         actionExit->setText(QApplication::translate("MainWindow", "\351\200\200\345\207\272\347\263\273\347\273\237", 0));
-        actVehicleStatistics->setText(QApplication::translate("MainWindow", "\350\275\246\350\276\206\350\277\233\345\205\245\347\273\237\350\256\241", 0));
+        actVehicleStatistics->setText(QApplication::translate("MainWindow", "\350\275\246\350\276\206\350\277\233\345\205\245\347\273\237\350\256\241\346\212\245\350\241\250", 0));
+        actQueryData->setText(QApplication::translate("MainWindow", "\346\237\245\350\257\242\346\225\260\346\215\256", 0));
+#ifndef QT_NO_TOOLTIP
+        actQueryData->setToolTip(QApplication::translate("MainWindow", "\346\237\245\350\257\242\346\225\260\346\215\256", 0));
+#endif // QT_NO_TOOLTIP
         lblCustomerName2->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\345\220\215\347\247\260", 0));
         lblCustomerCategory2->setText(QApplication::translate("MainWindow", "  \345\256\242\346\210\267\347\261\273\345\210\253", 0));
         lblPlate2->setText(QApplication::translate("MainWindow", "  \350\275\246\347\211\214\345\217\267\347\240\201", 0));
@@ -1285,7 +1293,7 @@ public:
         label_33->setText(QApplication::translate("MainWindow", "  \344\270\213\346\254\241\344\277\235\345\205\273\346\227\245\346\234\237", 0));
         label_34->setText(QApplication::translate("MainWindow", "  \350\275\246\350\276\206\346\200\273\344\275\223\347\212\266\345\206\265", 0));
         menu->setTitle(QApplication::translate("MainWindow", "\347\263\273\347\273\237\347\256\241\347\220\206", 0));
-        menu_2->setTitle(QApplication::translate("MainWindow", "\346\212\245\350\241\250", 0));
+        menu_2->setTitle(QApplication::translate("MainWindow", "\346\225\260\346\215\256", 0));
     } // retranslateUi
 
 };

@@ -31,21 +31,42 @@ MainWindow::MainWindow(QWidget *parent) :
     StartZmqClientThread( );
     ConnectDatabase( );
     StartVideoThread( );
+    CreateQueryFrame( );
 }
 
 MainWindow::~MainWindow()
 {
+    delete pFrameQueryData;
     delete pDlgReport;
     delete pSysTrayIcon;
     DestroyImageLabel( );
     delete ui;
 }
 
+void MainWindow::CreateQueryFrame( )
+{
+    pFrameQueryData = new QFrameQueryData( );
+
+    connect( pFrameQueryData, SIGNAL( QueryData( QStringList ) ),
+             this, SLOT( HandleQueryData( QStringList ) ) );
+    connect( pFrameQueryData, SIGNAL( QueryDataset( QStringList, QObject* ) ),
+             this, SLOT( HandleQueryDataset( QStringList, QObject* ) ) );
+}
+
 void MainWindow::GetCommonConfigData( )
 {
+    bCustomerInVideo = false;
+    bCustomerOutVideo = false;
+    bCustomerCenter = true;
     pConfigurator->GetVideoType( bIPCVideo );
+
+    if ( !bIPCVideo ) {
+        return;
+    }
+
     pConfigurator->GetCustomerInVideo( bCustomerInVideo );
     pConfigurator->GetCustomerOutVideo( bCustomerOutVideo );
+    bCustomerCenter  = !( bCustomerInVideo || bCustomerOutVideo );
 }
 
 void MainWindow::CreateReportDlg( )
@@ -95,6 +116,16 @@ void MainWindow::SystemTrayIcon( )
 void MainWindow::HandleMessageClicked( )
 {
 
+}
+
+void MainWindow::HandleQueryDataset( QStringList lstParams, QObject * pModel )
+{
+    pDatabaseThread->PostQueryInOutRecordEvent( lstParams, ( QSqlQueryModel* ) pModel );
+}
+
+void MainWindow::HandleQueryData( QStringList lstParams )
+{
+    pDatabaseThread->PostQueryInOutImageEvent( lstParams );
 }
 
 void MainWindow::HandleShowHoverWindow( bool bVisible )
@@ -152,7 +183,7 @@ void MainWindow::SetServiceViewColumnName( QSqlQueryModel* pModel )
 
 void MainWindow::StartZmqClientThread( )
 {
-    //return;
+    return;
     pZmqClientThread = QZmqClientThread::CreateInstance( );
 
     pPlateParserThread = QPlateParserThread::CreateInstance( );
@@ -245,6 +276,8 @@ void MainWindow::HandleSpResult( int nSpType, QByteArray byData )
         dlgLogin.FillUser( byData );
     } else if ( ParkSolution::SpReportInfo == nSpType ) {
         pDlgReport->DisplayReport( byData );
+    } else if ( ParkSolution::SpQueryInOutImage ) {
+        pFrameQueryData->QueryImageFinished( byData );
     }
 }
 
@@ -359,6 +392,8 @@ void MainWindow::HandleSpResultset( int nSpType, QObject* pQSqlQueryModel )
         ui->tabServiceRecord->setModel( pModel );
         HideTableViewColumn( ui->tabServiceRecord );
         SetServiceViewColumnName( pModel );
+    } else if ( ParkSolution::SpQueryInOutRecord == nSpType ) {
+        pFrameQueryData->QueryInOutRecordFinished( );
     }
 
     qDebug( ) << pModel->lastError( ).text( ) << endl;
@@ -381,8 +416,17 @@ void MainWindow::HandleInfoBKResize( int nIndex, QSize bkSize )
 void MainWindow::HandleBKResize(int nIndex, QSize bkSize)
 {
     int nDeltaX = 4;
+    int nDeltaY = 0;
+
+    if ( bCustomerOutVideo && 5 == nIndex ) {
+        pOutWayLabel->setGeometry( nDeltaX, nDeltaY,
+                           bkSize.width( ) - nDeltaX,
+                           bkSize.height( ) - nDeltaY );
+        return;
+    }
+
     bool bBigPicture = ( 4 == nIndex );
-    int nDeltaY = bBigPicture ? nDeltaX : 0;
+    nDeltaY = bBigPicture ? nDeltaX : 0;
 
     QImageLabel* pLbl = pImageLabels[ nIndex ];
 
@@ -408,19 +452,29 @@ void MainWindow::CreateInfoWidget( )
 
 void MainWindow::StartVideoThread( )
 {
-    if ( !bIPCVideo ) {
+    pDigitalCamera = NULL;
+    nVideoWay = 0;
+
+    if ( !bIPCVideo || ( !bCustomerInVideo && !bCustomerOutVideo ) ) {
         return;
     }
 
-    pDigitalCamera = NULL;
-    nVideoWay = 1;
+    //setWindowTitle( "门岗" );
 
     pConfigurator->GetVideoWay( nVideoWay );
 
-    hVideoWnds[ 0 ] = ( HWND ) pImageLabels[ IMAGE_LABEL_COUNT - 1 ]->winId( );
-    hVideoWnds[ 1 ] = NULL;
+    QImageLabel* pInWayLabel = pImageLabels[ IMAGE_LABEL_COUNT - 1 ];
+    QImageBKForm* pForm = ( QImageBKForm* )pInWayLabel->parent( );
+    pForm->setToolTip( "" );
+    pOutWayBK->setToolTip( "" );
+
+    hVideoWnds[ 0 ] = bCustomerInVideo ? ( HWND ) pInWayLabel->winId( ) : NULL;
+    hVideoWnds[ 1 ] = bCustomerOutVideo ? ( HWND ) pOutWayLabel->winId( ) : NULL;
     hVideoWnds[ 2 ] = NULL;
     hVideoWnds[ 3 ] = NULL;
+
+    //QWidget* pParent = ( QWidget* ) pImageLabels[ IMAGE_LABEL_COUNT - 1 ]->parent( );
+    //::BringWindowToTop( ( HWND ) pParent->winId( ) );
 
     QString strIPCCamera;
     pConfigurator->GetIPCamera( strIPCCamera );
@@ -479,8 +533,6 @@ void MainWindow::CreateImageLabel( )
     for ( int nIndex = 0; nIndex < IMAGE_LABEL_COUNT; nIndex++ ) {
         QImageLabel* pLbl = new QImageLabel( nIndex );
         pImageLabels[ nIndex ] = pLbl;
-        connect( pLbl, SIGNAL( DoubleCickEvent( QMouseEvent*, int )  ),
-                 this, SLOT( OnImageLabelDoubleClick( QMouseEvent*, int ) ) );
 
         QImageBKForm* pForm = new QImageBKForm( nIndex );
         pImageBK[ nIndex ] = pForm;
@@ -488,6 +540,25 @@ void MainWindow::CreateImageLabel( )
                  this, SLOT( HandleBKResize( int,QSize ) ) );
 
         pLbl->setParent( pForm );
+
+        if ( IMAGE_LABEL_COUNT- 1 == nIndex && bCustomerInVideo ) {
+            continue;
+        }
+
+        connect( pLbl, SIGNAL( DoubleCickEvent( QMouseEvent*, int )  ),
+                 this, SLOT( OnImageLabelDoubleClick( QMouseEvent*, int ) ) );
+    }
+
+    pOutWayLabel = NULL;
+    pOutWayBK = NULL;
+
+    if ( !bCustomerCenter ) {
+        pOutWayLabel = new QImageLabel( IMAGE_LABEL_COUNT );
+        pOutWayBK = new QImageBKForm( IMAGE_LABEL_COUNT );
+
+        connect( pOutWayBK, SIGNAL( BKResize( int, QSize ) ),
+                 this, SLOT( HandleBKResize( int,QSize ) ) );
+        pOutWayLabel->setParent( pOutWayBK );
     }
 }
 
@@ -701,7 +772,20 @@ void MainWindow::LayoutUI( )
     ui->gridLayoutLeftPanel->setRowMinimumHeight( 0, 400 );
 
     //ui->gridLayoutLeftPanel->addWidget( pImageLabels[ 4 ], 0, 0, 1, 4 );
-    ui->gridLayoutLeftPanel->addWidget( pImageBK[ 4 ], 0, 0, 1, 4 );
+
+    if ( bCustomerCenter ) {
+        // No Video / Video
+        ui->gridLayoutLeftPanel->addWidget( pImageBK[ 4 ], 0, 0, 1, 4 );
+    } else {
+        if ( bCustomerInVideo && bCustomerOutVideo ) {
+            ui->gridLayoutLeftPanel->addWidget( pImageBK[ 4 ], 0, 0, 1, 2 );
+            ui->gridLayoutLeftPanel->addWidget( pOutWayBK, 0, 2, 1, 2 );
+        } else if ( bCustomerInVideo ) {
+            ui->gridLayoutLeftPanel->addWidget( pImageBK[ 4 ], 0, 0, 1, 4 );
+        } else if ( bCustomerOutVideo ) {
+            ui->gridLayoutLeftPanel->addWidget( pOutWayBK, 0, 0, 1, 4 );
+        }
+    }
 /*
     for ( int nIndex = 0; nIndex< 4; nIndex++ ) {
         ui->gridLayoutLeftPanel->addWidget( pImageLabels[ nIndex ], 1, nIndex );
@@ -710,6 +794,11 @@ void MainWindow::LayoutUI( )
     for ( int nIndex = 0; nIndex < 4; nIndex++ ) {
         ui->gridLayoutLeftPanel->addWidget( pImageBK[ nIndex ], 1, nIndex );
     }
+
+    ui->widget0->setVisible( false );
+    ui->widget1->setVisible( false );
+    ui->widget2->setVisible( false );
+    ui->widget3->setVisible( false );
 /*
     ui->gridLayoutLeftPanel->addWidget( ui->widget0, 2, 0 );
     ui->gridLayoutLeftPanel->addWidget( ui->widget1, 2, 1 );
@@ -867,4 +956,9 @@ void MainWindow::HandleReportQuery( QStringList lstParams )
 void MainWindow::on_actVehicleStatistics_triggered()
 {
     pDlgReport->exec( );
+}
+
+void MainWindow::on_actQueryData_triggered()
+{
+    pFrameQueryData->show( );
 }

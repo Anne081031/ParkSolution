@@ -86,6 +86,7 @@ private:
 
     bool bPlateVideo;
     int nVideoWay;
+    int nPlateWay;
     bool bDislpayPlateLog;
     bool bDislpayDbLog;
     bool bDislpayFtpLog;

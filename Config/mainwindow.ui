@@ -6,12 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>865</width>
-    <height>540</height>
+    <width>649</width>
+    <height>397</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>649</width>
+    <height>397</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>649</width>
+    <height>397</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>参数配置</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTabWidget" name="tabWidget">
@@ -19,8 +31,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>841</width>
-      <height>521</height>
+      <width>621</width>
+      <height>341</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -63,7 +75,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QComboBox" name="cbxIPCType"/>
+         <widget class="QComboBox" name="cbxSvrIPCType"/>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
@@ -73,7 +85,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QComboBox" name="cbxIPCStream"/>
+         <widget class="QComboBox" name="cbxSvrIPCStream"/>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_3">
@@ -83,7 +95,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="edtInIPCIP"/>
+         <widget class="QLineEdit" name="edtSvrIPCInIP"/>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_4">
@@ -93,7 +105,7 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QLineEdit" name="edtOutIPCIP_2"/>
+         <widget class="QLineEdit" name="edtSvrIPCOutIP"/>
         </item>
        </layout>
       </widget>
@@ -128,7 +140,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="edtDbHost"/>
+         <widget class="QLineEdit" name="edtSvrDbHost"/>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_6">
@@ -138,7 +150,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="edtDbPort"/>
+         <widget class="QLineEdit" name="edtSvrDbPort"/>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="label_7">
@@ -148,7 +160,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="edtDbUser"/>
+         <widget class="QLineEdit" name="edtSvrDbUser"/>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="label_8">
@@ -158,7 +170,7 @@
          </widget>
         </item>
         <item row="3" column="1">
-         <widget class="QLineEdit" name="edtDbPwd"/>
+         <widget class="QLineEdit" name="edtSvrDbPwd"/>
         </item>
        </layout>
       </widget>
@@ -217,7 +229,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="edtSvrNetListenPort"/>
         </item>
        </layout>
       </widget>
@@ -227,12 +239,139 @@
      <attribute name="title">
       <string>客户中心</string>
      </attribute>
+     <widget class="QGroupBox" name="groupBox_5">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>191</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>车牌识别服务器</string>
+      </property>
+      <widget class="QWidget" name="formLayoutWidget_5">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>171</width>
+         <height>81</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_5">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_10">
+          <property name="text">
+           <string>服务器IP</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="edtCenterPlateSvrIP"/>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_11">
+          <property name="text">
+           <string>服务器端口</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="edtCenterPlateSvrPort"/>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>门岗</string>
      </attribute>
+     <widget class="QGroupBox" name="groupBox_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>201</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>视频</string>
+      </property>
+      <widget class="QWidget" name="formLayoutWidget_6">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>160</width>
+         <height>100</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout_6">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_13">
+          <property name="text">
+           <string>看入视频</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QCheckBox" name="chbGateInVideo">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_15">
+          <property name="text">
+           <string>看出视频</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QCheckBox" name="chbGateOutVideo">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </widget>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>360</y>
+      <width>158</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btnOK">
+       <property name="text">
+        <string>保存</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnClose">
+       <property name="text">
+        <string>关闭</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>

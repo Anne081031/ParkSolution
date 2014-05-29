@@ -12,6 +12,7 @@ class DATABASEMODULESHARED_EXPORT QDatabaseThread : public QBaseThread
 public:
     static QDatabaseThread* CreateInstance( );
     void PostReportInfoEvent( QStringList& lstParams );
+    void PostQueryInOutRecordEvent( QStringList& lstParams, QSqlQueryModel* pModel );
     void PostWriteInOutRecordEvent( QStringList& lstParams );
     void PostWriteInOutRecordEvent( QStringList& lstParams, int nIndex );
     void PostDatabaseConnectEvent( ParkSolution::QStringHash& hashParam );
@@ -51,6 +52,7 @@ private:
     QDatabaseThread* CreateSubThread( int nIndex );
 
     void ProcessReportInfoEvent( QDatabaseEvent* pEvent );
+    void ProcessQueryInOutRecordEvent( QDatabaseEvent* pEvent );
     void ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent );
     void ProcessDatabaseConnectEvent( QDatabaseEvent* pEvent );
     void ProcessDatabaseDisconnectEvent( QDatabaseEvent* pEvent );

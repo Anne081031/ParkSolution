@@ -8,6 +8,8 @@ INPUT(
 ./debug\qserializethread.o
 ./debug\qdlgreport.o
 ./debug\qjsondata.o
+./debug\qframequerydata.o
+./debug\qresizeform.o
 ./debug\moc_qbasethread.o
 ./debug\moc_qcommonfunction.o
 ./debug\moc_qdlglogin.o
@@ -16,4 +18,6 @@ INPUT(
 ./debug\moc_qserializethread.o
 ./debug\moc_qdlgreport.o
 ./debug\moc_qjsondata.o
+./debug\moc_qframequerydata.o
+./debug\moc_qresizeform.o
 );

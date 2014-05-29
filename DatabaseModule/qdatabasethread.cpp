@@ -228,6 +228,10 @@ void QDatabaseThread::customEvent( QEvent *pEvent )
         ProcessChangeCommonDataEvent( pDbEvent );
         break;
 
+    case QDatabaseEvent::QueryInOutRecord :
+        ProcessQueryInOutRecordEvent( pDbEvent );
+        break;
+
     case QDatabaseEvent::WriteInOutRecord :
         ProcessWriteInOutRecordEvent( pDbEvent );
         break;
@@ -337,6 +341,14 @@ void QDatabaseThread::PostReportInfoEvent( QStringList& lstParams )
     QBaseThread::PostEvent( pEvent );
 }
 
+void QDatabaseThread::PostQueryInOutRecordEvent( QStringList& lstParams, QSqlQueryModel* pModel )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::QueryInOutRecord );
+    pEvent->SetParamList( lstParams );
+    pEvent->SetQueryModel( pModel );
+    QBaseThread::PostEvent( pEvent );
+}
+
 void QDatabaseThread::PostWriteInOutRecordEvent( QStringList& lstParams )
 {
     QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::WriteInOutRecord );
@@ -400,6 +412,14 @@ void QDatabaseThread::ProcessReportInfoEvent( QDatabaseEvent* pEvent )
     pMySQLDatabase->CallSP( strConnectName, ParkSolution::SpReportInfo, lstParams );
 }
 
+void QDatabaseThread::ProcessQueryInOutRecordEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    QSqlQueryModel* pModel = pEvent->GetQueryModel( );
+    pMySQLDatabase->CallSP( strConnectName,
+                ParkSolution::SpQueryInOutRecord, lstParams, pModel );
+}
+
 void QDatabaseThread::ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
@@ -424,16 +444,14 @@ void QDatabaseThread::ProcessQueryCustomerVehicleDataEvent( QDatabaseEvent* pEve
 void QDatabaseThread::ProcessQueryCommonDataInfoEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
-    pMySQLDatabase->CallSP( strConnectName, ParkSolution::SpQueryCommonDataInfo, lstParams );
+    QSqlQueryModel* pModel = pEvent->GetQueryModel( );
+    pMySQLDatabase->CallSP( strConnectName,
+                ParkSolution::SpExportCustomer, lstParams, pModel );
 }
 
 void QDatabaseThread::ProcessIgnoreOrDeleteCustomerEvent( QDatabaseEvent *pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
-    if ( 2 > lstParams.count( ) ) {
-        return;
-    }
-
     pMySQLDatabase->CallSP( strConnectName,
                 ParkSolution::SpChangeCustomerVehicleDataDelete, lstParams );
 }
@@ -441,10 +459,6 @@ void QDatabaseThread::ProcessIgnoreOrDeleteCustomerEvent( QDatabaseEvent *pEvent
 void QDatabaseThread::ProcessChangeCustomerVehicleDataEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
-    if ( 36 > lstParams.count( ) ) {
-        return;
-    }
-
     pMySQLDatabase->CallSP( strConnectName,   
                 ParkSolution::SpChangeCustomerVehicleDataUI, lstParams );
 }
@@ -452,10 +466,6 @@ void QDatabaseThread::ProcessChangeCustomerVehicleDataEvent( QDatabaseEvent* pEv
 void QDatabaseThread::ProcessImportCustomerEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
-    if ( 2 > lstParams.count( ) ) {
-        return;
-    }
-
     pMySQLDatabase->CallSP( strConnectName,
                 ParkSolution::SpImportCustomer, lstParams );
 }
@@ -463,10 +473,6 @@ void QDatabaseThread::ProcessImportCustomerEvent( QDatabaseEvent* pEvent )
 void QDatabaseThread::ProcessExportCustomerEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
-    if ( 1 > lstParams.count( ) ) {
-        return;
-    }
-
     QSqlQueryModel* pModel = pEvent->GetQueryModel( );
     pMySQLDatabase->CallSP( strConnectName,
                 ParkSolution::SpExportCustomer, lstParams, pModel );
@@ -475,10 +481,6 @@ void QDatabaseThread::ProcessExportCustomerEvent( QDatabaseEvent* pEvent )
 void QDatabaseThread::ProcessQueryUserInfoEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
-    if ( 1 > lstParams.count( ) ) {
-        return;
-    }
-
     pMySQLDatabase->CallSP( strConnectName,
                 ParkSolution::SpQueryUserInfo, lstParams );
 }
@@ -486,10 +488,6 @@ void QDatabaseThread::ProcessQueryUserInfoEvent( QDatabaseEvent* pEvent )
 void QDatabaseThread::ProcessQueryInOutImageEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
-    if ( 3 > lstParams.count( ) ) {
-        return;
-    }
-
     pMySQLDatabase->CallSP( strConnectName,
                 ParkSolution::SpQueryInOutImage, lstParams );
 }
@@ -497,10 +495,6 @@ void QDatabaseThread::ProcessQueryInOutImageEvent( QDatabaseEvent* pEvent )
 void QDatabaseThread::ProcessQueryCommonDataByTypeEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
-    if ( 1 > lstParams.count( ) ) {
-        return;
-    }
-
     QSqlQueryModel* pModel = pEvent->GetQueryModel( );
     pMySQLDatabase->CallSP( strConnectName,
                 ParkSolution::SpQueryCommonDataByType, lstParams, pModel );

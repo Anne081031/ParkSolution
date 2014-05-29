@@ -59,7 +59,7 @@ public:
     void SetSmsStartup( const bool bStartup );
     void GetSmsStartup( bool& bStartup ) const;
 
-    void SetZmpClientHost( const QString& strHost );
+    void SetZmqClientHost( const QString& strHost );
     void GetZmqClientHost( QString& strHost ) const;
 
     void SetZmqClientHostPort( const quint16 nPort );

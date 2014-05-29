@@ -8,6 +8,8 @@ INPUT(
 ./release\qserializethread.o
 ./release\qdlgreport.o
 ./release\qjsondata.o
+./release\qframequerydata.o
+./release\qresizeform.o
 ./release\moc_qbasethread.o
 ./release\moc_qcommonfunction.o
 ./release\moc_qdlglogin.o
@@ -16,4 +18,6 @@ INPUT(
 ./release\moc_qserializethread.o
 ./release\moc_qdlgreport.o
 ./release\moc_qjsondata.o
+./release\moc_qframequerydata.o
+./release\moc_qresizeform.o
 );

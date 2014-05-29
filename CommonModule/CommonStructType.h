@@ -330,6 +330,7 @@ namespace ParkSolution {
         QString strSpChangeCommonData;
         QString strSpQueryCommonDataByType;
         QString strSpWriteInOutRecord;
+        QString strSpQueryInOutRecord;
         QString strReportInfo;
 
         __SpName( )
@@ -345,10 +346,11 @@ namespace ParkSolution {
             strSpImportCustomer = "ImportCustomer";
             strSpExportCustomer = "ExportCustomer";
             strSpQueryUserInfo = "QueryUserInfo";
-            strSpQueryInOutImage = "SpQueryInOutImage";
+            strSpQueryInOutImage = "QueryInOutImage";
             strSpChangeCommonData = "ChangeCommonData";
             strSpQueryCommonDataByType = "QueryCommonDataByType";
             strSpWriteInOutRecord = "WriteInOutRecord";
+            strSpQueryInOutRecord = "QueryInOutRecord";
             strReportInfo = "ReportInfo";
         }
     } SpName;
@@ -371,6 +373,7 @@ namespace ParkSolution {
         QString strXmlChangeCommonDataDelete;
         QString strXmlQueryCommonDataByType;
         QString strXmlWriteInOutRecord;
+        QString strXmlQueryInOutRecord;
         QString strXmlReportInfo;
 
         __SpXmlPattern( )
@@ -425,11 +428,12 @@ namespace ParkSolution {
             strXmlImportCustomer = "<Data><Flag>%1</Flag>%2</Data>";
             strXmlExportCustomer = "<Data><Where>%1</Where></Data>";
             strXmlQueryUserInfo = "<Data><UserType>%1</UserType></Data>";
-            strXmlQueryInOutImage = "<Data><Flag>%1</Flag><Plate>%2</Plate><VistNewlyTime>%3</VistNewlyTime></Data>";
+            strXmlQueryInOutImage = "<Data><Flag>%1</Flag><RecordID>%2</RecordID></Data>";
             strXmlChangeCommonDataUI = "<Data><Flag>%1</Flag><DataType>%2</DataType><ValueID>%3</ValueID><Value>%4</Value></Data>";
             strXmlChangeCommonDataDelete = "<Data><Flag>%1</Flag><DataType>%2</DataType><ValueID>%3</ValueID><Value>%4</Value></Data>";
             strXmlQueryCommonDataByType = "<Data><DataType>%1</DataType></Data>";
             strXmlWriteInOutRecord = "<Data><Flag>%1</Flag><Plate>%2</Plate><DateTime>%3</DateTime><Image>%4</Image><UUID>%5</UUID></Data>";
+            strXmlQueryInOutRecord = "<Data><Flag>%1</Flag><Plate>%2</Plate><StartTime>%3</StartTime><EndTime>%4</EndTime></Data>";
             strXmlReportInfo = "<Data><Flag>%1</Flag><StartTime>%2</StartTime><EndTime>%3</EndTime></Data>";
         }
     } SpXmlPattern;

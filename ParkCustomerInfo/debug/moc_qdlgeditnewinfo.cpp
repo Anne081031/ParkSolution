@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'qdlgeditnewinfo.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'qdlgeditnewinfo.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.3.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,12 +20,12 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_QDlgEditNewInfo_t {
     QByteArrayData data[13];
-    char stringdata[223];
+    char stringdata[222];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_QDlgEditNewInfo_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_QDlgEditNewInfo_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_QDlgEditNewInfo_t qt_meta_stringdata_QDlgEditNewInfo = {
     {
@@ -48,7 +48,7 @@ QT_MOC_LITERAL(12, 218, 3)
     "EditRecord\0AddRecord\0HandleChangeServiceRecord\0"
     "on_btnOK_clicked\0on_btnCancel_clicked\0"
     "on_tabServiceRecord_customContextMenuRequested\0"
-    "pos\0"
+    "pos"
 };
 #undef QT_MOC_LITERAL
 
@@ -66,16 +66,16 @@ static const uint qt_meta_data_QDlgEditNewInfo[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   54,    2, 0x06,
-       5,    1,   57,    2, 0x06,
+       1,    1,   54,    2, 0x06 /* Public */,
+       5,    1,   57,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,   60,    2, 0x08,
-       7,    0,   61,    2, 0x08,
-       8,    1,   62,    2, 0x08,
-       9,    0,   65,    2, 0x08,
-      10,    0,   66,    2, 0x08,
-      11,    1,   67,    2, 0x08,
+       6,    0,   60,    2, 0x08 /* Private */,
+       7,    0,   61,    2, 0x08 /* Private */,
+       8,    1,   62,    2, 0x08 /* Private */,
+       9,    0,   65,    2, 0x08 /* Private */,
+      10,    0,   66,    2, 0x08 /* Private */,
+      11,    1,   67,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,

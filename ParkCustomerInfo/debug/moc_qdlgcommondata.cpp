@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'qdlgcommondata.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.2.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.3.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -12,7 +12,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'qdlgcommondata.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.2.1. It"
+#error "This file was generated using the moc from 5.3.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -20,12 +20,12 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_QDlgCommonData_t {
     QByteArrayData data[14];
-    char stringdata[228];
+    char stringdata[227];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    offsetof(qt_meta_stringdata_QDlgCommonData_t, stringdata) + ofs \
-        - idx * sizeof(QByteArrayData) \
+    qptrdiff(offsetof(qt_meta_stringdata_QDlgCommonData_t, stringdata) + ofs \
+        - idx * sizeof(QByteArrayData)) \
     )
 static const qt_meta_stringdata_QDlgCommonData_t qt_meta_stringdata_QDlgCommonData = {
     {
@@ -50,7 +50,7 @@ QT_MOC_LITERAL(13, 223, 3)
     "HandleChangeCommonDataRecord\0"
     "HandleCurrentIndexChanged\0nIndex\0"
     "on_tabCommonData_customContextMenuRequested\0"
-    "pos\0"
+    "pos"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,15 +68,15 @@ static const uint qt_meta_data_QDlgCommonData[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,   49,    2, 0x06,
-       5,    2,   52,    2, 0x06,
+       1,    1,   49,    2, 0x06 /* Public */,
+       5,    2,   52,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    0,   57,    2, 0x08,
-       8,    0,   58,    2, 0x08,
-       9,    2,   59,    2, 0x08,
-      10,    1,   64,    2, 0x08,
-      12,    1,   67,    2, 0x08,
+       7,    0,   57,    2, 0x08 /* Private */,
+       8,    0,   58,    2, 0x08 /* Private */,
+       9,    2,   59,    2, 0x08 /* Private */,
+      10,    1,   64,    2, 0x08 /* Private */,
+      12,    1,   67,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3,    4,

@@ -185,7 +185,7 @@ void QConfigurator::GetSmsStartup( bool& bStartup ) const
     bStartup = pSettings->value( "Sms/Startup", false ).toBool( );
 }
 
-void QConfigurator::SetZmpClientHost( const QString& strHost )
+void QConfigurator::SetZmqClientHost( const QString& strHost )
 {
     pSettings->setValue( "ZmqClient/ZmqServer", strHost );
 }

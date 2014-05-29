@@ -26,6 +26,7 @@ public:
         QueryCommonDataByType,
         ChangeCommonData,
         WriteInOutRecord,
+        QueryInOutRecord,
         ReportInfo
     } DatabaseEvent;
 

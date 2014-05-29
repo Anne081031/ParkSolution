@@ -122,6 +122,13 @@ private:
                                QStringList& lstParams,
                                QSqlQueryModel* pQueryModel );
 
+    void CallQueryInOutRecord( QString &strConnectName,
+                                       ParkSolution::SpType eSpType,
+                                       QString &strSpName,
+                                       QString &strXmlPattern,
+                                       QStringList &lstParams,
+                                       QSqlQueryModel* pQueryModel );
+
     void CallQueryCommonDataByType( QString &strConnectName,
                                        ParkSolution::SpType eSpType,
                                        QString &strSpName,
