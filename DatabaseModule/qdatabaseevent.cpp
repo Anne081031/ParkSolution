@@ -3,6 +3,7 @@
 QDatabaseEvent::QDatabaseEvent( DatabaseEvent eDbEvent ) : QEvent( ( Type ) eDbEvent )
 {
     nSubThreadID = 0;
+    pQueryModel = NULL;
 }
 
 QDatabaseEvent* QDatabaseEvent::CreateDatabaseEvent(DatabaseEvent eDbEvent)

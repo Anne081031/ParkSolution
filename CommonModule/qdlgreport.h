@@ -26,11 +26,14 @@ private:
     void KillAdobeProcess( QString &strExe );
     bool GetAdboeExePath( QString &strExe );
     void PrintPdf( QString &strFile );
+    void QueryData( int nType );
 
 private slots:
-    void on_btQuery_clicked();
+    void on_btQuerySum_clicked();
 
     void on_btPrint_clicked();
+
+    void on_btQueryDetail_clicked();
 
 signals:
     void ReportQuery( QStringList lstParams );

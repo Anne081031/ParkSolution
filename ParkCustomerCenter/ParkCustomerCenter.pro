@@ -59,6 +59,7 @@ contains( DEFINES, StartupRelease ) {
         system( copy ..\\LibExeFiles\\Release\\NetworkModule.dll .\\Release )
         system( copy ..\\LibExeFiles\\Release\\VideoModule.dll .\\Release )
         system( copy ..\\LibExeFiles\\Release\\LPRModule.dll .\\Release )
+        system( copy .\\Release\\ParkCustomerCenter.exe ..\\LibExeFiles\\Release )
     }
 }
 

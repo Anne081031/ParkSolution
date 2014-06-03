@@ -106,6 +106,7 @@ private:
     QZmqClientThread* pZmqClientThread;
     QDlgReport* pDlgReport;
     QFrameQueryData* pFrameQueryData;
+    QString strWelcomeSound;
 
     bool bIPCVideo;
     bool bCustomerCenter;

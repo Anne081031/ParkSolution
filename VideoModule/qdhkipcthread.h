@@ -64,7 +64,7 @@ private:
     LONG lPlayPorts[ MAX_IPC_WAY ];
     HMODULE hDllMod;
     int nChannel;
-    static char caFrameBuffer[ MAX_IPC_VIDEO_WAY ][ MAX_FRAME_SIZE ];
+    //static char caFrameBuffer[ MAX_IPC_VIDEO_WAY ][ MAX_FRAME_SIZE ];
 
     typedef BOOL ( WINAPI *PlayM4_GetPort ) ( LONG* nPort );
     typedef BOOL ( WINAPI *PlayM4_FreePort ) ( LONG nPort );

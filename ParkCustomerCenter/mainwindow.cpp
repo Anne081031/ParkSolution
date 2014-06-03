@@ -3,6 +3,9 @@
 #include <QDebug>
 #include <QMessageBox>
 
+#define START_ZMQ
+#undef START_ZMQ
+
 #define HIDE_SERVICE_COLUMN_COUNT   ( int ) 5
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -55,6 +58,8 @@ void MainWindow::CreateQueryFrame( )
 
 void MainWindow::GetCommonConfigData( )
 {
+    pConfigurator->GetWelcomeSound( strWelcomeSound );
+
     bCustomerInVideo = false;
     bCustomerOutVideo = false;
     bCustomerCenter = true;
@@ -183,7 +188,9 @@ void MainWindow::SetServiceViewColumnName( QSqlQueryModel* pModel )
 
 void MainWindow::StartZmqClientThread( )
 {
+#ifndef START_ZMQ
     return;
+#endif
     pZmqClientThread = QZmqClientThread::CreateInstance( );
 
     pPlateParserThread = QPlateParserThread::CreateInstance( );
@@ -370,8 +377,8 @@ void MainWindow::PlayWelcomeSound( )
         strPlate.insert( nInsertIndex, QChar( ' ' ) );
         nInsertIndex += 2;
     }
-
-    QString strSound = QString( "客户%1光临 车牌号码%2 请客户专员%3接待" ).arg(
+    //QString( "客户%1光临 车牌号码%2 请客户专员%3接待" )
+    QString strSound = strWelcomeSound.arg(
                 ui->edtName->text( ),
                 strPlate,
                 ui->edtAccountExecutive->text( ) );
@@ -416,7 +423,7 @@ void MainWindow::HandleInfoBKResize( int nIndex, QSize bkSize )
 void MainWindow::HandleBKResize(int nIndex, QSize bkSize)
 {
     int nDeltaX = 4;
-    int nDeltaY = 0;
+    int nDeltaY = 4;
 
     if ( bCustomerOutVideo && 5 == nIndex ) {
         pOutWayLabel->setGeometry( nDeltaX, nDeltaY,

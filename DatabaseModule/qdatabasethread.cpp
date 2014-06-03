@@ -444,9 +444,7 @@ void QDatabaseThread::ProcessQueryCustomerVehicleDataEvent( QDatabaseEvent* pEve
 void QDatabaseThread::ProcessQueryCommonDataInfoEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
-    QSqlQueryModel* pModel = pEvent->GetQueryModel( );
-    pMySQLDatabase->CallSP( strConnectName,
-                ParkSolution::SpExportCustomer, lstParams, pModel );
+    pMySQLDatabase->CallSP( strConnectName, ParkSolution::SpQueryCommonDataInfo, lstParams );
 }
 
 void QDatabaseThread::ProcessIgnoreOrDeleteCustomerEvent( QDatabaseEvent *pEvent )

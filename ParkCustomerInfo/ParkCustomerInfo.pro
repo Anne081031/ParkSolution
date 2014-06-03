@@ -49,6 +49,7 @@ contains( DEFINES, StartupRelease ) {
         system( copy ..\\LibExeFiles\\Release\\DatabaseModule.dll .\\Release )
         system( copy ..\\LibExeFiles\\Release\\CommonModule.dll .\\Release )
         system( copy ..\\LibExeFiles\\Release\\ConfigModule.dll .\\Release )
+        system( copy .\\Release\\ParkCustomerInfo.exe ..\\LibExeFiles\\Release )
     }
 }
 

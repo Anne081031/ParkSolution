@@ -13,6 +13,9 @@ class CONFIGMODULESHARED_EXPORT QConfigurator : public QObject
 public:
     static QConfigurator* CreateConfigurator( );
 
+    void SetWelcomeSound( const QString& strWelcome );
+    void GetWelcomeSound( QString& strWelcome );
+
     void SetCustomerInVideo( const bool bVideo );
     void GetCustomerInVideo( bool& bVideo ) const;
 

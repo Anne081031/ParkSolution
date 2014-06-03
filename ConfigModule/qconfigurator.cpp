@@ -35,6 +35,17 @@ void QConfigurator::GetDbParams( ParkSolution::QStringHash& hashParam )
     hashParam[ dbInfo.strSchema ] = strValue;
 }
 
+void QConfigurator::SetWelcomeSound( const QString& strWelcome )
+{
+    pSettings->setValue( "Miscellaneous/WelcomeSound", strWelcome );
+}
+
+void QConfigurator::GetWelcomeSound( QString& strWelcome )
+{
+    strWelcome = pSettings->value( "Miscellaneous/WelcomeSound",
+                                   "客户%1光临 车牌号码%2 请客户专员%3接待" ).toString( );
+}
+
 void QConfigurator::SetCustomerInVideo( const bool bVideo )
 {
     pSettings->setValue( "CustomerVideo/InVideo", bVideo );

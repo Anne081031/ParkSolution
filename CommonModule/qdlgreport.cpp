@@ -49,14 +49,19 @@ void QDlgReport::DisplayReport( const QByteArray &byJson )
     ui->webView->setHtml( strHTML );
 }
 
-void QDlgReport::on_btQuery_clicked()
+void QDlgReport::QueryData( int nType )
 {
     QStringList lstParams;
 
-    lstParams << QString::number( ui->cbxType->currentIndex( ) )
+    lstParams << QString::number( nType )
               << ui->dtStart->text( ) << ui->dtEnd->text( );
 
     emit ReportQuery( lstParams );
+}
+
+void QDlgReport::on_btQuerySum_clicked()
+{
+    QueryData( ui->cbxType->currentIndex( ) );
 }
 
 void QDlgReport::on_btPrint_clicked()
@@ -166,4 +171,9 @@ void QDlgReport::PrintPdf( QString &strFile )
     QStringList lstArgs;
     lstArgs << strFile;
     QProcess::startDetached( strAdobeExe, lstArgs );
+}
+
+void QDlgReport::on_btQueryDetail_clicked()
+{
+    QueryData( 10 );
 }

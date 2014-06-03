@@ -2,7 +2,7 @@
 #define HK_PLAY_CTRL "PlayCtrl.dll"
 
 QDigitalCameraThread* QDHkIPCThread::pThreadInstance = NULL;
-char QDHkIPCThread::caFrameBuffer[ MAX_IPC_VIDEO_WAY ][ MAX_FRAME_SIZE ] = { 0 };
+//char QDHkIPCThread::caFrameBuffer[ MAX_IPC_VIDEO_WAY ][ MAX_FRAME_SIZE ] = { 0 };
 
 QDHkIPCThread::QDHkIPCThread(QObject *parent) :
     QDigitalCameraThread(parent)

@@ -63,6 +63,7 @@ contains( DEFINES, StartupRelease ) {
         system( copy ..\\LibExeFiles\\Release\\VideoModule.dll .\\Release )
         system( copy ..\\LibExeFiles\\Release\\libzmq-v100-mt-gd-4_0_3.dll .\\Release )
         system( copy ..\\LibExeFiles\\Release\\AssessibilityModule.dll .\\Release )
+        system( copy .\\Release\\ParkServer.exe ..\\LibExeFiles\\Release )
     }
 }
 

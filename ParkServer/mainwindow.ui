@@ -146,6 +146,21 @@
            <string>按时</string>
           </property>
          </item>
+         <item>
+          <property name="text">
+           <string>按省</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按省内</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按明细</string>
+          </property>
+         </item>
         </widget>
        </item>
        <item>

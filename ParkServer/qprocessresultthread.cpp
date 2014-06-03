@@ -2,6 +2,9 @@
 #include "../CommonModule/qcommonfunction.h"
 #include "qdbpoolnewtask.h"
 
+#define START_ZMQ
+#undef START_ZMQ
+
 QProcessResultThread* QProcessResultThread::pThreadInstance = NULL;
 
 QProcessResultThread::QProcessResultThread(QObject *parent) :
@@ -57,8 +60,9 @@ bool QProcessResultThread::ThreadInitialize()
 
     //connect( pSerializeThread, SIGNAL( PlateSerializeData( QString, QString, QByteArray ) ),
     //               this, SLOT( HandlePlateSerializeData( QString, QString, QByteArray ) ) );
-
-    //pZmqServerThread = QZmqServerThread::CreateInstance( );
+#ifdef START_ZMQ
+    pZmqServerThread = QZmqServerThread::CreateInstance( );
+#endif
 
     return bRet;
 }
@@ -207,7 +211,9 @@ void QProcessResultThread::ProcessPlateImageEvent(QProcessResultEvent *pEvent)
     QCommonFunction::GetImageBase64( strBase64, strFile );
 
     CreateVehicleJson( byData, strPlate, strDateTime, strBase64 );
-    //pZmqServerThread->PostPublishDataEvent( byData );
+#ifdef START_ZMQ
+    pZmqServerThread->PostPublishDataEvent( byData );
+#endif
 }
 
 void QProcessResultThread::ProcessDatabaseResultEvent( QProcessResultEvent* pEvent  )
@@ -347,7 +353,9 @@ void QProcessResultThread::SendPlate2Client( const QString &strPlate, const QStr
 {
     QByteArray byPublishData;
     CreateVehicleJson( byPublishData, strPlate, strDateTime, strBase64 );
-    //pZmqServerThread->PostPublishDataEvent( byPublishData );
+#ifdef START_ZMQ
+    pZmqServerThread->PostPublishDataEvent( byPublishData );
+#endif
 }
 
 void QProcessResultThread::HandlePlateSerializeData( QString strPlate, QString strDateTime, QByteArray byFileData )
