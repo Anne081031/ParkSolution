@@ -14,6 +14,8 @@
 #include <QMutex>
 #include <QMutexLocker>
 
+#define PLATE_RESULT_ITEMS ( int ) 8
+
 class LPRMODULESHARED_EXPORT QPlateThread : public QBaseThread
 {
     Q_OBJECT

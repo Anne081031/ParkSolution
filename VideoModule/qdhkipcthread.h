@@ -18,6 +18,8 @@ public:
     static QDigitalCameraThread* GetInstance( );
     void CaptureStaticImage( QString &strIP, QString &strFileName, HWND hPlayWnd = NULL );
 
+    static int nStepCounter[ MAX_IPC_VIDEO_WAY ];
+
 protected:
     void run( );
     void customEvent( QEvent *e );
@@ -62,9 +64,9 @@ private:
 private:
     static QDigitalCameraThread* pThreadInstance;
     LONG lPlayPorts[ MAX_IPC_WAY ];
+    static int nStepLimit[ MAX_IPC_VIDEO_WAY ];
     HMODULE hDllMod;
     int nChannel;
-    //static char caFrameBuffer[ MAX_IPC_VIDEO_WAY ][ MAX_FRAME_SIZE ];
 
     typedef BOOL ( WINAPI *PlayM4_GetPort ) ( LONG* nPort );
     typedef BOOL ( WINAPI *PlayM4_FreePort ) ( LONG nPort );
@@ -96,7 +98,7 @@ private:
     PlayM4_Play MyPlayM4_Play;
     PlayM4_Stop MyPlayM4_Stop;
     
-    //QConfigurator* pConfigurator;
+    QConfigurator* pConfigurator;
     //bool bPlateVideo;
 signals:
     

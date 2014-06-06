@@ -9,6 +9,7 @@
 #include "../NetworkModule/qftpthread.h"
 #include "../VideoModule/qdhkipcthread.h"
 #include "../VideoModule/qhkcapturecardthread.h"
+#include "../VideoModule/qtmcapturecardthread.h"
 #include "../CommonModule/qserializethread.h"
 #include "qprocessresultthread.h"
 
@@ -40,6 +41,7 @@ private:
     void StartSeriaizeThread( );
     void StartProcessResultThread( );
     void StartSmsThread( );
+    void InitializeProvider( );
 
     void StartCaptureCardVideo( );
     void StartIPCVideo( );
@@ -91,6 +93,8 @@ private:
     bool bDislpayDbLog;
     bool bDislpayFtpLog;
     bool bDisplaySerializeLog;
+    QString strProviderHK;
+    QString strProviderTM;
 };
 
 #endif // MAINWINDOW_H

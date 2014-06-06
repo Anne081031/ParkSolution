@@ -457,7 +457,7 @@ void QProcessResultThread::ProcessPlateResultEvent( QProcessResultEvent* pEvent 
     QByteArray byFileData;
     QCommonFunction::ReadAllFile( strFile, byFileData );
 
-    if ( bDeleteImage ) {
+    if ( bDeleteImage && QFile::exists( strFile ) ) {
         QFile::remove( strFile );
     }
 

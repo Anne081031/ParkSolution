@@ -20,10 +20,11 @@ SUBDIRS += \
     #ParkCenterServiceUI \
     #ParkAdministratorUI \
     #ParkCenterChargeUI \
-    ParkCustomerCenter \
+    #ParkCustomerCenter \
     #TestUI \
     #TestDLL \
-    ParkCustomerInfo \
+    #ParkCustomerInfo \
     #Qt360Safe \
     ParkServer \
-    Config
+    #Config
+    ParkServerNew

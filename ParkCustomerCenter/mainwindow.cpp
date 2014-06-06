@@ -611,7 +611,7 @@ void MainWindow::SetSmallPicture(int nIndex, QByteArray& byImage )
 
 void MainWindow::SetBigPicture(int nIndex)
 {
-    if ( 0 > nIndex || IMAGE_LABEL_COUNT - 1 <= nIndex ) {
+    if ( 0 > nIndex || IMAGE_LABEL_COUNT - 1 <= nIndex || bCustomerInVideo ) {
         return;
     }
 
@@ -674,20 +674,30 @@ void MainWindow::OnImageLabelDoubleClick(QMouseEvent *, int nImageIndex)
         nImageIndex = pImageLabels[ IMAGE_LABEL_COUNT - 1 ]->whatsThis( ).toInt( );
     }
 
-    SetBigPictureIndex( nImageIndex );
-    ClearEditText( );
-    ClearTableView( );
-    SetBigPicture( nImageIndex );
+    if ( NULL == pImageLabels[ nImageIndex ]->pixmap( ) ) {
+        return;
+    }
 
     QString strPlate = pInfoEdits[ nImageIndex ][ 2 ]->text( );
-    QString strEnterTime = ui->edtEntryTime->text( );
+    QString strEnterTime = pInfoEdits[ nImageIndex ][ 3 ]->text( );
+
+    if ( strPlate == ui->edtPlateID->text( ) &&
+         strEnterTime == ui->edtVistNewlyTime->text( ) ) {
+        return;
+    }
+
+    SetBigPictureIndex( nImageIndex );
+    SetBigPicture( nImageIndex );
+
     if ( strEnterTime.isEmpty( ) ) {
         strEnterTime = QDateTime::currentDateTime( ).toString( "yyyy-MM-dd HH:mm:ss" );
     }
 
     QueryCustomerAllInfo( 1, strPlate, strEnterTime );
 
-    SetSmallPictureCustomerInfo( nImageIndex, strPlate, strEnterTime );
+    //SetSmallPictureCustomerInfo( nImageIndex, strPlate, strEnterTime );
+    ClearEditText( );
+    ClearTableView( );
 }
 
 void MainWindow::DestroyImageLabel( )

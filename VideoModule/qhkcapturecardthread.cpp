@@ -2,6 +2,9 @@
 
 QAnalogCameraThread* QHkCaptureCardThread::pThreadInstance = NULL;
 
+#define HK_CAPTURE_WIDTH ( INT ) 704
+#define HK_CAPTURE_HEIGHT ( INT ) 576
+
 QHkCaptureCardThread::QHkCaptureCardThread(QObject *parent) :
     QAnalogCameraThread(parent)
 {
@@ -23,8 +26,18 @@ QAnalogCameraThread* QHkCaptureCardThread::GetInstance( )
     return pThreadInstance;
 }
 
+void QHkCaptureCardThread::AllocMemory4Channel( )
+{
+    int nSize = HK_CAPTURE_WIDTH * HK_CAPTURE_HEIGHT * 3 / 2;
+
+    for ( int nIndex = 0; nIndex < CHANNEL_WAY; nIndex++ ) {
+        objVideoStream[ nIndex ].resize( nSize );
+    }
+}
+
 void QHkCaptureCardThread::run( )
 {
+    //AllocMemory4Channel( );
     exec( );
 }
 
@@ -200,14 +213,14 @@ void QHkCaptureCardThread::ImageStreamCB( UINT channelNumber, void *context )
    // pThread->CaptureStaticImage( strFile, channelNumber );
 
     QPlateThread* pPlate = pThread->GetPlateThread( );
-    pPlate->PostPlateVideoRecognize( byVideo, 704, 576, channelNumber + 1, true );
+    pPlate->PostPlateVideoRecognize( byVideo, HK_CAPTURE_WIDTH, HK_CAPTURE_HEIGHT, channelNumber + 1, true );
 }
 
 void QHkCaptureCardThread::ProcessStartMotionDetectEvent( QCameraEvent* pEvent )
 {
     int nRet = 0;
     int nChannel = pEvent->GetChannel( );
-    RECT rc = { 0, 0, 703,575 };
+    RECT rc = { 0, 0, HK_CAPTURE_WIDTH - 1, HK_CAPTURE_HEIGHT - 1 };
     HANDLE hChannel = GetChannelHandle( nChannel );
 
     int nGradeValue = 6;
@@ -241,15 +254,15 @@ void QHkCaptureCardThread::ProcessStartSourceStreamEvent( QCameraEvent* pEvent )
     }
 
     QByteArray& byVideo = objVideoStream[ nChannel ];
-    byVideo.resize( 704 * 576 * 3 / 2);
-    nRet = SetImageStream( GetChannelHandle( nChannel ), TRUE, 25, 704, 576, ( PBYTE ) byVideo.data( ) );
+    byVideo.resize( HK_CAPTURE_WIDTH * HK_CAPTURE_HEIGHT * 3 / 2 );
+    nRet = SetImageStream( GetChannelHandle( nChannel ), TRUE, 25, HK_CAPTURE_WIDTH, HK_CAPTURE_HEIGHT, ( PBYTE ) byVideo.data( ) );
 }
 
 void QHkCaptureCardThread::ProcessStopSourceStreamEvent( QCameraEvent* pEvent )
 {
     int nRet = 0;
     int nChannel = pEvent->GetChannel( );
-    nRet = SetImageStream( GetChannelHandle( nChannel ), FALSE, 25, 704, 576, NULL  );
+    nRet = SetImageStream( GetChannelHandle( nChannel ), FALSE, 25, HK_CAPTURE_WIDTH, HK_CAPTURE_HEIGHT, NULL  );
 }
 
 void QHkCaptureCardThread::CaptureStaticImage( QString &strFile, int nChannel )

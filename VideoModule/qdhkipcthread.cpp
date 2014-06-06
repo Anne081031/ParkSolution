@@ -2,16 +2,20 @@
 #define HK_PLAY_CTRL "PlayCtrl.dll"
 
 QDigitalCameraThread* QDHkIPCThread::pThreadInstance = NULL;
-//char QDHkIPCThread::caFrameBuffer[ MAX_IPC_VIDEO_WAY ][ MAX_FRAME_SIZE ] = { 0 };
+int QDHkIPCThread::nStepCounter[ MAX_IPC_VIDEO_WAY ] = { 0 };
+int QDHkIPCThread::nStepLimit[ MAX_IPC_VIDEO_WAY ] = { 1 };
 
 QDHkIPCThread::QDHkIPCThread(QObject *parent) :
     QDigitalCameraThread(parent)
 {
+    pConfigurator = QConfigurator::CreateConfigurator( );
+    nChannel = 0;
+
     for ( int nIndex = 0; nIndex < MAX_IPC_WAY; nIndex++ ) {
         lPlayPorts[ nIndex ] = -1;
+        pConfigurator->GetDropFrame( nStepLimit[ nIndex ]  );
     }
 
-    nChannel = 0;
     GetFunctionPointer( );
 }
 
@@ -232,12 +236,21 @@ void QDHkIPCThread::DisplayCBFun( long nPort, char *pBuf, long nSize,
     //qDebug( ) << Q_FUNC_INFO << QThread::currentThread( )->objectName( )
     //          << QThread::currentThreadId( ) << endl;
 
-    if ( NULL == pBuf || 0 >= nSize || 0 > nPort ) { // run at HK two Threads
+    if ( NULL == pBuf || 0 >= nSize ||
+         0 > nPort || MAX_IPC_VIDEO_WAY <= nPort ) { // run at HK two Threads
         return;
     }
 
+    if ( 0 != ( nStepCounter[ nPort ] % nStepLimit[ nPort ] ) ) {
+        nStepCounter[ nPort ]++;
+        return;
+    }
+
+    nStepCounter[ nPort ] = 1;
+
     QByteArray byVideo;
-    byVideo.reserve( nSize );
+    //byVideo.reserve( nSize );
+    byVideo.resize( nSize );
     //byVideo.append( ( const char* ) pBuf, nSize );
 
     //bool bEnter = ( 0 == nPort % 2 );
@@ -509,6 +522,7 @@ void QDHkIPCThread::ProcessIPCStartRealPlayEvent( QCameraEvent* pEvent )
     sClientInfo.lChannel = 1;
     sClientInfo.lLinkMode  = bMainStream ? 0x00000000 : 0x80000000;
     sClientInfo.hPlayWnd = bRealStream ? NULL : hPlayWnd;
+    sClientInfo.sMultiCastIP = "";
 
     lPlayHandle = NET_DVR_RealPlay_V30( lUserID, &sClientInfo, bRealStream ? RealDataCallback : NULL, this );
 

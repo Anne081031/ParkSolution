@@ -573,9 +573,9 @@ int QDataParser::FillEdit( QJsonDocument& docJson, ParkSolution::QStringWidgetHa
 
     nRet = nFlag;
     qDebug( ) << Q_FUNC_INFO << strMessage << endl;
-    if ( 2 != nFlag ) { // 3 DoubleClick
-        return nRet;
-    }
+    //if ( 2 != nFlag ) { // 3 DoubleClick
+    //    return nRet;
+    //}
 
     QJsonValue jsonValue = jsonObject.value( "List" );
 

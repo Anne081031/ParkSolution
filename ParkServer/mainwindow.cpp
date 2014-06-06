@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     pConfigurator = QConfigurator::CreateConfigurator( );
     GetMiscellaneous( );
+    InitializeProvider( );
 
     StartSmsThread( );
     StartDatabaseThread( );
@@ -27,6 +28,12 @@ void MainWindow::InitializeUI( )
 
     dtDateTime = dtDateTime.addMonths( -1 );
     ui->dtStart->setDateTime( dtDateTime );
+}
+
+void MainWindow::InitializeProvider( )
+{
+    strProviderHK = "HK";
+    strProviderTM = "TM";
 }
 
 void MainWindow::GetMiscellaneous( )
@@ -84,7 +91,7 @@ void MainWindow::moveEvent( QMoveEvent *event )
 {
     Q_UNUSED( event )
 
-    if ( NULL == pAnalogCamera ) {
+    if ( NULL == pAnalogCamera || !isVisible( ) ) {
         return;
     }
 
@@ -148,9 +155,12 @@ void MainWindow::StartCaptureCardVideo( )
 {
     QString strCardType;
     pConfigurator->GetCaptureCard( strCardType );
+    strCardType = strCardType.toUpper( );
 
-    if ( "HK" == strCardType ) {
+    if ( strProviderHK == strCardType ) {
         pAnalogCamera = QHkCaptureCardThread::GetInstance( );
+    } else if ( strProviderTM == strCardType ) {
+        pAnalogCamera = QTmCaptureCardThread::GetInstance( );
     }
 
     if ( NULL == pAnalogCamera ) {
@@ -196,11 +206,12 @@ void MainWindow::StartIPCVideo( )
 {
     QString strIPCCamera;
     pConfigurator->GetIPCamera( strIPCCamera );
+    strIPCCamera = strIPCCamera.toUpper( );
 
     bool bMainStream;
     pConfigurator->GetIPCMainStream( bMainStream );
 
-    if ( "HK" == strIPCCamera ) {
+    if ( strProviderHK == strIPCCamera ) {
         pDigitalCamera = QDHkIPCThread::GetInstance( );
     }
 
@@ -436,12 +447,14 @@ int MainWindow::GetImageFormat( )
     pConfigurator->GetCaptureCard( strCardType );
 
     if ( bIPC ) {
-        if ( "HK" == strIPCCamera.toUpper( ) && bPlateVideo ) {
+        if ( strProviderHK == strIPCCamera.toUpper( ) && bPlateVideo ) {
             nFormat = ImageFormatYUV420COMPASS;
         }
     } else {
-        if ( "HK" == strCardType.toUpper( ) && bPlateVideo ) {
+        if ( strProviderHK == strCardType.toUpper( ) && bPlateVideo ) {
             nFormat = ImageFormatYUV420COMPASS;
+        } else if ( strProviderTM == strCardType.toUpper( )  && bPlateVideo ) {
+            nFormat = ImageFormatRGB;
         }
     }
 
@@ -457,10 +470,43 @@ void MainWindow::StartFtpThread( )
 
 void MainWindow::HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, QString strIP, bool bSuccess, bool bVideo )
 {
-    if ( 7 > lstPlateParam.size( ) ) {
+    int nSize = lstPlateParam.size( );
+    if ( 0 != nSize % PLATE_RESULT_ITEMS ) {
         return;
     }
 
+    int nCount = nSize / PLATE_RESULT_ITEMS;
+    int nStep = 0;
+    bool bEnter = ( 0 == nChannel % 2 );
+    QString strText;
+    QString strDateTime;
+
+    for ( int nIndex = 0; nIndex < nCount; nIndex++ ) {
+        nStep = nIndex * PLATE_RESULT_ITEMS;
+        const QString& strPlate = lstPlateParam.at( nStep );
+        strText = strPlateResultPattern.arg( QString::number( nChannel ) ,
+                                                       bVideo ? "视频流" : "文件",
+                                                       bSuccess ? "成功" : "失败",
+                                                       strPlate,
+                                                       lstPlateParam.at( 1 + nStep ),
+                                                       lstPlateParam.at( 2 + nStep ),
+                                                       lstPlateParam.at( 3 + nStep ),
+                                                       lstPlateParam.at( 4 + nStep ),
+                                                       lstPlateParam.at( 5 + nStep ) );
+        strText =strText.arg( strIP );
+        QCommonFunction::GetCurrentDateTime( strDateTime );
+
+        strText += " " + strDateTime + "\n";
+        HandlePlateLog( strText );
+
+        if ( !bSuccess ) {
+            continue;
+        }
+
+        ProcessPlate( strPlate, bEnter, nChannel, strIP, true );
+    }
+
+/*
     const QString& strPlate = lstPlateParam.at( 0 );
     bool bEnter = ( 0 == nChannel % 2 );
     QString strText = strPlateResultPattern.arg( QString::number( nChannel ) ,
@@ -484,10 +530,49 @@ void MainWindow::HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, 
     }
 
     ProcessPlate( strPlate, bEnter, nChannel, strIP, true );
+*/
 }
 
 void MainWindow::HandlePlateResult( QStringList lstPlateParam, int nChannel, bool bSuccess, bool bVideo )
 {
+    int nSize = lstPlateParam.size( );
+    if ( 0 != nSize % PLATE_RESULT_ITEMS ) {
+        return;
+    }
+
+    int nCount = nSize / PLATE_RESULT_ITEMS;
+    int nStep = 0;
+    bool bEnter = ( 0 == nChannel % 2 );
+    QString strText;
+    QString strDateTime;
+    QString strIP = "";
+
+    for ( int nIndex = 0; nIndex < nCount; nIndex++ ) {
+        nStep = nIndex * PLATE_RESULT_ITEMS;
+        const QString& strPlate = lstPlateParam.at( nStep );
+        strText = strPlateResultPattern.arg( QString::number( nChannel ) ,
+                                                       bVideo ? "视频流" : "文件",
+                                                       bSuccess ? "成功" : "失败",
+                                                       strPlate,
+                                                       lstPlateParam.at( 1 + nStep ),
+                                                       lstPlateParam.at( 2 + nStep ),
+                                                       lstPlateParam.at( 3 + nStep ),
+                                                       lstPlateParam.at( 4 + nStep ),
+                                                       lstPlateParam.at( 5 + nStep ) );
+        strText =strText.arg( "" );
+        QCommonFunction::GetCurrentDateTime( strDateTime );
+
+        strText += " " + strDateTime + "\n";
+        HandlePlateLog( strText );
+
+        if ( !bSuccess ) {
+            continue;
+        }
+
+        ProcessPlate( strPlate, bEnter, nChannel, strIP, true );
+    }
+
+    /*
     if ( 7 > lstPlateParam.size( ) ) {
         return;
     }
@@ -517,6 +602,7 @@ void MainWindow::HandlePlateResult( QStringList lstPlateParam, int nChannel, boo
     QString strIP = "";
 
     ProcessPlate( strPlate, bEnter, nChannel, strIP, false );
+    */
 }
 
 void MainWindow::SendPlate2Client( const QString &strPlate, const QString& strDateTime, const QString &strBase64 )
@@ -575,7 +661,7 @@ void MainWindow::ProcessPlate( const QString &strPlate, bool bEnter, int  nChann
     QString strDateTime;
     QCommonFunction::GetCurrentDateTime( strDateTime );
 
-    pProcessResultThread->PostPlateResultEvent( strPlate, strDateTime, nChannel, bEnter, strIP, bIpc  );
+    pProcessResultThread->PostPlateResultEvent( strPlate, strDateTime, nChannel, bEnter, strIP, bIpc );
     //WriteDatabase( strPlate, strDateTime, byFileData, bEnter );
 }
 

@@ -36,6 +36,7 @@ public:
     static bool CloseDiaglogBox( QWidget* pParent, QCloseEvent* pEvent );
     static QMessageBox::StandardButtons MessageBox( QString& strTitle, QString& strText, QWidget* pParent, QMessageBox::Icon icon );
     static void InformationBox( QWidget* pParent, QString& strText );
+    static void CriticalBox( QWidget* pParent, QString& strText );
     static void SetMessageBoxProperty( QMessageBox& msgBox, QMessageBox::Icon icon,
                                        QString& strTitle, QString& strText, Qt::WindowModality winModality,
                                        bool bDisableHelpButton = true,

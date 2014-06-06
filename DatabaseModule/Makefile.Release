@@ -94,7 +94,7 @@ $(DESTDIR_TARGET):  $(OBJECTS)
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) object_script.DatabaseModule.Release  $(LIBS)
 
 qmake: FORCE
-	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile.Release DatabaseModule.pro
+	@$(QMAKE) -spec win32-g++ -o Makefile.Release DatabaseModule.pro
 
 qmake_all: FORCE
 

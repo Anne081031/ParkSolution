@@ -1,6 +1,9 @@
 ﻿#include "qtmcapturecardthread.h"
+#include "../CommonModule/qcommonfunction.h"
 
 #define TM_CAPTURE_CARD "Sa7134Capture.dll"
+#define TM_CAPTURE_WIDTH ( INT ) 352
+#define TM_CAPTURE_HEIGHT ( INT ) 288
 
 QAnalogCameraThread* QTmCaptureCardThread::pThreadInstance = NULL;
 
@@ -38,6 +41,9 @@ void QTmCaptureCardThread::GetFunctionPointer( )
 
     hDllMod = ::LoadLibrary( pPath );
     if ( NULL == hDllMod ) {
+        strPath += " 未找到!";
+        QCommonFunction::CriticalBox( NULL, strPath );
+        exit( -1 );
         return;
     }
 
@@ -180,9 +186,10 @@ void QTmCaptureCardThread::VidCapCallBack( DWORD dwCard, BYTE *pbuff, DWORD dwSi
     pThreadInstance->SetMotionDetect( false, dwCard );
 
     QByteArray byVideo;
+    byVideo.resize( dwSize );
     byVideo.append( ( const char* ) pbuff, dwSize );
 
-    pThreadInstance->GetPlateThread( )->PostPlateVideoRecognize( byVideo, 352, 288, dwCard + 1 );
+    pThreadInstance->GetPlateThread( )->PostPlateVideoRecognize( byVideo, TM_CAPTURE_WIDTH, TM_CAPTURE_HEIGHT, dwCard + 1 );
 }
 
 void QTmCaptureCardThread::MotionDelectCB( DWORD dwCard, BOOL bMove, BYTE *pbuff, DWORD dwSize, LPVOID lpContext )
@@ -221,8 +228,8 @@ void QTmCaptureCardThread::ProcessStartMotionDetectEvent( QCameraEvent* pEvent )
 {
     int nRet = 0;
     int nChannel = pEvent->GetChannel( );
-    DWORD ulCapWidth = 352;
-    DWORD ulCapHeight = 288;
+    DWORD ulCapWidth = TM_CAPTURE_WIDTH;
+    DWORD ulCapHeight = TM_CAPTURE_HEIGHT;
     DWORD ulWidth  = ( ulCapWidth / 16 );
     DWORD ulHeight = ( ulCapHeight / 16 );
     DWORD dwAreaMapSize  = ulWidth * ulHeight;

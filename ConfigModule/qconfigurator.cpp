@@ -34,6 +34,15 @@ void QConfigurator::GetDbParams( ParkSolution::QStringHash& hashParam )
     GetDbSchema( strValue );
     hashParam[ dbInfo.strSchema ] = strValue;
 }
+void QConfigurator::SetDropFrame( const int nStep )
+{
+    pSettings->setValue( "Miscellaneous/DropFame", nStep );
+}
+
+void QConfigurator::GetDropFrame( int& nStep ) const
+{
+    nStep = pSettings->value( "Miscellaneous/DropFame", 6 ).toInt( );
+}
 
 void QConfigurator::SetWelcomeSound( const QString& strWelcome )
 {
@@ -339,6 +348,16 @@ void QConfigurator::SetVideoWay( const int nWay )
 void QConfigurator::GetVideoWay( int& nWay ) const
 {
     nWay = pSettings->value( "Video/Way", true ).toInt( );
+}
+
+void QConfigurator::SetMotionDetection( const bool bMotion )
+{
+    pSettings->setValue( "AnalogVideo/MotionDetection", bMotion );
+}
+
+void QConfigurator::GetMotionDetection( bool& bMotion ) const
+{
+    bMotion = pSettings->value( "AnalogVideo/MotionDetection", true ).toBool( );
 }
 
 void QConfigurator::SetCaptureCard( const QString& strCardType )

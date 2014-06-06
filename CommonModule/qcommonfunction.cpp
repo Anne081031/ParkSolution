@@ -289,6 +289,21 @@ void QCommonFunction::InformationBox( QWidget *pParent, QString& strText )
   messageBox.exec( );
 }
 
+void QCommonFunction::CriticalBox( QWidget *pParent, QString& strText )
+{
+  QMessageBox messageBox( pParent );
+  QString strTitle = "错误";
+
+  SetMessageBoxProperty( messageBox,  QMessageBox::Critical,
+                         strTitle, strText, Qt::ApplicationModal );
+
+  QPushButton* pBtn = messageBox.addButton( "确定", QMessageBox::ActionRole );
+  SetButtonMiniSize( pBtn );
+
+
+  messageBox.exec( );
+}
+
 QMessageBox::StandardButtons QCommonFunction::MessageBox( QString &strTitle, QString &strText, QWidget *pParent, QMessageBox::Icon icon )
 {
     QMessageBox::StandardButtons stdButtons;

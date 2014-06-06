@@ -371,8 +371,12 @@ void QPlateThread::GetResultInfo( QStringList &lstResult, QString &strFile, bool
 {
     QFileInfo info( strFile );
 
+    if ( 1 < nNum ) {
+        qDebug( ) << QString::number( nNum ) << Q_FUNC_INFO << endl;
+    }
+
     for ( int nIndex = 0; nIndex < nNum; nIndex++ ) {
-        lstResult << ( bSuccess ? pCodec->toUnicode( pResult[ 0 ].license ) : "失败" );
+        lstResult << ( bSuccess ? pCodec->toUnicode( pResult[ nIndex ].license ) : "失败" );
         lstResult << ( bSuccess ? QString::number( pResult[ nIndex ].nTime )  : "" );
         lstResult << ( bSuccess ? QString::number( pResult[ nIndex ].nConfidence ) : "" );
         lstResult << ( bSuccess ? GetPlateColor( pResult[ nIndex ].nColor ) : "" );
@@ -467,9 +471,9 @@ void QPlateThread::VideoRecognize( QPlateEvent *pEvent )
     GetResultInfo( lstResult, strFile, bRet, nNum, result );
 
     ///////////////////////////////////////////////// Only a Plate
-    bool bSame = true;
+    bool bSame = ( 1 == nNum );
 
-    if ( bRet && !bOutputAllPlate ) {
+    if ( bRet && !bOutputAllPlate &&  bSame ) {
         const QString& strCurrentPlate = lstResult.at( 0 );
         //qDebug( ) << Q_FUNC_INFO << strCurrentPlate << endl;
 

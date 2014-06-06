@@ -48,6 +48,8 @@ private:
     inline HANDLE GetChannelHandle( int nChannel );
     inline void SetChannelHandle( int nChannel, HANDLE hChannel );
 
+    void AllocMemory4Channel( );
+
     static QAnalogCameraThread* pThreadInstance;
     HANDLE hChannels[ CHANNEL_WAY ];
     QByteArray objVideoStream[ CHANNEL_WAY ];

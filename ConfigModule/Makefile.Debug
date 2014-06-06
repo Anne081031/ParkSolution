@@ -78,7 +78,7 @@ $(DESTDIR_TARGET):  $(OBJECTS)
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
 
 qmake: FORCE
-	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile.Debug ConfigModule.pro
+	@$(QMAKE) -spec win32-g++ -o Makefile.Debug ConfigModule.pro
 
 qmake_all: FORCE
 

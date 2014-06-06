@@ -89,7 +89,7 @@
          <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="text">
-         <string>川C12345</string>
+         <string/>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -220,7 +220,7 @@
          <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="text">
-         <string>渝F12345</string>
+         <string/>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -325,7 +325,7 @@
          <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="text">
-         <string>川A12345</string>
+         <string/>
         </property>
         <property name="readOnly">
          <bool>true</bool>
@@ -441,7 +441,7 @@
          <string notr="true">background-color: rgb(229, 229, 229);</string>
         </property>
         <property name="text">
-         <string>川B56789</string>
+         <string/>
         </property>
         <property name="readOnly">
          <bool>true</bool>

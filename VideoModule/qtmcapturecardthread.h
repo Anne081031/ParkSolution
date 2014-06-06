@@ -4,7 +4,7 @@
 #include "QAnalogCameraThread.h"
 #include "TmSDK/Sa7134Capture.h"
 
-class QTmCaptureCardThread : public QAnalogCameraThread
+class VIDEOMODULESHARED_EXPORT QTmCaptureCardThread : public QAnalogCameraThread
 {
     Q_OBJECT
 public:

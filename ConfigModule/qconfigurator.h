@@ -13,6 +13,9 @@ class CONFIGMODULESHARED_EXPORT QConfigurator : public QObject
 public:
     static QConfigurator* CreateConfigurator( );
 
+    void SetDropFrame( const int nStep );
+    void GetDropFrame( int& nStep ) const;
+
     void SetWelcomeSound( const QString& strWelcome );
     void GetWelcomeSound( QString& strWelcome );
 
@@ -103,6 +106,9 @@ public:
 
     void SetVideoWay( const int nWay );
     void GetVideoWay( int& nWay ) const;
+
+    void SetMotionDetection( const bool bMotion );
+    void GetMotionDetection( bool& bMotion ) const;
 
     void SetCaptureCard( const QString& strCardType );
     void GetCaptureCard( QString& strCardType ) const;
