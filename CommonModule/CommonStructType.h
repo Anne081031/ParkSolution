@@ -331,7 +331,11 @@ namespace ParkSolution {
         QString strSpQueryCommonDataByType;
         QString strSpWriteInOutRecord;
         QString strSpQueryInOutRecord;
-        QString strReportInfo;
+        QString strSpReportInfo;
+        QString strSpChartInfo;
+        QString strSpQueryCustomerDataByPlate;
+        QString strSpQueryVehicleDataByCustomer;
+        QString strSpQueryServiceDataByPlate;
 
         __SpName( )
         {
@@ -351,7 +355,11 @@ namespace ParkSolution {
             strSpQueryCommonDataByType = "QueryCommonDataByType";
             strSpWriteInOutRecord = "WriteInOutRecord";
             strSpQueryInOutRecord = "QueryInOutRecord";
-            strReportInfo = "ReportInfo";
+            strSpReportInfo = "ReportInfo";
+            strSpChartInfo = "ChartInfo";
+            strSpQueryCustomerDataByPlate = "QueryCustomerDataByPlate";
+            strSpQueryVehicleDataByCustomer = "QueryVehicleDataByCustomer";
+            strSpQueryServiceDataByPlate = "QueryServiceDataByPlate";
         }
     } SpName;
 
@@ -375,6 +383,10 @@ namespace ParkSolution {
         QString strXmlWriteInOutRecord;
         QString strXmlQueryInOutRecord;
         QString strXmlReportInfo;
+        QString strXmlChartInfo;
+        QString strXmlQueryCustomerDataByPlate;
+        QString strXmlQueryVehicleDataByCustomer;
+        QString strXmlQueryServiceDataByPlate;
 
         __SpXmlPattern( )
         {
@@ -434,7 +446,11 @@ namespace ParkSolution {
             strXmlQueryCommonDataByType = "<Data><DataType>%1</DataType></Data>";
             strXmlWriteInOutRecord = "<Data><Flag>%1</Flag><Plate>%2</Plate><DateTime>%3</DateTime><Image>%4</Image><UUID>%5</UUID></Data>";
             strXmlQueryInOutRecord = "<Data><Flag>%1</Flag><Plate>%2</Plate><StartTime>%3</StartTime><EndTime>%4</EndTime></Data>";
-            strXmlReportInfo = "<Data><Flag>%1</Flag><StartTime>%2</StartTime><EndTime>%3</EndTime></Data>";
+            strXmlReportInfo = "<Data><Flag>%1</Flag><StartTime>%2</StartTime><EndTime>%3</EndTime><Chart>%4</Chart></Data>";
+            strXmlChartInfo = "<Data><Flag>%1</Flag><StartTime>%2</StartTime><EndTime>%3</EndTime><Chart>%4</Chart><Plate>%5</Plate></Data>";
+            strXmlQueryCustomerDataByPlate = "<Data><Flag>%1</Flag><Plate>%2</Plate></Data>";
+            strXmlQueryVehicleDataByCustomer = "<Data><Flag>%1</Flag><CustomerID>%2</CustomerID><Plate>%3</Plate></Data>";
+            strXmlQueryServiceDataByPlate = "<Data><Flag>%1</Flag><Plate>%2</Plate></Data>";
         }
     } SpXmlPattern;
 }

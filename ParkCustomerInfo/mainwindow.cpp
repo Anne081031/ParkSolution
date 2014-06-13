@@ -851,7 +851,7 @@ void MainWindow::GetDateWhere( QString& strDateWhere, QDateEdit* pDateEditStart,
         return;
     }
 
-    strDateWhere += QString( " %1 between \\'%2\\' and \\'%3\\' " ).arg(
+    strDateWhere += QString( " %1 between \\'%2 00:00:00\\' and \\'%3 23:59:59\\' " ).arg(
                 strFieldName,
                 pDateEditStart->text( ),
                 pDateEditEnd->text( ) );

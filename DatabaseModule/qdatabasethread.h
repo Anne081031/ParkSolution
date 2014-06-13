@@ -11,7 +11,11 @@ class DATABASEMODULESHARED_EXPORT QDatabaseThread : public QBaseThread
     Q_OBJECT
 public:
     static QDatabaseThread* CreateInstance( );
+    void PostQueryServiceDataByPlateEvent( QStringList& lstParams, QSqlQueryModel* pModel );
+    void PostQueryCustomerDataByPlateEvent( QStringList& lstParams, QSqlQueryModel* pModel );
+    void PostQueryVehicleDataByCustomerEvent( QStringList& lstParams, QSqlQueryModel* pModel );
     void PostReportInfoEvent( QStringList& lstParams );
+    void PostChartInfoEvent( QStringList& lstParams );
     void PostQueryInOutRecordEvent( QStringList& lstParams, QSqlQueryModel* pModel );
     void PostWriteInOutRecordEvent( QStringList& lstParams );
     void PostWriteInOutRecordEvent( QStringList& lstParams, int nIndex );
@@ -51,7 +55,11 @@ private:
     static QDatabaseThread* NewThread( int nIndex );
     QDatabaseThread* CreateSubThread( int nIndex );
 
+    void ProcessQueryServiceDataByPlateEvent( QDatabaseEvent* pEvent );
+    void ProcessQueryCustomerDataByPlateEvent( QDatabaseEvent* pEvent );
+    void ProcessQueryVehicleDataByCustomerEvent( QDatabaseEvent* pEvent );
     void ProcessReportInfoEvent( QDatabaseEvent* pEvent );
+    void ProcessChartInfoEvent( QDatabaseEvent* pEvent );
     void ProcessQueryInOutRecordEvent( QDatabaseEvent* pEvent );
     void ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent );
     void ProcessDatabaseConnectEvent( QDatabaseEvent* pEvent );

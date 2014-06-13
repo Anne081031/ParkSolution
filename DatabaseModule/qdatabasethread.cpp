@@ -90,7 +90,7 @@ void QDatabaseThread::PostEvent( QEvent *pEvent )
 
 bool QDatabaseThread::ThreadInitialize( )
 {
-    bool bRet = QBaseThread::ThreadInitialize( );
+    bool bRet = true;//QBaseThread::ThreadInitialize( );
 
     strConnectName = QString( "CustomerCenterInfo%1" ).arg( nThreadConnectID );
     pMySQLDatabase = QDatabaseFactory::CreateDatabaseObj( ParkSolution::MySQL );
@@ -239,6 +239,22 @@ void QDatabaseThread::customEvent( QEvent *pEvent )
     case QDatabaseEvent::ReportInfo :
         ProcessReportInfoEvent( pDbEvent );
         break;
+
+    case QDatabaseEvent::ChartInfo :
+        ProcessChartInfoEvent( pDbEvent );
+        break;
+
+    case QDatabaseEvent::QueryCustomerDataByPlate :
+        ProcessQueryCustomerDataByPlateEvent( pDbEvent );
+        break;
+
+    case QDatabaseEvent::QueryVehicleDataByCustomer :
+        ProcessQueryVehicleDataByCustomerEvent( pDbEvent );
+        break;
+
+    case QDatabaseEvent::QueryServiceDataByPlate :
+        ProcessQueryServiceDataByPlateEvent( pDbEvent );
+        break;
     }
 }
 
@@ -334,9 +350,40 @@ void QDatabaseThread::PostChangeServiceRecordEvent( QStringList& lstParams )
     QBaseThread::PostEvent( pEvent );
 }
 
+void QDatabaseThread::PostQueryServiceDataByPlateEvent( QStringList& lstParams, QSqlQueryModel* pModel )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::QueryServiceDataByPlate );
+    pEvent->SetParamList( lstParams );
+    pEvent->SetQueryModel( pModel );
+    QBaseThread::PostEvent( pEvent );
+}
+
+void QDatabaseThread::PostQueryCustomerDataByPlateEvent( QStringList& lstParams, QSqlQueryModel* pModel )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::QueryCustomerDataByPlate );
+    pEvent->SetParamList( lstParams );
+    pEvent->SetQueryModel( pModel );
+    QBaseThread::PostEvent( pEvent );
+}
+
+void QDatabaseThread::PostQueryVehicleDataByCustomerEvent( QStringList& lstParams, QSqlQueryModel* pModel )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::QueryVehicleDataByCustomer );
+    pEvent->SetParamList( lstParams );
+    pEvent->SetQueryModel( pModel );
+    QBaseThread::PostEvent( pEvent );
+}
+
 void QDatabaseThread::PostReportInfoEvent( QStringList& lstParams )
 {
     QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::ReportInfo );
+    pEvent->SetParamList( lstParams );
+    QBaseThread::PostEvent( pEvent );
+}
+
+void QDatabaseThread::PostChartInfoEvent( QStringList& lstParams )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::ChartInfo );
     pEvent->SetParamList( lstParams );
     QBaseThread::PostEvent( pEvent );
 }
@@ -406,10 +453,40 @@ void QDatabaseThread::ProcessDatabaseDisconnectEvent( QDatabaseEvent* pEvent )
 
 }
 
+void QDatabaseThread::ProcessQueryServiceDataByPlateEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    QSqlQueryModel* pModel = pEvent->GetQueryModel( );
+    pMySQLDatabase->CallSP( strConnectName,
+                ParkSolution::SpQueryServiceDataByPlate, lstParams, pModel );
+}
+
+void QDatabaseThread::ProcessQueryCustomerDataByPlateEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    QSqlQueryModel* pModel = pEvent->GetQueryModel( );
+    pMySQLDatabase->CallSP( strConnectName,
+                ParkSolution::SpQueryCustomerDataByPlate, lstParams, pModel );
+}
+
+void QDatabaseThread::ProcessQueryVehicleDataByCustomerEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    QSqlQueryModel* pModel = pEvent->GetQueryModel( );
+    pMySQLDatabase->CallSP( strConnectName,
+                ParkSolution::SpQueryVehicleDataByCustomer, lstParams, pModel );
+}
+
 void QDatabaseThread::ProcessReportInfoEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
     pMySQLDatabase->CallSP( strConnectName, ParkSolution::SpReportInfo, lstParams );
+}
+
+void QDatabaseThread::ProcessChartInfoEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    pMySQLDatabase->CallSP( strConnectName, ParkSolution::SpChartInfo, lstParams );
 }
 
 void QDatabaseThread::ProcessQueryInOutRecordEvent( QDatabaseEvent* pEvent )

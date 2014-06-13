@@ -261,6 +261,54 @@ void QMySQL::CallExportCustomerData( QString &strConnectName,
     ExecuteSP( strConnectName, eSpType, strSQL, pQueryModel);
 }
 
+void QMySQL::CallQueryServiceDataByPlate( QString &strConnectName,
+                                   ParkSolution::SpType eSpType,
+                                   QString &strSpName,
+                                   QString &strXmlPattern,
+                                   QStringList &lstParams,
+                                   QSqlQueryModel* pQueryModel )
+{
+    if ( 2 > lstParams.count( ) ) {
+        return;
+    }
+
+    strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ), lstParams.at( 1 ) );
+    QString strSQL = QString( "Call %1( '%2' )" ).arg( strSpName, strXmlPattern );
+    ExecuteSP( strConnectName, eSpType, strSQL, pQueryModel);
+}
+
+void QMySQL::CallQueryCustomerDataByPlate( QString &strConnectName,
+                                   ParkSolution::SpType eSpType,
+                                   QString &strSpName,
+                                   QString &strXmlPattern,
+                                   QStringList &lstParams,
+                                   QSqlQueryModel* pQueryModel )
+{
+    if ( 2 > lstParams.count( ) ) {
+        return;
+    }
+
+    strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ), lstParams.at( 1 ) );
+    QString strSQL = QString( "Call %1( '%2' )" ).arg( strSpName, strXmlPattern );
+    ExecuteSP( strConnectName, eSpType, strSQL, pQueryModel);
+}
+
+void QMySQL::CallQueryVehicleDataByCustomer( QString &strConnectName,
+                                   ParkSolution::SpType eSpType,
+                                   QString &strSpName,
+                                   QString &strXmlPattern,
+                                   QStringList &lstParams,
+                                   QSqlQueryModel* pQueryModel )
+{
+    if ( 3 > lstParams.count( ) ) {
+        return;
+    }
+
+    strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ), lstParams.at( 1 ), lstParams.at( 2 ) );
+    QString strSQL = QString( "Call %1( '%2' )" ).arg( strSpName, strXmlPattern );
+    ExecuteSP( strConnectName, eSpType, strSQL, pQueryModel);
+}
+
 void QMySQL::CallQueryInOutRecord( QString &strConnectName,
                                    ParkSolution::SpType eSpType,
                                    QString &strSpName,
@@ -514,13 +562,33 @@ void QMySQL::CallReportInfo( QString& strConnectName,
                                QString& strXmlPattern,
                                QStringList& lstParams )
 {
-    if ( 3 > lstParams.count( ) ) {
+    if ( 4 > lstParams.count( ) ) {
         return;
     }
 
     strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ),
                                        lstParams.at( 1 ),
-                                       lstParams.at( 2 ) );
+                                       lstParams.at( 2 ),
+                                       lstParams.at( 3 ) );
+    QString strSQL = QString( "Call %1( '%2', @txtValue )" ).arg( strSpName, strXmlPattern );
+    ExecuteSP( strConnectName, eSpType, strSQL );
+}
+
+void QMySQL::CallChartInfo( QString& strConnectName,
+                               ParkSolution::SpType eSpType,
+                               QString& strSpName,
+                               QString& strXmlPattern,
+                               QStringList& lstParams )
+{
+    if ( 5 > lstParams.count( ) ) {
+        return;
+    }
+
+    strXmlPattern = strXmlPattern.arg( lstParams.at( 0 ),
+                                       lstParams.at( 1 ),
+                                       lstParams.at( 2 ),
+                                       lstParams.at( 3 ),
+                                       lstParams.at( 4 ) );
     QString strSQL = QString( "Call %1( '%2', @txtValue )" ).arg( strSpName, strXmlPattern );
     ExecuteSP( strConnectName, eSpType, strSQL );
 }
@@ -588,6 +656,8 @@ void QMySQL::CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStr
         CallWriteInOutRecord( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
     } else if ( ParkSolution::SpReportInfo == eSpType ) {
         CallReportInfo( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
+    } else if ( ParkSolution::SpChartInfo == eSpType ) {
+        CallChartInfo( strConnectName, eSpType, strSpName, strXmlPattern, lstParams );
     }
 }
 
@@ -608,6 +678,12 @@ void QMySQL::CallSP( QString& strConnectName, ParkSolution::SpType eSpType, QStr
         CallQueryCommonDataByType( strConnectName, eSpType, strSpName, strXmlPattern, lstParams, pQueryModel );
     }  else if ( ParkSolution::SpQueryInOutRecord == eSpType ) {
         CallQueryInOutRecord( strConnectName, eSpType, strSpName, strXmlPattern, lstParams, pQueryModel );
+    } else if ( ParkSolution::SpQueryCustomerDataByPlate == eSpType ) {
+        CallQueryCustomerDataByPlate( strConnectName, eSpType, strSpName, strXmlPattern, lstParams, pQueryModel );
+    }  else if ( ParkSolution::SpQueryVehicleDataByCustomer == eSpType ) {
+        CallQueryVehicleDataByCustomer( strConnectName, eSpType, strSpName, strXmlPattern, lstParams, pQueryModel );
+    } else if ( ParkSolution::SpQueryServiceDataByPlate == eSpType ) {
+        CallQueryServiceDataByPlate( strConnectName, eSpType, strSpName, strXmlPattern, lstParams, pQueryModel );
     }
 }
 

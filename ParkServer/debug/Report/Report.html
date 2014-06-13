@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html" charset="GB18030">
+<title>车辆进入统计报表</title>
+<script type="text/javascript" src="./jscharts.js"></script>
+</head>
+<body>
+<table style="width:100%;" title="车辆进入统计报表" align="center" border="4"><TR><TD colspan="2" align="center">按日统计</TD></TR><TR><TD>时间</TD><TD>车辆数</TD></TR><TR><TD>2014-05-13日</TD><TD>3054</TD></TR><TR><TD>2014-05-14日</TD><TD>3569</TD></TR><TR><TD>2014-05-15日</TD><TD>3</TD></TR><TR><TD>2014-05-16日</TD><TD>17</TD></TR><TR><TD>2014-05-19日</TD><TD>122</TD></TR><TR><TD>2014-05-20日</TD><TD>378</TD></TR><TR><TD>2014-05-21日</TD><TD>557</TD></TR><TR><TD>2014-05-22日</TD><TD>232</TD></TR><TR><TD>2014-05-23日</TD><TD>5</TD></TR><TR><TD>2014-05-26日</TD><TD>23</TD></TR><TR><TD>2014-05-27日</TD><TD>40</TD></TR><TR><TD>2014-05-28日</TD><TD>49</TD></TR><TR><TD>2014-05-30日</TD><TD>275</TD></TR><TR><TD>2014-06-03日</TD><TD>329</TD></TR><TR><TD>2014-06-04日</TD><TD>4518</TD></TR><TR><TD>2014-06-05日</TD><TD>5033</TD></TR><TR><TD>2014-06-06日</TD><TD>1986</TD></TR><TR><TD>2014-06-07日</TD><TD>5649</TD></TR><TR><TD>2014-06-08日</TD><TD>8068</TD></TR><TR><TD>2014-06-09日</TD><TD>3946</TD></TR><TR><TD>2014-06-10日</TD><TD>3909</TD></TR><TR><TD>2014-06-11日</TD><TD>722</TD></TR><TR><TD>总计</TD><TD>42484</TD></TR></table>
+<br><br><br><div id="graph">正在加载图</div>
+<script>var myChart = new JSChart('graph', 'line');
+myChart.setDataJSON( 'data.json' );
+myChart.setTitle('趋势图');
+myChart.setTitleColor('#8E8E8E');
+myChart.setTitleFontSize(11);
+myChart.setTitleColor('#0000FF');
+myChart.setAxisNameFontSizeX(14);
+myChart.setAxisNameX('时间');
+myChart.setAxisNameColorX('#800080');
+myChart.setAxisNameFontSizeY(14);
+myChart.setAxisNameY('车次数');
+myChart.setAxisNameColorY('#008080');
+myChart.setAxisColor('#C4C4C4');
+myChart.setAxisValuesColor('#343434');
+myChart.setAxisPaddingLeft(100);
+myChart.setAxisPaddingRight(10);
+myChart.setAxisPaddingTop(50);
+myChart.setAxisPaddingBottom(40);
+myChart.setAxisValuesNumberX(0);
+myChart.setAxisValuesNumberY(0);
+myChart.setGraphExtend(true);
+myChart.setGridColor('#c2c2c2');
+myChart.setLineWidth(6);
+myChart.setLineColor('#9F0505');
+myChart.setSize(1024, 600);
+myChart.draw();
+</script>
+</body>
+</html>

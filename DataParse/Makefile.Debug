@@ -17,7 +17,7 @@ CXXFLAGS      = -pipe -fno-keep-inline-dllexport -g -frtti -Wall -Wextra -fexcep
 INCPATH       = -I. -I"F:\Qt\Qt5.3.0\5.3\mingw482_32\include" -I"F:\Qt\Qt5.3.0\5.3\mingw482_32\include\ActiveQt" -I"F:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtWidgets" -I"F:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtGui" -I"F:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtXml" -I"F:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtSql" -I"F:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtNetwork" -I"F:\Qt\Qt5.3.0\5.3\mingw482_32\include\QtCore" -I"debug" -I"F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\win32-g++"
 LINKER      =        g++
 LFLAGS        =        -shared -mthreads -Wl,--out-implib,..\LibExeFiles\Debug\libDataParseDebug.a
-LIBS        =        ../LibExeFiles/Debug/libConfigModuleDebug.a -LF:/Qt/Qt5.3.0/5.3/mingw482_32/lib -lQt5AxContainerd -LC:\mingw482\mingw32\lib -LC:\Utils\icu32_52_1_mingw482\lib -LC:\utils\postgresql\pgsql\lib -LC:\utils\mysql\mysql\lib -LC:\opensll\lib -LF:\Qt\Qt5.3.0\5.3\mingw482_32/lib -lQt5AxBased -lglu32 -lopengl32 -lole32 -loleaut32 -luser32 -lgdi32 -ladvapi32 -luuid -lQt5Widgetsd -lQt5Guid -lQt5Xmld -lQt5Sqld -lQt5Networkd -lQt5Cored 
+LIBS        =        ../LibExeFiles/Debug/libCommonModuleDebug.a ../LibExeFiles/Debug/libConfigModuleDebug.a -LF:/Qt/Qt5.3.0/5.3/mingw482_32/lib -lQt5AxContainerd -LC:\mingw482\mingw32\lib -LC:\Utils\icu32_52_1_mingw482\lib -LC:\utils\postgresql\pgsql\lib -LC:\utils\mysql\mysql\lib -LC:\opensll\lib -LF:\Qt\Qt5.3.0\5.3\mingw482_32/lib -lQt5AxBased -lglu32 -lopengl32 -lole32 -loleaut32 -luser32 -lgdi32 -ladvapi32 -luuid -lQt5Widgetsd -lQt5Guid -lQt5Xmld -lQt5Sqld -lQt5Networkd -lQt5Cored 
 QMAKE         = F:\Qt\Qt5.3.0\5.3\mingw482_32\bin\qmake.exe
 IDC           = idc
 IDL           = midl
@@ -78,7 +78,7 @@ $(DESTDIR_TARGET): F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/libQt5AxContainerd.a F:/Qt/
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
 
 qmake: FORCE
-	@$(QMAKE) -spec win32-g++ -o Makefile.Debug DataParse.pro
+	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile.Debug DataParse.pro
 
 qmake_all: FORCE
 

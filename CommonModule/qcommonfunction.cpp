@@ -84,6 +84,16 @@ void QCommonFunction::GetButtonStyleSheet( QString &strBtnStyleSheet )
     //"QPushButton::hover { background-image: url(./Image/ButtonHover.png); }\n";
 }
 
+void QCommonFunction::CryptString( QString& strValue )
+{
+    strValue = GetTextCodec( )->fromUnicode( strValue ).toBase64( ).toHex( );
+}
+
+void QCommonFunction::DecryptString( QString& strValue )
+{
+    strValue = QByteArray::fromBase64( QByteArray::fromHex( GetTextCodec( )->fromUnicode( strValue ) ) );
+}
+
 void QCommonFunction::ReadAllFile( const QString &strFile, QByteArray &byData )
 {
    QFile file( strFile );
@@ -522,7 +532,23 @@ void QCommonFunction::GetSpName( ParkSolution::SpType eSpType, QString& strSpNam
         break;
 
     case ParkSolution::SpReportInfo :
-        strSpName = spName.strReportInfo;
+        strSpName = spName.strSpReportInfo;
+        break;
+
+    case ParkSolution::SpChartInfo :
+        strSpName = spName.strSpChartInfo;
+        break;
+
+    case ParkSolution::SpQueryCustomerDataByPlate :
+        strSpName = spName.strSpQueryCustomerDataByPlate;
+        break;
+
+    case ParkSolution::SpQueryVehicleDataByCustomer :
+        strSpName = spName.strSpQueryVehicleDataByCustomer;
+        break;
+
+    case ParkSolution::SpQueryServiceDataByPlate :
+        strSpName = spName.strSpQueryServiceDataByPlate;
         break;
     }
 }
@@ -606,6 +632,22 @@ void QCommonFunction::GetSpXmlPattern( ParkSolution::SpType eSpType, QString& st
 
     case ParkSolution::SpReportInfo :
         strXmlPattern = xmlPattern.strXmlReportInfo;
+        break;
+
+    case ParkSolution::SpChartInfo :
+        strXmlPattern = xmlPattern.strXmlChartInfo;
+        break;
+
+    case ParkSolution::SpQueryCustomerDataByPlate :
+        strXmlPattern = xmlPattern.strXmlQueryCustomerDataByPlate;
+        break;
+
+    case ParkSolution::SpQueryVehicleDataByCustomer :
+        strXmlPattern = xmlPattern.strXmlQueryVehicleDataByCustomer;
+        break;
+
+    case ParkSolution::SpQueryServiceDataByPlate :
+        strXmlPattern = xmlPattern.strXmlQueryServiceDataByPlate;
         break;
     }
 }

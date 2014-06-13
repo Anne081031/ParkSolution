@@ -40,7 +40,8 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete pFrameQueryData;
-    delete pDlgReport;
+    //delete pDlgReport;
+    delete pFrameReport;
     delete pSysTrayIcon;
     DestroyImageLabel( );
     delete ui;
@@ -52,8 +53,10 @@ void MainWindow::CreateQueryFrame( )
 
     connect( pFrameQueryData, SIGNAL( QueryData( QStringList ) ),
              this, SLOT( HandleQueryData( QStringList ) ) );
-    connect( pFrameQueryData, SIGNAL( QueryDataset( QStringList, QObject* ) ),
-             this, SLOT( HandleQueryDataset( QStringList, QObject* ) ) );
+    connect( pFrameQueryData, SIGNAL( QueryChart( QStringList ) ),
+             this, SLOT( HandleQueryChart( QStringList ) ) );
+    connect( pFrameQueryData, SIGNAL( QueryDataset( QStringList, QObject*, int ) ),
+             this, SLOT( HandleQueryDataset( QStringList, QObject*, int ) ) );
 }
 
 void MainWindow::GetCommonConfigData( )
@@ -76,9 +79,10 @@ void MainWindow::GetCommonConfigData( )
 
 void MainWindow::CreateReportDlg( )
 {
-    pDlgReport = new QDlgReport( this);
+    //pDlgReport = new QDlgReport( this);
+    pFrameReport = new QFrameReport( );
 
-    connect( pDlgReport, SIGNAL( ReportQuery( QStringList ) ),
+    connect( pFrameReport, SIGNAL( ReportQuery( QStringList ) ),
                    this, SLOT( HandleReportQuery( QStringList ) ) );
 }
 
@@ -123,9 +127,25 @@ void MainWindow::HandleMessageClicked( )
 
 }
 
-void MainWindow::HandleQueryDataset( QStringList lstParams, QObject * pModel )
+void MainWindow::HandleQueryDataset( QStringList lstParams, QObject * pModel, int nType )
 {
-    pDatabaseThread->PostQueryInOutRecordEvent( lstParams, ( QSqlQueryModel* ) pModel );
+    switch ( nType ) {
+    case QFrameQueryData::CustomerData :
+        pDatabaseThread->PostQueryCustomerDataByPlateEvent( lstParams, ( QSqlQueryModel* ) pModel );
+        break;
+
+    case QFrameQueryData::VehicleData :
+        pDatabaseThread->PostQueryVehicleDataByCustomerEvent( lstParams, ( QSqlQueryModel* ) pModel );
+        break;
+
+    case QFrameQueryData::ServiceData :
+        pDatabaseThread->PostQueryServiceDataByPlateEvent( lstParams, ( QSqlQueryModel* ) pModel );
+        break;
+
+    case QFrameQueryData::InOutRecordData :
+        pDatabaseThread->PostQueryInOutRecordEvent( lstParams, ( QSqlQueryModel* ) pModel );
+        break;
+    }
 }
 
 void MainWindow::HandleQueryData( QStringList lstParams )
@@ -282,8 +302,16 @@ void MainWindow::HandleSpResult( int nSpType, QByteArray byData )
     } else if ( ParkSolution::SpQueryUserInfo == nSpType ) {
         dlgLogin.FillUser( byData );
     } else if ( ParkSolution::SpReportInfo == nSpType ) {
-        pDlgReport->DisplayReport( byData );
-    } else if ( ParkSolution::SpQueryInOutImage ) {
+        pFrameReport->DisplayReport( byData );
+    } else if ( ParkSolution::SpChartInfo == nSpType ) {
+        if ( pFrameQueryData->isActiveWindow( ) ) {
+            pFrameQueryData->QueryChartFinished( byData );
+        }
+
+        if ( pFrameReport->isActiveWindow( ) ) {
+            pFrameReport->DisplayChart( byData );
+        }
+    } else if ( ParkSolution::SpQueryInOutImage == nSpType) {
         pFrameQueryData->QueryImageFinished( byData );
     }
 }
@@ -396,11 +424,19 @@ void MainWindow::HandleSpResultset( int nSpType, QObject* pQSqlQueryModel )
     qDebug( ) << "收到SP结果集" << endl;
 
     if ( ParkSolution::SpQueryServiceData == nSpType ) {
-        ui->tabServiceRecord->setModel( pModel );
-        HideTableViewColumn( ui->tabServiceRecord );
-        SetServiceViewColumnName( pModel );
+        if ( pFrameQueryData->isActiveWindow( ) ) {
+            pFrameQueryData->QueryServiceDataFinished( );
+        } else {
+            ui->tabServiceRecord->setModel( pModel );
+            HideTableViewColumn( ui->tabServiceRecord );
+            SetServiceViewColumnName( pModel );
+        }
     } else if ( ParkSolution::SpQueryInOutRecord == nSpType ) {
         pFrameQueryData->QueryInOutRecordFinished( );
+    } else if ( ParkSolution::SpQueryCustomerDataByPlate == nSpType ) {
+        pFrameQueryData->QueryCustomerFinished( );
+    } else if ( ParkSolution::SpQueryVehicleDataByCustomer == nSpType ) {
+        pFrameQueryData->QueryVehicleFinished( );
     }
 
     qDebug( ) << pModel->lastError( ).text( ) << endl;
@@ -965,14 +1001,30 @@ void MainWindow::closeEvent(QCloseEvent *event)
     pHoverFrame->deleteLater( );
 }
 
+void MainWindow::HandleQueryChart( QStringList lstParams )
+{
+    pDatabaseThread->PostChartInfoEvent( lstParams );
+}
+
 void MainWindow::HandleReportQuery( QStringList lstParams )
 {
+    if ( 1 > lstParams.size( ) ) {
+        return;
+    }
+
+    int nIndex = lstParams.at( 0 ).toInt( );
+
+    if ( 9 != nIndex ) {
+        pDatabaseThread->PostChartInfoEvent( lstParams );
+    }
+
     pDatabaseThread->PostReportInfoEvent( lstParams );
 }
 
 void MainWindow::on_actVehicleStatistics_triggered()
 {
-    pDlgReport->exec( );
+    //pDlgReport->exec( );
+    pFrameReport->show( );
 }
 
 void MainWindow::on_actQueryData_triggered()

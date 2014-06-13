@@ -38,9 +38,11 @@ int main(int argc, char *argv[])
     MainWindow w;
     //QCommonFunction::SetWindowIcon( &w );
 
+    /*
     if ( !w.Login( ) ) {
         return 0;
     }
+    */
 
     w.show();
 

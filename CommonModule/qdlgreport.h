@@ -22,6 +22,7 @@ public:
     void DisplayReport( const QByteArray& byJson );
 
 private:
+    void LayoutUI( );
     void Print( QWebView& wvReport );
     void KillAdobeProcess( QString &strExe );
     bool GetAdboeExePath( QString &strExe );
@@ -29,11 +30,9 @@ private:
     void QueryData( int nType );
 
 private slots:
-    void on_btQuerySum_clicked();
+    void on_btQuery_clicked();
 
     void on_btPrint_clicked();
-
-    void on_btQueryDetail_clicked();
 
 signals:
     void ReportQuery( QStringList lstParams );
@@ -42,6 +41,8 @@ private:
     Ui::QDlgReport *ui;
     QPrinter printer;
     QString strAdobeExe;
+    QString strReportFile;
+    QTextCodec* pTextCodec;
 };
 
 #endif // QDLGREPORT_H

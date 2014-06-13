@@ -17,8 +17,8 @@ QBaseThread::~QBaseThread( )
 
 bool QBaseThread::ThreadInitialize( )
 {
-    connect( this, SIGNAL( started( ) ), this, SLOT( ThreadStarted( ) ) );
-    connect( this, SIGNAL( finished( ) ), this, SLOT( ThreadFinished( ) ) );
+    //connect( this, SIGNAL( started( ) ), this, SLOT( ThreadStarted( ) ) );
+    //connect( this, SIGNAL( finished( ) ), this, SLOT( ThreadFinished( ) ) );
 
     return true;
 }

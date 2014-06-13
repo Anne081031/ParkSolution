@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     pConfigurator = QConfigurator::CreateConfigurator( );
     GetMiscellaneous( );
     InitializeProvider( );
+    InitializeSysTrayIcon( );
 
     StartSmsThread( );
     StartDatabaseThread( );
@@ -19,6 +20,34 @@ MainWindow::MainWindow(QWidget *parent) :
     StartProcessResultThread( );
     StartPlateThread( );
     StartVideoThread( );
+}
+
+void MainWindow::InitializeSysTrayIcon( )
+{
+    sysTrayIcon.SetSysTrayIconParent( this );
+    sysTrayIcon.SetTrayIcon( "./Image/TrayIcon.ico" );
+    sysTrayIcon.SetTrayTip( "隐藏或显示车牌服务器界面。" );
+    sysTrayIcon.ShowOrHideTrayIcon( true );
+
+    sysTrayIcon.SetContextMenu( );
+    QMenu* pMenu = sysTrayIcon.GetContextMenu( );
+    QAction* pAction  = pMenu->addAction( "隐藏" );
+    connect( pAction, SIGNAL( triggered( ) ),
+             this, SLOT( HandleActionTriggered( ) ) );
+}
+
+void MainWindow::HandleActionTriggered( QAction *pAction )
+{
+    static bool bHide = false;
+    pAction->setText( ( bHide ? "隐藏" : "显示" )  + QString( "车牌服务器界面" ) );
+    setVisible( bHide );
+    bHide = !bHide;
+}
+
+void MainWindow::HandleActionTriggered( )
+{
+    QAction* pAction = ( QAction* ) sender( );
+    HandleActionTriggered( pAction );
 }
 
 void MainWindow::InitializeUI( )
@@ -87,6 +116,14 @@ void MainWindow::HandlePlateSerializeData( QString strPlate, QString strDateTime
     SendPlate2Client( strPlate, strDateTime, strImageBase64 );
 }
 
+void MainWindow::changeEvent( QEvent *event )
+{
+    if ( QEvent::WindowStateChange == event->type( ) &&
+         isMinimized( ) ) {
+        setVisible( false );
+    }
+}
+
 void MainWindow::moveEvent( QMoveEvent *event )
 {
     Q_UNUSED( event )
@@ -128,6 +165,9 @@ void MainWindow::closeEvent( QCloseEvent *e )
 
 MainWindow::~MainWindow()
 {
+    ui->webViewReport->close( );
+    ui->webViewChart->close( );
+
     delete ui;
 }
 
@@ -342,6 +382,7 @@ void MainWindow::ParseSpResult( QByteArray& byJson, bool& bSuccess, QString& str
 
 void MainWindow::DisplayReport(const QByteArray &byJson)
 {
+    /*
     QJsonParseError jsonError;
     QJsonDocument jsonDoc = QJsonDocument::fromJson( byJson, &jsonError );
 
@@ -362,10 +403,41 @@ void MainWindow::DisplayReport(const QByteArray &byJson)
     if ( jsonValue.isNull( ) ) {
         return;
     }
+*/
+    QFile file( "./Report/Report.html" );
+    if ( !file.open( QIODevice::Truncate | QIODevice::ReadWrite ) ) {
+        return;
+    }
 
-    QString strHTML = jsonValue.toString( );
+    QString strHTML = QString::fromUtf8( byJson );
+    QByteArray byData = QCommonFunction::GetTextCodec( )->fromUnicode( strHTML );
+    file.write( byData );
+    file.close( );
 
-    ui->webView->setHtml( strHTML );
+    QString strFile = QString( "file:///%1/Report/Report.html" ).arg( qApp->applicationDirPath( ) );
+    QUrl url( strFile );
+
+    ui->webViewReport->setUrl( url );
+
+    //QString strHTML = jsonValue.toString( );
+
+    //ui->webViewReport->setHtml( strHTML );
+}
+
+void MainWindow::DisplayChart(const QByteArray &byJson)
+{
+    QFile file( "./Report/data.json" );
+    if ( !file.open( QIODevice::Truncate | QIODevice::ReadWrite ) ) {
+        return;
+    }
+
+    file.write( byJson );
+    file.close( );
+
+    QString strFile = QString( "file:///%1/Report/ChartTemplate.html" ).arg( qApp->applicationDirPath( ) );
+    QUrl url( strFile );
+
+    ui->webViewChart->setUrl( url );
 }
 
 void MainWindow::HandleSpThreadResult( int nSpType, QByteArray byData, QStringList lstParams )
@@ -376,6 +448,9 @@ void MainWindow::HandleSpThreadResult( int nSpType, QByteArray byData, QStringLi
 
     if ( ParkSolution::SpReportInfo == nSpType ) {
         DisplayReport( byData );
+        return;
+    } else if ( ParkSolution::SpChartInfo == nSpType ) {
+        DisplayChart( byData );
         return;
     }
 
@@ -390,6 +465,9 @@ void MainWindow::HandleSpResult( int nSpType, QByteArray byData )
 
     if ( ParkSolution::SpReportInfo == nSpType ) {
         DisplayReport( byData );
+        return;
+    } else if ( ParkSolution::SpChartInfo == nSpType ) {
+        DisplayChart( byData );
         return;
     }
 
@@ -672,7 +750,10 @@ void MainWindow::on_btQuery_clicked()
     }
 
     QStringList lstParams;
+    lstParams << QString::number( ui->cbxChartType->currentIndex( ) ) << ui->dtStart->text( ) << ui->dtEnd->text( );
+    pDatabaseThread->PostChartInfoEvent( lstParams );
 
-    lstParams << QString::number( ui->cbxType->currentIndex( ) ) << ui->dtStart->text( ) << ui->dtEnd->text( );
+    lstParams.clear( );
+    lstParams << QString::number( ui->cbxReportType->currentIndex( ) ) << ui->dtStart->text( ) << ui->dtEnd->text( );
     pDatabaseThread->PostReportInfoEvent( lstParams );
 }

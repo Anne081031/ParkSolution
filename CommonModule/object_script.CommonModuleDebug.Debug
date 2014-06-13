@@ -10,6 +10,8 @@ INPUT(
 ./debug\qjsondata.o
 ./debug\qframequerydata.o
 ./debug\qresizeform.o
+./debug\qmysystemtrayicon.o
+./debug\qframereport.o
 ./debug\moc_qbasethread.o
 ./debug\moc_qcommonfunction.o
 ./debug\moc_qdlglogin.o
@@ -20,4 +22,6 @@ INPUT(
 ./debug\moc_qjsondata.o
 ./debug\moc_qframequerydata.o
 ./debug\moc_qresizeform.o
+./debug\moc_qmysystemtrayicon.o
+./debug\moc_qframereport.o
 );

@@ -12,6 +12,9 @@ QDlgReport::QDlgReport(QWidget *parent) :
     ui->setupUi(this);
     QCommonFunction::DisableHelpButton( this );
 
+    LayoutUI( );
+    pTextCodec = QCommonFunction::GetTextCodec( );
+    strReportFile =  QString( "file:///%1/Report/Report.html" ).arg( qApp->applicationDirPath( ) );
     ui->dtStart->setDateTime( QDateTime::currentDateTime( ) );
     ui->dtEnd->setDateTime( QDateTime::currentDateTime( ).addMonths( 1 ) );
 }
@@ -21,8 +24,21 @@ QDlgReport::~QDlgReport()
     delete ui;
 }
 
+void QDlgReport::LayoutUI( )
+{
+    setWindowState( Qt::WindowMaximized );
+    setLayout( ui->horizontalLayout_2 );
+    ui->horizontalLayout_2->addWidget( ui->widget_2 );
+    ui->widget_2->setLayout( ui->gridLayout );
+    ui->gridLayout->addWidget( ui->widget, 0, 0 );
+    ui->gridLayout->addWidget( ui->webView, 1, 0 );
+
+    ui->widget->setLayout( ui->horizontalLayout );
+}
+
 void QDlgReport::DisplayReport( const QByteArray &byJson )
 {
+    /*
     QJsonParseError jsonError;
     QJsonDocument jsonDoc = QJsonDocument::fromJson( byJson, &jsonError );
 
@@ -47,6 +63,19 @@ void QDlgReport::DisplayReport( const QByteArray &byJson )
     QString strHTML = jsonValue.toString( );
 
     ui->webView->setHtml( strHTML );
+    */
+    QFile file( "./Report/Report.html" );
+    if ( !file.open( QIODevice::Truncate | QIODevice::ReadWrite ) ) {
+        return;
+    }
+
+    QString strHTML = QString::fromUtf8( byJson );
+    QByteArray byData = pTextCodec->fromUnicode( strHTML );
+    file.write( byData );
+    file.close( );
+
+    QUrl url( strReportFile );
+    ui->webView->setUrl( url );
 }
 
 void QDlgReport::QueryData( int nType )
@@ -55,11 +84,10 @@ void QDlgReport::QueryData( int nType )
 
     lstParams << QString::number( nType )
               << ui->dtStart->text( ) << ui->dtEnd->text( );
-
     emit ReportQuery( lstParams );
 }
 
-void QDlgReport::on_btQuerySum_clicked()
+void QDlgReport::on_btQuery_clicked()
 {
     QueryData( ui->cbxType->currentIndex( ) );
 }
@@ -171,9 +199,4 @@ void QDlgReport::PrintPdf( QString &strFile )
     QStringList lstArgs;
     lstArgs << strFile;
     QProcess::startDetached( strAdobeExe, lstArgs );
-}
-
-void QDlgReport::on_btQueryDetail_clicked()
-{
-    QueryData( 10 );
 }

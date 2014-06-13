@@ -68,8 +68,8 @@ bool QDataParser::ImportData( QString& strFile, QStringList& lstCustomerData )
     bool bRet = false;
 
     QAxObject* pExcel = new QAxObject( "Excel.Application" );
-    if ( NULL == pExcel ) {
-        qDebug( ) << Q_FUNC_INFO << "not install excel" << endl;
+    if ( NULL == pExcel || pExcel->isNull( ) ) {
+       UninstallExcel( );
         return bRet;
     }
 
@@ -168,12 +168,19 @@ void QDataParser::Convert2ExcelValue( QString& strValue, QVariant& varValue )
     }
 }
 
+void QDataParser::UninstallExcel( )
+{
+    qDebug( ) << Q_FUNC_INFO << "not install excel" << endl;
+    QString strText = "请确认，你是否已经正确安装了Excel软件！";
+    QCommonFunction::CriticalBox( NULL, strText );
+}
+
 bool QDataParser::ExportData( QString& strDir, QSqlQueryModel* pModel )
 {
     bool bRet = false;
     QAxObject* pExcel = new QAxObject( "Excel.Application" );
-    if ( NULL == pExcel ) {
-        qDebug( ) << Q_FUNC_INFO << "not install excel" << endl;
+    if ( NULL == pExcel || pExcel->isNull( ) ) {
+        UninstallExcel( );
         return bRet;
     }
 

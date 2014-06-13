@@ -16,6 +16,7 @@
 #include "../CommonModule/qhoverframe.h"
 #include "qspeechthread.h"
 #include "../CommonModule/qdlgreport.h"
+#include "../CommonModule/qframereport.h"
 #include "../NetworkModule/qzmqclientthread.h"
 #include "../VideoModule/qdhkipcthread.h"
 #include "../CommonModule/qframequerydata.h"
@@ -104,7 +105,8 @@ private:
     QShapedForm* pShapedForm;
     QSpeechThread* pSpeechThread;
     QZmqClientThread* pZmqClientThread;
-    QDlgReport* pDlgReport;
+    //QDlgReport* pDlgReport;
+    QFrameReport* pFrameReport;
     QFrameQueryData* pFrameQueryData;
     QString strWelcomeSound;
 
@@ -117,11 +119,12 @@ private:
     QDigitalCameraThread* pDigitalCamera;
 
 private slots:
+    void HandleQueryChart( QStringList lstParams );
     void HandleReportQuery( QStringList lstParams );
     void HandleActivated( QSystemTrayIcon::ActivationReason reason );
     void HandleMessageClicked( );
     void HandleShowHoverWindow( bool bVisible );
-    void HandleQueryDataset( QStringList lstParams, QObject * pModel );
+    void HandleQueryDataset( QStringList lstParams, QObject * pModel, int nType );
     void HandleQueryData( QStringList lstParams );
 
     void HandleBKResize( int nIndex, QSize bkSize );

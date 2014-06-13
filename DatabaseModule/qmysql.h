@@ -101,6 +101,12 @@ private:
                                    QString& strXmlPattern,
                                    QStringList& lstParams );
 
+    void CallChartInfo( QString& strConnectName,
+                                   ParkSolution::SpType eSpType,
+                                   QString& strSpName,
+                                   QString& strXmlPattern,
+                                   QStringList& lstParams );
+
     void CallQueryServiceData( QString& strConnectName,
                                ParkSolution::SpType eSpType,
                                QString& strSpName,
@@ -123,6 +129,27 @@ private:
                                QSqlQueryModel* pQueryModel );
 
     void CallQueryInOutRecord( QString &strConnectName,
+                                       ParkSolution::SpType eSpType,
+                                       QString &strSpName,
+                                       QString &strXmlPattern,
+                                       QStringList &lstParams,
+                                       QSqlQueryModel* pQueryModel );
+
+    void CallQueryServiceDataByPlate( QString &strConnectName,
+                                       ParkSolution::SpType eSpType,
+                                       QString &strSpName,
+                                       QString &strXmlPattern,
+                                       QStringList &lstParams,
+                                       QSqlQueryModel* pQueryModel );
+
+    void CallQueryCustomerDataByPlate( QString &strConnectName,
+                                       ParkSolution::SpType eSpType,
+                                       QString &strSpName,
+                                       QString &strXmlPattern,
+                                       QStringList &lstParams,
+                                       QSqlQueryModel* pQueryModel );
+
+    void CallQueryVehicleDataByCustomer( QString &strConnectName,
                                        ParkSolution::SpType eSpType,
                                        QString &strSpName,
                                        QString &strXmlPattern,

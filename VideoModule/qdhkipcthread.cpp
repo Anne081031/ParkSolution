@@ -13,6 +13,9 @@ QDHkIPCThread::QDHkIPCThread(QObject *parent) :
 
     for ( int nIndex = 0; nIndex < MAX_IPC_WAY; nIndex++ ) {
         lPlayPorts[ nIndex ] = -1;
+    }
+
+    for ( int nIndex = 0; nIndex < MAX_IPC_VIDEO_WAY; nIndex++ ) {
         pConfigurator->GetDropFrame( nStepLimit[ nIndex ]  );
     }
 
@@ -242,7 +245,7 @@ void QDHkIPCThread::DisplayCBFun( long nPort, char *pBuf, long nSize,
     }
 
     if ( 0 != ( nStepCounter[ nPort ] % nStepLimit[ nPort ] ) ) {
-        nStepCounter[ nPort ]++;
+        nStepCounter[ nPort ]++; // Frame extracting
         return;
     }
 

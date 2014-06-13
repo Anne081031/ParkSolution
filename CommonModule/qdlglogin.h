@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "commonmodule_global.h"
+#include <QSettings>
 
 namespace Ui {
 class QDlgLogin;
@@ -22,6 +23,7 @@ public:
 
 private:
     bool Login( );
+    void UserPwd( bool bSave );
     void ControlDialog( );
 
 private slots:
@@ -33,6 +35,8 @@ private:
     Ui::QDlgLogin *ui;
     QString strLoginUser;
     QString strLoginUserID;
+    QString strLoginPwd;
+    QSettings* pSettings;
 };
 
 #endif // QDLGLOGIN_H

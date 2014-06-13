@@ -27,7 +27,11 @@ public:
         ChangeCommonData,
         WriteInOutRecord,
         QueryInOutRecord,
-        ReportInfo
+        ReportInfo,
+        ChartInfo,
+        QueryCustomerDataByPlate,
+        QueryVehicleDataByCustomer,
+        QueryServiceDataByPlate
     } DatabaseEvent;
 
     static QDatabaseEvent* CreateDatabaseEvent( DatabaseEvent eDbEvent );

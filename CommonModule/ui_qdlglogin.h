@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFormLayout>
@@ -31,9 +32,11 @@ public:
     QWidget *formLayoutWidget;
     QFormLayout *formLayout;
     QLabel *label;
-    QLabel *label_2;
     QComboBox *cbxUser;
     QLineEdit *edtPwd;
+    QCheckBox *chkSavePwdUsr;
+    QLabel *label_2;
+    QLabel *lblTip;
     QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout;
     QPushButton *btnOK;
@@ -43,53 +46,79 @@ public:
     {
         if (QDlgLogin->objectName().isEmpty())
             QDlgLogin->setObjectName(QStringLiteral("QDlgLogin"));
-        QDlgLogin->resize(281, 153);
-        QDlgLogin->setMaximumSize(QSize(281, 153));
+        QDlgLogin->resize(419, 275);
         QDlgLogin->setAutoFillBackground(false);
         QDlgLogin->setStyleSheet(QStringLiteral(""));
         QDlgLogin->setSizeGripEnabled(false);
         formLayoutWidget = new QWidget(QDlgLogin);
         formLayoutWidget->setObjectName(QStringLiteral("formLayoutWidget"));
-        formLayoutWidget->setGeometry(QRect(60, 20, 160, 51));
+        formLayoutWidget->setGeometry(QRect(130, 132, 160, 91));
         formLayout = new QFormLayout(formLayoutWidget);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         formLayout->setContentsMargins(0, 0, 0, 0);
         label = new QLabel(formLayoutWidget);
         label->setObjectName(QStringLiteral("label"));
+        label->setStyleSheet(QLatin1String("background-image:url();\n"
+"color: rgb(255, 255, 255);"));
 
         formLayout->setWidget(0, QFormLayout::LabelRole, label);
 
-        label_2 = new QLabel(formLayoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-
-        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
-
         cbxUser = new QComboBox(formLayoutWidget);
         cbxUser->setObjectName(QStringLiteral("cbxUser"));
+        cbxUser->setStyleSheet(QStringLiteral("background-image:url();"));
 
         formLayout->setWidget(0, QFormLayout::FieldRole, cbxUser);
 
         edtPwd = new QLineEdit(formLayoutWidget);
         edtPwd->setObjectName(QStringLiteral("edtPwd"));
+        edtPwd->setStyleSheet(QStringLiteral("background-image:url();"));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, edtPwd);
 
+        chkSavePwdUsr = new QCheckBox(formLayoutWidget);
+        chkSavePwdUsr->setObjectName(QStringLiteral("chkSavePwdUsr"));
+        chkSavePwdUsr->setStyleSheet(QLatin1String("background-image:url();\n"
+"color: rgb(255, 255, 255);"));
+
+        formLayout->setWidget(2, QFormLayout::FieldRole, chkSavePwdUsr);
+
+        label_2 = new QLabel(formLayoutWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setStyleSheet(QLatin1String("background-image:url();\n"
+"color: rgb(255, 255, 255);"));
+
+        formLayout->setWidget(1, QFormLayout::LabelRole, label_2);
+
+        lblTip = new QLabel(formLayoutWidget);
+        lblTip->setObjectName(QStringLiteral("lblTip"));
+        QFont font;
+        font.setPointSize(10);
+        font.setBold(true);
+        font.setWeight(75);
+        lblTip->setFont(font);
+        lblTip->setStyleSheet(QLatin1String("background-image:url();\n"
+"color: rgb(255, 0, 0);"));
+        lblTip->setAlignment(Qt::AlignCenter);
+
+        formLayout->setWidget(3, QFormLayout::FieldRole, lblTip);
+
         layoutWidget = new QWidget(QDlgLogin);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(60, 100, 158, 25));
+        layoutWidget->setGeometry(QRect(130, 230, 158, 25));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         btnOK = new QPushButton(layoutWidget);
         btnOK->setObjectName(QStringLiteral("btnOK"));
         btnOK->setMinimumSize(QSize(75, 23));
-        btnOK->setStyleSheet(QStringLiteral(""));
+        btnOK->setStyleSheet(QStringLiteral("background-image:url();"));
 
         horizontalLayout->addWidget(btnOK);
 
         btnCancel = new QPushButton(layoutWidget);
         btnCancel->setObjectName(QStringLiteral("btnCancel"));
         btnCancel->setMinimumSize(QSize(75, 23));
+        btnCancel->setStyleSheet(QStringLiteral("background-image:url();"));
 
         horizontalLayout->addWidget(btnCancel);
 
@@ -103,7 +132,9 @@ public:
     {
         QDlgLogin->setWindowTitle(QApplication::translate("QDlgLogin", "\347\224\250\346\210\267\347\231\273\345\275\225", 0));
         label->setText(QApplication::translate("QDlgLogin", "\347\224\250\346\210\267", 0));
+        chkSavePwdUsr->setText(QApplication::translate("QDlgLogin", "\344\277\235\345\255\230\347\224\250\346\210\267\344\270\216\345\257\206\347\240\201", 0));
         label_2->setText(QApplication::translate("QDlgLogin", "\345\257\206\347\240\201", 0));
+        lblTip->setText(QString());
         btnOK->setText(QApplication::translate("QDlgLogin", "\347\231\273\345\275\225", 0));
         btnCancel->setText(QApplication::translate("QDlgLogin", "\345\217\226\346\266\210", 0));
     } // retranslateUi

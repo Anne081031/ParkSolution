@@ -15,6 +15,7 @@ Debug {
     TARGET = $$sprintf( $$MYTARGET, "Debug" )
     DESTDIR = $$sprintf( $$MYDESTDIR, "Debug" )
 
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "Debug" )
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "Debug" )
 }
 
@@ -22,6 +23,7 @@ Release {
     TARGET = $$sprintf( $$MYTARGET, "" )
     DESTDIR = $$sprintf( $$MYDESTDIR, "Release" )
 
+    LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "CommonModule", "" )
     LIBS += $$sprintf( $$MYDESTLIB, $$DESTDIR, "ConfigModule", "" )
 }
 

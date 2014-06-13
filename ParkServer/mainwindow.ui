@@ -36,7 +36,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tabInVideo">
      <attribute name="title">
@@ -52,27 +52,12 @@
      <attribute name="title">
       <string>报表</string>
      </attribute>
-     <widget class="QWebView" name="webView">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>40</y>
-        <width>781</width>
-        <height>371</height>
-       </rect>
-      </property>
-      <property name="url">
-       <url>
-        <string>about:blank</string>
-       </url>
-      </property>
-     </widget>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>8</x>
         <y>6</y>
-        <width>616</width>
+        <width>761</width>
         <height>25</height>
        </rect>
       </property>
@@ -100,17 +85,12 @@
        <item>
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>类别</string>
+          <string>报表类别</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QComboBox" name="cbxType">
-         <item>
-          <property name="text">
-           <string>全部</string>
-          </property>
-         </item>
+        <widget class="QComboBox" name="cbxReportType">
          <item>
           <property name="text">
            <string>按年</string>
@@ -164,6 +144,67 @@
         </widget>
        </item>
        <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>图类别</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="cbxChartType">
+         <item>
+          <property name="text">
+           <string>按年图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按季图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按月图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按年周图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按年月周图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按日图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按时图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按省图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按省内图</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>按明细图</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="btQuery">
          <property name="text">
           <string>查询</string>
@@ -171,6 +212,59 @@
         </widget>
        </item>
       </layout>
+     </widget>
+     <widget class="QTabWidget" name="tabWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>7</x>
+        <y>40</y>
+        <width>801</width>
+        <height>381</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>报表</string>
+       </attribute>
+       <widget class="QWebView" name="webViewReport">
+        <property name="geometry">
+         <rect>
+          <x>7</x>
+          <y>10</y>
+          <width>781</width>
+          <height>341</height>
+         </rect>
+        </property>
+        <property name="url">
+         <url>
+          <string>about:blank</string>
+         </url>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>图</string>
+       </attribute>
+       <widget class="QWebView" name="webViewChart">
+        <property name="geometry">
+         <rect>
+          <x>7</x>
+          <y>10</y>
+          <width>781</width>
+          <height>341</height>
+         </rect>
+        </property>
+        <property name="url">
+         <url>
+          <string>about:blank</string>
+         </url>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="tabPlate">

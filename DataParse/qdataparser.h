@@ -20,6 +20,7 @@ public:
     bool ExportData( QString& strDir, QSqlQueryModel* pModel );
 
 private:
+    inline void UninstallExcel( );
     void FillComboBox(QJsonArray &jsonArray, QWidget* pWgt );
     int FillEdit( QJsonDocument& docJson, ParkSolution::QStringWidgetHash& wgtHash );
     void FillCustomerEdit( QJsonObject& jsonObject, ParkSolution::QStringWidgetHash& wgtHash );

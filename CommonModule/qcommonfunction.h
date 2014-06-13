@@ -14,6 +14,8 @@ class COMMONMODULESHARED_EXPORT QCommonFunction : public QObject
 {
     Q_OBJECT
 public:
+    static void CryptString( QString& strValue );
+    static void DecryptString( QString& strValue );
     static void ReadAllFile( const QString& strFile, QByteArray& byData );
     static void GetAppCaptureImagePath( QString& strPath );
     static void GetImageFromBase64( QByteArray& byImage, const QString& strBase64 );

@@ -12,6 +12,7 @@
 #include "../VideoModule/qtmcapturecardthread.h"
 #include "../CommonModule/qserializethread.h"
 #include "qprocessresultthread.h"
+#include "../CommonModule/qmysystemtrayicon.h"
 
 #define MAX_VIDEO_WAY ( int ) 4
 
@@ -30,6 +31,7 @@ public:
 protected:
     void closeEvent( QCloseEvent* e );
     void moveEvent( QMoveEvent * event );
+    void changeEvent( QEvent* event );
 
 private:
     int GetImageFormat( );
@@ -46,6 +48,7 @@ private:
     void StartCaptureCardVideo( );
     void StartIPCVideo( );
     void InitializeUI( );
+    void InitializeSysTrayIcon( );
     void GetMiscellaneous( );
     void CaptureImage( QString& strFile, const QString& strPlate, int nChannel );
     void ProcessPlate( const QString& strPlate, bool bEnter, int nChannel, QString& strIP, bool bIpc );
@@ -55,7 +58,10 @@ private:
     void ParseSpResult( QByteArray& byJson, bool& bSuccess, QString& strUUID );
 
     void DisplayReport( const QByteArray& byJson );
+    void DisplayChart( const QByteArray& byJson );
     inline void StartIPCPlayVideo( QString& strIP, bool bMainStream, int nChannel );
+
+    void HandleActionTriggered( QAction* pAction );
 
 private slots:
     void HandleSerializeLog( QString strLog );
@@ -69,6 +75,7 @@ private slots:
     void HandleSpThreadResult( int nSpType, QByteArray byData, QStringList lstParams );
     void HandleCaptureImage( QString strFile, QString strIP );
     void HandleThreadPoolTaskData( QByteArray byData );
+    void HandleActionTriggered( );
 
     void on_btQuery_clicked();
 
@@ -85,6 +92,7 @@ private:
     QString strImagePath;
     QProcessResultThread* pProcessResultThread;
     HWND hVideoWnds[ MAX_VIDEO_WAY ];
+    QMySystemTrayIcon sysTrayIcon;
 
     bool bPlateVideo;
     int nVideoWay;

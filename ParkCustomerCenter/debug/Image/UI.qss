@@ -46,6 +46,11 @@ QDialog
     border-image: url(./Image/Login.png);
 }
 
+QDialog#DlgLogin
+{
+    border-image: url(./Image/Login.JPG);
+}
+
 QTabBar::tab
 {
     border-image: url(./Image/TabbarDefault.png);

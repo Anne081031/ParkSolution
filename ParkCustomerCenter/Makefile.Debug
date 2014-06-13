@@ -512,6 +512,7 @@ debug/moc_mainwindow.cpp: F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMainW
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qpagelayout.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qpagesize.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtPrintSupport/qtprintsupportglobal.h \
+		../CommonModule/qframereport.h \
 		../NetworkModule/qzmqclientthread.h \
 		../NetworkModule/NetworkModule_global.h \
 		../NetworkModule/qzmqclientevent.h \
@@ -534,6 +535,11 @@ debug/moc_mainwindow.cpp: F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMainW
 		../VideoModule/HikIPC/HCNetSDK.h \
 		../VideoModule/HikIPC/PlayM4.h \
 		../CommonModule/qframequerydata.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QHBoxLayout \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qboxlayout.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayout.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayoutitem.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qgridlayout.h \
 		../CommonModule/qresizeform.h \
 		mainwindow.h
 	F:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IF:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/ParkSolution/ParkCustomerCenter -ID:/ParkSolution/Zmq -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtPrintSupport -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore mainwindow.h -o debug\moc_mainwindow.cpp
@@ -1946,6 +1952,7 @@ debug/main.o: main.cpp mainwindow.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qpagelayout.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qpagesize.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtPrintSupport/qtprintsupportglobal.h \
+		../CommonModule/qframereport.h \
 		../NetworkModule/qzmqclientthread.h \
 		../NetworkModule/NetworkModule_global.h \
 		../NetworkModule/qzmqclientevent.h \
@@ -1968,6 +1975,11 @@ debug/main.o: main.cpp mainwindow.h \
 		../VideoModule/HikIPC/HCNetSDK.h \
 		../VideoModule/HikIPC/PlayM4.h \
 		../CommonModule/qframequerydata.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QHBoxLayout \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qboxlayout.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayout.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayoutitem.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qgridlayout.h \
 		../CommonModule/qresizeform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o main.cpp
 
@@ -2337,6 +2349,7 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qpagelayout.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qpagesize.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtPrintSupport/qtprintsupportglobal.h \
+		../CommonModule/qframereport.h \
 		../NetworkModule/qzmqclientthread.h \
 		../NetworkModule/NetworkModule_global.h \
 		../NetworkModule/qzmqclientevent.h \
@@ -2359,6 +2372,11 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		../VideoModule/HikIPC/HCNetSDK.h \
 		../VideoModule/HikIPC/PlayM4.h \
 		../CommonModule/qframequerydata.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QHBoxLayout \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qboxlayout.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayout.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayoutitem.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qgridlayout.h \
 		../CommonModule/qresizeform.h \
 		ui_mainwindow.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QAction \
@@ -2369,10 +2387,6 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QFormLayout \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qformlayout.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QLayout \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayout.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayoutitem.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qboxlayout.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qgridlayout.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QGridLayout \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QHeaderView \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qheaderview.h \
