@@ -1,0 +1,41 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html" charset="utf-8">
+<title>JSChart</title>
+<script type="text/javascript" src="./jscharts.js"></script>
+</head>
+<body>
+<div id="graph">Loading graph...</div>
+<script type="text/javascript">
+        var myColors = new Array('#0f0', '#ff0000', '#00f', '#ff0', '#00ffff');
+        var myChart = new JSChart('graph', 'line');
+        myChart.setDataJSON('datavehicle.json');
+        myChart.setTitle('车辆趋势图');
+	myChart.setTitleColor('#8E8E8E');
+	myChart.setTitleFontSize(11);
+        myChart.setTitleColor('#8E8E8E');
+        myChart.setAxisNameFontSizeX(14);
+        myChart.setAxisNameX('');
+        myChart.setAxisNameColorX('#800080');
+        myChart.setAxisNameFontSizeY(14);
+        myChart.setAxisNameY('来访次数');
+        myChart.setAxisNameColorY('#008080');
+	myChart.setAxisColor('#C4C4C4');
+	myChart.setAxisValuesColor('#343434');
+        myChart.setAxisPaddingLeft(70);
+        myChart.setAxisPaddingRight(50);
+	myChart.setAxisPaddingTop(50);
+	myChart.setAxisPaddingBottom(40);
+        myChart.setAxisValuesNumberX(0);
+        myChart.setAxisValuesNumberY(0);
+	myChart.setGraphExtend(true);
+	myChart.setGridColor('#c2c2c2');
+        myChart.setLineWidth(2);
+	myChart.setLineColor('#9F0505');
+        myChart.setSize(600, 400);
+        myChart.set3D( true );
+        myChart.setBarValuesColor('#FF0000');
+	myChart.draw();
+</script>
+</body>
+</html>

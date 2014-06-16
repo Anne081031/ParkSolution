@@ -8,7 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     InitializeUI( );
 
+    pTextCodec = QCommonFunction::GetTextCodec( );
+    strReportFile =  QString( "file:///%1/Report/Report.html" ).arg( qApp->applicationDirPath( ) );
     pConfigurator = QConfigurator::CreateConfigurator( );
+    LoadChartCbx( );
     GetMiscellaneous( );
     InitializeProvider( );
     InitializeSysTrayIcon( );
@@ -165,9 +168,6 @@ void MainWindow::closeEvent( QCloseEvent *e )
 
 MainWindow::~MainWindow()
 {
-    ui->webViewReport->close( );
-    ui->webViewChart->close( );
-
     delete ui;
 }
 
@@ -410,18 +410,12 @@ void MainWindow::DisplayReport(const QByteArray &byJson)
     }
 
     QString strHTML = QString::fromUtf8( byJson );
-    QByteArray byData = QCommonFunction::GetTextCodec( )->fromUnicode( strHTML );
+    QByteArray byData = pTextCodec->fromUnicode( strHTML );
     file.write( byData );
     file.close( );
 
-    QString strFile = QString( "file:///%1/Report/Report.html" ).arg( qApp->applicationDirPath( ) );
-    QUrl url( strFile );
-
-    ui->webViewReport->setUrl( url );
-
-    //QString strHTML = jsonValue.toString( );
-
-    //ui->webViewReport->setHtml( strHTML );
+    QUrl url( strReportFile );
+    ui->webView->setUrl( url );
 }
 
 void MainWindow::DisplayChart(const QByteArray &byJson)
@@ -434,10 +428,10 @@ void MainWindow::DisplayChart(const QByteArray &byJson)
     file.write( byJson );
     file.close( );
 
-    QString strFile = QString( "file:///%1/Report/ChartTemplate.html" ).arg( qApp->applicationDirPath( ) );
-    QUrl url( strFile );
+    //QString strFile = QString( "file:///%1/Report/ChartTemplate.html" ).arg( qApp->applicationDirPath( ) );
+    //QUrl url( strFile );
 
-    ui->webViewChart->setUrl( url );
+    //ui->webViewChart->setUrl( url );
 }
 
 void MainWindow::HandleSpThreadResult( int nSpType, QByteArray byData, QStringList lstParams )
@@ -743,6 +737,16 @@ void MainWindow::ProcessPlate( const QString &strPlate, bool bEnter, int  nChann
     //WriteDatabase( strPlate, strDateTime, byFileData, bEnter );
 }
 
+void MainWindow::LoadChartCbx( )
+{
+    QString strValues[ ][ 2 ] = { { "折线", "line" },
+                                  { "柱状", "bar" }};
+
+    for ( int nIndex = 0; nIndex < 2; nIndex++ ) {
+        ui->cbxChartType->addItem( strValues[ nIndex ][ 0 ], strValues[ nIndex ][ 1 ] );
+    }
+}
+
 void MainWindow::on_btQuery_clicked()
 {
     if ( !pDatabaseThread->DatabasePing( ) ) {
@@ -750,10 +754,15 @@ void MainWindow::on_btQuery_clicked()
     }
 
     QStringList lstParams;
-    lstParams << QString::number( ui->cbxChartType->currentIndex( ) ) << ui->dtStart->text( ) << ui->dtEnd->text( );
-    pDatabaseThread->PostChartInfoEvent( lstParams );
+    lstParams << QString::number( ui->cbxReportType->currentIndex( ) )
+              << ui->dtStart->text( ) << ui->dtEnd->text( ) <<
+              ui->cbxChartType->currentData( ).toString( ) << "";
 
-    lstParams.clear( );
-    lstParams << QString::number( ui->cbxReportType->currentIndex( ) ) << ui->dtStart->text( ) << ui->dtEnd->text( );
+    pDatabaseThread->PostChartInfoEvent( lstParams );
     pDatabaseThread->PostReportInfoEvent( lstParams );
+}
+
+void MainWindow::on_cbxReportType_currentIndexChanged(int index)
+{
+    ui->cbxChartType->setEnabled( 9 != index );
 }

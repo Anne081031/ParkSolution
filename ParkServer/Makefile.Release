@@ -90,7 +90,7 @@ $(DESTDIR_TARGET): F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/libQt5AxContainer.a F:/Qt/Q
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) $(OBJECTS)  $(LIBS)
 
 qmake: FORCE
-	@$(QMAKE) -spec win32-g++ -o Makefile.Release ParkServer.pro
+	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile.Release ParkServer.pro
 
 qmake_all: FORCE
 

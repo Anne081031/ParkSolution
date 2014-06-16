@@ -34,6 +34,7 @@ protected:
     void changeEvent( QEvent* event );
 
 private:
+    void LoadChartCbx( );
     int GetImageFormat( );
     void StartDatabaseThread( );
     void ConnectDatabase( );
@@ -79,6 +80,8 @@ private slots:
 
     void on_btQuery_clicked();
 
+    void on_cbxReportType_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     QString strPlateResultPattern;
@@ -93,6 +96,8 @@ private:
     QProcessResultThread* pProcessResultThread;
     HWND hVideoWnds[ MAX_VIDEO_WAY ];
     QMySystemTrayIcon sysTrayIcon;
+    QString strReportFile;
+    QTextCodec* pTextCodec;
 
     bool bPlateVideo;
     int nVideoWay;

@@ -25,6 +25,6 @@ SUBDIRS += \
     #TestDLL \
     #ParkCustomerInfo \
     #Qt360Safe \
-    #ParkServer \
+    ParkServer \
     #Config
     #ParkServerNew
