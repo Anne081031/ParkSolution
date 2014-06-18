@@ -98,8 +98,10 @@ private:
     QMySystemTrayIcon sysTrayIcon;
     QString strReportFile;
     QTextCodec* pTextCodec;
+    QAction* pContextMenuAction;
 
     bool bPlateVideo;
+    bool bHideWindow;
     int nVideoWay;
     int nPlateWay;
     bool bDislpayPlateLog;

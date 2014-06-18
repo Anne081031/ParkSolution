@@ -280,8 +280,14 @@ void QFrameQueryData::on_btnInOutRecordQuery_clicked()
     lstParams << "0" << ui->edtPlate->text( );
     QueryResultset( lstParams, CustomerData );
 
-    lstParams[ 0 ] = "1";
-   QueryResultset( lstParams, VehicleData );
+    lstParams.clear( );
+    lstParams << "0" << "0" << ui->edtPlate->text( );
+    QueryResultset( lstParams, VehicleData );
+
+    lstParams.clear( );
+    lstParams << "0" << ui->edtPlate->text( ) <<
+    ui->dtRecordStart->text( ) << ui->dtRecordEnd->text( );
+    QueryResultset( lstParams, InOutRecordData );
 }
 
 void QFrameQueryData::on_tabWidget_currentChanged(int index)

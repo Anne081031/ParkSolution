@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::InitializeSysTrayIcon( )
 {
+    bHideWindow = false;
     sysTrayIcon.SetSysTrayIconParent( this );
     sysTrayIcon.SetTrayIcon( "./Image/TrayIcon.ico" );
     sysTrayIcon.SetTrayTip( "隐藏或显示车牌服务器界面。" );
@@ -34,17 +35,22 @@ void MainWindow::InitializeSysTrayIcon( )
 
     sysTrayIcon.SetContextMenu( );
     QMenu* pMenu = sysTrayIcon.GetContextMenu( );
-    QAction* pAction  = pMenu->addAction( "隐藏" );
-    connect( pAction, SIGNAL( triggered( ) ),
+    pContextMenuAction  = pMenu->addAction( "隐藏" );
+    connect( pContextMenuAction, SIGNAL( triggered( ) ),
              this, SLOT( HandleActionTriggered( ) ) );
 }
 
 void MainWindow::HandleActionTriggered( QAction *pAction )
 {
-    static bool bHide = false;
-    pAction->setText( ( bHide ? "隐藏" : "显示" )  + QString( "车牌服务器界面" ) );
-    setVisible( bHide );
-    bHide = !bHide;
+    pAction->setText( ( bHideWindow ? "隐藏" : "显示" )  + QString( "车牌服务器界面" ) );
+    setVisible( bHideWindow );
+
+    if ( bHideWindow ) {
+        BringWindowToTop( ( HWND ) winId( ) );
+        show();
+    }
+
+    bHideWindow = !bHideWindow;
 }
 
 void MainWindow::HandleActionTriggered( )
@@ -121,9 +127,15 @@ void MainWindow::HandlePlateSerializeData( QString strPlate, QString strDateTime
 
 void MainWindow::changeEvent( QEvent *event )
 {
-    if ( QEvent::WindowStateChange == event->type( ) &&
-         isMinimized( ) ) {
-        setVisible( false );
+    if ( QEvent::WindowStateChange == event->type( ) ) {
+        if ( isMinimized( ) ) {
+            setVisible( false );
+            bHideWindow = false;
+            HandleActionTriggered( pContextMenuAction );
+        } else if ( isActiveWindow( ) ) {
+            //bHideWindow = true;
+            //HandleActionTriggered( pContextMenuAction );
+        }
     }
 }
 
@@ -754,11 +766,15 @@ void MainWindow::on_btQuery_clicked()
     }
 
     QStringList lstParams;
-    lstParams << QString::number( ui->cbxReportType->currentIndex( ) )
+    int nIndex = ui->cbxReportType->currentIndex( );
+    lstParams << QString::number( nIndex )
               << ui->dtStart->text( ) << ui->dtEnd->text( ) <<
               ui->cbxChartType->currentData( ).toString( ) << "";
 
-    pDatabaseThread->PostChartInfoEvent( lstParams );
+    if ( 9 != nIndex ) {
+        pDatabaseThread->PostChartInfoEvent( lstParams );
+    }
+
     pDatabaseThread->PostReportInfoEvent( lstParams );
 }
 
