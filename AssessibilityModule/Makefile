@@ -177,7 +177,8 @@ Makefile: AssessibilityModule.pro F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g+
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5AxBase.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sql.prl
 	$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile AssessibilityModule.pro
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\spec_pre.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\qdevice.pri:
@@ -298,6 +299,7 @@ F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5AxBase.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sql.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile AssessibilityModule.pro
 

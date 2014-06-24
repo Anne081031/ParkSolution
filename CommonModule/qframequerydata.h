@@ -22,7 +22,7 @@ public:
         CustomerData = 0,
         VehicleData,
         ServiceData,
-        InOutRecordData
+        InOutRecordData,
     } Resultset ;
 
     explicit QFrameQueryData(QWidget *parent = 0);
@@ -60,7 +60,6 @@ signals:
     void QueryChart( QStringList lstParams );
 
 private:
-    void LoadChartCbx( );
     inline void SetTrendName( const QString& strPlate );
     inline void GetKeyValue( const QModelIndex &index, const QString& strKey, QString& strValue );
     void QueryResultset( QStringList& lstParams, Resultset eType );

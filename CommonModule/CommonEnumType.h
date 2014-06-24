@@ -29,6 +29,7 @@ namespace ParkSolution {
         SpQueryInOutRecord,
         SpReportInfo,
         SpChartInfo,
+        SpExportReport2Excel,
         SpQueryCustomerDataByPlate,
         SpQueryVehicleDataByCustomer,
         SpQueryServiceDataByPlate

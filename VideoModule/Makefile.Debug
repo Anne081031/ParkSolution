@@ -273,21 +273,8 @@ debug/moc_quv200timerthread.cpp: F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QT
 		VideoModule_global.h \
 		../CommonModule/qcommonfunction.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
-		../CommonModule/commonmodule_global.h \
-		../CommonModule/CommonEnumType.h \
-		../CommonModule/CommonStructType.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCore \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCoreDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractanimation.h \
@@ -392,6 +379,58 @@ debug/moc_quv200timerthread.cpp: F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QT
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtimezone.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtcoreversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		../CommonModule/CommonTypedef.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
 		../LPRModule/qplatethread.h \
 		../LPRModule/LPRModule_global.h \
 		../LPRModule/qplateevent.h \
@@ -400,21 +439,6 @@ debug/moc_quv200timerthread.cpp: F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QT
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QSettings \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTextCodec \
 		../ConfigModule/ConfigModule_global.h \
-		../CommonModule/CommonTypedef.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qbasethread.h \
 		../CommonModule/CommonHeader.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
@@ -540,21 +564,8 @@ debug/moc_qanalogcamerathread.cpp: F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/
 		VideoModule_global.h \
 		../CommonModule/qcommonfunction.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
-		../CommonModule/commonmodule_global.h \
-		../CommonModule/CommonEnumType.h \
-		../CommonModule/CommonStructType.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCore \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCoreDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractanimation.h \
@@ -659,6 +670,58 @@ debug/moc_qanalogcamerathread.cpp: F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtimezone.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtcoreversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		../CommonModule/CommonTypedef.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
 		../LPRModule/qplatethread.h \
 		../LPRModule/LPRModule_global.h \
 		../LPRModule/qplateevent.h \
@@ -667,21 +730,6 @@ debug/moc_qanalogcamerathread.cpp: F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QSettings \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTextCodec \
 		../ConfigModule/ConfigModule_global.h \
-		../CommonModule/CommonTypedef.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qbasethread.h \
 		../CommonModule/CommonHeader.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
@@ -807,21 +855,8 @@ debug/moc_qdhkipcthread.cpp: QDigitalCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QHash \
 		../CommonModule/qcommonfunction.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
-		../CommonModule/commonmodule_global.h \
-		../CommonModule/CommonEnumType.h \
-		../CommonModule/CommonStructType.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCore \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCoreDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractanimation.h \
@@ -926,6 +961,58 @@ debug/moc_qdhkipcthread.cpp: QDigitalCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtimezone.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtcoreversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		../CommonModule/CommonTypedef.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
 		../LPRModule/qplatethread.h \
 		../LPRModule/LPRModule_global.h \
 		../LPRModule/qplateevent.h \
@@ -934,21 +1021,6 @@ debug/moc_qdhkipcthread.cpp: QDigitalCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QSettings \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTextCodec \
 		../ConfigModule/ConfigModule_global.h \
-		../CommonModule/CommonTypedef.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qbasethread.h \
 		../CommonModule/CommonHeader.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
@@ -1075,21 +1147,8 @@ debug/moc_qdigitalcamerathread.cpp: VideoModule_global.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QHash \
 		../CommonModule/qcommonfunction.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
-		../CommonModule/commonmodule_global.h \
-		../CommonModule/CommonEnumType.h \
-		../CommonModule/CommonStructType.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCore \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCoreDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractanimation.h \
@@ -1194,6 +1253,58 @@ debug/moc_qdigitalcamerathread.cpp: VideoModule_global.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtimezone.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtcoreversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		../CommonModule/CommonTypedef.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
 		../LPRModule/qplatethread.h \
 		../LPRModule/LPRModule_global.h \
 		../LPRModule/qplateevent.h \
@@ -1202,21 +1313,6 @@ debug/moc_qdigitalcamerathread.cpp: VideoModule_global.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QSettings \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTextCodec \
 		../ConfigModule/ConfigModule_global.h \
-		../CommonModule/CommonTypedef.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qbasethread.h \
 		../CommonModule/CommonHeader.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
@@ -1461,21 +1557,8 @@ debug/moc_qhkcapturecardthread.cpp: QAnalogCameraThread.h \
 		VideoModule_global.h \
 		../CommonModule/qcommonfunction.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
-		../CommonModule/commonmodule_global.h \
-		../CommonModule/CommonEnumType.h \
-		../CommonModule/CommonStructType.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCore \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCoreDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractanimation.h \
@@ -1580,6 +1663,58 @@ debug/moc_qhkcapturecardthread.cpp: QAnalogCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtimezone.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtcoreversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		../CommonModule/CommonTypedef.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
 		../LPRModule/qplatethread.h \
 		../LPRModule/LPRModule_global.h \
 		../LPRModule/qplateevent.h \
@@ -1588,21 +1723,6 @@ debug/moc_qhkcapturecardthread.cpp: QAnalogCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QSettings \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTextCodec \
 		../ConfigModule/ConfigModule_global.h \
-		../CommonModule/CommonTypedef.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qbasethread.h \
 		../CommonModule/CommonHeader.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
@@ -1730,21 +1850,8 @@ debug/moc_qjvsipcthread.cpp: QDigitalCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QHash \
 		../CommonModule/qcommonfunction.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
-		../CommonModule/commonmodule_global.h \
-		../CommonModule/CommonEnumType.h \
-		../CommonModule/CommonStructType.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCore \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCoreDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractanimation.h \
@@ -1849,6 +1956,58 @@ debug/moc_qjvsipcthread.cpp: QDigitalCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtimezone.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtcoreversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		../CommonModule/CommonTypedef.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
 		../LPRModule/qplatethread.h \
 		../LPRModule/LPRModule_global.h \
 		../LPRModule/qplateevent.h \
@@ -1857,21 +2016,6 @@ debug/moc_qjvsipcthread.cpp: QDigitalCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QSettings \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTextCodec \
 		../ConfigModule/ConfigModule_global.h \
-		../CommonModule/CommonTypedef.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qbasethread.h \
 		../CommonModule/CommonHeader.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
@@ -1999,21 +2143,8 @@ debug/moc_qonvifthread.cpp: QDigitalCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QHash \
 		../CommonModule/qcommonfunction.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
-		../CommonModule/commonmodule_global.h \
-		../CommonModule/CommonEnumType.h \
-		../CommonModule/CommonStructType.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCore \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCoreDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractanimation.h \
@@ -2118,6 +2249,58 @@ debug/moc_qonvifthread.cpp: QDigitalCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtimezone.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtcoreversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		../CommonModule/CommonTypedef.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
 		../LPRModule/qplatethread.h \
 		../LPRModule/LPRModule_global.h \
 		../LPRModule/qplateevent.h \
@@ -2126,21 +2309,6 @@ debug/moc_qonvifthread.cpp: QDigitalCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QSettings \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTextCodec \
 		../ConfigModule/ConfigModule_global.h \
-		../CommonModule/CommonTypedef.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qbasethread.h \
 		../CommonModule/CommonHeader.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
@@ -2266,21 +2434,8 @@ debug/moc_qtmcapturecardthread.cpp: QAnalogCameraThread.h \
 		VideoModule_global.h \
 		../CommonModule/qcommonfunction.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
-		../CommonModule/commonmodule_global.h \
-		../CommonModule/CommonEnumType.h \
-		../CommonModule/CommonStructType.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCore \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCoreDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractanimation.h \
@@ -2385,6 +2540,58 @@ debug/moc_qtmcapturecardthread.cpp: QAnalogCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtimezone.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtcoreversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		../CommonModule/CommonTypedef.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
 		../LPRModule/qplatethread.h \
 		../LPRModule/LPRModule_global.h \
 		../LPRModule/qplateevent.h \
@@ -2393,21 +2600,6 @@ debug/moc_qtmcapturecardthread.cpp: QAnalogCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QSettings \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTextCodec \
 		../ConfigModule/ConfigModule_global.h \
-		../CommonModule/CommonTypedef.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qbasethread.h \
 		../CommonModule/CommonHeader.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
@@ -2534,21 +2726,8 @@ debug/moc_qusbcamerathread.cpp: QAnalogCameraThread.h \
 		VideoModule_global.h \
 		../CommonModule/qcommonfunction.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
-		../CommonModule/commonmodule_global.h \
-		../CommonModule/CommonEnumType.h \
-		../CommonModule/CommonStructType.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCore \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCoreDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractanimation.h \
@@ -2653,6 +2832,58 @@ debug/moc_qusbcamerathread.cpp: QAnalogCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtimezone.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtcoreversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		../CommonModule/CommonTypedef.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
 		../LPRModule/qplatethread.h \
 		../LPRModule/LPRModule_global.h \
 		../LPRModule/qplateevent.h \
@@ -2661,21 +2892,6 @@ debug/moc_qusbcamerathread.cpp: QAnalogCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QSettings \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTextCodec \
 		../ConfigModule/ConfigModule_global.h \
-		../CommonModule/CommonTypedef.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qbasethread.h \
 		../CommonModule/CommonHeader.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \
@@ -2802,21 +3018,8 @@ debug/moc_quv200thread.cpp: QAnalogCameraThread.h \
 		VideoModule_global.h \
 		../CommonModule/qcommonfunction.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QObject \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
-		../CommonModule/commonmodule_global.h \
-		../CommonModule/CommonEnumType.h \
-		../CommonModule/CommonStructType.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCore \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QtCoreDepends \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qabstractanimation.h \
@@ -2921,6 +3124,58 @@ debug/moc_quv200thread.cpp: QAnalogCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtimezone.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qxmlstream.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/qtcoreversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qicon.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qframe.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractscrollarea.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qdialog.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
+		../CommonModule/commonmodule_global.h \
+		../CommonModule/CommonEnumType.h \
+		../CommonModule/CommonStructType.h \
+		../CommonModule/CommonTypedef.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
 		../LPRModule/qplatethread.h \
 		../LPRModule/LPRModule_global.h \
 		../LPRModule/qplateevent.h \
@@ -2929,21 +3184,6 @@ debug/moc_quv200thread.cpp: QAnalogCameraThread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QSettings \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QTextCodec \
 		../ConfigModule/ConfigModule_global.h \
-		../CommonModule/CommonTypedef.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QTableWidget \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtablewidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtableview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemview.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractitemdelegate.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyleoption.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractspinbox.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvalidator.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractslider.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qstyle.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabbar.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qbasethread.h \
 		../CommonModule/CommonHeader.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QDebug \

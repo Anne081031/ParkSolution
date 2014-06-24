@@ -1,10 +1,21 @@
 #include "qcommonfunction.h"
 #include <QIcon>
 #include <QApplication>
+#include <QFileDialog>
 
 QCommonFunction::QCommonFunction(QObject *parent) :
     QObject(parent)
 {
+}
+
+void QCommonFunction::SelectDirectory( QWidget* pParent, QString& strPath )
+{
+    QDir dir( QDir::currentPath( ) );
+    dir.cdUp( );
+    strPath = QFileDialog::getExistingDirectory( pParent,
+                                                        "请选择导出数据保存的目录",
+                                                 dir.absolutePath( ),
+                                                 QFileDialog::ShowDirsOnly );
 }
 
 void QCommonFunction::SetWindowIcon( QWidget *pWidget )
@@ -240,6 +251,121 @@ void QCommonFunction::SingleApplication( const char* pGUID )
         exit( 0 );
     } else {
         pShareMem->create( 1024 );
+    }
+}
+
+void QCommonFunction::UninstallExcel( )
+{
+    qDebug( ) << Q_FUNC_INFO << "not install excel" << endl;
+    QString strText = "请确认，你是否已经正确安装了Excel软件！";
+    CriticalBox( NULL, strText );
+}
+
+void QCommonFunction::SetNeededColumnName( QAxObject *pWorksheet, QSqlQueryModel *pModel )
+{
+   if ( NULL == pWorksheet || NULL == pModel ) {
+       return;
+   }
+
+   QAxObject* pCell;
+   QVariant varRet;
+   int nCols = pModel->columnCount( );
+
+   for ( int j = 1; j < 1 + nCols; j++ ) {
+       pCell = pWorksheet->querySubObject( "Cells( int, int )", 1, j );
+       varRet = pModel->headerData( j - 1, Qt::Horizontal );
+       varRet = pCell->dynamicCall( "SetValue( const QVariant& )", varRet );
+   }
+}
+
+void QCommonFunction::Convert2ExcelValue( QString& strValue, QVariant& varValue )
+{
+    if ( QVariant::Date == varValue.type( ) ) {
+        strValue = varValue.toDate( ).toString( "yyyy-MM-dd" );
+    } else if ( QVariant::DateTime == varValue.type( ) ) {
+        strValue = varValue.toDateTime( ).toString( "yyyy-MM-dd HH:mm:ss" );
+    } else {
+        strValue = varValue.toString( );
+    }
+}
+
+bool QCommonFunction::ExportData2Excel( QString& strDir, QSqlQueryModel* pModel )
+{
+    bool bRet = false;
+    QAxObject* pExcel = new QAxObject( "Excel.Application" );
+    if ( NULL == pExcel || pExcel->isNull( ) ) {
+        UninstallExcel( );
+        return bRet;
+    }
+
+    if ( NULL == pModel ) {
+        return bRet;
+    }
+
+    if ( strDir.isEmpty( ) ) {
+        strDir = qApp->applicationDirPath( );
+    }
+
+    QString strFile;
+    strFile = strDir + "\\" + QDateTime::currentDateTime( ).toString( "yyyyMMddHHmmss" ) + ".xls";
+
+    QVariant varRet = pExcel->dynamicCall( "SetVisible(bool)", false );
+
+    QAxObject* pWorkbooks = pExcel->querySubObject( "WorkBooks" );
+    varRet = pWorkbooks->dynamicCall( "Add" );
+
+    QAxObject* pWorkbook = pExcel->querySubObject( "ActiveWorkbook" );
+    QAxObject* pWorksheet = pWorkbook->querySubObject( "WorkSheets( int )", 1 );
+
+    //QAxObject* pWorksheets = pWorkbook->querySubObject("WorkSheets");
+    //int nSheetCount = pWorksheets->property( "Count" ).toInt( );
+
+    int nCols = pModel->columnCount( );
+    int nRows = pModel->rowCount( ) + 1; // Title
+    //QAxObject* pUsedRange = pWorksheet->querySubObject( "Cells( int, int )", nRows, nCols );
+    QAxObject* pCell;
+    QSqlRecord sqlRecord;
+    QString strValue;
+
+    SetNeededColumnName( pWorksheet, pModel );
+
+    for ( int i = 2; i < 1 + nRows; i++ ) {
+        sqlRecord = pModel->record( i - 2 );
+        qDebug( ) << "Row" << endl;
+
+        for ( int j = 1; j < 1 + nCols; j++ ) {
+            pCell = pWorksheet->querySubObject( "Cells( int, int )", i, j );
+            varRet = sqlRecord.value( j - 1 );
+            //strValue = varRet.toString( );
+            Convert2ExcelValue( strValue, varRet );
+            qDebug( ) << strValue << " ";
+            varRet = pCell->dynamicCall( "SetValue( const QVariant& )", strValue );
+        }
+    }
+
+    pWorkbook->dynamicCall("SaveAs( const QString& )", strFile );
+    //QMessageBox::information( NULL, "OK", "保存成功！" );
+    varRet = pWorkbook->dynamicCall( "Close( )" );
+    pWorksheet->clear( );
+
+    varRet = pExcel->dynamicCall( "Quit( )" );
+
+    delete pExcel;
+
+    bRet = true;
+    return bRet;
+}
+
+void QCommonFunction::LoadChartType( QComboBox* pCbx )
+{
+    pCbx->clear( );
+
+    QString strValues[ ][ 3 ] = { { "折线", "line" },
+                                  { "柱状", "bar" },
+                                  { "饼状", "pie" } };
+
+    for ( int nIndex = 0; nIndex < 3; nIndex++ ) {
+        pCbx->addItem( strValues[ nIndex ][ 0 ], strValues[ nIndex ][ 1 ] );
     }
 }
 
@@ -550,6 +676,10 @@ void QCommonFunction::GetSpName( ParkSolution::SpType eSpType, QString& strSpNam
     case ParkSolution::SpQueryServiceDataByPlate :
         strSpName = spName.strSpQueryServiceDataByPlate;
         break;
+
+    case ParkSolution::SpExportReport2Excel :
+        strSpName = spName.strSpExportReport2Excel;
+        break;
     }
 }
 
@@ -648,6 +778,10 @@ void QCommonFunction::GetSpXmlPattern( ParkSolution::SpType eSpType, QString& st
 
     case ParkSolution::SpQueryServiceDataByPlate :
         strXmlPattern = xmlPattern.strXmlQueryServiceDataByPlate;
+        break;
+
+    case ParkSolution::SpExportReport2Excel :
+        strXmlPattern = xmlPattern.strXmlExportReport2Excel;
         break;
     }
 }

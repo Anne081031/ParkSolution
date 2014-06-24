@@ -2,18 +2,25 @@
 #define QCOMMONFUNCTION_H
 
 #include <QObject>
+#include <QtSql>
+#include <QAxObject>
 #include <QCloseEvent>
 #include <QMessageBox>
 #include <QPushButton>
+#include <QComboBox>
 #include <QScrollArea>
 #include "commonmodule_global.h"
 #include "CommonEnumType.h"
 #include "CommonStructType.h"
+#include "CommonTypedef.h"
 
 class COMMONMODULESHARED_EXPORT QCommonFunction : public QObject
 {
     Q_OBJECT
 public:
+    static void SelectDirectory( QWidget* pParent, QString& strPath );
+    static bool ExportData2Excel( QString& strDir, QSqlQueryModel* pModel );
+    static void LoadChartType( QComboBox* pCbx );
     static void CryptString( QString& strValue );
     static void DecryptString( QString& strValue );
     static void ReadAllFile( const QString& strFile, QByteArray& byData );
@@ -59,6 +66,9 @@ public:
 
 private:
     explicit QCommonFunction(QObject *parent = 0);
+    static void UninstallExcel( );
+    static void Convert2ExcelValue( QString& strValue, QVariant& varValue );
+    static void SetNeededColumnName( QAxObject *pWorksheet, QSqlQueryModel *pModel );
 
 signals:
 

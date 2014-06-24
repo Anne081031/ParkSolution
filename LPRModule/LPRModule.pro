@@ -1,3 +1,4 @@
+QT       += sql axcontainer
 
 MYTARGET = $$quote( LPRModule%1 )
 MYDESTDIR = $$quote( ../LibExeFiles/%1 )

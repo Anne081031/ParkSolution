@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     pTextCodec = QCommonFunction::GetTextCodec( );
     strReportFile =  QString( "file:///%1/Report/Report.html" ).arg( qApp->applicationDirPath( ) );
     pConfigurator = QConfigurator::CreateConfigurator( );
-    LoadChartCbx( );
+    QCommonFunction::LoadChartType( ui->cbxChartType );
     GetMiscellaneous( );
     InitializeProvider( );
     InitializeSysTrayIcon( );
@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     StartSmsThread( );
     StartDatabaseThread( );
     StartFtpThread( );
-    StartSeriaizeThread( );
+    StartSerializeThread( );
     StartProcessResultThread( );
     StartPlateThread( );
     StartVideoThread( );
@@ -100,7 +100,7 @@ void MainWindow::StartProcessResultThread( )
              this, SLOT( HandleThreadPoolTaskData( QByteArray ) ) );
 }
 
-void MainWindow::StartSeriaizeThread( )
+void MainWindow::StartSerializeThread( )
 {
     //pSerializeThread = QSerializeThread::CreateInstance( );
     //connect( pSerializeThread, SIGNAL( Log( QString ) ),
@@ -747,16 +747,6 @@ void MainWindow::ProcessPlate( const QString &strPlate, bool bEnter, int  nChann
 
     pProcessResultThread->PostPlateResultEvent( strPlate, strDateTime, nChannel, bEnter, strIP, bIpc );
     //WriteDatabase( strPlate, strDateTime, byFileData, bEnter );
-}
-
-void MainWindow::LoadChartCbx( )
-{
-    QString strValues[ ][ 2 ] = { { "折线", "line" },
-                                  { "柱状", "bar" }};
-
-    for ( int nIndex = 0; nIndex < 2; nIndex++ ) {
-        ui->cbxChartType->addItem( strValues[ nIndex ][ 0 ], strValues[ nIndex ][ 1 ] );
-    }
 }
 
 void MainWindow::on_btQuery_clicked()

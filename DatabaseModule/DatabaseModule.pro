@@ -1,4 +1,4 @@
-QT       += network sql xml
+QT       += network axcontainer sql xml
 
 MYTARGET = $$quote( DatabaseModule%1 )
 MYDESTDIR = $$quote( ../LibExeFiles/%1 )

@@ -23,7 +23,7 @@ SUBDIRS += \
     ParkCustomerCenter \
     #TestUI \
     #TestDLL \
-    #ParkCustomerInfo \
+    ParkCustomerInfo \
     #Qt360Safe \
     ParkServer \
     #Config

@@ -11,7 +11,7 @@ QFrameReport::QFrameReport(QWidget *parent) :
 {
     ui->setupUi(this);
     LayoutUI( );
-    LoadChartCbx( );
+    QCommonFunction::LoadChartType( ui->cbxChartType );
     pTextCodec = QCommonFunction::GetTextCodec( );
     strReportFile =  QString( "file:///%1/Report/Report.html" ).arg( qApp->applicationDirPath( ) );
     ui->dtStart->setDateTime( QDateTime::currentDateTime( ).addMonths( -1 ) );
@@ -21,16 +21,6 @@ QFrameReport::QFrameReport(QWidget *parent) :
 QFrameReport::~QFrameReport()
 {
     delete ui;
-}
-
-void QFrameReport::LoadChartCbx( )
-{
-    QString strValues[ ][ 2 ] = { { "折线", "line" },
-                                  { "柱状", "bar" }};
-
-    for ( int nIndex = 0; nIndex < 2; nIndex++ ) {
-        ui->cbxChartType->addItem( strValues[ nIndex ][ 0 ], strValues[ nIndex ][ 1 ] );
-    }
 }
 
 void QFrameReport::LayoutUI( )
@@ -45,7 +35,8 @@ void QFrameReport::LayoutUI( )
     ui->gridLayout->addWidget( ui->webView, 1, 0 );
 
     QCommonFunction::SetButtonMiniSize( ui->btQuery, 75 );
-    QCommonFunction::SetButtonMiniSize( ui->btPrint, 75 );
+    QCommonFunction::SetButtonMiniSize( ui->btPrintPdf, 75 );
+    QCommonFunction::SetButtonMiniSize( ui->btPrintExcel, 75 );
 }
 
 void QFrameReport::DisplayChart( const QByteArray &byJson )
@@ -75,6 +66,28 @@ void QFrameReport::DisplayReport( const QByteArray &byJson )
     ui->webView->setUrl( url );
 }
 
+void QFrameReport::Export2ExcelFinisded( )
+{
+    QString strExportDataDir;
+    QCommonFunction::SelectDirectory( this, strExportDataDir );
+    if ( strExportDataDir.isNull( ) || strExportDataDir.isEmpty( ) ) {
+        return;
+    }
+
+    QString strText = "查询无数据。";
+    int nRows = sqlExport2ExcelModel.rowCount( );
+
+    if ( 0 >= nRows ) {
+        QCommonFunction::InformationBox( this, strText );
+        return;
+    }
+
+    bool bRet = QCommonFunction::ExportData2Excel( strExportDataDir, &sqlExport2ExcelModel );
+
+    strText = bRet ? "导出数据成功。" : "导出数据失败\n请检查Excel程序是否正确安装。";
+    QCommonFunction::InformationBox( this, strText );
+}
+
 void QFrameReport::QueryData( int nType )
 {
     QStringList lstParams;
@@ -90,7 +103,18 @@ void QFrameReport::on_btQuery_clicked()
     QueryData( ui->cbxType->currentIndex( ) );
 }
 
-void QFrameReport::on_btPrint_clicked()
+void QFrameReport::on_btPrintExcel_clicked()
+{
+    QStringList lstParams;
+    lstParams << QString::number( ui->cbxType->currentIndex( ) )
+                 << ui->dtStart->text( )
+                    << ui->dtEnd->text( );
+
+    sqlExport2ExcelModel.clear( );
+    emit Export2Excel( lstParams, &sqlExport2ExcelModel );
+}
+
+void QFrameReport::on_btPrintPdf_clicked()
 {
     Print( *ui->webView );
 }

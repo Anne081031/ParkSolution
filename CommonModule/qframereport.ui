@@ -39,7 +39,7 @@
     <rect>
      <x>10</x>
      <y>30</y>
-     <width>831</width>
+     <width>921</width>
      <height>24</height>
     </rect>
    </property>
@@ -72,7 +72,7 @@
      <string>起始时间</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btPrint">
+   <widget class="QPushButton" name="btPrintPdf">
     <property name="geometry">
      <rect>
       <x>750</x>
@@ -82,7 +82,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>打印</string>
+     <string>导出PDF</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btQuery">
@@ -215,6 +215,19 @@
     </property>
     <property name="text">
      <string>图形</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btPrintExcel">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>0</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>导出Excel</string>
     </property>
    </widget>
   </widget>

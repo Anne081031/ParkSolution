@@ -34,6 +34,17 @@ void QConfigurator::GetDbParams( ParkSolution::QStringHash& hashParam )
     GetDbSchema( strValue );
     hashParam[ dbInfo.strSchema ] = strValue;
 }
+
+void QConfigurator::SetPlayVoice( const bool bPlay )
+{
+    pSettings->setValue( "Miscellaneous/PlayVoice", bPlay );
+}
+
+void QConfigurator::GetPlayVoice( bool& bPlay ) const
+{
+    bPlay = pSettings->value( "Miscellaneous/PlayVoice", true ).toInt( );
+}
+
 void QConfigurator::SetDropFrame( const int nStep )
 {
     pSettings->setValue( "Miscellaneous/DropFame", nStep );
@@ -41,7 +52,12 @@ void QConfigurator::SetDropFrame( const int nStep )
 
 void QConfigurator::GetDropFrame( int& nStep ) const
 {
-    nStep = pSettings->value( "Miscellaneous/DropFame", 6 ).toInt( );
+    int nDefault = 5;
+    nStep = pSettings->value( "Miscellaneous/DropFame", nDefault ).toInt( );
+
+    if ( 0 >= nStep ) {
+        nStep = nDefault;
+    }
 }
 
 void QConfigurator::SetWelcomeSound( const QString& strWelcome )

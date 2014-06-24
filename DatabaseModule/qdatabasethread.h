@@ -16,6 +16,7 @@ public:
     void PostQueryVehicleDataByCustomerEvent( QStringList& lstParams, QSqlQueryModel* pModel );
     void PostReportInfoEvent( QStringList& lstParams );
     void PostChartInfoEvent( QStringList& lstParams );
+    void PostExportReport2ExcelEvent( QStringList& lstParams, QSqlQueryModel* pModel );
     void PostQueryInOutRecordEvent( QStringList& lstParams, QSqlQueryModel* pModel );
     void PostWriteInOutRecordEvent( QStringList& lstParams );
     void PostWriteInOutRecordEvent( QStringList& lstParams, int nIndex );
@@ -61,6 +62,7 @@ private:
     void ProcessReportInfoEvent( QDatabaseEvent* pEvent );
     void ProcessChartInfoEvent( QDatabaseEvent* pEvent );
     void ProcessQueryInOutRecordEvent( QDatabaseEvent* pEvent );
+    void ProcessExportReport2ExcelEvent( QDatabaseEvent* pEvent );
     void ProcessWriteInOutRecordEvent( QDatabaseEvent* pEvent );
     void ProcessDatabaseConnectEvent( QDatabaseEvent* pEvent );
     void ProcessDatabaseDisconnectEvent( QDatabaseEvent* pEvent );

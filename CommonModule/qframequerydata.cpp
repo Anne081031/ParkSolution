@@ -10,7 +10,7 @@ QFrameQueryData::QFrameQueryData(QWidget *parent) :
 
     strFilePath = QString( "file:///%1/Report/VehicleTemplate.html" ).arg( qApp->applicationDirPath( ) );
     MainLayoutUI( );
-    LoadChartCbx( );
+    QCommonFunction::LoadChartType( ui->cbxChartType );
     RecordLayoutUI( );
     InitializeTabWidget( );
     InitializeDateTime( );
@@ -144,10 +144,12 @@ void QFrameQueryData::QueryImageFinished( QByteArray &byData )
         return;
     }
 
+    ParkSolution::TabInOutRecordInfo tabImageInfo;
+
     QJsonObject jsonObj = jsonDoc.object( );
-    QString strRecordID = jsonObj.value( "RecordID" ).toString( );
-    QString strInImage = jsonObj.value( "EnterImage" ).toString( );
-    QString strOutImage = jsonObj.value( "LeaveImage" ).toString( );
+    QString strRecordID = jsonObj.value( tabImageInfo.strRecordID ).toString( );
+    QString strInImage = jsonObj.value( tabImageInfo.strEnterImage ).toString( );
+    QString strOutImage = jsonObj.value( tabImageInfo.strLeaveImage ).toString( );
 
     GetImageFirst( false, strRecordID, strInImage, ui->lblInImage );
     GetImageFirst( true, strRecordID, strOutImage, ui->lblOutImage );
@@ -235,16 +237,6 @@ void QFrameQueryData::RecordLayoutUI( )
     ui->gridLayoutRight->addWidget( ui->webView, 2, 0, 1, 2 );
 
     ui->widget_2->setLayout( ui->horizontalLayout_5 );
-}
-
-void QFrameQueryData::LoadChartCbx( )
-{
-    QString strValues[ ][ 2 ] = { { "折线", "line" },
-                                  { "柱状", "bar" }};
-
-    for ( int nIndex = 0; nIndex < 2; nIndex++ ) {
-        ui->cbxChartType->addItem( strValues[ nIndex ][ 0 ], strValues[ nIndex ][ 1 ] );
-    }
 }
 
 void QFrameQueryData::QueryResultset( QStringList& lstParams, Resultset eType )

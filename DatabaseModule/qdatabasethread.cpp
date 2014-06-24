@@ -232,6 +232,10 @@ void QDatabaseThread::customEvent( QEvent *pEvent )
         ProcessQueryInOutRecordEvent( pDbEvent );
         break;
 
+    case QDatabaseEvent::ExportReport2Excel :
+        ProcessExportReport2ExcelEvent( pDbEvent );
+        break;
+
     case QDatabaseEvent::WriteInOutRecord :
         ProcessWriteInOutRecordEvent( pDbEvent );
         break;
@@ -388,6 +392,14 @@ void QDatabaseThread::PostChartInfoEvent( QStringList& lstParams )
     QBaseThread::PostEvent( pEvent );
 }
 
+void QDatabaseThread::PostExportReport2ExcelEvent( QStringList& lstParams, QSqlQueryModel* pModel )
+{
+    QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::ExportReport2Excel );
+    pEvent->SetParamList( lstParams );
+    pEvent->SetQueryModel( pModel );
+    QBaseThread::PostEvent( pEvent );
+}
+
 void QDatabaseThread::PostQueryInOutRecordEvent( QStringList& lstParams, QSqlQueryModel* pModel )
 {
     QDatabaseEvent* pEvent = QDatabaseEvent::CreateDatabaseEvent( QDatabaseEvent::QueryInOutRecord );
@@ -487,6 +499,14 @@ void QDatabaseThread::ProcessChartInfoEvent( QDatabaseEvent* pEvent )
 {
     QStringList& lstParams = pEvent->GetParamList( );
     pMySQLDatabase->CallSP( strConnectName, ParkSolution::SpChartInfo, lstParams );
+}
+
+void QDatabaseThread::ProcessExportReport2ExcelEvent( QDatabaseEvent* pEvent )
+{
+    QStringList& lstParams = pEvent->GetParamList( );
+    QSqlQueryModel* pModel = pEvent->GetQueryModel( );
+    pMySQLDatabase->CallSP( strConnectName,
+                ParkSolution::SpExportReport2Excel, lstParams, pModel );
 }
 
 void QDatabaseThread::ProcessQueryInOutRecordEvent( QDatabaseEvent* pEvent )

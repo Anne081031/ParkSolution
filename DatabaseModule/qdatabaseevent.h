@@ -29,6 +29,7 @@ public:
         QueryInOutRecord,
         ReportInfo,
         ChartInfo,
+        ExportReport2Excel,
         QueryCustomerDataByPlate,
         QueryVehicleDataByCustomer,
         QueryServiceDataByPlate

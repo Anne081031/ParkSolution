@@ -356,6 +356,29 @@ release/moc_qserialreaderthread.cpp: SerialPortModule_global.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qcommonfunction.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
@@ -363,6 +386,7 @@ release/moc_qserialreaderthread.cpp: SerialPortModule_global.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
 		../ConfigModule/qconfigurator.h \
@@ -613,6 +637,29 @@ release/moc_qserialwriterthread.cpp: SerialPortModule_global.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qcommonfunction.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
@@ -620,6 +667,7 @@ release/moc_qserialwriterthread.cpp: SerialPortModule_global.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
 		../ConfigModule/qconfigurator.h \
@@ -868,6 +916,29 @@ release/moc_qserialparserthread.cpp: SerialPortModule_global.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qcommonfunction.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
@@ -875,6 +946,7 @@ release/moc_qserialparserthread.cpp: SerialPortModule_global.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
 		../ConfigModule/qconfigurator.h \
@@ -1139,6 +1211,29 @@ release/qserialreaderthread.o: qserialreaderthread.cpp qserialreaderthread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qcommonfunction.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
@@ -1146,6 +1241,7 @@ release/qserialreaderthread.o: qserialreaderthread.cpp qserialreaderthread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
 		../ConfigModule/qconfigurator.h \
@@ -1396,6 +1492,29 @@ release/qserialwriterthread.o: qserialwriterthread.cpp qserialwriterthread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qcommonfunction.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
@@ -1403,6 +1522,7 @@ release/qserialwriterthread.o: qserialwriterthread.cpp qserialwriterthread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
 		../ConfigModule/qconfigurator.h \
@@ -1651,6 +1771,29 @@ release/qserialparserthread.o: qserialparserthread.cpp qserialparserthread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qtabwidget.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qrubberband.h \
 		../CommonModule/qcommonfunction.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSql \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/QtSqlDepends \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsql.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldatabase.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriver.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqldriverplugin.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlerror.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlfield.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlindex.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrecord.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquery.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlresult.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlquerymodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaldelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qitemdelegate.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlistview.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qcombobox.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqlrelationaltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qsqltablemodel.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql/qtsqlversion.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/QAxObject \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxobject.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt/qaxbase.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QCloseEvent \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMessageBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qmessagebox.h \
@@ -1658,6 +1801,7 @@ release/qserialparserthread.o: qserialparserthread.cpp qserialparserthread.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QPushButton \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qpushbutton.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qabstractbutton.h \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QComboBox \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QScrollArea \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qscrollarea.h \
 		../ConfigModule/qconfigurator.h \

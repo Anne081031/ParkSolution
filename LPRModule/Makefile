@@ -166,15 +166,19 @@ Makefile: LPRModule.pro F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++/qmake.co
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/moc.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/win32/opengl.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/uic.prf \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/win32/dumpcpp.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/win32/windows.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/testcase_targets.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/exceptions.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/yacc.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/lex.prf \
 		LPRModule.pro \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5AxContainer.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5AxBase.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sql.prl
 	$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile LPRModule.pro
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\spec_pre.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\qdevice.pri:
@@ -283,15 +287,19 @@ F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\resources.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\moc.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\opengl.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\uic.prf:
+F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\dumpcpp.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\windows.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\testcase_targets.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\exceptions.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\yacc.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\lex.prf:
 LPRModule.pro:
-F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5AxContainer.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5AxBase.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sql.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile LPRModule.pro
 

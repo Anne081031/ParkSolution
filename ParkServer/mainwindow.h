@@ -34,14 +34,13 @@ protected:
     void changeEvent( QEvent* event );
 
 private:
-    void LoadChartCbx( );
     int GetImageFormat( );
     void StartDatabaseThread( );
     void ConnectDatabase( );
     void StartPlateThread( );
     void StartFtpThread( );
     void StartVideoThread( );
-    void StartSeriaizeThread( );
+    void StartSerializeThread( );
     void StartProcessResultThread( );
     void StartSmsThread( );
     void InitializeProvider( );

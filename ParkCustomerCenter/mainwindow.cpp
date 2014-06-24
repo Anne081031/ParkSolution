@@ -84,6 +84,8 @@ void MainWindow::CreateReportDlg( )
 
     connect( pFrameReport, SIGNAL( ReportQuery( QStringList ) ),
                    this, SLOT( HandleReportQuery( QStringList ) ) );
+    connect( pFrameReport, SIGNAL( Export2Excel( QStringList, QObject* ) ),
+                   this, SLOT( HandleExport2Excel( QStringList, QObject* ) ) );
 }
 
 void MainWindow::CreateHoverForm( )
@@ -234,6 +236,13 @@ void MainWindow::StartPlateThread( )
 
 void MainWindow::StartSpeechThread( )
 {
+    pSpeechThread = NULL;
+    pConfigurator->GetPlayVoice( bPlayVoice );
+
+    if ( !bPlayVoice ) {
+        return;
+    }
+
     pSpeechThread = QSpeechThread::CreateInstance( );
     connect( pSpeechThread, SIGNAL( Log( QString ) ),
              this, SLOT( HandleLog( QString ) ) );
@@ -396,6 +405,10 @@ void MainWindow::HandlePlateData( QString strPlate, QString strDateTime, QByteAr
 
 void MainWindow::PlayWelcomeSound( )
 {
+    if ( !bPlayVoice ) {
+        return;
+    }
+
     QString strPlate = ui->edtPlateID->text( );
     int nInsertIndex = 1;
     int nPlateLen = strPlate.length( );
@@ -437,6 +450,8 @@ void MainWindow::HandleSpResultset( int nSpType, QObject* pQSqlQueryModel )
         pFrameQueryData->QueryCustomerFinished( );
     } else if ( ParkSolution::SpQueryVehicleDataByCustomer == nSpType ) {
         pFrameQueryData->QueryVehicleFinished( );
+    } else if ( ParkSolution::SpExportReport2Excel == nSpType ) {
+        pFrameReport->Export2ExcelFinisded( );
     }
 
     qDebug( ) << pModel->lastError( ).text( ) << endl;
@@ -1004,6 +1019,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::HandleQueryChart( QStringList lstParams )
 {
     pDatabaseThread->PostChartInfoEvent( lstParams );
+}
+
+void MainWindow::HandleExport2Excel( QStringList lstParams, QObject *pModel )
+{
+    pDatabaseThread->PostExportReport2ExcelEvent( lstParams, ( QSqlQueryModel* ) pModel );
 }
 
 void MainWindow::HandleReportQuery( QStringList lstParams )

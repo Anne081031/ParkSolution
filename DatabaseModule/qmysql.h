@@ -135,6 +135,13 @@ private:
                                        QStringList &lstParams,
                                        QSqlQueryModel* pQueryModel );
 
+    void CallExportReport2Excel( QString &strConnectName,
+                                       ParkSolution::SpType eSpType,
+                                       QString &strSpName,
+                                       QString &strXmlPattern,
+                                       QStringList &lstParams,
+                                       QSqlQueryModel* pQueryModel );
+
     void CallQueryServiceDataByPlate( QString &strConnectName,
                                        ParkSolution::SpType eSpType,
                                        QString &strSpName,

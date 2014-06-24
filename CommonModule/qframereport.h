@@ -21,9 +21,9 @@ public:
 
     void DisplayReport( const QByteArray& byJson );
     void DisplayChart(const QByteArray &byJson );
+    void Export2ExcelFinisded( );
 
 private:
-    void LoadChartCbx( );
     void LayoutUI( );
     void Print( QWebView& wvReport );
     void KillAdobeProcess( QString &strExe );
@@ -34,12 +34,15 @@ private:
 private slots:
     void on_btQuery_clicked();
 
-    void on_btPrint_clicked();
+    void on_btPrintPdf_clicked();
+
+    void on_btPrintExcel_clicked();
 
     void on_cbxType_currentIndexChanged(int index);
 
 signals:
     void ReportQuery( QStringList lstParams );
+    void Export2Excel( QStringList lstParams, QObject* pSqlQueryModel );
 
 private:
     Ui::QFrameReport *ui;
@@ -47,6 +50,7 @@ private:
     QString strAdobeExe;
     QString strReportFile;
     QTextCodec* pTextCodec;
+    QSqlQueryModel sqlExport2ExcelModel;
 };
 
 #endif // QFRAMEREPORT_H

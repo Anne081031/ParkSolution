@@ -416,9 +416,14 @@ void MainWindow::HandleSpResultset( int nSpType, QObject* pQSqlQueryModel )
         }
     } else if ( ParkSolution::SpExportCustomer == nSpType ) {
         bool bRet = dataParser.ExportData( strExportDataDir, pModel );
+        QString strText = "查询无数据。";
 
-        QString strText = bRet ? "导出数据成功。" : "导出数据失败\n请检查Excel程序是否正确安装。";
-        QCommonFunction::InformationBox( this, strText );
+        if ( 0 >= modelExportCustomer.rowCount( ) ) {
+            QCommonFunction::InformationBox( this, strText );;
+        } else {
+            strText = bRet ? "导出数据成功。" : "导出数据失败\n请检查Excel程序是否正确安装。";
+            QCommonFunction::InformationBox( this, strText );
+        }
     } else if ( ParkSolution::SpQueryCommonDataByType == nSpType ) {
         pDlgCommonData->HideColumn( );
     }
@@ -751,12 +756,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::on_btnExport_clicked()
 {
-    QDir dir( QDir::currentPath( ) );
-    dir.cdUp( );
-    strExportDataDir = QFileDialog::getExistingDirectory( this,
-                                                        "请选择导出数据保存的目录",
-                                                 dir.absolutePath( ),
-                                                 QFileDialog::ShowDirsOnly );
+    QCommonFunction::SelectDirectory( this, strExportDataDir );
     qDebug( ) << Q_FUNC_INFO << strExportDataDir << endl;
 
     if ( strExportDataDir.isNull( ) || strExportDataDir.isEmpty( ) ) {
@@ -782,6 +782,7 @@ void MainWindow::ExportCustomerInfo( QString &strWhere )
     QStringList lstParams;
 
     lstParams << strWhere;
+    modelExportCustomer.clear( );
     pDatabaseThread->PostExportCustomerEvent( lstParams, &modelExportCustomer );
 }
 

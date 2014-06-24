@@ -166,6 +166,7 @@ Makefile: NetworkModule.pro F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++/qmak
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/moc.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/win32/opengl.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/uic.prf \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/win32/dumpcpp.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/win32/windows.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/testcase_targets.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/exceptions.prf \
@@ -175,17 +176,20 @@ Makefile: NetworkModule.pro F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++/qmak
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5WebKitWidgets.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Quick.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5MultimediaWidgets.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5AxContainer.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5AxBase.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5OpenGL.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5PrintSupport.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5WebKit.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Qml.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Multimedia.prl \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl \
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sql.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Positioning.prl \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sensors.prl \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Network.prl \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl \
-		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl
+		F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Network.prl
 	$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile NetworkModule.pro
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\spec_pre.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\qdevice.pri:
@@ -294,6 +298,7 @@ F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\resources.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\moc.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\opengl.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\uic.prf:
+F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\dumpcpp.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\win32\windows.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\testcase_targets.prf:
 F:\Qt\Qt5.3.0\5.3\mingw482_32\mkspecs\features\exceptions.prf:
@@ -303,17 +308,20 @@ NetworkModule.pro:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5WebKitWidgets.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Quick.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5MultimediaWidgets.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5AxContainer.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5AxBase.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5OpenGL.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5PrintSupport.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5WebKit.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Qml.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Multimedia.prl:
-F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Widgets.prl:
+F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sql.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Positioning.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Sensors.prl:
 F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Network.prl:
-F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Gui.prl:
-F:/Qt/Qt5.3.0/5.3/mingw482_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile NetworkModule.pro
 

@@ -586,6 +586,7 @@ public:
         scrCustomer = new QScrollArea(centralWidget);
         scrCustomer->setObjectName(QStringLiteral("scrCustomer"));
         scrCustomer->setGeometry(QRect(470, 80, 120, 80));
+        scrCustomer->setMaximumSize(QSize(16777215, 180));
         scrCustomer->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         scrCustomer->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         scrCustomer->setWidgetResizable(true);
@@ -595,11 +596,12 @@ public:
         scrCustomer->setWidget(scrollAreaWidgetContents);
         scrVehicle = new QScrollArea(centralWidget);
         scrVehicle->setObjectName(QStringLiteral("scrVehicle"));
-        scrVehicle->setGeometry(QRect(470, 180, 120, 80));
+        scrVehicle->setGeometry(QRect(480, 180, 111, 71));
+        scrVehicle->setMaximumSize(QSize(16777215, 180));
         scrVehicle->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QStringLiteral("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 118, 78));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 109, 69));
         scrVehicle->setWidget(scrollAreaWidgetContents_2);
         formLayoutWidget_8 = new QWidget(centralWidget);
         formLayoutWidget_8->setObjectName(QStringLiteral("formLayoutWidget_8"));

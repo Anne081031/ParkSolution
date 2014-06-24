@@ -95,6 +95,7 @@ private:
     QPlateParserThread* pPlateParserThread;
     QDatabaseThread* pDatabaseThread;
     QSqlQueryModel modelService;
+    QSqlQueryModel modelExcel;
     QDataParser dataParser;
     QConfigurator* pConfigurator;
     QStringList lstServiceColumnName;
@@ -111,6 +112,7 @@ private:
     QString strWelcomeSound;
 
     bool bIPCVideo;
+    bool bPlayVoice;
     bool bCustomerCenter;
     bool bCustomerInVideo;
     bool bCustomerOutVideo;
@@ -121,6 +123,7 @@ private:
 private slots:
     void HandleQueryChart( QStringList lstParams );
     void HandleReportQuery( QStringList lstParams );
+    void HandleExport2Excel( QStringList lstParams, QObject * pModel );
     void HandleActivated( QSystemTrayIcon::ActivationReason reason );
     void HandleMessageClicked( );
     void HandleShowHoverWindow( bool bVisible );

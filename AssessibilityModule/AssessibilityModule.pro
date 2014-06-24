@@ -1,4 +1,4 @@
-QT       += core gui axcontainer
+QT       += core gui axcontainer sql
 
 MYTARGET = $$quote( AssessibilityModule%1 )
 MYDESTDIR = $$quote( ../LibExeFiles/%1 )

@@ -1,4 +1,4 @@
-QT       += core gui network webkitwidgets
+QT       += core gui network webkitwidgets axcontainer sql
 
 MYTARGET = $$quote( NetworkModule%1 )
 MYDESTDIR = $$quote( ../LibExeFiles/%1 )

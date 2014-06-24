@@ -13,6 +13,9 @@ class CONFIGMODULESHARED_EXPORT QConfigurator : public QObject
 public:
     static QConfigurator* CreateConfigurator( );
 
+    void SetPlayVoice( const bool bPlay );
+    void GetPlayVoice( bool& bPlay ) const;
+
     void SetDropFrame( const int nStep );
     void GetDropFrame( int& nStep ) const;
 

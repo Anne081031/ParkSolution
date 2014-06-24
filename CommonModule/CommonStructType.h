@@ -336,6 +336,7 @@ namespace ParkSolution {
         QString strSpQueryCustomerDataByPlate;
         QString strSpQueryVehicleDataByCustomer;
         QString strSpQueryServiceDataByPlate;
+        QString strSpExportReport2Excel;
 
         __SpName( )
         {
@@ -360,6 +361,7 @@ namespace ParkSolution {
             strSpQueryCustomerDataByPlate = "QueryCustomerDataByPlate";
             strSpQueryVehicleDataByCustomer = "QueryVehicleDataByCustomer";
             strSpQueryServiceDataByPlate = "QueryServiceDataByPlate";
+            strSpExportReport2Excel = "ExportReport2Excel";
         }
     } SpName;
 
@@ -386,7 +388,8 @@ namespace ParkSolution {
         QString strXmlChartInfo;
         QString strXmlQueryCustomerDataByPlate;
         QString strXmlQueryVehicleDataByCustomer;
-        QString strXmlQueryServiceDataByPlate;
+        QString strXmlQueryServiceDataByPlate;\
+        QString strXmlExportReport2Excel;
 
         __SpXmlPattern( )
         {
@@ -451,6 +454,7 @@ namespace ParkSolution {
             strXmlQueryCustomerDataByPlate = "<Data><Flag>%1</Flag><Plate>%2</Plate></Data>";
             strXmlQueryVehicleDataByCustomer = "<Data><Flag>%1</Flag><CustomerID>%2</CustomerID><Plate>%3</Plate></Data>";
             strXmlQueryServiceDataByPlate = "<Data><Flag>%1</Flag><Plate>%2</Plate></Data>";
+            strXmlExportReport2Excel = "<Data><Flag>%1</Flag><StartTime>%2</StartTime><EndTime>%3</EndTime></Data>";
         }
     } SpXmlPattern;
 }
