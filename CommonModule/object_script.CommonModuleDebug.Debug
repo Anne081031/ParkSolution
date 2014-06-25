@@ -12,6 +12,8 @@ INPUT(
 ./debug\qresizeform.o
 ./debug\qmysystemtrayicon.o
 ./debug\qframereport.o
+./debug\qmylabel.o
+./debug\qdlgbigpicture.o
 ./debug\moc_qbasethread.o
 ./debug\moc_qcommonfunction.o
 ./debug\moc_qdlglogin.o
@@ -24,4 +26,6 @@ INPUT(
 ./debug\moc_qresizeform.o
 ./debug\moc_qmysystemtrayicon.o
 ./debug\moc_qframereport.o
+./debug\moc_qmylabel.o
+./debug\moc_qdlgbigpicture.o
 );

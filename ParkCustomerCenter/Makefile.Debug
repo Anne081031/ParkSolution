@@ -541,6 +541,7 @@ debug/moc_mainwindow.cpp: F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QMainW
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayoutitem.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qgridlayout.h \
 		../CommonModule/qresizeform.h \
+		../CommonModule/qmylabel.h \
 		mainwindow.h
 	F:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IF:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/ParkSolution/ParkCustomerCenter -ID:/ParkSolution/Zmq -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtPrintSupport -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore mainwindow.h -o debug\moc_mainwindow.cpp
 
@@ -2028,7 +2029,8 @@ debug/main.o: main.cpp mainwindow.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayout.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayoutitem.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qgridlayout.h \
-		../CommonModule/qresizeform.h
+		../CommonModule/qresizeform.h \
+		../CommonModule/qmylabel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o main.cpp
 
 debug/mainwindow.o: mainwindow.cpp mainwindow.h \
@@ -2426,6 +2428,7 @@ debug/mainwindow.o: mainwindow.cpp mainwindow.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qlayoutitem.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qgridlayout.h \
 		../CommonModule/qresizeform.h \
+		../CommonModule/qmylabel.h \
 		ui_mainwindow.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QAction \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/qaction.h \

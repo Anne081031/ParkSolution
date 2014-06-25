@@ -8,6 +8,7 @@
 #include <QtSql>
 #include "qresizeform.h"
 #include "../CommonModule/CommonTypedef.h"
+#include "qmylabel.h"
 
 namespace Ui {
 class QFrameQueryData;
@@ -66,6 +67,7 @@ private:
     void MainLayoutUI( );
     void RecordLayoutUI( );
     void QueryChartData( int nIndex );
+    void CreateImageLabel( );
     void InitializeResizeForm( QResizeForm* pForm, QHBoxLayout* pLayout, QLabel* pLbl );
 
     inline void CreateBackgroundForm( );
@@ -87,6 +89,8 @@ private:
     QSqlQueryModel sqlInOutRecordModel;
     QResizeForm bkForms[ 2 ];
     QString strFilePath;
+    QMyLabel* lblInImage;
+    QMyLabel* lblOutImage;
 };
 
 #endif // QFRAMEQUERYDATA_H

@@ -46,7 +46,9 @@ HEADERS += \
     qframequerydata.h \
     qresizeform.h \
     qmysystemtrayicon.h \
-    qframereport.h
+    qframereport.h \
+    qmylabel.h \
+    qdlgbigpicture.h
 
 SOURCES += \
     qbasethread.cpp \
@@ -61,7 +63,9 @@ SOURCES += \
     qframequerydata.cpp \
     qresizeform.cpp \
     qmysystemtrayicon.cpp \
-    qframereport.cpp
+    qframereport.cpp \
+    qmylabel.cpp \
+    qdlgbigpicture.cpp
 
 FORMS += \
     qdlglogin.ui \
@@ -70,4 +74,5 @@ FORMS += \
     qdlgreport.ui \
     qframequerydata.ui \
     qresizeform.ui \
-    qframereport.ui
+    qframereport.ui \
+    qdlgbigpicture.ui

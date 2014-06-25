@@ -1,0 +1,29 @@
+http://www.dreamdu.com/javascript http://www.w3school.com.cn/
+window -- window对象是BOM中所有对象的核心
+JavaScript中的任何一个全局函数或变量都是window的属性
+
+JSON 创建Javascript对象
+var a = { Key:Value; w:{}};
+
+内部引用
+<head>
+        <script type="text/javascript">
+                document.write("dreamdu!");
+        </script>
+</head>
+
+外部引用
+<head>
+    <script type="text/javascript" src="dreamdu.js"></script>
+</head>
+
+内部引用
+HTML事件属性调用
+<input type="button" value="点我学习梦之都教程" onclick="alert('你点击了一个按钮');">
+
+加载CSS
+<link rel="stylesheet" type="text/css" href="http://www.dreamdu.com/style.css" />
+
+<div>块 <span>块内行 区别
+
+HTML CSS JS

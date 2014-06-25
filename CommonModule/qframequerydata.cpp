@@ -9,6 +9,7 @@ QFrameQueryData::QFrameQueryData(QWidget *parent) :
     ui->setupUi(this);
 
     strFilePath = QString( "file:///%1/Report/VehicleTemplate.html" ).arg( qApp->applicationDirPath( ) );
+    CreateImageLabel( );
     MainLayoutUI( );
     QCommonFunction::LoadChartType( ui->cbxChartType );
     RecordLayoutUI( );
@@ -19,8 +20,19 @@ QFrameQueryData::QFrameQueryData(QWidget *parent) :
     SetModel4View( );
 }
 
+void QFrameQueryData::CreateImageLabel( )
+{
+    lblInImage = new QMyLabel( this );
+    lblInImage->SetCloseDialog( false );
+
+    lblOutImage = new QMyLabel( this );
+    lblOutImage->SetCloseDialog( false );
+}
+
 QFrameQueryData::~QFrameQueryData()
 {
+    delete lblInImage;
+    delete lblOutImage;
     delete ui;
 }
 
@@ -40,6 +52,7 @@ void QFrameQueryData::InitializeResizeForm( QResizeForm* pForm, QHBoxLayout* pLa
     byData.append( '\0' );
     const char* pName = byData.data( );
     pForm->setLayout( pLayout );
+    pLayout->addWidget( pLbl );
     connect( pForm, SIGNAL( Resize( QSize ) ),
             this, SLOT( HandleResize( QSize ) ) );
     pForm->setProperty( pName, ( quint32 ) pLbl );
@@ -48,8 +61,8 @@ void QFrameQueryData::InitializeResizeForm( QResizeForm* pForm, QHBoxLayout* pLa
 void QFrameQueryData::CreateBackgroundForm( )
 {
     // Dynamic Property
-    InitializeResizeForm( &bkForms[ 0 ], ui->horizontalLayout_3, ui->lblInImage );
-    InitializeResizeForm( &bkForms[ 1 ], ui->horizontalLayout_4, ui->lblOutImage );
+    InitializeResizeForm( &bkForms[ 0 ], ui->horizontalLayout_3, lblInImage );
+    InitializeResizeForm( &bkForms[ 1 ], ui->horizontalLayout_4, lblOutImage );
 }
 
 void QFrameQueryData::HandleResize( QSize bkSize )
@@ -151,8 +164,8 @@ void QFrameQueryData::QueryImageFinished( QByteArray &byData )
     QString strInImage = jsonObj.value( tabImageInfo.strEnterImage ).toString( );
     QString strOutImage = jsonObj.value( tabImageInfo.strLeaveImage ).toString( );
 
-    GetImageFirst( false, strRecordID, strInImage, ui->lblInImage );
-    GetImageFirst( true, strRecordID, strOutImage, ui->lblOutImage );
+    GetImageFirst( false, strRecordID, strInImage, lblInImage );
+    GetImageFirst( true, strRecordID, strOutImage, lblOutImage );
 }
 
 void QFrameQueryData::GetImageFirst( bool bLeave, const QString& strRecordID, const QString& strImage64, QLabel* pLbl )
@@ -309,7 +322,7 @@ void QFrameQueryData::on_tabInOutRecord_clicked(const QModelIndex &index)
     QString strValue;
     GetKeyValue( index, recordInfo.strRecordID, strValue );
 
-    bool bRet = LoadImage( false, strValue, ui->lblInImage );
+    bool bRet = LoadImage( false, strValue, lblInImage );
 
     if ( !bRet ) {
         QStringList lstParams;
@@ -318,7 +331,7 @@ void QFrameQueryData::on_tabInOutRecord_clicked(const QModelIndex &index)
         emit QueryData( lstParams );
     }
 
-    bRet = LoadImage( true, strValue, ui->lblOutImage );
+    bRet = LoadImage( true, strValue, lblOutImage );
 }
 
 void QFrameQueryData::GetKeyValue( const QModelIndex &index, const QString& strKey, QString& strValue )
