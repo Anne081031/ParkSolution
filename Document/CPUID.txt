@@ -1,0 +1,4 @@
+CPUID汇编指令
+CPU-Z 查看计算机相关的硬件信息
+SPDtool 修改内存条的相关工作参数 ( Serial Presence Detect ) BIOS读取SPD EEPROM芯片获取内存工作参数
+相同类型的内存，不同带宽(频率) 同时插上会以最低频率工作

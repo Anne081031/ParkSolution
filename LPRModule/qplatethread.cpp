@@ -293,7 +293,7 @@ QString QPlateThread::GetPlateMoveDirection( int nDirection )
         break;
     }
 
-    return strDirection;
+    return strDirection + "@" + QString::number( nDirection );
 }
 
 QString QPlateThread::GetWidthHeight( TH_PlateResult *pResult )
@@ -471,8 +471,9 @@ void QPlateThread::VideoRecognize( QPlateEvent *pEvent )
     GetResultInfo( lstResult, strFile, bRet, nNum, result );
 
     ///////////////////////////////////////////////// Only a Plate
-    bool bSame = ( 1 == nNum );
-
+    //bool bSame = ( bRet ? 1 == nNum : true );
+    bool bSame = !bRet;
+/* // 一段时间内，只有同一车辆的进出问题
     if ( bRet && !bOutputAllPlate &&  bSame ) {
         const QString& strCurrentPlate = lstResult.at( 0 );
         //qDebug( ) << Q_FUNC_INFO << strCurrentPlate << endl;
@@ -489,7 +490,7 @@ void QPlateThread::VideoRecognize( QPlateEvent *pEvent )
         }
     }
     /////////////////////////////////////////////////
-
+*/
     bool bOutput = ( !bSame || bOutputAllPlate );
 
     if ( pEvent->GetIpcVideoSource( ) ) {

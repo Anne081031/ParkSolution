@@ -498,6 +498,9 @@ void MainWindow::StartPlateThread( )
     connect( pPlateThread, SIGNAL( Log( QString ) ),
              this, SLOT( HandlePlateLog( QString ) ) );
 
+    pConfigurator->GetPlateUseDirection( bPlateUseDirection );
+    pConfigurator->GetUpDirectionEnter( bUpDirectionEnter );
+
     bool bOneWay;
     pConfigurator->GetDongleOneWay( bOneWay );
     pPlateThread->SetDongleOneWay( bOneWay );
@@ -552,6 +555,39 @@ void MainWindow::StartFtpThread( )
              this, SLOT( HandleFtpLog( QString ) ) );
 }
 
+bool MainWindow::GetEnterFlag( const bool bVideo, const bool bSuccess,
+                               const QString& strDirection, const int nChannel,
+                               bool& bEnter )
+{
+    bool bRet = true;
+    bEnter = ( 0 == nChannel %2 );
+    if ( !( bVideo && bSuccess ) || !bPlateUseDirection ) {
+        return bRet;
+    }
+
+    QStringList lstDirection = strDirection.split( "@" );
+    if ( 2 > lstDirection.size( ) ) {
+        return bRet;
+    }
+
+    int nDirection = lstDirection.at( 1 ).toInt( );
+
+    switch ( nDirection ) {
+    case DIRECTION_UP :
+        bEnter = bUpDirectionEnter ? true : false;
+        break;
+
+    case DIRECTION_DOWN :
+        bEnter = !bUpDirectionEnter ? true : false;
+        break;
+
+    default :
+        bRet = false;
+    }
+
+    return bRet;
+}
+
 void MainWindow::HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, QString strIP, bool bSuccess, bool bVideo )
 {
     int nSize = lstPlateParam.size( );
@@ -568,6 +604,7 @@ void MainWindow::HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, 
     for ( int nIndex = 0; nIndex < nCount; nIndex++ ) {
         nStep = nIndex * PLATE_RESULT_ITEMS;
         const QString& strPlate = lstPlateParam.at( nStep );
+        const QString& strDirection = lstPlateParam.at( 5 + nStep );
         strText = strPlateResultPattern.arg( QString::number( nChannel ) ,
                                                        bVideo ? "视频流" : "文件",
                                                        bSuccess ? "成功" : "失败",
@@ -576,12 +613,15 @@ void MainWindow::HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, 
                                                        lstPlateParam.at( 2 + nStep ),
                                                        lstPlateParam.at( 3 + nStep ),
                                                        lstPlateParam.at( 4 + nStep ),
-                                                       lstPlateParam.at( 5 + nStep ) );
+                                                       //lstPlateParam.at( 5 + nStep )
+                                                      strDirection );
         strText =strText.arg( strIP );
         QCommonFunction::GetCurrentDateTime( strDateTime );
 
         strText += " " + strDateTime + "\n";
         HandlePlateLog( strText );
+
+        bSuccess = GetEnterFlag( bVideo, bSuccess, strDirection, nChannel, bEnter );
 
         if ( !bSuccess ) {
             continue;
@@ -634,6 +674,7 @@ void MainWindow::HandlePlateResult( QStringList lstPlateParam, int nChannel, boo
     for ( int nIndex = 0; nIndex < nCount; nIndex++ ) {
         nStep = nIndex * PLATE_RESULT_ITEMS;
         const QString& strPlate = lstPlateParam.at( nStep );
+        const QString& strDirection = lstPlateParam.at( 5 + nStep );
         strText = strPlateResultPattern.arg( QString::number( nChannel ) ,
                                                        bVideo ? "视频流" : "文件",
                                                        bSuccess ? "成功" : "失败",
@@ -642,12 +683,15 @@ void MainWindow::HandlePlateResult( QStringList lstPlateParam, int nChannel, boo
                                                        lstPlateParam.at( 2 + nStep ),
                                                        lstPlateParam.at( 3 + nStep ),
                                                        lstPlateParam.at( 4 + nStep ),
-                                                       lstPlateParam.at( 5 + nStep ) );
+                                                      // lstPlateParam.at( 5 + nStep )
+                                                      strDirection );
         strText =strText.arg( "" );
         QCommonFunction::GetCurrentDateTime( strDateTime );
 
         strText += " " + strDateTime + "\n";
         HandlePlateLog( strText );
+
+        bSuccess = GetEnterFlag( bVideo, bSuccess, strDirection, nChannel, bEnter );
 
         if ( !bSuccess ) {
             continue;

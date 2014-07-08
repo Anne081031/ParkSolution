@@ -62,6 +62,9 @@ private:
     inline void StartIPCPlayVideo( QString& strIP, bool bMainStream, int nChannel );
 
     void HandleActionTriggered( QAction* pAction );
+    bool GetEnterFlag( const bool bVideo, const bool bSuccess,
+                       const QString& strDirection, const int nChannel,
+                       bool& bEnter );
 
 private slots:
     void HandleSerializeLog( QString strLog );
@@ -109,6 +112,8 @@ private:
     bool bDisplaySerializeLog;
     QString strProviderHK;
     QString strProviderTM;
+    bool bPlateUseDirection;
+    bool bUpDirectionEnter;
 };
 
 #endif // MAINWINDOW_H

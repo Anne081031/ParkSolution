@@ -1,0 +1,36 @@
+http://www.restapitutorial.com/ RESTful OpenAPI
+HTTP Status Code
+1xx服务端信息 2xx操作成功 3xx重定向 4xx客户端错误 5xx服务器端错误
+(B)JSON and XML
+http://json.org/
+http://json-schema.org/
+GET 读取存在的资源
+PUT 更新存在的资源 偶尔也用于创建新资源
+POST 创建新资源
+DELETE 删除存在的资源
+
+Collection--Table( Dynamic Schema, Static Schema )
+Document--Row( BJSON ) 文档_ID 或者rowid / Key---Value--map, hash, dictionary, object / Core Object
+
+Instance( 系统运行实例 安装实例 ) 可以管理多个数据库，实例间可以共享库(磁盘阵列)
+JavaScript管理
+
+MongoDB is type-sensitive and case-sensitive. 值类型区别 大小写区别
+文档中键值对顺序，不一样也不同
+
+效率最好，文档最好形成默认的Schema,相近的文档组织在同一集合中
+
+集合可以采用namespace组织 子集和
+GridFS
+
+网络型数据库 支持Socket链接端口27017 HTTP链接端口1000或28017
+
+Mongod.exe (server ) Mongo.exe( Shell Javascript )
+分区键必须是索引的部分 Chunk与数据物理存储没必然联系
+
+自治，自我完成很多功能
+
+库锁， 读写锁
+存储过程 JS写 客户端调用 db.eval( )//数据库实例调用
+
+p63

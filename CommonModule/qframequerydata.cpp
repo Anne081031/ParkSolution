@@ -56,6 +56,7 @@ void QFrameQueryData::InitializeResizeForm( QResizeForm* pForm, QHBoxLayout* pLa
     connect( pForm, SIGNAL( Resize( QSize ) ),
             this, SLOT( HandleResize( QSize ) ) );
     pForm->setProperty( pName, ( quint32 ) pLbl );
+    pForm->setMinimumHeight( 258 );
 }
 
 void QFrameQueryData::CreateBackgroundForm( )
@@ -275,11 +276,13 @@ void QFrameQueryData::QueryResultset( QStringList& lstParams, Resultset eType )
 
 void QFrameQueryData::on_btnInOutRecordQuery_clicked()
 {
+    /*
     if ( ui->edtPlate->text( ).isEmpty( ) ) {
         QString strText = "请输入车牌号，可以是车牌号的一部份。";
         QCommonFunction::InformationBox( this, strText );
         return;
     }
+    */
 
     QStringList lstParams;
     lstParams << "0" << ui->edtPlate->text( );

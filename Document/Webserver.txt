@@ -1,0 +1,51 @@
+服务探索 可以采用组播机制 探索者发送组播消息，服务端收到消息采用单播发送消息给探索者
+在线分析 可以采用心跳或者组播 心跳方向 发方与接方的确定
+
+Apache
+一台机可有多网卡，每张网卡可配多个IP
+
+IIS
+
+多站点建立
+
+
+Directive 完成Apache的各方面的配置
+////////////////////////////////////
+LoadModule //动态加载Apache的功能模块
+ServerRoot
+DocumentRoot
+VirtualHost //建立多站点
+Include
+IncludeOptional
+/////////////////////////////////// Windows MSCS( Microsoft Cluster Server ) Linux( LVS Linux Virtual Server ) 专业负载均衡集群软件
+负载均衡 软件实现 硬件实现
+
+负载均衡集群 把物理独立的多台服务器虚拟成一台逻辑服务器
+
+数据库读写分开 中心数据库(节点间共享存储 磁盘阵列)处理写操作( HAC Failover ) 采用数据库复制技术 其他数据库节点处理读操作( LBC )
+
+Rewrite 把访问A，在后台转换为访问B
+
+Cluster LoadBanancer
+HPC 多台机器共同完成统一任务 天气预报
+HAC 利用集群中系统 的冗余，当系统中某台机器发生损坏的时候，其他后备的机器可以迅速的接替它来启动服务 银行，电信
+LBC 多台机器并行处理不同任务 网站 节点间的数据同步
+
+Failover 故障转移( HAC ) 故障切换；容错移转；失效切换
+
+Linux 负载均衡 集群技术 LVS http://www.linuxvirtualserver.org/
+
+
+	Client-->Internet/Intranet--->LoadBanancer(专用硬件。软件-可以是集群中的节点，也可以是独立的节点 ) 基于IP(NAT) DNS等均衡--->Cluster( Nodeset )
+
+Hardware Load Balancer
+Software Load Balancer
+
+VS/NAT负载均衡,进出地址修改 请求响应都要经均衡节点
+VS/TUN( IP Tunneling ) 均衡节点把请求转发给处理节点，处理节点把相应直接给客户端
+VS/DR(Direct Routing) 修改请求的MAC地址 转发至服务节点 服务节点把相应直接发给客户端 省去了间隧道这一步
+
+
+隧道指利用一种协议来透传其他协议数据 (数据传输路径叫隧道)
+
+P2P NAT STUN TURN ICE

@@ -4,6 +4,9 @@ MYTARGET = $$quote( LPRModule%1 )
 MYDESTDIR = $$quote( ../LibExeFiles/%1 )
 MYDESTLIB = $$quote( %1/lib%2%3.a )
 
+#$$(Enviroment_Variable)
+#$$(QTDIR)
+
 Debug {
     TARGET = $$sprintf( $$MYTARGET, "Debug" )
     DESTDIR = $$sprintf( $$MYDESTDIR, "Debug" )

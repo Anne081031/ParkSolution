@@ -471,6 +471,26 @@ void QConfigurator::GetPlateStartupInterval( bool& bStartup ) const
     bStartup = pSettings->value( "InOutPlateInterval/StartupInterval", false ).toBool( );
 }
 
+void QConfigurator::SetPlateUseDirection( const bool bDirection )
+{
+    pSettings->setValue( "LPR/PlateUseDirection", bDirection );
+}
+
+void QConfigurator::GetPlateUseDirection( bool& bDirection ) const
+{
+    bDirection = pSettings->value( "LPR/PlateUseDirection", false ).toBool( );
+}
+
+void QConfigurator::SetUpDirectionEnter( const bool bEnter )
+{
+    pSettings->setValue( "LPR/UpDirectionEnter", bEnter );
+}
+
+void QConfigurator::GetUpDirectionEnter( bool& bEnter ) const
+{
+    bEnter = pSettings->value( "LPR/UpDirectionEnter", false ).toBool( );
+}
+
 void QConfigurator::SetPlateOutputAll( const bool bAll )
 {
     pSettings->setValue( "LPR/PlateOutputAll", bAll );

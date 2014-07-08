@@ -146,6 +146,12 @@ public:
     void SetPlateDifferentChannelInterval( const int nInterval );
     void GetPlateDifferentChannelInterval( int& nInterval ) const;
 
+    void SetPlateUseDirection( const bool bDirection );
+    void GetPlateUseDirection( bool& bDirection ) const;
+
+    void SetUpDirectionEnter( const bool bEnter );
+    void GetUpDirectionEnter( bool& bEnter ) const;
+
     void SetPlateOutputAll( const bool bAll );
     void GetPlateOutputAll( bool& bAll ) const;
 
