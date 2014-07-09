@@ -96,8 +96,8 @@ void MainWindow::StartSmsThread( )
 void MainWindow::StartProcessResultThread( )
 {
     pProcessResultThread = QProcessResultThread::CreateInstance( );
-    connect( pProcessResultThread, SIGNAL( ThreadPoolTaskData( QByteArray ) ),
-             this, SLOT( HandleThreadPoolTaskData( QByteArray ) ) );
+    //connect( pProcessResultThread, SIGNAL( ThreadPoolTaskData( QByteArray ) ),
+    //         this, SLOT( HandleThreadPoolTaskData( QByteArray ) ) );
 }
 
 void MainWindow::StartSerializeThread( )
@@ -600,6 +600,7 @@ void MainWindow::HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, 
     bool bEnter = ( 0 == nChannel % 2 );
     QString strText;
     QString strDateTime;
+    bool bRet = false;
 
     for ( int nIndex = 0; nIndex < nCount; nIndex++ ) {
         nStep = nIndex * PLATE_RESULT_ITEMS;
@@ -621,9 +622,9 @@ void MainWindow::HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, 
         strText += " " + strDateTime + "\n";
         HandlePlateLog( strText );
 
-        bSuccess = GetEnterFlag( bVideo, bSuccess, strDirection, nChannel, bEnter );
+        bRet = GetEnterFlag( bVideo, bSuccess, strDirection, nChannel, bEnter );
 
-        if ( !bSuccess ) {
+        if ( !bRet ) {
             continue;
         }
 

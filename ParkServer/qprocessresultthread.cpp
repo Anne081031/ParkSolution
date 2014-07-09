@@ -140,6 +140,9 @@ void QProcessResultThread::PostPlateResultEvent( const QString& strPlate, const 
     pEvent->SetIP( strIP );
 
     PostEvent( pEvent );
+
+    if ( bEnter )
+        qDebug( ) << strPlate << ( bEnter ? "Enter" : "Leave" ) << endl;
 }
 
 void QProcessResultThread::run( )
@@ -150,7 +153,7 @@ void QProcessResultThread::run( )
 
 void QProcessResultThread::customEvent( QEvent* pEvent )
 {
-    QProcessResultEvent* pResultEvent = ( QProcessResultEvent* ) pEvent;\
+    QProcessResultEvent* pResultEvent = ( QProcessResultEvent* ) pEvent;
     QProcessResultEvent::ProcessResultEvent eEvent = ( QProcessResultEvent::ProcessResultEvent ) pEvent->type( );
 
     switch ( eEvent ) {
@@ -246,8 +249,9 @@ void QProcessResultThread::ProcessDatabaseResultEvent( QProcessResultEvent* pEve
     //int nChannel = lstParams.at( 5 ).toInt( );
     //HandlePlateSerializeData( strPlate, strDateTime, byImage );
 
-    if ( bEnter && bStartupInterval ) {
-        hashPlateDateTime[ !bEnter ].remove( strPlate );
+    if ( bStartupInterval ) {
+        //hashPlateDateTime[ !bEnter ].remove( strPlate );
+        hashPlateDateTime[ bEnter ][ strPlate ] = strDateTime;
     }
 
     Send2FtpServer( strPlate, strDateTime, byImage );
@@ -394,35 +398,45 @@ bool QProcessResultThread::SamePlateInInterval( bool bEnter, const QString &strP
     const QString strValue = hashDateTime.value( strPlate, "" );
     const QString strInverseValue = hashInverseDateTime.value( strPlate, "" );
     bRet = strValue.isEmpty( );
+    bool bInverse = strInverseValue.isEmpty( );
 
     if ( bEnter ) { // Enter
         if ( bRet ) { // First Enter
-            hashDateTime.insert( strPlate, strDateTime );
+            hashDateTime.insert( strPlate, strDateTime ); // Enter Time
             return false;
         }
 
-        if ( !strInverseValue.isEmpty( ) ) {
-            return true;
-        }
-
-        bRet = TimeDifferenceInInterval( strValue, strDateTime, nPlateSameChannelInterval );
-
-        if ( !bRet ) { // Next Enter
-            hashDateTime[ strPlate ] = strDateTime;
-        }
-    } else { // Leave
-        if ( bRet ) { // First Leave
+        if ( !bInverse ) { // 考虑离开
             bRet = TimeDifferenceInInterval( strInverseValue, strDateTime, nPlateDifferentChannelInterval );
 
-            if ( !bRet ) {
-                hashDateTime.insert( strPlate, strDateTime );
-            }
-        } else {
+            //if ( !bRet ) {
+            //    hashDateTime[ strPlate ] = strDateTime;
+            //}
+        } else { // 不考虑离开
             bRet = TimeDifferenceInInterval( strValue, strDateTime, nPlateSameChannelInterval );
 
-            if ( !bRet ) {
-                hashDateTime[ strPlate ] = strDateTime;
+            //if ( !bRet ) { // Next Enter
+            //    hashDateTime[ strPlate ] = strDateTime;
+            //}
+        }
+    } else { // Leave
+        if ( !bInverse ) { // 已进入
+            bRet = TimeDifferenceInInterval( strInverseValue, strDateTime, nPlateDifferentChannelInterval );
+
+            //if ( !bRet ) {
+            //    hashDateTime[ strPlate ] = strDateTime;
+            //}
+        }  else {
+            if ( bRet ) { // First Leave
+                hashDateTime.insert( strPlate, strDateTime ); // Leave Time
+                return false;
             }
+
+            bRet = TimeDifferenceInInterval( strValue, strDateTime, nPlateSameChannelInterval );
+
+            //if ( !bRet ) {
+            //    hashDateTime[ strPlate ] = strDateTime;
+            //}
         }
     }
 
@@ -479,5 +493,7 @@ void QProcessResultThread::ProcessPlateResultEvent( QProcessResultEvent* pEvent 
         nConnectID = 1;
     }
 
+    if ( bEnter )
+        qDebug( ) << strPlate << ( bEnter ? "Enter" : "Leave" ) << endl;
     //pSerializeThread->PostSetPlateDataEvent( strUUID, strPlate, strDateTime, byFileData );
 }

@@ -33,4 +33,6 @@ Mongod.exe (server ) Mongo.exe( Shell Javascript )
 库锁， 读写锁
 存储过程 JS写 客户端调用 db.eval( )//数据库实例调用
 
+索引 能加速查找，但是插入 更新 删除会变慢些 因为需要改变所有数据
+
 p63
