@@ -140,9 +140,6 @@ void QProcessResultThread::PostPlateResultEvent( const QString& strPlate, const 
     pEvent->SetIP( strIP );
 
     PostEvent( pEvent );
-
-    if ( bEnter )
-        qDebug( ) << strPlate << ( bEnter ? "Enter" : "Leave" ) << endl;
 }
 
 void QProcessResultThread::run( )
@@ -485,6 +482,8 @@ void QProcessResultThread::ProcessPlateResultEvent( QProcessResultEvent* pEvent 
               << strDateTime << strImageBase64 << strUUID
               << QString::number( nChannel );
 
+    //qDebug ( ) << ( bEnter ? "1" : "0" ) << strPlate <<  endl;
+
     static int nConnectID = 1;
     //QDbPoolNewTask* pTask = QDbPoolNewTask::CreateTask( ParkSolution::SpWriteInOutRecord, lstParams, this, nConnectID++ );
     //pThreadPool->start( pTask );
@@ -493,7 +492,5 @@ void QProcessResultThread::ProcessPlateResultEvent( QProcessResultEvent* pEvent 
         nConnectID = 1;
     }
 
-    if ( bEnter )
-        qDebug( ) << strPlate << ( bEnter ? "Enter" : "Leave" ) << endl;
     //pSerializeThread->PostSetPlateDataEvent( strUUID, strPlate, strDateTime, byFileData );
 }

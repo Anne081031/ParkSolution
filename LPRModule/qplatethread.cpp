@@ -371,10 +371,6 @@ void QPlateThread::GetResultInfo( QStringList &lstResult, QString &strFile, bool
 {
     QFileInfo info( strFile );
 
-    if ( 1 < nNum ) {
-        qDebug( ) << QString::number( nNum ) << Q_FUNC_INFO << endl;
-    }
-
     for ( int nIndex = 0; nIndex < nNum; nIndex++ ) {
         lstResult << ( bSuccess ? pCodec->toUnicode( pResult[ nIndex ].license ) : "失败" );
         lstResult << ( bSuccess ? QString::number( pResult[ nIndex ].nTime )  : "" );
