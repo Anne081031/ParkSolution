@@ -104,29 +104,25 @@ void QDbPoolNewTask::CallSP( QByteArray &bySpResult )
 
 void QDbPoolNewTask::run( )
 {
-    try {
-        QByteArray bySpResult;
+    QByteArray bySpResult;
 
-        if ( !ConnectDb( ) ) {
-            return;
-        }
-
-        CallSP( bySpResult );
-
-        if ( 0 == bySpResult.size( ) ) {
-            return;
-        }
-
-        QProcessResultThread* pReceiver = ( QProcessResultThread* ) pReceiverThread;
-
-        if ( NULL == pReceiver ) {
-            return;
-        }
-
-        pReceiver->PostDatabaseResultEvent( dbSpType, bySpResult, lstSpParam );
-    } catch ( QException& e ) {
-        qDebug( ) << e.what( ) << endl;
+    if ( !ConnectDb( ) ) {
+        return;
     }
+
+    CallSP( bySpResult );
+
+    if ( 0 == bySpResult.size( ) ) {
+        return;
+    }
+
+    QProcessResultThread* pReceiver = ( QProcessResultThread* ) pReceiverThread;
+
+    if ( NULL == pReceiver ) {
+        return;
+    }
+
+    pReceiver->PostDatabaseResultEvent( dbSpType, bySpResult, lstSpParam );
 
     qDebug( ) << strConnectName << QThread::currentThreadId( ) << endl;
 }

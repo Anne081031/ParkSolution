@@ -622,6 +622,10 @@ void MainWindow::HandlePlateIpcResult( QStringList lstPlateParam, int nChannel, 
         strText += " " + strDateTime + "\n";
         HandlePlateLog( strText );
 
+        if ( !bSuccess ) {
+            continue;
+        }
+
         bRet = GetEnterFlag( bVideo, bSuccess, strDirection, nChannel, bEnter );
 
         if ( !bRet ) {
@@ -671,6 +675,7 @@ void MainWindow::HandlePlateResult( QStringList lstPlateParam, int nChannel, boo
     QString strText;
     QString strDateTime;
     QString strIP = "";
+    bool bRet = false;
 
     for ( int nIndex = 0; nIndex < nCount; nIndex++ ) {
         nStep = nIndex * PLATE_RESULT_ITEMS;
@@ -692,9 +697,13 @@ void MainWindow::HandlePlateResult( QStringList lstPlateParam, int nChannel, boo
         strText += " " + strDateTime + "\n";
         HandlePlateLog( strText );
 
-        bSuccess = GetEnterFlag( bVideo, bSuccess, strDirection, nChannel, bEnter );
-
         if ( !bSuccess ) {
+            continue;
+        }
+
+        bRet = GetEnterFlag( bVideo, bSuccess, strDirection, nChannel, bEnter );
+
+        if ( !bRet ) {
             continue;
         }
 

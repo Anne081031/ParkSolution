@@ -248,7 +248,7 @@ void QProcessResultThread::ProcessDatabaseResultEvent( QProcessResultEvent* pEve
 
     if ( bStartupInterval ) {
         //hashPlateDateTime[ !bEnter ].remove( strPlate );
-        hashPlateDateTime[ bEnter ][ strPlate ] = strDateTime;
+        //hashPlateDateTime[ bEnter ][ strPlate ] = strDateTime;
     }
 
     Send2FtpServer( strPlate, strDateTime, byImage );
@@ -390,6 +390,21 @@ bool QProcessResultThread::SamePlateInInterval( bool bEnter, const QString &strP
         return bRet;
     }
 
+    const QString strValue = hashPlateDateTime.value( strPlate );
+    bRet = strValue.isEmpty( );
+
+    if ( bRet ) { // First
+        hashPlateDateTime.insert( strPlate, strDateTime ); // Enter Time
+        return false;
+    }
+
+    bRet = TimeDifferenceInInterval( strValue, strDateTime, nPlateSameChannelInterval );
+
+    if ( !bRet ) {
+        hashPlateDateTime[ strPlate ] = strDateTime;
+    }
+
+    /*
     ParkSolution::QStringHash& hashDateTime = hashPlateDateTime[ bEnter ];
     ParkSolution::QStringHash& hashInverseDateTime = hashPlateDateTime[ !bEnter ];
     const QString strValue = hashDateTime.value( strPlate, "" );
@@ -436,6 +451,7 @@ bool QProcessResultThread::SamePlateInInterval( bool bEnter, const QString &strP
             //}
         }
     }
+    */
 
     return bRet;
 }

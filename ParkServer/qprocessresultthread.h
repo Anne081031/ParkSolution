@@ -75,7 +75,7 @@ private:
     QThreadPool* pThreadPool;
     bool bFtpStartupUpload;
 
-    ParkSolution::QStringHash hashPlateDateTime[ 2 ];
+    ParkSolution::QStringHash hashPlateDateTime;
 
 signals:
     void ThreadPoolTaskData( QByteArray byData );
