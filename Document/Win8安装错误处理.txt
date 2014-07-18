@@ -1,0 +1,34 @@
+以管理员身份运行命令提示符（CMD）然后输入：
+msiexec /package "你的安装文件的全路径". 
+也就是说我要安装7-zip.msi 这个文件的话就是：
+msiexec /package "d:\program\7-zip.msi"
+
+解决MSI 2502 2503错误
+ATA（Advanced Technology Attachment）
+IDE(Integrated Device Electronics)
+LBA（LBA，Logical Block Address）或（CHS，Cylinder、Head、Sector）
+EIDE (Enhanced IDE)
+ATAPI（AT Attachment Packet Interface）
+ATA也被称为IDE接口，ATAPI是CD/DVD和其它驱动器的工业标准的ATA接口。
+寻盘片 寻道(柱面) 寻簇 寻扇区
+SCSI(接口传输快，读写优化) PATA(IDE) SATA(NCQ读写操作队列，对读写操作进行优化，比如相关连读写等---AHCI硬盘控制器，南桥芯片) 
+SAS(Serial Attachment SCSI )
+
+
+FTP
+Server-U FileZilla
+
+Bugzilla
+
+
+硬件虚拟技术 纯软件虚拟技术
+Intel VT
+AMD VT
+
+OAuth协议 
+
+SSD
+ROM PROM EPROM EEPROM RAM SRAM DRAM
+NAND( Not AND 与非门)/ NOR( Not OR 或非门) Flash
+
+ONFI Open NAND Flash Interface
