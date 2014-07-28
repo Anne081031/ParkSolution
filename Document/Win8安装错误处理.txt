@@ -28,7 +28,11 @@ AMD VT
 OAuth协议 
 
 SSD
-ROM PROM EPROM EEPROM RAM SRAM DRAM
+ROM PROM EPROM EEPROM RAM SRAM DRAM SDRAM(时钟周期的上升沿川数据)(--->DDR(时钟周期的上升下降沿都传输数据))
 NAND( Not AND 与非门)/ NOR( Not OR 或非门) Flash
 
 ONFI Open NAND Flash Interface
+
+DDR Double Data Rate
+
+多通道()
