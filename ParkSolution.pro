@@ -28,3 +28,5 @@ SUBDIRS += \
     ParkServer \
     #Config
     #ParkServerNew
+    CenterServer \
+    CenterClient

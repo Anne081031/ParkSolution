@@ -27,12 +27,32 @@ AMD VT
 
 OAuth协议 
 
-SSD
-ROM PROM EPROM EEPROM RAM SRAM DRAM SDRAM(时钟周期的上升沿川数据)(--->DDR(时钟周期的上升下降沿都传输数据))
+SSD / 控制器 存储单元(NAND/NOR FLASH, DRAM 内存条 ) 多通道读写FLASH/并发访问Flash芯片 写以Page为单位 擦除以Block为单位
+ROM PROM EPROM EEPROM RAM SRAM DRAM SDRAM(时钟周期的上升沿传输数据)(--->DDR(时钟周期的上升下降沿都传输数据))
 NAND( Not AND 与非门)/ NOR( Not OR 或非门) Flash
 
 ONFI Open NAND Flash Interface
 
 DDR Double Data Rate
 
-多通道()
+多通道(主板控制器多个-比如北桥芯片)
+SLC(Single Level Cell, 存1位) MLC(Multi Level Cell, 存2位) TLC(Triple Level Cell, 存3位)
+
+NAND与NOR闪存比较
+NAND闪存的优点在于写(编程)和擦除操作的速率快，而NOR的优点是具有随机存取和对字节执行写(编程)操作的能力(见下图图2)。NOR的随机存取能力支持直接代码执行(XiP)，而这是嵌入式应用经常需要的一个功能。NAND的缺点是随机存取的速率慢，NOR的缺点是受到读和擦除速度慢的性能制约。NAND较适合于存储文件。如今，越来越多的处理器具备直接NAND接口，并能直接从NAND(没有NOR)导入数据。
+
+RAID Redundant Arrays of Independent Disks RAID技术主要包含RAID 0～RAID 50等数个规范，它们的侧重点各不相同 / 磁盘阵列柜(价格高 热插拔) 磁盘阵列卡(安装复杂) 软件仿真(耗资源)
+每磁盘存储相同的数据， 每磁盘存储不同的数据
+
+
+MBR(2TB) GPT(GUID PT 无限大小)
+
+固件与操作系统接口 BIOS / UEFI
+firmware is the combination of persistent memory and program code and data stored in it,对硬件进行最基本的控制、参数设置
+
+OS-(OS调用UEFI接口,与硬件交互)--UEFI-(UEFI实现了硬件驱动)--Firmware---Hardware
+
+EFI相当于一个简易的操作系统，EFI是以小型磁盘分区的形式存放在硬盘上的。EFI的安装，必须在支持EFI功能的主板上，使用光驱引导系统，然后对磁盘进行EFI化的处理，这个处理的过程，主要就是划分EFI独用的磁盘空间。
+
+Services
+boot services(系统引导有用  字符模式 GUI模式) and runtime services(系统运行人发挥作用)

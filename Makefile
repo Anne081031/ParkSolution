@@ -35,7 +35,9 @@ SUBTARGETS    =  \
 		sub-SerialPortModule \
 		sub-ParkCustomerCenter \
 		sub-ParkCustomerInfo \
-		sub-ParkServer
+		sub-ParkServer \
+		sub-CenterServer \
+		sub-CenterClient
 
 
 sub-CommonModule-qmake_all:  FORCE
@@ -338,6 +340,56 @@ sub-ParkServer-install_subtargets: FORCE
 sub-ParkServer-uninstall_subtargets: FORCE
 	@if not exist ParkServer\ mkdir ParkServer\ & if not exist ParkServer\ exit 1
 	cd ParkServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkServer\ParkServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile uninstall
+sub-CenterServer-qmake_all:  FORCE
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile
+	cd CenterServer\ && $(MAKE) -f Makefile qmake_all
+sub-CenterServer: FORCE
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile
+sub-CenterServer-make_first: FORCE
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile 
+sub-CenterServer-all: FORCE
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile all
+sub-CenterServer-clean: FORCE
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile clean
+sub-CenterServer-distclean: FORCE
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile distclean
+sub-CenterServer-install_subtargets: FORCE
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile install
+sub-CenterServer-uninstall_subtargets: FORCE
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile uninstall
+sub-CenterClient-qmake_all:  FORCE
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile
+	cd CenterClient\ && $(MAKE) -f Makefile qmake_all
+sub-CenterClient: FORCE
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile
+sub-CenterClient-make_first: FORCE
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile 
+sub-CenterClient-all: FORCE
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile all
+sub-CenterClient-clean: FORCE
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile clean
+sub-CenterClient-distclean: FORCE
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile distclean
+sub-CenterClient-install_subtargets: FORCE
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile install
+sub-CenterClient-uninstall_subtargets: FORCE
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile uninstall
 
 Makefile: ParkSolution.pro F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++/qmake.conf F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/features/spec_pre.prf \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/qdevice.pri \
@@ -559,15 +611,15 @@ ParkSolution.pro:
 qmake: FORCE
 	@$(QMAKE) -spec win32-g++ CONFIG+=debug -o Makefile ParkSolution.pro
 
-qmake_all: sub-CommonModule-qmake_all sub-ConfigModule-qmake_all sub-AssessibilityModule-qmake_all sub-DatabaseModule-qmake_all sub-DataParse-qmake_all sub-LPRModule-qmake_all sub-NetworkModule-qmake_all sub-VideoModule-qmake_all sub-SerialPortModule-qmake_all sub-ParkCustomerCenter-qmake_all sub-ParkCustomerInfo-qmake_all sub-ParkServer-qmake_all FORCE
+qmake_all: sub-CommonModule-qmake_all sub-ConfigModule-qmake_all sub-AssessibilityModule-qmake_all sub-DatabaseModule-qmake_all sub-DataParse-qmake_all sub-LPRModule-qmake_all sub-NetworkModule-qmake_all sub-VideoModule-qmake_all sub-SerialPortModule-qmake_all sub-ParkCustomerCenter-qmake_all sub-ParkCustomerInfo-qmake_all sub-ParkServer-qmake_all sub-CenterServer-qmake_all sub-CenterClient-qmake_all FORCE
 
-make_first: sub-CommonModule-make_first sub-ConfigModule-make_first sub-AssessibilityModule-make_first sub-DatabaseModule-make_first sub-DataParse-make_first sub-LPRModule-make_first sub-NetworkModule-make_first sub-VideoModule-make_first sub-SerialPortModule-make_first sub-ParkCustomerCenter-make_first sub-ParkCustomerInfo-make_first sub-ParkServer-make_first FORCE
-all: sub-CommonModule-all sub-ConfigModule-all sub-AssessibilityModule-all sub-DatabaseModule-all sub-DataParse-all sub-LPRModule-all sub-NetworkModule-all sub-VideoModule-all sub-SerialPortModule-all sub-ParkCustomerCenter-all sub-ParkCustomerInfo-all sub-ParkServer-all FORCE
-clean: sub-CommonModule-clean sub-ConfigModule-clean sub-AssessibilityModule-clean sub-DatabaseModule-clean sub-DataParse-clean sub-LPRModule-clean sub-NetworkModule-clean sub-VideoModule-clean sub-SerialPortModule-clean sub-ParkCustomerCenter-clean sub-ParkCustomerInfo-clean sub-ParkServer-clean FORCE
-distclean: sub-CommonModule-distclean sub-ConfigModule-distclean sub-AssessibilityModule-distclean sub-DatabaseModule-distclean sub-DataParse-distclean sub-LPRModule-distclean sub-NetworkModule-distclean sub-VideoModule-distclean sub-SerialPortModule-distclean sub-ParkCustomerCenter-distclean sub-ParkCustomerInfo-distclean sub-ParkServer-distclean FORCE
+make_first: sub-CommonModule-make_first sub-ConfigModule-make_first sub-AssessibilityModule-make_first sub-DatabaseModule-make_first sub-DataParse-make_first sub-LPRModule-make_first sub-NetworkModule-make_first sub-VideoModule-make_first sub-SerialPortModule-make_first sub-ParkCustomerCenter-make_first sub-ParkCustomerInfo-make_first sub-ParkServer-make_first sub-CenterServer-make_first sub-CenterClient-make_first FORCE
+all: sub-CommonModule-all sub-ConfigModule-all sub-AssessibilityModule-all sub-DatabaseModule-all sub-DataParse-all sub-LPRModule-all sub-NetworkModule-all sub-VideoModule-all sub-SerialPortModule-all sub-ParkCustomerCenter-all sub-ParkCustomerInfo-all sub-ParkServer-all sub-CenterServer-all sub-CenterClient-all FORCE
+clean: sub-CommonModule-clean sub-ConfigModule-clean sub-AssessibilityModule-clean sub-DatabaseModule-clean sub-DataParse-clean sub-LPRModule-clean sub-NetworkModule-clean sub-VideoModule-clean sub-SerialPortModule-clean sub-ParkCustomerCenter-clean sub-ParkCustomerInfo-clean sub-ParkServer-clean sub-CenterServer-clean sub-CenterClient-clean FORCE
+distclean: sub-CommonModule-distclean sub-ConfigModule-distclean sub-AssessibilityModule-distclean sub-DatabaseModule-distclean sub-DataParse-distclean sub-LPRModule-distclean sub-NetworkModule-distclean sub-VideoModule-distclean sub-SerialPortModule-distclean sub-ParkCustomerCenter-distclean sub-ParkCustomerInfo-distclean sub-ParkServer-distclean sub-CenterServer-distclean sub-CenterClient-distclean FORCE
 	-$(DEL_FILE) Makefile
-install_subtargets: sub-CommonModule-install_subtargets sub-ConfigModule-install_subtargets sub-AssessibilityModule-install_subtargets sub-DatabaseModule-install_subtargets sub-DataParse-install_subtargets sub-LPRModule-install_subtargets sub-NetworkModule-install_subtargets sub-VideoModule-install_subtargets sub-SerialPortModule-install_subtargets sub-ParkCustomerCenter-install_subtargets sub-ParkCustomerInfo-install_subtargets sub-ParkServer-install_subtargets FORCE
-uninstall_subtargets: sub-CommonModule-uninstall_subtargets sub-ConfigModule-uninstall_subtargets sub-AssessibilityModule-uninstall_subtargets sub-DatabaseModule-uninstall_subtargets sub-DataParse-uninstall_subtargets sub-LPRModule-uninstall_subtargets sub-NetworkModule-uninstall_subtargets sub-VideoModule-uninstall_subtargets sub-SerialPortModule-uninstall_subtargets sub-ParkCustomerCenter-uninstall_subtargets sub-ParkCustomerInfo-uninstall_subtargets sub-ParkServer-uninstall_subtargets FORCE
+install_subtargets: sub-CommonModule-install_subtargets sub-ConfigModule-install_subtargets sub-AssessibilityModule-install_subtargets sub-DatabaseModule-install_subtargets sub-DataParse-install_subtargets sub-LPRModule-install_subtargets sub-NetworkModule-install_subtargets sub-VideoModule-install_subtargets sub-SerialPortModule-install_subtargets sub-ParkCustomerCenter-install_subtargets sub-ParkCustomerInfo-install_subtargets sub-ParkServer-install_subtargets sub-CenterServer-install_subtargets sub-CenterClient-install_subtargets FORCE
+uninstall_subtargets: sub-CommonModule-uninstall_subtargets sub-ConfigModule-uninstall_subtargets sub-AssessibilityModule-uninstall_subtargets sub-DatabaseModule-uninstall_subtargets sub-DataParse-uninstall_subtargets sub-LPRModule-uninstall_subtargets sub-NetworkModule-uninstall_subtargets sub-VideoModule-uninstall_subtargets sub-SerialPortModule-uninstall_subtargets sub-ParkCustomerCenter-uninstall_subtargets sub-ParkCustomerInfo-uninstall_subtargets sub-ParkServer-uninstall_subtargets sub-CenterServer-uninstall_subtargets sub-CenterClient-uninstall_subtargets FORCE
 
 sub-CommonModule-debug:
 	@if not exist CommonModule\ mkdir CommonModule\ & if not exist CommonModule\ exit 1
@@ -605,7 +657,13 @@ sub-ParkCustomerInfo-debug:
 sub-ParkServer-debug:
 	@if not exist ParkServer\ mkdir ParkServer\ & if not exist ParkServer\ exit 1
 	cd ParkServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkServer\ParkServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile debug
-debug: sub-CommonModule-debug sub-ConfigModule-debug sub-AssessibilityModule-debug sub-DatabaseModule-debug sub-DataParse-debug sub-LPRModule-debug sub-NetworkModule-debug sub-VideoModule-debug sub-SerialPortModule-debug sub-ParkCustomerCenter-debug sub-ParkCustomerInfo-debug sub-ParkServer-debug
+sub-CenterServer-debug:
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile debug
+sub-CenterClient-debug:
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile debug
+debug: sub-CommonModule-debug sub-ConfigModule-debug sub-AssessibilityModule-debug sub-DatabaseModule-debug sub-DataParse-debug sub-LPRModule-debug sub-NetworkModule-debug sub-VideoModule-debug sub-SerialPortModule-debug sub-ParkCustomerCenter-debug sub-ParkCustomerInfo-debug sub-ParkServer-debug sub-CenterServer-debug sub-CenterClient-debug
 
 sub-CommonModule-release:
 	@if not exist CommonModule\ mkdir CommonModule\ & if not exist CommonModule\ exit 1
@@ -643,7 +701,13 @@ sub-ParkCustomerInfo-release:
 sub-ParkServer-release:
 	@if not exist ParkServer\ mkdir ParkServer\ & if not exist ParkServer\ exit 1
 	cd ParkServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkServer\ParkServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile release
-release: sub-CommonModule-release sub-ConfigModule-release sub-AssessibilityModule-release sub-DatabaseModule-release sub-DataParse-release sub-LPRModule-release sub-NetworkModule-release sub-VideoModule-release sub-SerialPortModule-release sub-ParkCustomerCenter-release sub-ParkCustomerInfo-release sub-ParkServer-release
+sub-CenterServer-release:
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile release
+sub-CenterClient-release:
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile release
+release: sub-CommonModule-release sub-ConfigModule-release sub-AssessibilityModule-release sub-DatabaseModule-release sub-DataParse-release sub-LPRModule-release sub-NetworkModule-release sub-VideoModule-release sub-SerialPortModule-release sub-ParkCustomerCenter-release sub-ParkCustomerInfo-release sub-ParkServer-release sub-CenterServer-release sub-CenterClient-release
 
 sub-CommonModule-check:
 	@if not exist CommonModule\ mkdir CommonModule\ & if not exist CommonModule\ exit 1
@@ -681,7 +745,13 @@ sub-ParkCustomerInfo-check:
 sub-ParkServer-check:
 	@if not exist ParkServer\ mkdir ParkServer\ & if not exist ParkServer\ exit 1
 	cd ParkServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\ParkServer\ParkServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile check
-check: sub-CommonModule-check sub-ConfigModule-check sub-AssessibilityModule-check sub-DatabaseModule-check sub-DataParse-check sub-LPRModule-check sub-NetworkModule-check sub-VideoModule-check sub-SerialPortModule-check sub-ParkCustomerCenter-check sub-ParkCustomerInfo-check sub-ParkServer-check
+sub-CenterServer-check:
+	@if not exist CenterServer\ mkdir CenterServer\ & if not exist CenterServer\ exit 1
+	cd CenterServer\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterServer\CenterServer.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile check
+sub-CenterClient-check:
+	@if not exist CenterClient\ mkdir CenterClient\ & if not exist CenterClient\ exit 1
+	cd CenterClient\ && ( if not exist Makefile $(QMAKE) D:\ParkSolution\CenterClient\CenterClient.pro -spec win32-g++ CONFIG+=debug -o Makefile ) && $(MAKE) -f Makefile check
+check: sub-CommonModule-check sub-ConfigModule-check sub-AssessibilityModule-check sub-DatabaseModule-check sub-DataParse-check sub-LPRModule-check sub-NetworkModule-check sub-VideoModule-check sub-SerialPortModule-check sub-ParkCustomerCenter-check sub-ParkCustomerInfo-check sub-ParkServer-check sub-CenterServer-check sub-CenterClient-check
 install: install_subtargets  FORCE
 
 uninstall:  uninstall_subtargets FORCE

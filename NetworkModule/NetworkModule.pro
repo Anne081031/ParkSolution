@@ -40,7 +40,15 @@ HEADERS += \
     qzmqserverthread.h \
     qzmqclientthread.h \
     qzmqserverevent.h \
-    qzmqclientevent.h
+    qzmqclientevent.h \
+    qtcpserverthread.h \
+    qudpserverthread.h \
+    qtcpserverevent.h \
+    qudpserverevent.h \
+    qtcpclientthread.h \
+    qudpclientthread.h \
+    qtcpclientevent.h \
+    qudpclientevent.h
 
 SOURCES += \
     qhttpthread.cpp \
@@ -50,4 +58,12 @@ SOURCES += \
     qzmqserverthread.cpp \
     qzmqclientthread.cpp \
     qzmqserverevent.cpp \
-    qzmqclientevent.cpp
+    qzmqclientevent.cpp \
+    qtcpserverthread.cpp \
+    qudpserverthread.cpp \
+    qtcpserverevent.cpp \
+    qudpserverevent.cpp \
+    qtcpclientthread.cpp \
+    qudpclientthread.cpp \
+    qtcpclientevent.cpp \
+    qudpclientevent.cpp
