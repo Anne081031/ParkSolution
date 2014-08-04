@@ -2200,6 +2200,7 @@ debug/moc_qresizeform.cpp: F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QWidg
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QResizeEvent \
+		commonmodule_global.h \
 		qresizeform.h
 	F:\Qt\Qt5.3.0\5.3\mingw482_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IF:/Qt/Qt5.3.0/5.3/mingw482_32/mkspecs/win32-g++ -ID:/ParkSolution/CommonModule -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWebKitWidgets -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQuick -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtMultimediaWidgets -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtOpenGL -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtPrintSupport -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWebKit -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtQml -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtMultimedia -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/ActiveQt -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtNetwork -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtPositioning -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSensors -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtSql -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui -IF:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore qresizeform.h -o debug\moc_qresizeform.cpp
 
@@ -6091,6 +6092,7 @@ debug/qresizeform.o: qresizeform.cpp qresizeform.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qvector2d.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/qtouchdevice.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtGui/QResizeEvent \
+		commonmodule_global.h \
 		ui_qresizeform.h \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtCore/QVariant \
 		F:/Qt/Qt5.3.0/5.3/mingw482_32/include/QtWidgets/QAction \

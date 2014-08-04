@@ -1,13 +1,18 @@
 #ifndef QTCPSERVERTHREAD_H
 #define QTCPSERVERTHREAD_H
 
+#include "NetworkModule_global.h"
 #include "../CommonModule/qbasethread.h"
+#include "qtcpserverevent.h"
+#include "qmytcpserver.h"
 
-class QTcpServerThread : public QBaseThread
+class NETWORKMODULESHARED_EXPORT QTcpServerThread : public QBaseThread
 {
     Q_OBJECT
 public:
     static QTcpServerThread* CreateInstance( );
+    void PostStartServerEvent( const quint16 nPort );
+    void PostStopServerEvent( const quint16 nPort );
 
 protected:
     void run( );
@@ -18,9 +23,19 @@ protected:
 private:
     explicit QTcpServerThread(QObject *parent = 0);
 
+    void ProcessStartServerEvent( QTcpServerEvent* pEvent );
+    void ProcessStopServerEvent( QTcpServerEvent* pEvent );
+
+private:
+    static QTcpServerThread* pThreadInstance;
+
+    typedef QHash< const quint16, QMyTcpServer* > QTcpServerHash;
+    QTcpServerHash hashTcpServer;
+
 signals:
 
-public slots:
+private slots:
+    void HandleSocketConnection( qintptr socketDescriptor );
 
 };
 

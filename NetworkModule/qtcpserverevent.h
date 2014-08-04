@@ -7,13 +7,19 @@ class QTcpServerEvent : public QEvent
 {
 public:
     typedef enum __TcpServerEvent {
-        a = User
+        StartServer = User,
+        StopServer
     } TcpServerEvent;
 
     static QTcpServerEvent* CreateTcpServerEvent( TcpServerEvent eEvent  );
 
+    void SetServerPort( const quint16 nPort );
+    quint16 GetServerPort( ) const;
+
 private:
     QTcpServerEvent( TcpServerEvent eEvent );
+
+    quint16 nServerPort;
 };
 
 #endif // QTCPSERVEREVENT_H

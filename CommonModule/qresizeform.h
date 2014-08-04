@@ -3,12 +3,13 @@
 
 #include <QWidget>
 #include <QResizeEvent>
+#include "commonmodule_global.h"
 
 namespace Ui {
 class QResizeForm;
 }
 
-class QResizeForm : public QWidget
+class COMMONMODULESHARED_EXPORT QResizeForm : public QWidget
 {
     Q_OBJECT
 

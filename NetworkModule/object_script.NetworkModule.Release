@@ -15,6 +15,9 @@ INPUT(
 ./release\qudpclientthread.o
 ./release\qtcpclientevent.o
 ./release\qudpclientevent.o
+./release\qmytcpserver.o
+./release\qpeersocketthread.o
+./release\qpeersocketevent.o
 ./release\moc_qhttpthread.o
 ./release\moc_qftpthread.o
 ./release\moc_qzmqserverthread.o
@@ -23,4 +26,6 @@ INPUT(
 ./release\moc_qudpserverthread.o
 ./release\moc_qtcpclientthread.o
 ./release\moc_qudpclientthread.o
+./release\moc_qmytcpserver.o
+./release\moc_qpeersocketthread.o
 );

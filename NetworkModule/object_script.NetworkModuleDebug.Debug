@@ -15,6 +15,9 @@ INPUT(
 ./debug\qudpclientthread.o
 ./debug\qtcpclientevent.o
 ./debug\qudpclientevent.o
+./debug\qmytcpserver.o
+./debug\qpeersocketthread.o
+./debug\qpeersocketevent.o
 ./debug\moc_qhttpthread.o
 ./debug\moc_qftpthread.o
 ./debug\moc_qzmqserverthread.o
@@ -23,4 +26,6 @@ INPUT(
 ./debug\moc_qudpserverthread.o
 ./debug\moc_qtcpclientthread.o
 ./debug\moc_qudpclientthread.o
+./debug\moc_qmytcpserver.o
+./debug\moc_qpeersocketthread.o
 );

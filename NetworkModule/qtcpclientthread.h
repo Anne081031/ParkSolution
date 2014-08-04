@@ -1,9 +1,11 @@
 #ifndef QTCPCLIENTTHREAD_H
 #define QTCPCLIENTTHREAD_H
 
+#include "NetworkModule_global.h"
 #include "../CommonModule/qbasethread.h"
+#include "qtcpclientevent.h"
 
-class QTcpClientThread : public QBaseThread
+class NETWORKMODULESHARED_EXPORT QTcpClientThread : public QBaseThread
 {
     Q_OBJECT
 public:
@@ -17,6 +19,9 @@ protected:
 
 private:
      explicit QTcpClientThread(QObject *parent = 0);
+
+private:
+    static QTcpClientThread* pThreadInstance;
 
 signals:
 

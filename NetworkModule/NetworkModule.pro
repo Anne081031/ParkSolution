@@ -48,7 +48,10 @@ HEADERS += \
     qtcpclientthread.h \
     qudpclientthread.h \
     qtcpclientevent.h \
-    qudpclientevent.h
+    qudpclientevent.h \
+    qmytcpserver.h \
+    qpeersocketthread.h \
+    qpeersocketevent.h
 
 SOURCES += \
     qhttpthread.cpp \
@@ -66,4 +69,7 @@ SOURCES += \
     qtcpclientthread.cpp \
     qudpclientthread.cpp \
     qtcpclientevent.cpp \
-    qudpclientevent.cpp
+    qudpclientevent.cpp \
+    qmytcpserver.cpp \
+    qpeersocketthread.cpp \
+    qpeersocketevent.cpp

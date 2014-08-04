@@ -1,9 +1,11 @@
 #ifndef QUDPCLIENTTHREAD_H
 #define QUDPCLIENTTHREAD_H
 
+#include "NetworkModule_global.h"
 #include "../CommonModule/qbasethread.h"
+#include "qudpclientevent.h"
 
-class QUdpClientThread : public QBaseThread
+class NETWORKMODULESHARED_EXPORT QUdpClientThread : public QBaseThread
 {
     Q_OBJECT
 public:
@@ -17,6 +19,9 @@ protected:
 
 private:
     explicit QUdpClientThread(QObject *parent = 0);
+
+private:
+    static QUdpClientThread* pThreadInstance;
 
 signals:
 
