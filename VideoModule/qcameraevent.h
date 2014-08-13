@@ -36,7 +36,8 @@ public:
         IPCStartRealPlay,
         IPCStopRealPlay,
         IPCLogout,
-        IPCCleanup
+        IPCCleanup,
+        IPCDetect
     } IPCEventType;
 
 public:
@@ -66,6 +67,9 @@ public:
     void SetRealStream( bool bReal );
     bool GetRealStream( );
 
+    void SetDeviceDetect( bool bStart );
+    bool GetDeviceDetect( );
+
 private:
     int nChannelNumber;
     HWND hVideoWnd;
@@ -75,6 +79,7 @@ private:
     bool bMainStream;
     QString strIPCIP;
     bool bRealStream;
+    bool bDeviceDetect;
 };
 
 #endif // QCAMERAEVENT_H

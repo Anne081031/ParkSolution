@@ -93,6 +93,13 @@ void QDigitalCameraThread::PostIPCCleanupEvent( )
     PostEvent( pEvent );
 }
 
+void QDigitalCameraThread::PostIPCDetectEvent( bool bStart )
+{
+    QCameraEvent* pEvent = new QCameraEvent( ( QEvent::Type ) QCameraEvent::IPCDetect );
+    pEvent->SetDeviceDetect( bStart );
+    PostEvent( pEvent );
+}
+
 void QDigitalCameraThread::CaptureStaticImage( QString &strIP, QString &strFileName, HWND hPlayWnd )
 {
     Q_UNUSED( strIP )

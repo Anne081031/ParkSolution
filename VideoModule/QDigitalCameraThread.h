@@ -23,6 +23,7 @@ public:
     virtual void PostIPCStopRealPlayEvent( HWND hPlayWnd );
     virtual void PostIPCLogoutEvent( QString& strIP );
     virtual void PostIPCCleanupEvent( );
+    virtual void PostIPCDetectEvent( bool bStart );
 
     virtual void CaptureStaticImage( QString& strIP, QString& strFileName, HWND hPlayWnd = NULL );
     QPlateThread* GetPlateThread( );

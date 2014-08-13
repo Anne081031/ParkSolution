@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PassengerMainWindow</class>
+ <widget class="QMainWindow" name="PassengerMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>客流系统</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="mainLayout"/>
+   </widget>
+   <widget class="QTreeWidget" name="deviceTree">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>70</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <column>
+     <property name="text">
+      <string notr="true">1</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QWidget" name="widgetTop" native="true">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>10</y>
+      <width>371</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>0</width>
+      <height>30</height>
+     </size>
+    </property>
+    <widget class="QPushButton" name="btnOK">
+     <property name="geometry">
+      <rect>
+       <x>277</x>
+       <y>4</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>确定</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="sbRows">
+     <property name="geometry">
+      <rect>
+       <x>155</x>
+       <y>5</y>
+       <width>40</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>20</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="sbCols">
+     <property name="geometry">
+      <rect>
+       <x>231</x>
+       <y>5</y>
+       <width>40</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>50</number>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="sbPages">
+     <property name="geometry">
+      <rect>
+       <x>49</x>
+       <y>5</y>
+       <width>46</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <number>1</number>
+     </property>
+     <property name="maximum">
+      <number>100</number>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label3">
+     <property name="geometry">
+      <rect>
+       <x>201</x>
+       <y>4</y>
+       <width>24</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>列数</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label1">
+     <property name="geometry">
+      <rect>
+       <x>7</x>
+       <y>4</y>
+       <width>36</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>总页数</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label2">
+     <property name="geometry">
+      <rect>
+       <x>101</x>
+       <y>4</y>
+       <width>48</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>每页行数</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string/>
+    </property>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -89,3 +89,13 @@ bool QCameraEvent::GetRealStream( )
 {
     return bRealStream;
 }
+
+void QCameraEvent::SetDeviceDetect( bool bStart )
+{
+    bDeviceDetect = bStart;
+}
+
+bool QCameraEvent::GetDeviceDetect( )
+{
+    return bDeviceDetect;
+}

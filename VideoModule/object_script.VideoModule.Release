@@ -13,6 +13,7 @@ INPUT(
 ./release\qusbcamerathread.o
 ./release\quv200thread.o
 ./release\quv200timerthread.o
+./release\qvzivsthread.o
 ./release\moc_quv200timerthread.o
 ./release\moc_qanalogcamerathread.o
 ./release\moc_qdhkipcthread.o
@@ -25,4 +26,5 @@ INPUT(
 ./release\moc_qtmcapturecardthread.o
 ./release\moc_qusbcamerathread.o
 ./release\moc_quv200thread.o
+./release\moc_qvzivsthread.o
 );

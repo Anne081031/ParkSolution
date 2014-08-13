@@ -68,7 +68,7 @@ void QTcpServerThread::ProcessStartServerEvent( QTcpServerEvent *pEvent)
     QMyTcpServer* pTcpServer = hashTcpServer.value( nPort );
 
     if ( !hashTcpServer.contains( nPort ) || NULL == pTcpServer ) {
-        pTcpServer = new QMyTcpServer( );
+        pTcpServer = new QMyTcpServer( this );
         hashTcpServer.insert( nPort, pTcpServer );
         connect( pTcpServer, SIGNAL( SocketConnection( qintptr ) ),
                  this, SLOT( HandleSocketConnection( qintptr ) ) );

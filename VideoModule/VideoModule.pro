@@ -52,7 +52,8 @@ HEADERS += \
     qonvifthread.h \
     qtmcapturecardthread.h \
     qusbcamerathread.h \
-    quv200thread.h
+    quv200thread.h \
+    qvzivsthread.h
 
 SOURCES += \
     qanalogcamerathread.cpp \
@@ -68,4 +69,5 @@ SOURCES += \
     qtmcapturecardthread.cpp \
     qusbcamerathread.cpp \
     quv200thread.cpp \
-    quv200timerthread.cpp
+    quv200timerthread.cpp \
+    qvzivsthread.cpp

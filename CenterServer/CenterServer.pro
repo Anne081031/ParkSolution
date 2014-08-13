@@ -4,6 +4,7 @@
 #
 #-------------------------------------------------
 DEFINES += StartupDebug
+#DEFINES += StartupRelease
 QT       += core gui sql network axcontainer printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -62,6 +63,7 @@ contains( DEFINES, StartupRelease ) {
         system( copy ..\\LibExeFiles\\Release\\libzmq-v100-mt-4_0_3.dll .\\Release )
         system( copy ..\\LibExeFiles\\Release\\AssessibilityModule.dll .\\Release )
         system( copy .\\Release\\ParkServer.exe ..\\LibExeFiles\\Release )
+        system( copy .\\Release\\CenterServer.exe ..\\LibExeFiles\\Release )
     }
 }
 
